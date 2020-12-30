@@ -82,7 +82,7 @@
         <footer>
             <div class="footer-bottom">
 				<div class="container d-flex justify-content-center align-items-center flex-wrap">
-					<p class="footer-copyright py-3 pr-4 mb-0">© {{ config('app.name')}}. 2020. All Rights Reserved</p>
+					<p class="footer-copyright py-3 pr-4 mb-0">© {{ config('app.name') }}. 2020. All Rights Reserved</p>
 				</div><!-- End .container -->
 			</div><!-- End .footer-bottom -->
         </footer>
