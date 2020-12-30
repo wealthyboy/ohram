@@ -283,6 +283,12 @@ select.form-control:not([size]):not([multiple]) {
   box-shadow: none;
 }
 
+
+.btn.disabled, .btn:disabled {
+  opacity: .65;
+  pointer-events: none;
+}
+
 /*
   Blog
 */
