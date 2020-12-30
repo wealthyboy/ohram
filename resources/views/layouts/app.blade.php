@@ -13,10 +13,10 @@
     <!-- Favicone Icon -->
     
        <!-- Favicone Icon -->
-	<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
-    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" href="/img/favicon-96x96.png">
-    <link rel="apple-touch-icon" href="/img/favicon-96x96.png">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    <link rel="icon" href="/favicons/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="/favicons/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="/favicons/favicon-96x96.png">
 
    
 
