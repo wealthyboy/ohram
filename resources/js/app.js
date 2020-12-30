@@ -24,7 +24,7 @@ const SideBar = require('./components/products/SideBar.vue').default
 const ProductShow = require('./components/products/Show.vue').default
 const TopCart = require('./components/cart/Top.vue').default
 const CartSideBarMenu = require('./components/cart/CartSideBarMenu.vue').default
-const NavIcon = require('./components/navigation/Navicon.vue').default
+const NavIcon = require('./components/navigation/NavIcon.vue').default
 const LoginModal = require('./components/auth/LoginModal.vue').default
 const CartSummary = require('./components/cart/Cart.vue').default
 const NewsLetter = require('./components/newsletter/Index.vue').default
@@ -86,4 +86,3 @@ const app = new Vue({
     }   
 });
 
-console.log(Window.user)
