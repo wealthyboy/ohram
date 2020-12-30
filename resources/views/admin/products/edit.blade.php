@@ -256,7 +256,7 @@
                                           </div>
                                           <div id="j-details"  class="j-details j-activate">
                                                 
-                                             @if(optional($product->default_variation)->images)->count()))
+                                             @if(optional($product->default_variation)->images->count())
                                              @foreach(optional(optional($product->default_variation)->images) as $image)
                                                 <div id="{{ $image->id }}" class="j-complete">
                                                    <div class="j-preview">
