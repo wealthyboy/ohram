@@ -402,7 +402,7 @@ export default {
             return this.cText
         },
         canAddToCart: function() {
-            return [this.canNotAddToCart ? 'disabled' : '' ];
+            return [this.product.qty  < 1  ? 'disabled' : '' ];
         },
         loggedIn: function(){
             return [this.user ? true: false]
@@ -423,7 +423,6 @@ export default {
         this.discounted_price =  this.product.default_discounted_price
         this.is_wishlist =  this.product.is_wishlist
         this.variant_images = this.product.variants
-        console.log(this.product)
     
     },
     methods: {
