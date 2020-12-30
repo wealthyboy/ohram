@@ -557,7 +557,6 @@ export default {
 
 
                 let vTs = stock[0][variation]
-                this.name =  vTs.name ?? this.name
                 if (key == 'Colors'){
                     this.image = vTs.image
                     this.image_m = vTs.image_m
