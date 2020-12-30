@@ -51,8 +51,8 @@ export default {
                 <article>
                     <form action="/update/cart" method="" class="cart-form">
                         <input type="hidden" value="" name="_token" />
-                        <div class="cart-product-table-wrap  bg--light">
-                            <div v-for="cart in carts"  :key="cart.id" class="row cart-rows raised mb-3 pt-4 pb-4 border border-gray">
+                        <div class="cart-product-table-wrap  ">
+                            <div v-for="cart in carts"  :key="cart.id" class="row cart-rows bg--light raised mb-3 pt-4 pb-4 border border-gray">
                                 <div class="col-md-2 col-6">
                                     <div class="cart-image">
                                         <img :src="cart.product_variation.image_tn" alt="">

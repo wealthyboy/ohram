@@ -11,26 +11,13 @@
                 USE OHRAMXMAS and get 10% off when you shop over 250k</b>
                 </h5>
             </div>
-            
-
         </div>
         
     </div><!-- End .container -->
 </div>
 
-<section class="breadcrumb no-banner cart-page justify-content-center">
-    <div class="breadcrumb-content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12  text-center border-bottom">
-                    <h1 class="breadcrumb-title">Your Cart</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-  
-   <!--Content-->
+
+<!--Content-->
    
 <section class="bg--gray">          
     <div class="container-fluid">
