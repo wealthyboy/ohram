@@ -13,35 +13,34 @@
     <!-- Favicone Icon -->
     
 	
+      <!-- Favicone Icon -->
+    
        <!-- Favicone Icon -->
-	<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
-    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" href="/img/favicon-96x96.png">
-    <link rel="apple-touch-icon" href="/img/favicon-96x96.png">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    <link rel="icon" href="/favicons/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="/favicons/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="/favicons/favicon-96x96.png">
 
    
 
     <!-- CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 	<!-- Main CSS File -->
-	<link rel="stylesheet" href="/css/style.min.css">
+	<link rel="stylesheet" href="/css/style.min.css?version={{ str_random(6) }}">
 	<link rel="stylesheet" type="text/css" href="/vendor/fontawesome-free/css/all.min.css">
-	<link rel="stylesheet" href="/css/skins/skin-default.css">
-	<link rel="stylesheet" href="/css/custom.css">
-
-
+	<link rel="stylesheet" href="/css/skins/skin-default.css?version={{ str_random(6) }}">
     @yield('page-css')
     <link href="/css/custom.css?version={{ str_random(6) }}" rel="stylesheet" type="text/css" />
     <meta property="og:site_name" content="Ohram Co">
-    <meta property="og:url" content="https://theluxurysale.com/">
-    <meta property="og:title" content=" theluxurysale">
+    <meta property="og:url" content="https://ohram.org/">
+    <meta property="og:title" content=" Ohram - Cleanse &amp; Debloat or Cut The Cals">
     <meta property="og:type" content="website">
-    <meta property="og:description" content="Online sales of your best brands,buy gucci,versace. etc">
+    <meta property="og:description" content="From detox teas to meal replacement protein shakes, our babes do it all. Get back on track, reduce bloating, and flatten that tummy!">
     <meta property="og:image:alt" content="">
-    <meta name="twitter:site" content="@theluxurysale">
+    <meta name="twitter:site" content="@ohramofficial">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="theluxurysale - Online sales of your best brands,buy gucci,versace. ">
-    <meta name="twitter:description" content="Online sales of your best brands,buy gucci,versace. ">
+    <meta name="twitter:title" content="Ohram - Cleanse &amp; Debloat or Cut The Cals">
+    <meta name="twitter:description" content="From detox teas to meal replacement protein shakes, our babes do it all. Get back on track, reduce bloating, and flatten that tummy!">
     <script>
 		Window.user = {
 			user: {!! auth()->check() ? auth()->user() : 0000 !!},
