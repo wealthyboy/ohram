@@ -33,7 +33,6 @@ const FavoriteIndex = require('./components/favorites/Index.vue').default
 const Messages =  require('./components/message/index.vue').default
 const Addresses =  require('./components/checkout/Addresses.vue').default
 const ShipAddress =  require('./components/checkout/ShipAddress.vue').default
-
 const ForgotPassword =  require('./components/auth/ForgotPassword.vue').default
 const ResetPassword =  require('./components/auth/ResetPassword.vue').default
 const ChangePassword =  require('./components/auth/ChangePassword.vue').default
