@@ -185,7 +185,7 @@
                                                    <input type="hidden" name="related_products[{{ $related_product->id }}]" value="{{ $related_product->related_id }}" id="" />
                                                 </td>
                                                 <td class="text-left">
-                                                   <input type="number" class="d-none" name="sort_order" value="" id="" />
+                                                   <input type="number" class="d-none" name="sort_order[{{ $related_product->id }}]" value="" id="" />
                                                 </td>
                                                 <td class="text-left"><a  class="remove_related_product"  href="/admin/delete/{{ $related_product->id }}/related_products"><i class="fa fa-trash"></i> Delete</a></td>
                                              </tr>
