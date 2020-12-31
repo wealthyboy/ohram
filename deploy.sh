@@ -34,7 +34,7 @@ php artisan view:cache
 npm install
 
 # Build assets using Laravel Mix
-npm run production
+npm run prod
 
 # Turn off maintenance mode
 php artisan up
