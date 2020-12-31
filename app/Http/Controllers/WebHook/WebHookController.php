@@ -107,7 +107,7 @@ class WebHookController extends Controller
     }
 
     public function gitHub(){
-        $deploy = base_path()."/deploy.sh";
+        //$deploy = base_path()."/deploy.sh";
         $output =  exec('/home/forge/ohram.org/deploy.sh');
         Log::info($output);
     }
