@@ -59,7 +59,7 @@ export default {
                                     </div>
                                 </div>
                                 <div class="col-md-7 col-6">
-                                    <h5>{{ cart.product_name }}/h5>
+                                    <h5>{{ cart.product_name }}</h5>
                                     <div class="product--share">
                                         <span class="bold">Item #:</span> {{ cart.product_variation.sku }}
                                     </div>
