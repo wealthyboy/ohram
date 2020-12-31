@@ -15,6 +15,8 @@ use App\ProductVariation;
 use App\Voucher;
 use App\Mail\OrderReceipt;
 use App\SystemSetting;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 
 
@@ -77,16 +79,15 @@ class WebHookController extends Controller
             $admin_emails = explode(',',$this->settings->alert_email);
             $symbol = optional($currency)->symbol;
             
-            try {
-                $when = now()->addMinutes(5);
-                \Mail::to($user->email)
-                ->bcc($admin_emails[0])
-                ->send(new OrderReceipt($order,$this->settings,$symbol));
-            } catch (\Throwable $th) {
-                //throw $th;
-                Log::info($th);
-
-            }
+            // try {
+            //     $when = now()->addMinutes(5);
+            //     \Mail::to($user->email)
+            //     ->bcc($admin_emails[0])
+            //     ->send(new OrderReceipt($order,$this->settings,$symbol));
+            // } catch (\Throwable $th) {
+            //     //throw $th;
+            //     Log::info($th);
+            // }
 
             //delete cart
             if ( $input['coupon'] ) {
@@ -103,6 +104,19 @@ class WebHookController extends Controller
         return http_response_code(200);
         
         
+    }
+
+    public function gitHub(){
+        $deploy = base_path()."/deploy.sh";
+        $process = new Process('sh '. $deploy);
+        $process->run();
+
+        // executes after the command finishes
+        if (!$process->isSuccessful()) {
+            throw new ProcessFailedException($process);
+        }
+
+        \Log::info($process->getOutput());
     }
 
    
