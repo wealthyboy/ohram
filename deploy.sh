@@ -1,5 +1,5 @@
 # Change to the project directory
-cd /home/forge/domain.com
+cd /home/forge/ohram.org
 
 # Turn on maintenance mode
 php artisan down || true
