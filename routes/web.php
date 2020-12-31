@@ -3,23 +3,6 @@
 
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\Artisan;
-
-Route::get('/migrate/achu',function(){
-    try {
-        $migrate =  Artisan::call('migrate');
-        dd( $migrate);
-        if ($migrate == 0 ){
-            echo " migration was successful";
-        }
-    } catch (\Throwable $th) {
-        //throw $th;
-    }
-});
-
-
-
-
 Route::group(['middleware' => 'admin','prefix' => 'admin'], function(){
     Route::get('/','Admin\HomeCtrl@index')->name('admin_home');
 
