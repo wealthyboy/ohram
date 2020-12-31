@@ -108,13 +108,8 @@ class WebHookController extends Controller
 
     public function gitHub(){
         //$deploy = base_path()."/deploy.sh";
-        $process = new Process('sh ~/ohram.org/deplo.sh');
-        $process->run();
-        // executes after the command finishes
-        if (!$process->isSuccessful()) {
-            throw new ProcessFailedException($process);
-        }
-        Log::info($process->getOutput());
+        shell_exec('~/ohram.org/deplo.sh');
+       
     }
 
    
