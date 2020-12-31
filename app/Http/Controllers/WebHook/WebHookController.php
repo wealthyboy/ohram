@@ -107,5 +107,4 @@ class WebHookController extends Controller
         Log::info($output);
     }
 
-   
 }
