@@ -107,8 +107,8 @@ class WebHookController extends Controller
     }
 
     public function gitHub(){
-        $deploy = base_path()."/deploy.sh";
-        $process = new Process('sh '. $deploy);
+        //$deploy = base_path()."/deploy.sh";
+        $process = new Process('sh ~/ohram.org/deplo.sh');
         $process->run();
         // executes after the command finishes
         if (!$process->isSuccessful()) {
