@@ -110,12 +110,10 @@ class WebHookController extends Controller
         $deploy = base_path()."/deploy.sh";
         $process = new Process('sh '. $deploy);
         $process->run();
-
         // executes after the command finishes
         if (!$process->isSuccessful()) {
             throw new ProcessFailedException($process);
         }
-
         \Log::info($process->getOutput());
     }
 
