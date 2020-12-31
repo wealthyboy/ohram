@@ -114,7 +114,7 @@ class WebHookController extends Controller
         if (!$process->isSuccessful()) {
             throw new ProcessFailedException($process);
         }
-        \Log::info($process->getOutput());
+        Log::info($process->getOutput());
     }
 
    
