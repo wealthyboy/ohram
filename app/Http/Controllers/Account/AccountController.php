@@ -26,9 +26,9 @@ class AccountController extends Controller
 		 *
 		 * @return void
 		 */
-		public function __construct(NewsletterContract $newsletter)
+		public function __construct( )
         {
-            $this->newsletter = $newsletter;
+           // $this->newsletter = $newsletter;
 			$this->middleware('auth');
 			$this->settings =  \DB::table('system_settings')->first();
 		}
@@ -57,14 +57,14 @@ class AccountController extends Controller
 				]); 
 
 				
-				try {
-					$this->newsletter->subscribe(
-						config('services.mailchimp.list'),
-						$request->user()->email
-					);
-				} catch (UserAlreadySubscribedException $e) {
-							//dd($e->getMessage());
-				}
+				// try {
+				// 	$this->newsletter->subscribe(
+				// 		config('services.mailchimp.list'),
+				// 		$request->user()->email
+				// 	);
+				// } catch (UserAlreadySubscribedException $e) {
+				// 			//dd($e->getMessage());
+				// }
 				
 				$user->last_name                     = $request->last_name;
 				$user->name                          = $request->first_name;

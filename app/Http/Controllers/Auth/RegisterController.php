@@ -51,7 +51,7 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct(Request $request,NewsletterContract $newsletter)
+    public function __construct(Request $request)
     {   
 	    //check to SEE IF WE ARE IN ADMIN
         if ( strpos($request->url() ,'admin') !== false ) { 
@@ -216,14 +216,14 @@ class RegisterController extends Controller
 			return $user;
 		}
 
-		try {
-			$this->newsletter->subscribe(
-				config('services.mailchimp.list'),
-				$data['email']
-			);
-		} catch (UserAlreadySubscribedException $e) {
-			//dd($e->getMessage());
-		}
+		// try {
+		// 	$this->newsletter->subscribe(
+		// 		config('services.mailchimp.list'),
+		// 		$data['email']
+		// 	);
+		// } catch (UserAlreadySubscribedException $e) {
+		// 	//dd($e->getMessage());
+		// }
 
 		Newsletter::create([
 			'email'=> $data['email']

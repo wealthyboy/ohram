@@ -93,9 +93,7 @@ Route::group(['middleware' => 'admin','prefix' => 'admin'], function(){
 
     Route::resource('campaigns',              'Admin\Campaign\CampaignController',['name'=>'campaigns']);
     Route::get('campaigns/{campaign_id}/{email_list_id}/{template_id}',              'Admin\Campaign\CampaignController@resendMail');
-
     Route::resource('templates',              'Admin\Templates\TemplatesController',['name'=>'templates']);
-
     Route::resource('promos',             'Admin\Promo\PromoController',['names'=> 'promos']);
     Route::get('promo-text/create/{id}',      'Admin\PromoText\PromoTextController@create')->name('create_promo_text');
     Route::get('promo-text/edit/{id}',   'Admin\PromoText\PromoTextController@edit')->name('edit_promo_text');
