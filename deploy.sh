@@ -31,10 +31,10 @@ php artisan config:cache
 php artisan view:cache
 
 # Install node modules
-# npm ci
+npm install
 
 # Build assets using Laravel Mix
-# npm run production
+npm run production
 
 # Turn off maintenance mode
 php artisan up
