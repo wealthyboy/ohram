@@ -59,7 +59,7 @@ class RegisterController extends Controller
 		} else{
 			$this->middleware('guest');
 		}
-		$this->newsletter = $newsletter;
+		//$this->newsletter = $newsletter;
 
     }
 	
