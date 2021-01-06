@@ -68,25 +68,3 @@
     @endif
 </div> 
 
-<script>
-   window.onload = function(){
-    $("#load-products").loadProducts({
-        'form':$('form#collections input'),
-        'form_data':$("form#collections"),
-        'form_sort_by':$("form#sort_by select"),
-        'target':'load-products',
-        'loggedInStatus':8,
-        'load_more':$('a.load_more'),
-        'filter_url':'{{ request()->fullUrl() }}',
-    });
-
-    //reset form
-    $("#reset-search-form").on("click", function () {
-        //  Reset all selections fields to default option.          
-        $('input[type=checkbox]').each(function () {
-            this.checked = false;
-        }); 
-    });
-   }
-   
-</script>

@@ -28,6 +28,8 @@ class OrdersController extends Controller{
     public function index ( ) { 
 	
 		$orders = Order::orderBy('created_at','desc')->get();
+
+		dd(User::find(7));
         return view('admin.orders.index',compact('orders'));
     }
     
