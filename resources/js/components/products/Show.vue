@@ -201,7 +201,6 @@
                       "
                       class="mr-1 first-attribute"
                     >
-                      {{ index }}
                     </div>
                     <template v-if="attributesData.length">
                       <div
@@ -870,7 +869,6 @@ export default {
             }
           }
         }
-        console.log(other_attribute[0].dataset.value);
         active_attribute = document.querySelector(".active-attribute");
         active_other_attribute = document.querySelector(
           ".active-other-attribute"
