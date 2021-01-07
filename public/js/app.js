@@ -5583,6 +5583,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       fadeIn: false,
       product_slug: this.product.slug,
       wishlistText: false,
+      color_code: null,
+      color_name: null,
       allowedFileTypes: ["image/jpeg", "image/png", "image/gif"],
       form: {
         description: null,
@@ -5632,6 +5634,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     if (typeof this.product.colours.length != "undefined") {
       this.active_color = this.product.colours.shift();
+      this.color_code = this.active_color.color_code;
+      this.color_name = this.active_color.name;
     }
   },
   methods: _objectSpread(_objectSpread({
@@ -47669,10 +47673,8 @@ var render = function() {
                                           key: children,
                                           staticClass: "mr-1 first-attribute",
                                           class: [
-                                            (_vm.active_color &&
-                                              index ==
-                                                _vm.active_color.color_code) ||
-                                            index == _vm.active_color.name
+                                            index == _vm.color_code ||
+                                            index == _vm.color_name
                                               ? "active-attribute"
                                               : "",
                                             _vm.activeObject

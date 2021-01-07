@@ -182,8 +182,8 @@
                       @mouseenter="showColor(children)"
                       @mouseleave="removeColor"
                       :class="[
-                        active_color  && index == active_color.color_code ||
-                        index == active_color.name
+                        index == color_code ||
+                        index == color_name
                           ? 'active-attribute'
                           : '',
                         activeObject,
@@ -708,6 +708,8 @@ export default {
       fadeIn: false,
       product_slug: this.product.slug,
       wishlistText: false,
+      color_code: null,
+      color_name: null,
       allowedFileTypes: ["image/jpeg", "image/png", "image/gif"],
       form: {
         description: null,
@@ -757,6 +759,8 @@ export default {
     this.variant_images = this.product.variants;
     if (typeof this.product.colours.length != "undefined") {
         this.active_color = this.product.colours.shift();
+        this.color_code =  this.active_color.color_code
+        this.color_name =  this.active_color.name
     }
   },
   methods: {
