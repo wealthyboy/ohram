@@ -182,7 +182,10 @@
                       @mouseenter="showColor(children)"
                       @mouseleave="removeColor"
                       :class="[
-                        index == 0 ? 'active-attribute' : '',
+                        index == active_color.color_code ||
+                        index == active_color.name
+                          ? 'active-attribute'
+                          : '',
                         activeObject,
                       ]"
                       v-if="key == 'Colors'"
@@ -698,6 +701,7 @@ export default {
       loading: false,
       is_loggeIn: false,
       is_wishlist: null,
+      active_color: null,
       image_m: "",
       image_tn: null,
       profile_photo: null,
@@ -724,18 +728,18 @@ export default {
       meta: "reviewsMeta",
       errors: "errors",
     }),
-    activeObject: function () {
+    activeObject: function() {
       return {
         "active-attributes": this.isActive,
       };
     },
-    cartText: function () {
+    cartText: function() {
       return this.cText;
     },
-    canAddToCart: function () {
+    canAddToCart: function() {
       return [this.product.qty < 1 ? "disabled" : ""];
     },
-    loggedIn: function () {
+    loggedIn: function() {
       return [this.user ? true : false];
     },
   },
@@ -752,6 +756,7 @@ export default {
     this.discounted_price = this.product.default_discounted_price;
     this.is_wishlist = this.product.is_wishlist;
     this.variant_images = this.product.variants;
+    this.active_color = this.product.colours.shift();
   },
   methods: {
     getStarRating(e, rating) {
@@ -781,7 +786,7 @@ export default {
       var reader = new FileReader();
       let context = this;
 
-      reader.onload = function (e) {
+      reader.onload = function(e) {
         context.profile_photo = e.target.result;
       };
       reader.readAsDataURL(this.file);
@@ -810,7 +815,7 @@ export default {
         window.Inventory = JSON.parse(obj.inventory);
       });
     },
-    currentSlide: function (image) {
+    currentSlide: function(image) {
       this.fadeIn = !this.fadeIn;
       this.image = image;
       setTimeout(() => {
@@ -818,7 +823,7 @@ export default {
       }, 1000); // Will alert once, after a second.
     },
 
-    getAttribute: function (evt, key) {
+    getAttribute: function(evt, key) {
       this.cartError = null;
       let active_attribute = null,
         variation,
@@ -831,8 +836,8 @@ export default {
         f = false,
         af = false,
         cA;
-      let inventory = this.product.inventory;
-      let stock = this.product.stock;
+      let inventory = JSON.parse(this.product.inventory);
+      let stock = JSON.parse(this.product.stock);
       first_attribute = document.querySelectorAll(".first-attribute");
       other_attribute = document.querySelectorAll(".other-attribute");
       /**
@@ -840,7 +845,7 @@ export default {
        */
 
       if (evt.target.classList.contains("first-attribute")) {
-        first_attribute.forEach(function (elm, key) {
+        first_attribute.forEach(function(elm, key) {
           elm.classList.remove("active-attribute");
         });
         evt.target.classList.add("active-attribute");
@@ -850,13 +855,11 @@ export default {
        * Toggle active statte for other attributes
        */
       if (evt.target.classList.contains("other-attribute")) {
-        other_attribute.forEach(function (elm, key) {
+        other_attribute.forEach(function(elm, key) {
           elm.classList.remove("active-other-attribute");
         });
         evt.target.classList.add("active-other-attribute");
       }
-
-      console.log(evt.target.dataset.value);
 
       try {
         if (typeof inventory[0].length === "undefined") {
@@ -892,22 +895,21 @@ export default {
           variation =
             active_attribute.dataset.value + "_" + evt.target.dataset.value;
         }
-        console.log(variation, stock);
 
         let vTs = stock[0][variation];
         if (key == "Colors") {
-          //   this.image = vTs.image;
-          //   this.image_m = vTs.image_m;
-          //   this.images = vTs.images;
+          this.image = vTs.image;
+          this.image_m = vTs.image_m;
+          this.images = vTs.images;
         }
-        // this.quantity = vTs.quantity;
-        // this.price = vTs.converted_price;
-        // this.percentage_off = vTs.percentage_off;
-        // this.discounted_price =
-        // vTs.discounted_price || vTs.default_discounted_price;
-        // this.product_variation_id = vTs.id;
-        // this.canNotAddToCart = false;
-        // this.cText = this.quantity >= 1 ? "Add To Cart" : "Item is sold out";
+        this.quantity = vTs.quantity;
+        this.price = vTs.converted_price;
+        this.percentage_off = vTs.percentage_off;
+        this.discounted_price =
+          vTs.discounted_price || vTs.default_discounted_price;
+        this.product_variation_id = vTs.id;
+        this.canNotAddToCart = false;
+        this.cText = this.quantity >= 1 ? "Add To Cart" : "Item is sold out";
       } catch (error) {
         console.log(error);
         this.canNotAddToCart = true;
@@ -915,11 +917,11 @@ export default {
         this.quantity = 0;
       }
     },
-    owlCarousels: function () {},
-    selectProductAttributes: function () {
+    owlCarousels: function() {},
+    selectProductAttributes: function() {
       let values = [];
       let attributes = document.querySelectorAll("select.vs");
-      attributes.forEach(function (elm, key) {
+      attributes.forEach(function(elm, key) {
         values.push(elm.value);
       });
       return values;
@@ -954,9 +956,11 @@ export default {
       checkInput: "checkInput",
       getReviews: "getReviews",
     }),
-    addToCart: function () {
-      //let qty =  document.getElementById('add-to-cart-quantity').value
-      //if (qty === '') {return}
+    addToCart: function() {
+      let qty = document.getElementById("add-to-cart-quantity").value;
+      if (qty === "") {
+        return;
+      }
       this.cText = "Adding....";
       this.loading = true;
       this.addProductToCart({
@@ -972,7 +976,7 @@ export default {
           this.loading = false;
         });
     },
-    addToWishList: function () {
+    addToWishList: function() {
       this.wishlistText = true;
       this.addProductToWishList({
         product_variation_id: this.product_variation_id,

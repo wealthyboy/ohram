@@ -5530,6 +5530,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 
@@ -5573,6 +5576,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       loading: false,
       is_loggeIn: false,
       is_wishlist: null,
+      active_color: null,
       image_m: "",
       image_tn: null,
       profile_photo: null,
@@ -5626,6 +5630,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.discounted_price = this.product.default_discounted_price;
     this.is_wishlist = this.product.is_wishlist;
     this.variant_images = this.product.variants;
+    this.active_color = this.product.colours.shift();
   },
   methods: _objectSpread(_objectSpread({
     getStarRating: function getStarRating(e, rating) {
@@ -5712,8 +5717,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           f = false,
           af = false,
           cA;
-      var inventory = this.product.inventory;
-      var stock = this.product.stock;
+      var inventory = JSON.parse(this.product.inventory);
+      var stock = JSON.parse(this.product.stock);
       first_attribute = document.querySelectorAll(".first-attribute");
       other_attribute = document.querySelectorAll(".other-attribute");
       /**
@@ -5737,8 +5742,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
         evt.target.classList.add("active-other-attribute");
       }
-
-      console.log(evt.target.dataset.value);
 
       try {
         if (typeof inventory[0].length === "undefined") {
@@ -5771,21 +5774,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           variation = active_attribute.dataset.value + "_" + evt.target.dataset.value;
         }
 
-        console.log(variation, stock);
         var vTs = stock[0][variation];
 
-        if (key == "Colors") {//   this.image = vTs.image;
-          //   this.image_m = vTs.image_m;
-          //   this.images = vTs.images;
-        } // this.quantity = vTs.quantity;
-        // this.price = vTs.converted_price;
-        // this.percentage_off = vTs.percentage_off;
-        // this.discounted_price =
-        // vTs.discounted_price || vTs.default_discounted_price;
-        // this.product_variation_id = vTs.id;
-        // this.canNotAddToCart = false;
-        // this.cText = this.quantity >= 1 ? "Add To Cart" : "Item is sold out";
+        if (key == "Colors") {
+          this.image = vTs.image;
+          this.image_m = vTs.image_m;
+          this.images = vTs.images;
+        }
 
+        this.quantity = vTs.quantity;
+        this.price = vTs.converted_price;
+        this.percentage_off = vTs.percentage_off;
+        this.discounted_price = vTs.discounted_price || vTs.default_discounted_price;
+        this.product_variation_id = vTs.id;
+        this.canNotAddToCart = false;
+        this.cText = this.quantity >= 1 ? "Add To Cart" : "Item is sold out";
       } catch (error) {
         console.log(error);
         this.canNotAddToCart = true;
@@ -5843,8 +5846,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     addToCart: function addToCart() {
       var _this4 = this;
 
-      //let qty =  document.getElementById('add-to-cart-quantity').value
-      //if (qty === '') {return}
+      var qty = document.getElementById("add-to-cart-quantity").value;
+
+      if (qty === "") {
+        return;
+      }
+
       this.cText = "Adding....";
       this.loading = true;
       this.addProductToCart({
@@ -47663,7 +47670,9 @@ var render = function() {
                                             key: children,
                                             staticClass: "mr-1 first-attribute",
                                             class: [
-                                              index == 0
+                                              index ==
+                                                _vm.active_color.color_code ||
+                                              index == _vm.active_color.name
                                                 ? "active-attribute"
                                                 : "",
                                               _vm.activeObject
