@@ -755,7 +755,9 @@ export default {
     this.discounted_price = this.product.default_discounted_price;
     this.is_wishlist = this.product.is_wishlist;
     this.variant_images = this.product.variants;
-    this.active_color = this.product.colours.shift();
+    if (typeof this.product.colours.length != "undefined") {
+        this.active_color = this.product.colours.shift();
+    }
   },
   methods: {
     getStarRating(e, rating) {

@@ -45,13 +45,7 @@
 
                     <div class="mx-auto">
                         
-                        @if(optional(optional($related_product->product)->colours)->count())
-                            <div  class="justify-content-center d-flex mb-1">
-                                @foreach(optional($related_product->product)->product->colours as $color)
-                                <div   style="border:1px solid #222; height: 15px; width: 15px; border-radius: 50%; background-color: {{ $color->color_code }};" class="mr-1"></div>
-                                @endforeach
-                            </div>
-                        @endif
+                        
                         @if(optional($related_product->product)->brand_name)
                             <div  class="product-brand bold">
                                {{ optional($related_product->product)->brand_name }} 
