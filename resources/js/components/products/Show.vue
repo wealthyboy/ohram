@@ -182,7 +182,7 @@
                       @mouseenter="showColor(children)"
                       @mouseleave="removeColor"
                       :class="[
-                        active_color != null && index == active_color.color_code ||
+                        active_color  && index == active_color.color_code ||
                         index == active_color.name
                           ? 'active-attribute'
                           : '',

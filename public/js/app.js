@@ -47669,7 +47669,7 @@ var render = function() {
                                           key: children,
                                           staticClass: "mr-1 first-attribute",
                                           class: [
-                                            (_vm.active_color != null &&
+                                            (_vm.active_color &&
                                               index ==
                                                 _vm.active_color.color_code) ||
                                             index == _vm.active_color.name
