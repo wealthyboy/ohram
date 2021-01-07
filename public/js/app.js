@@ -5575,7 +5575,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       loading: false,
       is_loggeIn: false,
       is_wishlist: null,
-      active_color: null,
       image_m: "",
       image_tn: null,
       profile_photo: null,
@@ -5585,6 +5584,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       wishlistText: false,
       color_code: null,
       color_name: null,
+      active_color: null,
       allowedFileTypes: ["image/jpeg", "image/png", "image/gif"],
       form: {
         description: null,
@@ -5631,6 +5631,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.discounted_price = this.product.default_discounted_price;
     this.is_wishlist = this.product.is_wishlist;
     this.variant_images = this.product.variants;
+    console.log(this.product.colours.length);
 
     if (typeof this.product.colours.length != "undefined") {
       this.active_color = this.product.colours.shift();
