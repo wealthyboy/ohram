@@ -5752,9 +5752,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               this.attributesData = Object.keys(v[i]);
             }
           }
-        } //console.log(other_attribute[0].dataset.value)
+        }
 
-
+        console.log(other_attribute[0].dataset.value);
         active_attribute = document.querySelector(".active-attribute");
         active_other_attribute = document.querySelector(".active-other-attribute");
 

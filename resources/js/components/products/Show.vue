@@ -870,7 +870,7 @@ export default {
             }
           }
         }
-        //console.log(other_attribute[0].dataset.value)
+        console.log(other_attribute[0].dataset.value);
         active_attribute = document.querySelector(".active-attribute");
         active_other_attribute = document.querySelector(
           ".active-other-attribute"
