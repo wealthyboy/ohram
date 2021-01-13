@@ -40,7 +40,7 @@
 
     <div class="blog-section p-3  pt-5 pb-5 bg--gray">
         <h1 class=" text-center">OHRAM BLOG</h1>
-        <div class="blog-slider owl-carousel owl-theme dots-top ">
+        <div class="blog-slider owl-carousel owl-theme dots-top">
             @foreach($posts as $post)
                 <div class="blog inner-quickview inner-icon text-center bg--light">
                     <div class="img-container">
@@ -68,6 +68,12 @@
 
             
         </div><!-- End .products-slider -->
+
+        <div class="review-more-button mt-3">
+            <div class="justifiy-content-center  text-center">
+                <a href="/blog" class="btn btn--lg btn--primary bold h-font">Read More</a>
+            </div>
+        </div>
     </div><!-- End .blog-section -->
 
 @endif
