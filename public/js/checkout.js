@@ -2268,6 +2268,42 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2280,17 +2316,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     ErrorMessage: _messages_components_Error__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   props: {
-    csrf: Object
+    csrf: Object,
+    payment: Array
   },
   data: function data() {
     return {
-      coupon: '',
+      coupon: "",
       locations: [],
       shipping_id: null,
-      shipping_price: '',
+      shipping_price: "",
       email: "jacob.atam@gmail.com",
       amount: 0,
-      order_text: 'Place Order',
+      order_text: "Place Order",
       payment_is_processing: false,
       voucher: [],
       error: null,
@@ -2302,17 +2339,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       token: Window.csrf,
       payment_method: null,
       loading: false,
-      pageIsLoading: true
+      pageIsLoading: true,
+      paymentIsProcess: false,
+      failedStatus: null
     };
   },
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapGetters"])({
-    carts: 'carts',
-    meta: 'meta',
+    carts: "carts",
+    meta: "meta",
     addresses: "addresses",
     default_shipping: "default_shipping"
   })), {}, {
     shippingIsFree: function shippingIsFree() {
-      return this.$root.settings.shipping_is_free == 0 ? 'Shipping is based on your location' : this.meta.currency + '0.00';
+      return this.$root.settings.shipping_is_free == 0 ? "Shipping is based on your location" : this.meta.currency + "0.00";
+    },
+    finalPrice: function finalPrice() {
+      var p = this.amount || this.meta.sub_total;
+      return p * 100;
     }
   }),
   created: function created() {
@@ -2327,22 +2370,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.getAddresses({
       context: this
     }).then(function () {
-      document.getElementById("full-bg").style.display = 'none';
+      document.getElementById("full-bg").style.display = "none";
       _this.pageIsLoading = false;
     });
   },
   methods: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapActions"])({
     getCart: "getCart"
   })), {}, {
+    getRandomInt: function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    },
+    logTransaction: function logTransaction() {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("/log/transaction", {
+        txref: this.transReference(),
+        productId: 1076,
+        amount: this.amount
+      }).then(function (response) {})["catch"](function (error) {});
+    },
     loadScript: function loadScript(callback) {
-      var script = document.createElement('script');
-      script.src = 'https://js.paystack.co/v1/inline.js';
-      document.getElementsByTagName('head')[0].appendChild(script);
+      var script = document.createElement("script");
+      script.src = "https://sandbox.interswitchng.com/collections/public/webpay.js";
+      document.getElementsByTagName("head")[0].appendChild(script);
 
       if (script.readyState) {
         // IE
         script.onreadystatechange = function () {
-          if (script.readyState === 'loaded' || script.readyState === 'complete') {
+          if (script.readyState === "loaded" || script.readyState === "complete") {
             script.onreadystatechange = null;
             callback();
           }
@@ -2357,9 +2410,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     payWithPaystack: function payWithPaystack() {
       var context = this;
       var cartIds = [];
+      document.getElementById("full-bg").style.display = "none";
       this.carts.forEach(function (cart, key) {
         cartIds.push(cart.id);
       });
+      $(".checkout-overlay").removeClass("d-none");
 
       if (!this.addresses.length) {
         this.error = "You need to save your address before placing your order";
@@ -2372,43 +2427,57 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       } else {//this.amount =  this.meta.sub_total
       }
 
-      var form = document.getElementById('checkout-form-2');
-      this.order_text = 'Please wait. We are almost done......';
+      var form = document.getElementById("checkout-form-2");
+      this.order_text = "Payment is processing. Please wait....";
       this.payment_is_processing = true;
-      this.payment_method = 'card';
-      var handler = PaystackPop.setup({
-        key: 'pk_live_8260bf35964c9d1f60fe6b2adfb96994117c1b16',
-        //'pk_test_9da85e18cb810c930df5ec111edf9a2b0c4ac949',//'pk_live_8260bf35964c9d1f60fe6b2adfb96994117c1b16',
-        email: context.meta.user.email,
-        amount: context.amount * 100,
+      this.payment_method = "card"; //form.submit()
+
+      var product_id = 1076;
+      var pay_item_id = 101;
+      var amount = this.amount * 100;
+      var mac = "D3D1D05AFE42AD50818167EAC73C109168A0F108F32645C8B59E897FA930DA44F9230910DAC9E20641823799A107A02068F7BC0F4CC41D2952E249552255710F";
+      var site_redirect_url = "https://ig.ohram.org/checkout/confirm";
+      var reqRef = this.transReference();
+      var shipping_id = this.shipping_id;
+      var signatureCipher = reqRef + product_id + pay_item_id + amount + site_redirect_url + mac;
+      var iswPay = new IswPay({
+        postUrl: "https://sandbox.interswitchng.com/collections/w/pay",
+        amount: amount,
+        productId: product_id,
+        transRef: reqRef,
+        siteName: "OHRAM COMPANY INTERNATIONAL",
+        itemId: pay_item_id,
+        customerId: this.getRandomInt(12345678, 10000000000),
+        siteRedirectUrl: site_redirect_url,
         currency: "NGN",
-        first_name: context.meta.user.name,
-        metadata: {
-          custom_fields: [{
-            display_name: context.meta.user.name,
-            customer_id: context.meta.user.id,
-            coupon: context.coupon,
-            shipping_id: context.shipping_id,
-            shipping_price: context.shipping_price,
-            cart: cartIds,
-            total: context.amount
-          }]
-        },
-        callback: function callback(response) {
-          if (response.status == 'success') {
-            form.submit();
+        hash: Sha512.hash(signatureCipher),
+        onComplete: function onComplete(paymentResponse) {
+          console.log(paymentResponse);
+
+          if (paymentResponse.resp == "00") {
+            location.href = site_redirect_url + "?txref=" + paymentResponse.txnref + "&rr=" + paymentResponse.retRef + "&ship_id=" + shipping_id + "&desc=" + paymentResponse.desc + "&amount=" + paymentResponse.apprAmt;
           } else {
-            this.error = "We could not complete your payment";
-            context.order_text = 'Place Order';
+            context.order_text = "Place Order";
+            axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("/transaction/status", {
+              productId: product_id,
+              reqRef: reqRef,
+              amount: amount,
+              hash: Sha512.hash(signatureCipher)
+            }).then(function (response) {
+              context.failedStatus = response.data.status;
+              $(".checkout-overlay").addClass("d-none");
+            })["catch"](function (error) {
+              console.log(error);
+            });
           }
-        },
-        onClose: function onClose() {
-          context.order_text = 'Place Order';
-          context.checkingout = false;
-          context.payment_is_processing = false;
         }
       });
-      handler.openIframe();
+    },
+    transReference: function transReference() {
+      var a = this.getRandomInt(12345678, 10000000000);
+      var b = "JB-";
+      var c = "-NWEB";
+      return b + a + c;
     },
     payAsAdmin: function payAsAdmin() {
       if (!this.addresses.length) {
@@ -2421,19 +2490,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return false;
       }
 
-      this.payment_method = 'admin';
-      this.order_text = 'Please wait. We are almost done......';
-      var form = document.getElementById('checkout-form-2');
+      this.payment_method = "admin";
+      this.order_text = "Please wait. We are almost done......";
+      var form = document.getElementById("checkout-form-2");
       form.submit();
     },
     addShippingPrice: function addShippingPrice(evt) {
-      if (evt.target.value == '') {
+      if (evt.target.value == "") {
         return;
       }
 
-      this.error = '';
+      this.error = "";
       this.shipping_id = evt.target.selectedOptions[0].dataset.id;
-      this.shipping_price = evt.target.value; //check if a voucher was applied 
+      this.shipping_price = evt.target.value; //check if a voucher was applied
 
       if (this.voucher.length) {
         this.amount = parseInt(evt.target.value) + parseInt(this.voucher[0].sub_total);
@@ -2450,11 +2519,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       };
       Window.CartMeta = obj;
       this.updateCartTotal(obj);
+      this.logTransaction();
     }
   }, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapActions"])({
-    getCart: 'getCart',
-    applyVoucher: 'applyVoucher',
-    updateCartMeta: 'updateCartMeta',
+    getCart: "getCart",
+    applyVoucher: "applyVoucher",
+    updateCartMeta: "updateCartMeta",
     getAddresses: "getAddresses"
   })), {}, {
     applyCoupon: function applyCoupon() {
@@ -2470,11 +2540,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       this.coupon_error = null;
       this.submiting = true;
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/checkout/coupon', {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("/checkout/coupon", {
         coupon: this.coupon
       }).then(function (response) {
         _this2.submiting = false;
-        _this2.coupon = '';
+        _this2.coupon = "";
 
         _this2.voucher.push(response.data);
 
@@ -2495,13 +2565,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     checkout: function checkout() {
       var _this3 = this;
 
-      this.order_text = 'Please wait. We are almost done......';
+      this.order_text = "Please wait. We are almost done......";
       this.checkingout = true;
       this.coupon_error = null;
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/checkout/confirm', {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("/checkout/confirm", {
         shipping_id: Window.CartMeta.shipping_id,
-        payment_type: this.meta.isAdmin ? 'admin' : 'card',
-        admin: this.meta.isAdmin ? 'admin' : 'online',
+        payment_type: this.meta.isAdmin ? "admin" : "card",
+        admin: this.meta.isAdmin ? "admin" : "online",
         pending: false
       }).then(function (response) {
         if (response.data == 1) {
@@ -7407,7 +7477,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.fa-20 {\n      font-size: 20px;\n}\n.fa-28 {\n      font-size: 28px;\n}\n\n  /* Position text in the middle of the page/image */\n.bg-text {\n  background-color: #36c2ad !important ;/* Black w/opacity/see-through */\n  color: white;\n  font-weight: 700;\n  font-size: 12px;\n  border: 2px solid #f1f1f1;\n  position: fixed; /* Stay fixed */\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  z-index: 2;\n  width: auto;\n  padding: 20px;\n  text-align: center;\n}\n", ""]);
+exports.push([module.i, "\n.fa-20 {\n  font-size: 20px;\n}\n.fa-28 {\n  font-size: 28px;\n}\n\n/* Position text in the middle of the page/image */\n.bg-text {\n  background-color: #36c2ad !important ; /* Black w/opacity/see-through */\n  color: white;\n  font-weight: 700;\n  font-size: 12px;\n  border: 2px solid #f1f1f1;\n  position: fixed; /* Stay fixed */\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  z-index: 2;\n  width: auto;\n  padding: 20px;\n  text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -22062,7 +22132,46 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    !_vm.pageIsLoading
+    _vm.failedStatus
+      ? _c("div", { staticClass: "page-contaiter" }, [
+          _c("section", { staticClass: "sec-padding--lg vh--100" }, [
+            _c("div", { staticClass: "container" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-8 offset-md-2" }, [
+                  _c("div", { staticClass: "error-page text-center" }, [
+                    _c("h1", [_vm._v("Payment Failed")]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "large text-danger bold" }, [
+                      _vm._v(_vm._s(_vm.failedStatus.ResponseDescription) + ".")
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "large text-danger bold" }, [
+                      _vm._v(
+                        "Transaction Reference: " +
+                          _vm._s(_vm.failedStatus.MerchantReference) +
+                          "."
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "large" }),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn--primary space-t--2",
+                        attrs: { href: "" }
+                      },
+                      [_vm._v("Try again")]
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    !_vm.pageIsLoading && !_vm.failedStatus
       ? _c("div", { staticClass: "container   mt-1" }, [
           _c("div", { staticClass: "row d-none justify-content-center" }, [
             _c("ul", { staticClass: "checkout-progress-bar" }, [
@@ -22364,7 +22473,8 @@ var render = function() {
                                 attrs: {
                                   method: "POST",
                                   id: "checkout-form-2",
-                                  action: "/checkout/confirm"
+                                  action:
+                                    "https://sandbox.interswitchng.com/collections/w/pay"
                                 }
                               },
                               [
@@ -22460,6 +22570,58 @@ var render = function() {
                                     name: "payment_method"
                                   },
                                   domProps: { value: _vm.payment_method }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  attrs: {
+                                    name: "product_id",
+                                    type: "hidden",
+                                    value: "1076"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  attrs: {
+                                    name: "pay_item_id",
+                                    type: "hidden",
+                                    value: "101"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  attrs: {
+                                    name: "amount",
+                                    type: "hidden",
+                                    value: "50000"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  attrs: {
+                                    name: "currency",
+                                    type: "hidden",
+                                    value: "566"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _vm._v(
+                                  '" type="hidden" value="AB-12385_TT" />\n                                        '
+                                ),
+                                _c("input", {
+                                  attrs: {
+                                    name: "cust_id",
+                                    type: "hidden",
+                                    value: "AD99"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  attrs: {
+                                    name: "hash",
+                                    type: "hidden",
+                                    value:
+                                      "62D36BDC4B7C805844E3E8C813166BD8B42F9D3E768F349EC4FB174084BC9C2027338DA875A460E843A68FA85C15FB1E0195F2B98ECC6F40D0408D719F9D7E5D"
+                                  }
                                 }),
                                 _vm._v(" "),
                                 _vm.error
@@ -23080,6 +23242,12 @@ var staticRenderFns = [
     return _c("div", { staticClass: "pt-3 pb-2 " }, [
       _c("span", { staticClass: "float-right" }, [
         _c("div", { staticClass: "payment-icons mt-1 d-flex" }, [
+          _c("div", { staticClass: "interswitch mb-1" }, [
+            _c("img", {
+              attrs: { src: "/img/interswitch_logo.svg", alt: "interswitch" }
+            })
+          ]),
+          _vm._v(" "),
           _c("div", { staticClass: "payment-image ms mr-3" }, [
             _c("img", {
               attrs: {
@@ -38585,7 +38753,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Applications/XAMPP/xamppfiles/htdocs/ohramsports/resources/js/checkout.js */"./resources/js/checkout.js");
+module.exports = __webpack_require__(/*! /Applications/XAMPP/xamppfiles/htdocs/ohram/resources/js/checkout.js */"./resources/js/checkout.js");
 
 
 /***/ })

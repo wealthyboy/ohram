@@ -34,7 +34,7 @@ body, html {
 
 .bgimg {
   /* Background image */
-  background-image: url('https://www.theluxurysale.com/uploads/G2CpgxwCbF8GewHZQ7MDp2oYDhr1WU08SppxPdxK.jpeg');
+  background-image: url('https://theluxurysale.com/uploads/G2CpgxwCbF8GewHZQ7MDp2oYDhr1WU08SppxPdxK.jpeg');
   /* Full-screen */
   height: 100%;
   /* Center the background image */
