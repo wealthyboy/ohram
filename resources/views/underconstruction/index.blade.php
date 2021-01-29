@@ -34,7 +34,6 @@ body, html {
 
 .bgimg {
   /* Background image */
-  background-image: url('https://theluxurysale.com/uploads/G2CpgxwCbF8GewHZQ7MDp2oYDhr1WU08SppxPdxK.jpeg');
   /* Full-screen */
   height: 100%;
   /* Center the background image */
@@ -91,9 +90,9 @@ hr {
     <p></p>
   </div>
   <div class="middle">
-    <h1></h1>
+    <h1>Ohram is been upgraded </h1>
     <hr>
-    <p></p>
+    <p>Please check back.</p>
   </div>
   <div class="bottomleft">
     <p></p>
