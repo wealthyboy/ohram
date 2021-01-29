@@ -2434,6 +2434,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.payment_method = "card";
       var reqRef = this.transReference();
       this.txref = reqRef;
+      return;
       form.submit();
       return;
       var product_id = 1076;

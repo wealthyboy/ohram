@@ -420,6 +420,7 @@ export default {
 
         this.txref = reqRef
 
+             return;
 
       form.submit()
 
