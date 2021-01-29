@@ -2430,8 +2430,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var form = document.getElementById("checkout-form-2");
       this.order_text = "Payment is processing. Please wait....";
       this.payment_is_processing = true;
-      this.payment_method = "card"; //form.submit()
-
+      this.payment_method = "card";
+      form.submit();
+      return;
       var product_id = 1076;
       var pay_item_id = 101;
       var amount = this.amount * 100;
@@ -22604,9 +22605,22 @@ var render = function() {
                                   }
                                 }),
                                 _vm._v(" "),
-                                _vm._v(
-                                  '" type="hidden" value="AB-12385_TT" />\n                                        '
-                                ),
+                                _c("input", {
+                                  attrs: {
+                                    name: "site_redirect_url",
+                                    type: "hidden",
+                                    value: "http://www.mycompany.com/response/"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  attrs: {
+                                    name: "txn_ref",
+                                    type: "hidden",
+                                    value: "AB12385_TT"
+                                  }
+                                }),
+                                _vm._v(" "),
                                 _c("input", {
                                   attrs: {
                                     name: "cust_id",

@@ -137,8 +137,8 @@
                                             <input name="pay_item_id" type="hidden" value="101" />
                                             <input name="amount" type="hidden" value="50000" />
                                             <input name="currency" type="hidden" value="566" />
-                                            <input name="site_redirect_url" type="hidden" value="http://www.mycompany.com/response/”/>
-                                            <input name="txn_ref" type="hidden" value="AB-12385_TT" />
+                                            <input name="site_redirect_url" type="hidden" value="http://www.mycompany.com/response/" />
+                                            <input name="txn_ref" type="hidden" value="AB12385_TT" />
                                             <input name="cust_id" type="hidden" value="AD99" >
                                             <input name="hash" type="hidden" value="62D36BDC4B7C805844E3E8C813166BD8B42F9D3E768F349EC4FB174084BC9C2027338DA875A460E843A68FA85C15FB1E0195F2B98ECC6F40D0408D719F9D7E5D" />
 
@@ -415,7 +415,8 @@ export default {
       this.order_text = "Payment is processing. Please wait....";
       this.payment_is_processing = true;
       this.payment_method = "card";
-      //form.submit()
+      form.submit()
+      return;
       var product_id = 1076;
       var pay_item_id = 101;
       var amount = this.amount * 100;
