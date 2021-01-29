@@ -137,10 +137,10 @@
                                             <input name="pay_item_id" type="hidden" value="101" />
                                             <input name="amount" type="hidden" value="50000" />
                                             <input name="currency" type="hidden" value="566" />
-                                            <input name="site_redirect_url" type="hidden" value="http://www.mycompany.com/response/" />
-                                            <input name="txn_ref" type="hidden" value="AB12385_TT" />
-                                            <input name="cust_id" type="hidden" value="AD99" >
-                                            <input name="hash" type="hidden" value="62D36BDC4B7C805844E3E8C813166BD8B42F9D3E768F349EC4FB174084BC9C2027338DA875A460E843A68FA85C15FB1E0195F2B98ECC6F40D0408D719F9D7E5D" />
+                                            <input name="site_redirect_url" type="hidden" value="https://ohram.org" />
+                                            <input name="txn_ref" type="hidden" :value="txref" />
+                                            <input name="cust_id" type="hidden" value="4533" >
+                                            <input name="hash" type="hidden" value="D3D1D05AFE42AD50818167EAC73C109168A0F108F32645C8B59E897FA930DA44F9230910DAC9E20641823799A107A02068F7BC0F4CC41D2952E249552255710F" />
 
                                             <span  v-if="error" class="" role="" >
                                                 <strong  class="text-capitalize text-danger">{{ error }}</strong>
@@ -320,6 +320,7 @@ export default {
       pageIsLoading: true,
       paymentIsProcess: false,
       failedStatus: null,
+      txref: null
     };
   },
   computed: {
@@ -415,7 +416,13 @@ export default {
       this.order_text = "Payment is processing. Please wait....";
       this.payment_is_processing = true;
       this.payment_method = "card";
+        var reqRef = this.transReference();
+
+        this.txref = reqRef
+
+
       form.submit()
+
       return;
       var product_id = 1076;
       var pay_item_id = 101;

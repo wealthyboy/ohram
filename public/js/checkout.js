@@ -2341,7 +2341,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       loading: false,
       pageIsLoading: true,
       paymentIsProcess: false,
-      failedStatus: null
+      failedStatus: null,
+      txref: null
     };
   },
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapGetters"])({
@@ -2431,6 +2432,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.order_text = "Payment is processing. Please wait....";
       this.payment_is_processing = true;
       this.payment_method = "card";
+      var reqRef = this.transReference();
+      this.txref = reqRef;
       form.submit();
       return;
       var product_id = 1076;
@@ -22609,23 +22612,20 @@ var render = function() {
                                   attrs: {
                                     name: "site_redirect_url",
                                     type: "hidden",
-                                    value: "http://www.mycompany.com/response/"
+                                    value: "https://ohram.org"
                                   }
                                 }),
                                 _vm._v(" "),
                                 _c("input", {
-                                  attrs: {
-                                    name: "txn_ref",
-                                    type: "hidden",
-                                    value: "AB12385_TT"
-                                  }
+                                  attrs: { name: "txn_ref", type: "hidden" },
+                                  domProps: { value: _vm.txref }
                                 }),
                                 _vm._v(" "),
                                 _c("input", {
                                   attrs: {
                                     name: "cust_id",
                                     type: "hidden",
-                                    value: "AD99"
+                                    value: "4533"
                                   }
                                 }),
                                 _vm._v(" "),
@@ -22634,7 +22634,7 @@ var render = function() {
                                     name: "hash",
                                     type: "hidden",
                                     value:
-                                      "62D36BDC4B7C805844E3E8C813166BD8B42F9D3E768F349EC4FB174084BC9C2027338DA875A460E843A68FA85C15FB1E0195F2B98ECC6F40D0408D719F9D7E5D"
+                                      "D3D1D05AFE42AD50818167EAC73C109168A0F108F32645C8B59E897FA930DA44F9230910DAC9E20641823799A107A02068F7BC0F4CC41D2952E249552255710F"
                                   }
                                 }),
                                 _vm._v(" "),
