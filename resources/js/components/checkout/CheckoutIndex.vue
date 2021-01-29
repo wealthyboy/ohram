@@ -138,7 +138,7 @@
                                             <input name="amount" type="hidden" value="50000" />
                                             <input name="currency" type="hidden" value="566" />
                                             <input name="site_redirect_url" type="hidden" value="https://ohram.org" />
-                                            <input name="txn_ref" type="hidden" :value="txref" />
+                                            <input name="txn_ref" type="hidden" value="JB-5427427864-NWEB" />
                                             <input name="cust_id" type="hidden" value="4533" >
                                             <input name="hash" type="hidden" value="D3D1D05AFE42AD50818167EAC73C109168A0F108F32645C8B59E897FA930DA44F9230910DAC9E20641823799A107A02068F7BC0F4CC41D2952E249552255710F" />
 
@@ -419,8 +419,6 @@ export default {
         var reqRef = this.transReference();
 
         this.txref = reqRef
-
-             return;
 
       form.submit()
 

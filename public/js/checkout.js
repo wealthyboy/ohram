@@ -2434,7 +2434,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.payment_method = "card";
       var reqRef = this.transReference();
       this.txref = reqRef;
-      return;
       form.submit();
       return;
       var product_id = 1076;
@@ -22618,8 +22617,11 @@ var render = function() {
                                 }),
                                 _vm._v(" "),
                                 _c("input", {
-                                  attrs: { name: "txn_ref", type: "hidden" },
-                                  domProps: { value: _vm.txref }
+                                  attrs: {
+                                    name: "txn_ref",
+                                    type: "hidden",
+                                    value: "JB-5427427864-NWEB"
+                                  }
                                 }),
                                 _vm._v(" "),
                                 _c("input", {
