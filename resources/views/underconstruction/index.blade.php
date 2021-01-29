@@ -16,8 +16,6 @@
         <link rel="icon" type="image/png" href="/img/favicon-96x96.png">
         <link rel="apple-touch-icon" href="/img/favicon-96x96.png">
 
-        
-
         <!-- CSS -->
         <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
         <link href="/css/theme.css" rel="stylesheet" type="text/css" />
@@ -90,7 +88,7 @@ hr {
     <p></p>
   </div>
   <div class="middle">
-    <h1>Ohram is been upgraded </h1>
+    <h1>Ohram is been under maintainance </h1>
     <hr>
     <p>Please check back.</p>
   </div>
