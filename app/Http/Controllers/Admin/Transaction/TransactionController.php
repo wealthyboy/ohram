@@ -48,7 +48,7 @@ class TransactionController extends Controller
 			//note the variables appended to the url as get values for these parameters
 			$headers = array(
 				"GET /HTTP/1.1",
-				"Host: sandbox.interswitchng.com",
+				"Host: webpay.interswitchng.com",
 				"User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.1) Gecko/2008070208 Firefox/3.0.1",
 				"Accept-Language: en-us,en;q=0.5",
 				"Keep-Alive: 300",
