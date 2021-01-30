@@ -2400,7 +2400,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         };
       }
     },
-    payWithPaystack: function payWithPaystack() {
+    makePayemnt: function makePayemnt() {
       var context = this;
       var cartIds = [];
       document.getElementById("full-bg").style.display = "none";
@@ -2408,6 +2408,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         cartIds.push(cart.id);
       });
       $(".checkout-overlay").removeClass("d-none");
+      $('.loading').hide();
 
       if (!this.addresses.length) {
         this.error = "You need to save your address before placing your order";
@@ -2447,6 +2448,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         currency: "NGN",
         hash: Sha512.hash(signatureCipher),
         onComplete: function onComplete(paymentResponse) {
+          console.log(paymentResponse);
+
           if (paymentResponse.resp == "00") {
             location.href = site_redirect_url + "?txref=" + paymentResponse.txnref + "&rr=" + paymentResponse.retRef + "&ship_id=" + shipping_id + "&desc=" + paymentResponse.desc + "&amount=" + paymentResponse.apprAmt;
           } else {
@@ -22803,7 +22806,7 @@ var render = function() {
                                         value: "Place order",
                                         "data-value": "Place Order"
                                       },
-                                      on: { click: _vm.payWithPaystack }
+                                      on: { click: _vm.makePayemnt }
                                     },
                                     [
                                       _vm.checkingout
@@ -22840,7 +22843,7 @@ var render = function() {
                                         value: "Place order",
                                         "data-value": "Place Order"
                                       },
-                                      on: { click: _vm.payWithPaystack }
+                                      on: { click: _vm.makePayemnt }
                                     },
                                     [
                                       _vm.checkingout

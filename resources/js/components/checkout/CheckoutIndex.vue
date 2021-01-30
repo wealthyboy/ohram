@@ -182,13 +182,13 @@
                             <p class="form-field-wrapper   col-sm-12 mb-3">
                                 
                                 <template v-if="$root.settings.shipping_is_free == 0 && amount > 1">
-                                    <button @click="payWithPaystack" :class="{'disabled': payment_is_processing}"   type="button" class="btn btn-round btn-lg btn-block btn--primary bold  l-f1  btn--full" name="checkout_place_order" id="place_order" value="Place order" data-value="Place Order">
+                                    <button @click="makePayemnt" :class="{'disabled': payment_is_processing}"   type="button" class="btn btn-round btn-lg btn-block btn--primary bold  l-f1  btn--full" name="checkout_place_order" id="place_order" value="Place order" data-value="Place Order">
                                         <span v-if="checkingout" class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>
                                         {{ order_text }}
                                     </button>
                                 </template >
                                 <template v-else>
-                                    <button @click="payWithPaystack" type="button" :class="{'disabled': payment_is_processing}" class="btn   bold  btn--primary btn-round btn-lg btn-block" name="checkout_place_order" id="p lace_order" value="Place order" data-value="Place Order">
+                                    <button @click="makePayemnt" type="button" :class="{'disabled': payment_is_processing}" class="btn   bold  btn--primary btn-round btn-lg btn-block" name="checkout_place_order" id="p lace_order" value="Place order" data-value="Place Order">
                                         <span v-if="checkingout" class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>
                                         {{ order_text }}
                                     </button>
@@ -384,7 +384,7 @@ export default {
         };
       }
     },
-    payWithPaystack: function () {
+    makePayemnt: function () {
       let context = this;
       var cartIds = [];
       document.getElementById("full-bg").style.display = "none";
@@ -392,6 +392,7 @@ export default {
         cartIds.push(cart.id);
       });
       $(".checkout-overlay").removeClass("d-none");
+      $('.loading').hide()
       if (!this.addresses.length) {
         this.error = "You need to save your address before placing your order";
         return false;
@@ -437,6 +438,7 @@ export default {
         currency: "NGN",
         hash: Sha512.hash(signatureCipher),
         onComplete: function (paymentResponse) {
+            console.log(paymentResponse)
           if (paymentResponse.resp == "00") {
             location.href =
               site_redirect_url +
