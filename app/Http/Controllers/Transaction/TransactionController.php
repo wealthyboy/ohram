@@ -119,6 +119,7 @@ class TransactionController extends Controller
                             $transaction_log->response_date_time =  $json['TransactionDate'];
                             $transaction_log->save();
                         }else{
+                            return $json;
                             $transaction_log->response_description = $json["ResponseDescription"];
                             $transaction_log->status =  'Transaction incomplete';
                             $transaction_log->response_code =  $json['ResponseCode'];
