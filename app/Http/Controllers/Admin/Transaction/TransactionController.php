@@ -76,7 +76,10 @@ class TransactionController extends Controller
 			{  
 				// Show me the result
                 $json = json_decode($data, TRUE);
-                curl_close($ch);    //END CURL SESSION///////////////////////////////
+                curl_close($ch); 
+                dd($json);
+                
+                //END CURL SESSION///////////////////////////////
                 if(isset($json["MerchantReference"])){
                     $transaction_log->transaction_reference = $json["MerchantReference"];
                     $transaction_log->approved_amount = $json["Amount"] / 100;
