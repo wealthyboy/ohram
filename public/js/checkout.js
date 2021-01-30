@@ -2296,14 +2296,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2432,20 +2424,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.order_text = "Payment is processing. Please wait....";
       this.payment_is_processing = true;
       this.payment_method = "card";
-      var reqRef = this.transReference();
-      this.txref = reqRef;
-      form.submit();
-      return;
-      var product_id = 1076;
-      var pay_item_id = 101;
+      var reqRef = this.transReference(); //form.submit()
+      //return;
+
+      var product_id = 22125466;
+      var pay_item_id = 8352215;
       var amount = this.amount * 100;
-      var mac = "D3D1D05AFE42AD50818167EAC73C109168A0F108F32645C8B59E897FA930DA44F9230910DAC9E20641823799A107A02068F7BC0F4CC41D2952E249552255710F";
-      var site_redirect_url = "https://ig.ohram.org/checkout/confirm";
+      var mac = "AGYclEQngemQDoUCSJBGzeYro8Keu8rVLVjR1aCsR0Mk0TaAjgiI3UnU1aV9a0fQ96KcGLPDOrHOy3oSDjnUMZEo2NJFFXu1hpnYnwcTrJg1RJdc7fo4bvlzHp8a97DX";
+      var site_redirect_url = "https://ohram.org/checkout/confirm";
       var reqRef = this.transReference();
       var shipping_id = this.shipping_id;
       var signatureCipher = reqRef + product_id + pay_item_id + amount + site_redirect_url + mac;
       var iswPay = new IswPay({
-        postUrl: "https://sandbox.interswitchng.com/collections/w/pay",
+        postUrl: "https://webpay.interswitchng.com/collections/w/pay",
         amount: amount,
         productId: product_id,
         transRef: reqRef,
@@ -2456,8 +2447,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         currency: "NGN",
         hash: Sha512.hash(signatureCipher),
         onComplete: function onComplete(paymentResponse) {
-          console.log(paymentResponse);
-
           if (paymentResponse.resp == "00") {
             location.href = site_redirect_url + "?txref=" + paymentResponse.txnref + "&rr=" + paymentResponse.retRef + "&ship_id=" + shipping_id + "&desc=" + paymentResponse.desc + "&amount=" + paymentResponse.apprAmt;
           } else {
@@ -22574,71 +22563,6 @@ var render = function() {
                                     name: "payment_method"
                                   },
                                   domProps: { value: _vm.payment_method }
-                                }),
-                                _vm._v(" "),
-                                _c("input", {
-                                  attrs: {
-                                    name: "product_id",
-                                    type: "hidden",
-                                    value: "1076"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("input", {
-                                  attrs: {
-                                    name: "pay_item_id",
-                                    type: "hidden",
-                                    value: "101"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("input", {
-                                  attrs: {
-                                    name: "amount",
-                                    type: "hidden",
-                                    value: "50000"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("input", {
-                                  attrs: {
-                                    name: "currency",
-                                    type: "hidden",
-                                    value: "566"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("input", {
-                                  attrs: {
-                                    name: "site_redirect_url",
-                                    type: "hidden",
-                                    value: "https://ohram.org"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("input", {
-                                  attrs: {
-                                    name: "txn_ref",
-                                    type: "hidden",
-                                    value: "JB-5427427864-NWEB"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("input", {
-                                  attrs: {
-                                    name: "cust_id",
-                                    type: "hidden",
-                                    value: "4533"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("input", {
-                                  attrs: {
-                                    name: "hash",
-                                    type: "hidden",
-                                    value:
-                                      "D3D1D05AFE42AD50818167EAC73C109168A0F108F32645C8B59E897FA930DA44F9230910DAC9E20641823799A107A02068F7BC0F4CC41D2952E249552255710F"
-                                  }
                                 }),
                                 _vm._v(" "),
                                 _vm.error

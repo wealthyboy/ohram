@@ -133,14 +133,6 @@
                                             <input type="hidden" :value="csrf.csrf" name="_token" />
                                             <input type="hidden" :value="shipping_id" name="ship_id" />
                                             <input type="hidden" :value="payment_method" name="payment_method" />
-                                            <input name="product_id" type="hidden" value="1076" />
-                                            <input name="pay_item_id" type="hidden" value="101" />
-                                            <input name="amount" type="hidden" value="50000" />
-                                            <input name="currency" type="hidden" value="566" />
-                                            <input name="site_redirect_url" type="hidden" value="https://ohram.org" />
-                                            <input name="txn_ref" type="hidden" value="JB-5427427864-NWEB" />
-                                            <input name="cust_id" type="hidden" value="4533" >
-                                            <input name="hash" type="hidden" value="D3D1D05AFE42AD50818167EAC73C109168A0F108F32645C8B59E897FA930DA44F9230910DAC9E20641823799A107A02068F7BC0F4CC41D2952E249552255710F" />
 
                                             <span  v-if="error" class="" role="" >
                                                 <strong  class="text-capitalize text-danger">{{ error }}</strong>
@@ -418,24 +410,23 @@ export default {
       this.payment_method = "card";
         var reqRef = this.transReference();
 
-        this.txref = reqRef
 
-      form.submit()
+      //form.submit()
 
-      return;
-      var product_id = 1076;
-      var pay_item_id = 101;
+      //return;
+      var product_id = 22125466;
+      var pay_item_id = 8352215;
       var amount = this.amount * 100;
       var mac =
-        "D3D1D05AFE42AD50818167EAC73C109168A0F108F32645C8B59E897FA930DA44F9230910DAC9E20641823799A107A02068F7BC0F4CC41D2952E249552255710F";
-      var site_redirect_url = "https://ig.ohram.org/checkout/confirm";
+        "AGYclEQngemQDoUCSJBGzeYro8Keu8rVLVjR1aCsR0Mk0TaAjgiI3UnU1aV9a0fQ96KcGLPDOrHOy3oSDjnUMZEo2NJFFXu1hpnYnwcTrJg1RJdc7fo4bvlzHp8a97DX";
+      var site_redirect_url = "https://ohram.org/checkout/confirm";
 
       var reqRef = this.transReference();
       var shipping_id = this.shipping_id;
       var signatureCipher =
         reqRef + product_id + pay_item_id + amount + site_redirect_url + mac;
       var iswPay = new IswPay({
-        postUrl: "https://sandbox.interswitchng.com/collections/w/pay",
+        postUrl: "https://webpay.interswitchng.com/collections/w/pay",
         amount: amount,
         productId: product_id,
         transRef: reqRef,
@@ -446,7 +437,6 @@ export default {
         currency: "NGN",
         hash: Sha512.hash(signatureCipher),
         onComplete: function (paymentResponse) {
-          console.log(paymentResponse);
           if (paymentResponse.resp == "00") {
             location.href =
               site_redirect_url +
