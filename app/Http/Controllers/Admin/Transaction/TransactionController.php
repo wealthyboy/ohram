@@ -29,7 +29,7 @@ class TransactionController extends Controller
      */
     public function requery(Request $request,$id)
     {
-        $prudid = 1076;
+        $prudid = 22125466;
         $transaction_log = TransactionLog::find($id);
 
 			
@@ -41,8 +41,8 @@ class TransactionController extends Controller
 			
 			$ponmo = http_build_query($parameters);
 				
-			$url = "https://sandbox.interswitchng.com/collections/api/v1/gettransaction.json?" . $ponmo; // json
-			$mac    = "D3D1D05AFE42AD50818167EAC73C109168A0F108F32645C8B59E897FA930DA44F9230910DAC9E20641823799A107A02068F7BC0F4CC41D2952E249552255710F";
+			$url = "https://webpay.interswitchng.com/collections/api/v1/gettransaction.json?" . $ponmo; // json
+			$mac    = "AGYclEQngemQDoUCSJBGzeYro8Keu8rVLVjR1aCsR0Mk0TaAjgiI3UnU1aV9a0fQ96KcGLPDOrHOy3oSDjnUMZEo2NJFFXu1hpnYnwcTrJg1RJdc7fo4bvlzHp8a97DX";
 			$hashv =$prudid . $transaction_log->transaction_reference . $mac;
 			$thash = hash('sha512',$hashv);
 			//note the variables appended to the url as get values for these parameters
