@@ -27,18 +27,7 @@ class TransactionController extends Controller
             $request->session()->put('user_id', $cookie);
 
             $tl = TransactionLog::where('token',$cookie)->first();
-            if(null != $tl){
-                $tl->status = 'Pending';
-                $tl->user_id = request()->user()->id;
-                $tl->token = $cookie;
-                $tl->approved_amount = $request->amount;
-                $tl->transaction_reference = $request->txref;
-                $tl->product_id = $request->productId;
-
-                $tl->save();
-                return response(null,200);
-            }
-
+            
             $transaction_log->status = 'Pending';
             $transaction_log->user_id = request()->user()->id;
             $transaction_log->token = $cookie;
