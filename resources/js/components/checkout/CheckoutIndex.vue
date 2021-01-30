@@ -462,7 +462,8 @@ export default {
                 hash: Sha512.hash(signatureCipher),
               })
               .then((response) => {
-                context.failedStatus = true;
+                cosole.log(response.data.status)
+                context.failedStatus = response.data.status;
                 $(".checkout-overlay").addClass("d-none");
               })
               .catch((error) => {
