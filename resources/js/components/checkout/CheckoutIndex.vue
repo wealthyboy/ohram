@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="col-md-8 offset-md-2">
                             <div class="error-page text-center">
-                                <h1>Payment Failed</h1>
+                                <h1 >Payment Status</h1>
                                 <p class="large text-danger bold">{{ failedStatus.ResponseDescription }}.</p>
                                 <p class="large text-danger bold">Transaction Reference: {{ failedStatus.MerchantReference }}.</p>
 
