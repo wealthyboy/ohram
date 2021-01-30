@@ -110,14 +110,22 @@ class TransactionController extends Controller
 		       if ($cookie !== null) {
                     $transaction_log = TransactionLog::where('token',$cookie)->first();
                     if(null != $transaction_log){
-                        $transaction_log->transaction_reference = $json["MerchantReference"];
-                        $transaction_log->approved_amount = $json["Amount"] / 100;
-                        $transaction_log->response_description = $json["ResponseDescription"];
-                        $transaction_log->status =  $json['ResponseCode'] == '00' ? 'Successfull' : 'Failed';
-                        $transaction_log->response_code =  $json['ResponseCode'];
-                        $transaction_log->response_date_time =  $json['TransactionDate'];
-                        $transaction_log->token = null;
-                        $transaction_log->save();
+                        if(isset($json["MerchantReference"])){
+                            $transaction_log->transaction_reference = $json["MerchantReference"];
+                            $transaction_log->approved_amount = $json["Amount"] / 100;
+                            $transaction_log->response_description = $json["ResponseDescription"];
+                            $transaction_log->status =  $json['ResponseCode'] == '00' ? 'Successfull' : 'Failed';
+                            $transaction_log->response_code =  $json['ResponseCode'];
+                            $transaction_log->response_date_time =  $json['TransactionDate'];
+                            $transaction_log->save();
+                        }else{
+                            $transaction_log->response_description = $json["ResponseDescription"];
+                            $transaction_log->status =  'Transaction incomplete';
+                            $transaction_log->response_code =  $json['ResponseCode'];
+                            $transaction_log->response_date_time =  $json['TransactionDate'];
+                            $transaction_log->save();
+                        }
+        
                     }
 
                 }
