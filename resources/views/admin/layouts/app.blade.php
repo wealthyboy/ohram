@@ -15,10 +15,10 @@
     
 
        <!-- Favicone Icon -->
-    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
-    <link rel="icon" href="/favicons/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" href="/favicons/favicon-96x96.png">
-    <link rel="apple-touch-icon" href="/favicons/favicon-96x96.png">
+	<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="/img/favicon-96x96.png">
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 	<meta name="viewport" content="width=device-width" />
@@ -206,8 +206,16 @@
                                 <span class="sidebar-normal"> Reviews </span>
                             </a>
                         </li> 
+                       
                     </ul>
                 </div>
+            </li>
+            <li class="{{ $helper->active_link(['transactions']) }} ">
+                <a href="/admin/transactions">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>  
+                    <p> Transaction
+                    </p>
+                </a>
             </li>
             <li class="{{ $helper->active_link(['pages']) }} ">
                 <a href="{{ route('pages.index') }}">
@@ -432,7 +440,7 @@
            
         </nav>
         <p class="copyright pull-right">
-            &copy; 2020<a href="/"> {{ Config('app.name')}} </a>
+            &copy; 2021<a href="/"> {{ Config('app.name')}} </a>
         </p>
     </div>
     </footer>			

@@ -3,6 +3,11 @@
 
 use Illuminate\Http\Request;
 
+
+
+
+
+
 Route::group(['middleware' => 'admin','prefix' => 'admin'], function(){
     Route::get('/','Admin\HomeCtrl@index')->name('admin_home');
 
@@ -23,6 +28,11 @@ Route::group(['middleware' => 'admin','prefix' => 'admin'], function(){
 
     Route::get('orders/dispatch/{id}','Admin\Orders\OrdersController@dispatchNote')->name('order.dispatch.note');
     Route::resource('banners', 'Admin\Design\BannersController',['names' =>'banners']);
+    Route::get('requery/{id}',  'Admin\Transaction\TransactionController@requery');
+
+    Route::resource('transactions', 'Admin\Transaction\TransactionController',['names' =>'transactions']);
+
+
     Route::get('customers',  'Admin\Users\UsersController@customers')->name('customers');
     Route::resource('reviews',  'Admin\Reviews\ReviewsController',['names' => 'reviews']);
     Route::resource('posts',  'Admin\Blog\BlogController',['names' => 'posts']);
@@ -93,7 +103,9 @@ Route::group(['middleware' => 'admin','prefix' => 'admin'], function(){
 
     Route::resource('campaigns',              'Admin\Campaign\CampaignController',['name'=>'campaigns']);
     Route::get('campaigns/{campaign_id}/{email_list_id}/{template_id}',              'Admin\Campaign\CampaignController@resendMail');
+
     Route::resource('templates',              'Admin\Templates\TemplatesController',['name'=>'templates']);
+
     Route::resource('promos',             'Admin\Promo\PromoController',['names'=> 'promos']);
     Route::get('promo-text/create/{id}',      'Admin\PromoText\PromoTextController@create')->name('create_promo_text');
     Route::get('promo-text/edit/{id}',   'Admin\PromoText\PromoTextController@edit')->name('edit_promo_text');
@@ -103,6 +115,12 @@ Route::group(['middleware' => 'admin','prefix' => 'admin'], function(){
     Route::resource('brands', 'Admin\Brand\BrandsController',['names' =>'brands']);
 
 });
+
+Route::get('/mailable', function () {
+    $order = App\Order::find(104);
+    $settings =  App\SystemSetting::first();
+    return new App\Mail\OrderReceipt($order,$settings,'₦');
+}); 
 
 
 
@@ -135,10 +153,11 @@ Route::group(['middleware' => 'currencyByIp'], function(){
     Route::get('returns',                         'Returns\ReturnsController@index')->name('returns');
     Route::get('checkout',                        'Checkout\CheckoutController@index')->name('checkout');
     Route::post('checkout/coupon',                'Checkout\CheckoutController@coupon');
-    Route::post('checkout/confirm',               'Checkout\CheckoutController@confirm')->name('confirm_order');
+    Route::get('checkout/confirm',               'Checkout\CheckoutController@confirm')->name('confirm_order');
     Route::get('orders',                          'Orders\OrdersController@index')->name('orders');
     Route::get('order/{id}',                      'Orders\OrdersController@show');
     Route::get('currency/{id}',                   'CurrencySwitcher\\CurrencySwitcherController@index');
+
 
 
     Route::post('vouchers-coupon',                'Checkout\CheckoutController@coupon');
@@ -163,6 +182,8 @@ Route::group(['middleware' => 'currencyByIp'], function(){
     });
     
     Route::get('/search',                        'Products\ProductsController@search');
+    Route::post('log/transaction',               'Transaction\TransactionController@log');
+
     Route::get('cart/delete/{cart_id}',          'Cart\CartController@delete');
     Route::post('cart-delete',                   'Cart\CartController@delete');
     Route::get('wishlist',                       'Favorites\FavoritesController@index')->name('wishlist');
@@ -191,8 +212,12 @@ Route::group(['prefix' => '/api','middleware' => 'currencyByIp'], function () {
     Route::get('blog/{blog}',   'Api\Blog\BlogController@show');
 });
 
-Route::post('webhook/payment',     'WebHook\WebHookController@payment');
-Route::post('webhook/github',      'WebHook\WebHookController@gitHub');
+Route::post('webhook/payment',    'WebHook\WebHookController@payment');
+Route::post('webhook/github',     'WebHook\WebHookController@gitHub');
+Route::get('/requery',            'Requery\RequeryController@index');
+Route::post('/transaction/status', 'Transaction\TransactionController@confirm');
+
+
 
 
 
