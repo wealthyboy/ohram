@@ -31,14 +31,11 @@ class TransactionController extends Controller
     {
         $prudid = 22125466;
         $transaction_log = TransactionLog::find($id);
-
-        dd($transaction_log->approved_amount);
-
 			
         $parameters = array(
                "productid"=>$prudid,
                "transactionreference"=>$transaction_log->transaction_reference,
-               "amount"=> $transaction_log->approved_amount * 100 ,
+               "amount"=> $transaction_log->approved_amount * 100,
             ); 
 			
 			$ponmo = http_build_query($parameters);
@@ -79,7 +76,6 @@ class TransactionController extends Controller
 				// Show me the result
                 $json = json_decode($data, TRUE);
                 curl_close($ch); 
-                dd($json);
                 
                 //END CURL SESSION///////////////////////////////
                 if(isset($json["MerchantReference"])){
