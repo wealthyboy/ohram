@@ -97,7 +97,7 @@ class TransactionController extends Controller
 			$json = null;
 			if (curl_errno($ch)) 
 			{ 
-				Log::info($ch);
+				\Log::info($ch);
 			}
 			else 
 			{  
