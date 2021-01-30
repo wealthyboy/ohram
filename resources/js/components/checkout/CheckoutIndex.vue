@@ -462,7 +462,7 @@ export default {
                 hash: Sha512.hash(signatureCipher),
               })
               .then((response) => {
-                context.failedStatus = response.data.status;
+                context.failedStatus = true;
                 $(".checkout-overlay").addClass("d-none");
               })
               .catch((error) => {
