@@ -405,6 +405,9 @@ export default {
         //this.amount =  this.meta.sub_total
       }
 
+      this.logTransaction();
+
+
       let form = document.getElementById("checkout-form-2");
       this.order_text = "Payment is processing. Please wait....";
       this.payment_is_processing = true;
@@ -519,7 +522,6 @@ export default {
       };
       Window.CartMeta = obj;
       this.updateCartTotal(obj);
-      this.logTransaction();
     },
     ...mapActions({
       getCart: "getCart",
