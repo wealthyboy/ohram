@@ -412,7 +412,7 @@ export default {
       this.order_text = "Payment is processing. Please wait....";
       this.payment_is_processing = true;
       this.payment_method = "card";
-        var reqRef = this.transReference();
+      var reqRef = this.transReference();
 
 
       //form.submit()
