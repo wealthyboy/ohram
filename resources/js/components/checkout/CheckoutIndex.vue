@@ -8,12 +8,10 @@
                     <div class="row">
                         <div class="col-md-8 offset-md-2">
                             <div class="error-page text-center">
-                                <h1 >Payment Status</h1>
+                                <h1>Payment Status</h1>
                                 <p class="large text-danger bold">{{ failedStatus.ResponseDescription }}.</p>
                                 <p class="large text-danger bold">Transaction Reference: {{ failedStatus.MerchantReference }}.</p>
-
                                 <p class="large"></p>
-                                
                                 <a href="" class="btn btn--primary space-t--2">Try again</a>
                             </div>
                         </div>
@@ -47,7 +45,7 @@
                     <div class="pt-3 pb-2 ">
                         <span class="float-right">
                             <div class="payment-icons mt-1 d-flex">
-                                 
+                
                                 <div class="interswitch mb-1">
                                     <img  src="/img/interswitch_logo.svg" alt="interswitch" />
                                 </div>
