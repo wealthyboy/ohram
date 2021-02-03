@@ -561,7 +561,6 @@ export default {
       this.order_text = "Please wait. We are almost done......";
       this.checkingout = true;
       this.coupon_error = null;
-
       axios
         .post("/checkout/confirm", {
           shipping_id: Window.CartMeta.shipping_id,
