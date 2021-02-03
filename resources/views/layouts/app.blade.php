@@ -43,7 +43,8 @@
 			user: {!! auth()->check() ? auth()->user() : 0000 !!},
 			loggedIn: {!! auth()->check() ? 1 : 0 !!},
 			settings: {!! isset($system_settings) ? $system_settings : '' !!},
-			token: '{!! csrf_token() !!}'
+			token: '{!! csrf_token() !!}',
+			rate:'{!! session('rate') !!}'
 		}
 	</script>
 </head>
