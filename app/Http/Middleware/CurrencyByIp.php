@@ -28,6 +28,12 @@ class CurrencyByIp
         $position = '';
 
         $settings = SystemSetting::first();
+        $country = Currency::where('country', 'Nigeria')->first();
+        if ($country){
+           $country->iso_code3 = 'NGN';
+           $country->save();
+
+        }
         if ($settings->allow_multi_currency){
             if ($request->session()->has('switch')) { 
                 return $next($request);
