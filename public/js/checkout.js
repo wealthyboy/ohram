@@ -2443,7 +2443,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         itemId: pay_item_id,
         customerId: this.getRandomInt(12345678, 10000000000),
         siteRedirectUrl: site_redirect_url,
-        currency: "USD",
+        currency: context.$root.rate.code,
         hash: Sha512.hash(signatureCipher),
         onComplete: function onComplete(paymentResponse) {
           console.log(paymentResponse);
