@@ -342,7 +342,6 @@ export default {
       this.pageIsLoading = false;
     });
 
-    console.log(this.$root.settings)
 
   },
   methods: {
@@ -407,7 +406,8 @@ export default {
       }
 
       this.logTransaction();
-      console.log(context.carts)
+
+      console.log(context.meta.currency_code)
 
 
       let form = document.getElementById("checkout-form-2");
