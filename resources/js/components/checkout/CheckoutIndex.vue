@@ -407,6 +407,7 @@ export default {
       }
 
       this.logTransaction();
+      console.log(context.$root.rate)
 
 
       let form = document.getElementById("checkout-form-2");
