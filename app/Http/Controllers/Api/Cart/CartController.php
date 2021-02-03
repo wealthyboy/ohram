@@ -102,6 +102,7 @@ class CartController  extends Controller {
 
 
 	public function loadCart(Request $request){
+        $cc=  Helper::rate()->iso_code3 ?? optional(optional($this->settings)->currency)->iso_code3;
 
 		$carts = Cart::all_items_in_cart();
 		$sub_total =  Cart::sum_items_in_cart();
@@ -112,7 +113,7 @@ class CartController  extends Controller {
 				'currency' => Helper::rate()->symbol ?? optional(optional($this->settings)->currency)->symbol,
 				'currency_code' => Helper::rate()->iso_code3 ?? optional(optional($this->settings)->currency)->iso_code3,
 				'user' => $request->user(),
-				'isAdmin' => null !== $request->user() ? $request->user()->isAdmin() : false,
+				'isAdmin' => null !== $request->user() ? $cc : false,
 				'cc' => Helper::rate()->iso_code3 ?? optional(optional($this->settings)->currency)->iso_code3,
 
 			],
