@@ -2443,7 +2443,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         itemId: pay_item_id,
         customerId: this.getRandomInt(12345678, 10000000000),
         siteRedirectUrl: site_redirect_url,
-        currency: context.meta.isAdmin,
+        currency: context.currencyCode(),
         hash: Sha512.hash(signatureCipher),
         onComplete: function onComplete(paymentResponse) {
           console.log(paymentResponse);
@@ -2472,6 +2472,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var b = "JB-";
       var c = "-NWEB";
       return b + a + c;
+    },
+    currencyCode: function currencyCode() {
+      if (this.meta.currency == '₦') {
+        return 'NGN';
+      }
+
+      if (this.meta.currency == '$') {
+        return 'USD';
+      }
+
+      if (this.meta.currency == '£') {
+        return 'GBP';
+      }
+
+      if (this.meta.currency == '€') {
+        return 'EUR';
+      }
     },
     payAsAdmin: function payAsAdmin() {
       if (!this.addresses.length) {

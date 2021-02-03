@@ -435,7 +435,7 @@ export default {
         itemId: pay_item_id,
         customerId: this.getRandomInt(12345678, 10000000000),
         siteRedirectUrl: site_redirect_url,
-        currency: context.meta.isAdmin,
+        currency: context.currencyCode(),
         hash: Sha512.hash(signatureCipher),
         onComplete: function (paymentResponse) {
             console.log(paymentResponse)
@@ -477,6 +477,21 @@ export default {
       var b = "JB-";
       var c = "-NWEB";
       return b + a + c;
+    },
+    currencyCode: function () {
+      if(this.meta.currency == '₦'){
+         return 'NGN'
+      }
+      if(this.meta.currency == '$'){
+         return 'USD'
+      }
+      if(this.meta.currency == '£'){
+         return 'GBP'
+      }
+
+      if(this.meta.currency == '€'){
+         return 'EUR'
+      }
     },
     payAsAdmin: function () {
       if (!this.addresses.length) {
