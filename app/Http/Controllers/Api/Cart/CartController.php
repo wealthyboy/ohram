@@ -114,6 +114,7 @@ class CartController  extends Controller {
 				'currency_code' => Helper::rate()->iso_code3 ?? optional(optional($this->settings)->currency)->iso_code3,
 				'user' => $request->user(),
 				'isAdmin' => null !== $request->user() ? $cc : false,
+				'isCC' => null !== $request->user() ? $cc : false,
 				'cc' => Helper::rate()->iso_code3 ?? optional(optional($this->settings)->currency)->iso_code3,
 
 			],
