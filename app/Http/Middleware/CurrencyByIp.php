@@ -67,10 +67,10 @@ class CurrencyByIp
                     if (null == $country){
                         if (in_array( $position->countryName,array_values(Helper::EU()))){
                             $country = Currency::where('country', 'Europe')->first();
-                            $rate = [ 'rate' => optional($country->rate)->rate,'country' =>$country->name, 'symbol' => $country->symbol ];  
+                            $rate = [ 'rate' => optional($country->rate)->rate, 'code'=> $country->iso_code3, 'country' =>$country->name, 'symbol' => $country->symbol ];  
                         } else {
                             $country = Currency::where('country', 'United States')->first();
-                            $rate = [ 'rate' => optional($country->rate)->rate,'country' =>$country->name, 'symbol' => $country->symbol ];
+                            $rate = [ 'rate' => optional($country->rate)->rate,'country' =>$country->name, 'code'=> $country->iso_code3,  'symbol' => $country->symbol ];
                         }
                         
                     } elseif (null !== $country && $country->country == optional($settings->currency)->country){
