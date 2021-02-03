@@ -15,6 +15,7 @@ use Stevebauman\Location\Location;
 use App\SystemSetting;
 use App\Http\Helper;
 
+use App\Currency;
 class HomeController extends Controller
 {
     /**
