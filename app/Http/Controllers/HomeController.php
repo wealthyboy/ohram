@@ -12,7 +12,6 @@ use App\Category;
 use App\Review;
 use App\Information;
 use Stevebauman\Location\Location;
-use App\Currency;
 use App\SystemSetting;
 use App\Http\Helper;
 
@@ -32,7 +31,6 @@ class HomeController extends Controller
         $reviews  = Review::orderBy('created_at','DESC')->take(4)->get();
         $posts  =   Information::orderBy('created_at','DESC')->where('blog',true)->take(6)->get();
         $page_title = 'Ohram | From detox teas to meal replacement protein shakes, our babes do it all. Get back on track, reduce bloating, and flatten that tummy!';
-        $country = Currency::where('country', 'Nigeria')->first();
         
             
         if ( empty($site_status->make_live) ) {
