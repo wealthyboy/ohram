@@ -343,6 +343,7 @@ export default {
     });
 
     console.log(this.$root.settings)
+
   },
   methods: {
     ...mapActions({
@@ -413,11 +414,6 @@ export default {
       this.payment_is_processing = true;
       this.payment_method = "card";
       var reqRef = this.transReference();
-
-
-      //form.submit()
-
-      //return;
       var product_id = 22125466;
       var pay_item_id = 8352215;
       var amount = this.amount * 100;

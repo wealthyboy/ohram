@@ -2425,9 +2425,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.order_text = "Payment is processing. Please wait....";
       this.payment_is_processing = true;
       this.payment_method = "card";
-      var reqRef = this.transReference(); //form.submit()
-      //return;
-
+      var reqRef = this.transReference();
       var product_id = 22125466;
       var pay_item_id = 8352215;
       var amount = this.amount * 100;
