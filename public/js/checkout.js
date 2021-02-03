@@ -2364,6 +2364,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       document.getElementById("full-bg").style.display = "none";
       _this.pageIsLoading = false;
     });
+    console.log(this.$root.settings);
   },
   methods: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapActions"])({
     getCart: "getCart"
@@ -2459,7 +2460,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               amount: amount,
               hash: Sha512.hash(signatureCipher)
             }).then(function (response) {
-              cosole.log(response.data.status);
               context.failedStatus = response.data.status;
               $(".checkout-overlay").addClass("d-none");
             })["catch"](function (error) {
@@ -37611,14 +37611,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************************************************!*\
   !*** ./resources/js/components/checkout/CheckoutIndex.vue ***!
   \************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CheckoutIndex_vue_vue_type_template_id_6974e88e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CheckoutIndex.vue?vue&type=template&id=6974e88e& */ "./resources/js/components/checkout/CheckoutIndex.vue?vue&type=template&id=6974e88e&");
 /* harmony import */ var _CheckoutIndex_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CheckoutIndex.vue?vue&type=script&lang=js& */ "./resources/js/components/checkout/CheckoutIndex.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _CheckoutIndex_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CheckoutIndex.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/checkout/CheckoutIndex.vue?vue&type=style&index=0&lang=css&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _CheckoutIndex_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _CheckoutIndex_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _CheckoutIndex_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CheckoutIndex.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/checkout/CheckoutIndex.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -37650,7 +37651,7 @@ component.options.__file = "resources/js/components/checkout/CheckoutIndex.vue"
 /*!*************************************************************************************!*\
   !*** ./resources/js/components/checkout/CheckoutIndex.vue?vue&type=script&lang=js& ***!
   \*************************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

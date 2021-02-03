@@ -341,6 +341,9 @@ export default {
       document.getElementById("full-bg").style.display = "none";
       this.pageIsLoading = false;
     });
+
+    console.log(this.$root.settings)
+
   },
   methods: {
     ...mapActions({
@@ -463,7 +466,6 @@ export default {
                 hash: Sha512.hash(signatureCipher),
               })
               .then((response) => {
-                cosole.log(response.data.status)
                 context.failedStatus = response.data.status;
                 $(".checkout-overlay").addClass("d-none");
               })
