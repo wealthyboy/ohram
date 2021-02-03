@@ -407,7 +407,7 @@ export default {
 
       this.logTransaction();
 
-      console.log(context.meta.currency_code)
+      console.log(context.meta)
 
 
       let form = document.getElementById("checkout-form-2");
