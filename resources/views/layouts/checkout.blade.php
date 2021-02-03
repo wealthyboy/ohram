@@ -47,7 +47,6 @@
 			loggedIn: {!! auth()->check() ? 1 : 0 !!},
 			settings: {!! isset($system_settings) ? $system_settings : '' !!},
             token: '{!! csrf_token() !!}',
-			rate:{!! session('rate') ? session('rate') : 0 !!}
 
 		}
 	</script>

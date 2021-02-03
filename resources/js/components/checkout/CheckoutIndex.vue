@@ -407,7 +407,7 @@ export default {
       }
 
       this.logTransaction();
-      console.log(context.$root)
+      console.log(context.carts)
 
 
       let form = document.getElementById("checkout-form-2");
