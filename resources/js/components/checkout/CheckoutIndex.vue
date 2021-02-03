@@ -341,8 +341,6 @@ export default {
       document.getElementById("full-bg").style.display = "none";
       this.pageIsLoading = false;
     });
-    console.log(context.meta)
-
 
 
   },
@@ -409,6 +407,7 @@ export default {
 
       this.logTransaction();
 
+      console.log(context.meta)
 
 
       let form = document.getElementById("checkout-form-2");
