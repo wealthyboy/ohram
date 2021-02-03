@@ -343,7 +343,6 @@ export default {
     });
 
     console.log(this.$root.settings)
-
   },
   methods: {
     ...mapActions({
