@@ -487,8 +487,8 @@ export default {
         this.error = "Please select your shipping method";
         return false;
       }
-      this.payment_method = "admin";
 
+      this.payment_method = "admin";
       this.order_text = "Please wait. We are almost done......";
       let form = document.getElementById("checkout-form-2");
       form.submit();
