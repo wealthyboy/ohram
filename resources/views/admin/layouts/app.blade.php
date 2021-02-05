@@ -13,12 +13,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ Config('app.name')}} | Admin</title>
     
-
-       <!-- Favicone Icon -->
-	<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
-    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" href="/img/favicon-96x96.png">
-    <link rel="apple-touch-icon" href="/img/favicon-96x96.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    <link rel="icon" href="/favicons/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="/favicons/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="/favicons/favicon-96x96.png">
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 	<meta name="viewport" content="width=device-width" />
