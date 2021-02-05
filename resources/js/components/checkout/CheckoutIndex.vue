@@ -407,9 +407,6 @@ export default {
 
       this.logTransaction();
 
-      console.log(context.meta)
-
-
       let form = document.getElementById("checkout-form-2");
       this.order_text = "Payment is processing. Please wait....";
       this.payment_is_processing = true;
@@ -438,7 +435,6 @@ export default {
         currency: context.currencyCode(),
         hash: Sha512.hash(signatureCipher),
         onComplete: function (paymentResponse) {
-            console.log(paymentResponse)
           if (paymentResponse.resp == "00") {
             location.href =
               site_redirect_url +
