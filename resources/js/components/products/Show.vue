@@ -900,6 +900,9 @@ export default {
             active_attribute.dataset.value + "_" + evt.target.dataset.value;
         }
 
+        console.log(variation, this.attributesData, evt.target.dataset.value);
+
+
         let vTs = stock[0][variation];
         if (key == "Colors") {
           this.image = vTs.image;
