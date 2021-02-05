@@ -47670,40 +47670,53 @@ var render = function() {
                                 [
                                   _vm._l(map, function(children, index) {
                                     return key == "Colors"
-                                      ? _c("div", {
-                                          key: children,
-                                          staticClass: "mr-1 first-attribute",
-                                          class: [
-                                            index == _vm.color_code ||
-                                            index == _vm.color_name
-                                              ? "active-attribute"
-                                              : "",
-                                            _vm.activeObject
-                                          ],
-                                          staticStyle: {
-                                            height: "30px",
-                                            width: "30px",
-                                            "border-radius": "50%",
-                                            cursor: "pointer"
-                                          },
-                                          style: { "background-color": index },
-                                          attrs: {
-                                            "data-name": key,
-                                            "data-value": children
-                                          },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.getAttribute(
-                                                $event,
-                                                key
-                                              )
+                                      ? _c(
+                                          "div",
+                                          {
+                                            key: children,
+                                            staticClass:
+                                              "mr-1 first-attribute  ",
+                                            class: [
+                                              index == _vm.color_code ||
+                                              index == _vm.color_name
+                                                ? "active-attribute"
+                                                : "",
+                                              _vm.activeObject
+                                            ],
+                                            staticStyle: {
+                                              height: "30px",
+                                              width: "30px",
+                                              "border-radius": "50%",
+                                              cursor: "pointer"
                                             },
-                                            mouseenter: function($event) {
-                                              return _vm.showColor(children)
+                                            style: {
+                                              "background-color": index
                                             },
-                                            mouseleave: _vm.removeColor
-                                          }
-                                        })
+                                            attrs: {
+                                              "data-name": key,
+                                              "data-value": children
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.getAttribute(
+                                                  $event,
+                                                  key
+                                                )
+                                              },
+                                              mouseenter: function($event) {
+                                                return _vm.showColor(children)
+                                              },
+                                              mouseleave: _vm.removeColor
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              " " +
+                                                _vm._s(index) +
+                                                "\n                  "
+                                            )
+                                          ]
+                                        )
                                       : _vm._e()
                                   }),
                                   _vm._v(" "),

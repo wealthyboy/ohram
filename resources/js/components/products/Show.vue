@@ -199,8 +199,8 @@
                         border-radius: 50%;
                         cursor: pointer;
                       "
-                      class="mr-1 first-attribute"
-                    >
+                      class="mr-1 first-attribute  "
+                    > {{ index }}
                     </div>
                     <template v-if="attributesData.length">
                       <div
