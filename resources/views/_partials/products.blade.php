@@ -48,9 +48,7 @@
                     @endif
                 </div><!-- End .price-box -->
 
-                <div class="add-to-link mx-auto mb-2 d-none d-lg-block d-xl-block">
-                    <a href="{{ $product->link }}" class="single_add_to_cart_button bold btn btn--primary">Buy Now</a>
-                </div>
+                
             </div><!-- End .product-details -->
         </div>
 
