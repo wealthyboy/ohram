@@ -200,7 +200,7 @@
                         cursor: pointer;
                       "
                       class="mr-1 first-attribute  "
-                    > {{ index }}
+                    > 
                     </div>
                     <template v-if="attributesData.length">
                       <div
