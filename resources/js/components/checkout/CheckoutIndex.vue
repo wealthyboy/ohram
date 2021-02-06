@@ -437,7 +437,7 @@ export default {
         hash: Sha512.hash(signatureCipher),
         onComplete: function (paymentResponse) {
           if (paymentResponse.resp == "00") {
-            location.href =
+            let link =
               site_redirect_url +
               "?txref=" +
               paymentResponse.txnref +
@@ -449,6 +449,16 @@ export default {
               paymentResponse.desc +
               "&amount=" +
               paymentResponse.apprAmt;
+
+              axios
+              .get(link)
+              .then((response) => {
+                context.failedStatus = response.data.status;
+                $(".checkout-overlay").addClass("d-none");
+              })
+              .catch((error) => {
+                console.log(error);
+              });
           } else {
             context.order_text = "Place Order";
             axios
