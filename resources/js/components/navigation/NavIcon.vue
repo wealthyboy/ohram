@@ -38,7 +38,7 @@
 
             <a href="#" class="dropdown-toggle dropdown-arrow  d-none d-block  d-xl-none  d-lg-none" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                 <i class="icon-shopping-cart"></i> Cart
-                <span class="cart-count badge-circle color--primary">{{ cartItemCount }}</span>
+                <span class="cart-count badge-circle color--light">{{ cartItemCount }}</span>
             </a>
             <div class="dropdown-menu">
                 <drop-down />
