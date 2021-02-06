@@ -2,7 +2,7 @@
  
 @section('content')
 <div class="checkout-overlay ">
-    <div class="text fa-2x">Please wait while we process your transaction</div>
+    <div class="text fa-2x">Please wait, while we round things up. Do not leave this page.</div>
 </div>
 <section class="bg--gray">
 

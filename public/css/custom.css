@@ -976,7 +976,7 @@ background: white;
 .checkout-overlay .text {
   color: white;
   font-size: 20px;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
