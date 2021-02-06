@@ -88,7 +88,7 @@ hr {
     <p></p>
   </div>
   <div class="middle">
-    <h1>Ohram is been under maintainance </h1>
+    <h1>Ohram is  under maintainance </h1>
     <hr>
     <p>Please check back.</p>
   </div>
