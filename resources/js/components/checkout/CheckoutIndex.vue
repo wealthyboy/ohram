@@ -1,6 +1,29 @@
 
 <template>
     <div>
+        <div v-if="paymentIsComplete" class="page-contaiter">
+            <!--Content-->
+            <section class="sec-padding--lg vh--100">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <div class="error-page text-center">
+                                <h1>Thank you for shopping with us</h1>
+                                <p class="large">Your order has been received .</p>
+                                <p class="large"></p>
+                                
+                                <a href="/" class="btn btn--primary space-t--2">Continue</a>
+                                <a href="/orders" class="btn btn--primary space-t--2">View order history</a>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <!--End Content-->
+        </div>
+        
         <div v-if="failedStatus" class="page-contaiter">
             <!--Content-->
             <section class="sec-padding--lg vh--100">
@@ -21,7 +44,7 @@
             </section>
             <!--End Content-->
         </div>
-        <div  v-if="!pageIsLoading  && !failedStatus" class="container   mt-1">
+        <div  v-if="!pageIsLoading  && !failedStatus && !paymentIsComplete" class="container   mt-1">
             <div  class="row d-none justify-content-center">
                 <ul class="checkout-progress-bar">
                     <li :class="{'active': !addresses.length}">
@@ -310,7 +333,9 @@ export default {
       pageIsLoading: true,
       paymentIsProcess: false,
       failedStatus: null,
-      txref: null
+      txref: null,
+      paymentIsComplete: false,
+
     };
   },
   computed: {
@@ -453,7 +478,7 @@ export default {
               axios
               .get(link)
               .then((response) => {
-                context.failedStatus = response.data.status;
+                context.paymentIsComplete = true;
                 $(".checkout-overlay").addClass("d-none");
               })
               .catch((error) => {
