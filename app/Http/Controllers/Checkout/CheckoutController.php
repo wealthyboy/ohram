@@ -60,13 +60,12 @@ class CheckoutController extends Controller
 
 
 
-
-	
-	public function confirm(Request $request,OrderedProduct $ordered_product,Order $order) { 
-
+	public function confirm(Request $request,OrderedProduct $ordered_product,Order $order) 
+	{ 
+       
 		if ($request->isMethod('post')){
 			\Log::info($request->all());
-           return redirect('/checkout');
+            return redirect('/checkout');
 		}
 		
 		$rate = Helper::rate();

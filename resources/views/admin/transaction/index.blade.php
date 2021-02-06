@@ -4,7 +4,32 @@
 
 <div class="row">
         
-
+       
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-icon" data-background-color="rose">
+                    <i class="material-icons">Filter</i>
+                </div>
+                <div class="card-content">
+                    <h4 class="card-title">Filter - <small class="category"></small></h4>
+                    
+                    <form action="" method="get">
+                        <div class="row">
+                           
+                            <div class="col-md-10">
+                                <div class="form-group label-floating ">
+                                    <label class="control-label">Search Transaction</label>
+                                    <input required   type="text" value="" name="q" class="form-control" >
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <input name="search" type="submit" value="search" class="btn btn-rose  btn-round pull-right">
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
         
 
         <div class="col-md-12">
@@ -89,6 +114,8 @@
                         </form>
                     </div>
                 </div><!-- end content-->
+                <div class="pull-right">{{ $transactions->links() }}</div>
+
             </div><!--  end card  -->
         </div> <!-- end col-md-12 -->
     </div> <!-- end row -->

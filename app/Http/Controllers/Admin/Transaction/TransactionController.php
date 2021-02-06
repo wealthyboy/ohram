@@ -15,7 +15,8 @@ class TransactionController extends Controller
      */
     public function index()
     {   
-        $transactions = TransactionLog::all();
+        $transactions = TransactionLog::orderBy('created_at','desc')->paginate(20);
+
         return view('admin.transaction.index',compact('transactions'));
     }
 
