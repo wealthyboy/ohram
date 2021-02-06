@@ -1,7 +1,7 @@
 @extends('layouts.checkout')
  
 @section('content')
-<div class="checkout-overlay d-none">
+<div class="checkout-overlay ">
     <div class="text fa-2x">Please wait while we process your transaction</div>
 </div>
 <section class="bg--gray">
