@@ -392,7 +392,8 @@ export default {
         cartIds.push(cart.id);
       });
       $(".checkout-overlay").removeClass("d-none");
-      $('.loading').hide()
+      document.querySelector(".loading").style.display = "none";
+
       if (!this.addresses.length) {
         this.error = "You need to save your address before placing your order";
         return false;
