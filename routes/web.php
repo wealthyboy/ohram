@@ -154,6 +154,8 @@ Route::group(['middleware' => 'currencyByIp'], function(){
     Route::get('checkout',                        'Checkout\CheckoutController@index')->name('checkout');
     Route::post('checkout/coupon',                'Checkout\CheckoutController@coupon');
     Route::get('checkout/confirm',               'Checkout\CheckoutController@confirm')->name('confirm_order');
+    Route::post('checkout/confirm',               'Checkout\CheckoutController@confirm');
+
     Route::get('orders',                          'Orders\OrdersController@index')->name('orders');
     Route::get('order/{id}',                      'Orders\OrdersController@show');
     Route::get('currency/{id}',                   'CurrencySwitcher\\CurrencySwitcherController@index');
