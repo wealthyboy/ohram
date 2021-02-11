@@ -22,7 +22,7 @@
                         <div id="m_image"  class="uploadloaded_image text-center mb-3">
                             <div class="upload-text"> 
                             <a class="activate-file" href="#">
-                                <img src="{{ asset('store/img/upload_icon.png') }}">
+                                <img src="{{ asset('backend/img/upload_icon.png') }}">
                                 <b>Add Image </b> 
                             </a>
                             </div>

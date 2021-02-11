@@ -36,12 +36,12 @@
                             <div class="blog-item-grid col-md-4  col-lg-4">
                                 <!--Blog Item-->
                                 <div class="blog-item bg--light">
-                                    <div class="blog-item-image blog">
+                                    <div class="img-container">
                                         <a title="{{ $post->title }}" class="blog-img-link blog">
                                             <img title="{{ $post->title }}" src="{{ $post->m_path() }}" alt="{{ $post->title }} ">
                                         </a>
                                     </div>
-                                    <div class="blog-item-content">
+                                    <div class="blog-details p-3">
                                         <div class="tag bold">
                                             @foreach($post->attributes as $tag)
                                             <a href="/blog/tag/{{ $tag->id }}"><i class="fa fa-tags"></i> {{ $tag->name }}</a>
