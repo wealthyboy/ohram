@@ -22,62 +22,69 @@
                 </div>
             </div>
     </section>
-    <div class="container  bg--gray">
-            <div class="head text-center mt-3 mb-3">
-               <h4  class="widget-title ">OHRAM BLOG </h4>
-            </div>
-             <!--Content-->
-             <section class="">
-                <div id="blog-entry" class="blog-entry blog-masonry">
-                    <div class="container">
-                        <div class="row blog-masonry-wrap text-center">
-                            @foreach($posts as $post)
-                            <!--Item-->
-                            <div class="blog-item-grid col-md-4  col-lg-4">
-                                <!--Blog Item-->
-                                <div class="blog-item bg--light">
-                                    <div class="img-container">
-                                        <a title="{{ $post->title }}" class="blog-img-link blog">
-                                            <img title="{{ $post->title }}" src="{{ $post->m_path() }}" alt="{{ $post->title }} ">
-                                        </a>
-                                    </div>
-                                    <div class="blog-details p-3">
-                                        <div class="tag bold">
+    @if ($posts->count()) 
+    <section class="sec-padding bg--gray">
+        <div id="blog-entry" class="blog-entry blog-masonry">
+            <div class="container">
+               <div class="page-head text-center">
+                  <h2 class="page-title heading-hr-margin">OHRAM BLOG</h2>
+               </div>
+                <div class="row blog-masonry-wrap text-center ">
+                    @foreach($posts as $post)
+                        <!--Item-->
+                        <div class="blog-item-grid col-md-4 col-lg-4">
+                            <!--Blog Item-->
+                            <div class="blog-item bg--light">
+                                <div class="blog-item-image">
+                                    <a class="blog-img-link">
+                                         <img title="{{ $post->title }}" src="{{ $post->m_path() }}" alt="{{ $post->title }} ">
+                                    </a>
+                                </div>
+
+                                <div class="blog-item-content">
+                                    <div class="tag bold">
                                             @foreach($post->attributes as $tag)
                                             <a href="/blog/tag/{{ $tag->id }}"><i class="fa fa-tags"></i> {{ $tag->name }}</a>
                                             @endforeach
                                         </div>
-                                        <h6 class="blog-title text-uppercase"> 
+                                       
+                                    <div class="clearfix"></div>
+                                    <div>
+                                        <h5 class="text-uppercase mt-n3"> 
                                             <a title="{{  $post->title }}" href="{{ route('blog.show',['blog'=> $post->slug]) }}" class="">
                                                {{ $post->title }}
-                                            </a> 
-                                        </h6>
-                                        <div class="blog-description-content text-center">
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div class="blog-description-content text-center">
                                             <?php echo  html_entity_decode($post->teaser);  ?>
                                          </div>
                                         <p class="info">
                                             <i class="fa fa-clock-o"></i><span>{{ $post->created_at->diffForHumans() }}</span>
                                         </p>
-                                    </div>
                                 </div>
-                                <!--End Blog Item-->
                             </div>
-                            @endforeach
-                            <div class="clearfix"></div>
+                            <!--End Blog Item-->
                         </div>
-                        <div class="clearfix"></div>
-                            <div class="col-12">
-                                <div class="justifiy-content-center">
-                                <div class="pagination-wraper">
-                                </div>
-                                </div>
-                            </div>
-                    </div>
+                    @endforeach
+                   
                 </div>
-            </section>
-            <!--End Content--> 
-    </div> <!-- /container -->
+                <div class="clearfix"></div>
+                    <div class="col-12">
+                        <div class="justifiy-content-center">
+                           <div class="pagination-wraper">
+                              {{ $posts->links() }}
+                           </div>
+                        </div>
+                     </div>
+            </div>
+        </div>
+    </section>
+<!--End Content-->
+@endif
 
+
+    
 </div>
 
 
