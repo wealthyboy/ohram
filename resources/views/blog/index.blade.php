@@ -70,13 +70,7 @@
                    
                 </div>
                 <div class="clearfix"></div>
-                    <div class="col-12">
-                        <div class="justifiy-content-center">
-                           <div class="pagination-wraper">
-                              {{ $posts->links() }}
-                           </div>
-                        </div>
-                     </div>
+                    
             </div>
         </div>
     </section>
