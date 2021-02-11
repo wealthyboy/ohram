@@ -42,7 +42,7 @@
                                 </div>
 
                                 <div class="blog-item-content">
-                                    <div class="tag bold">
+                                    <div class="tag p-5 bold">
                                             @foreach($post->attributes as $tag)
                                             <a href="/blog/tag/{{ $tag->id }}"><i class="fa fa-tags"></i> {{ $tag->name }}</a>
                                             @endforeach
