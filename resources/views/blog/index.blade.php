@@ -59,7 +59,7 @@
                                     <div class="blog-description-content text-center">
                                             <?php echo  html_entity_decode($post->teaser);  ?>
                                          </div>
-                                        <p class="info">
+                                        <p class="info pb-3">
                                             <i class="fa fa-clock-o"></i><span>{{ $post->created_at->diffForHumans() }}</span>
                                         </p>
                                 </div>
