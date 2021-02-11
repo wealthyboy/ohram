@@ -37,7 +37,7 @@
                             <div class="blog-item bg--light">
                                 <div class="blog-item-image">
                                     <a class="blog-img-link">
-                                         <img title="{{ $post->title }}" src="{{ $post->m_path() }}" alt="{{ $post->title }} ">
+                                         <img title="{{ $post->title }}" src="{{ $post->path() }}" alt="{{ $post->title }} ">
                                     </a>
                                 </div>
 
