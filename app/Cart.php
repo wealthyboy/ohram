@@ -32,6 +32,7 @@ class Cart extends Model
 		'cart_total'
 	];
 	
+	
 	public static function items_in_cart() {  
 	    //SELECT ALL FROM THE USER ID && FROM THE USER COOKIE
 	    $cookie=\Cookie::get('cart');

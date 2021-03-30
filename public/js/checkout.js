@@ -2411,7 +2411,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     loadScript: function loadScript(callback) {
       var script = document.createElement("script");
-      script.src = "https://interswitchng.com/collections/public/webpay.js";
+      script.src = "https://sandbox.interswitchng.com/collections/public/webpay.js";
       document.getElementsByTagName("head")[0].appendChild(script);
 
       if (script.readyState) {
@@ -22522,7 +22522,7 @@ var render = function() {
                                   method: "POST",
                                   id: "checkout-form-2",
                                   action:
-                                    "https://interswitchng.com/collections/w/pay"
+                                    "https://webpay.interswitchng.com/collections/w/pay"
                                 }
                               },
                               [

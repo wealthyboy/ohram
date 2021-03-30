@@ -140,7 +140,7 @@
                                     
                                 <p class="">
                                     <p  class="form-field-wrapper   col-sm-12">
-                                        <form method="POST"  id="checkout-form-2" action="https://interswitchng.com/collections/w/pay">
+                                        <form method="POST"  id="checkout-form-2" action="https://webpay.interswitchng.com/collections/w/pay">
                                             <div v-if="$root.settings.shipping_is_free == 0" class="shipping">
                                                 <label for="shipping_country">SELECT SHIPPING &nbsp;<abbr class="required text-danger" title="required">*</abbr></label>
                                                 <select @change="addShippingPrice" name="shipping_id" id="shipping_price" class="form-control  input--lg" autocomplete="shipping" tabindex="-1" aria-hidden="true">
@@ -396,7 +396,7 @@ export default {
     loadScript(callback) {
       const script = document.createElement("script");
       script.src =
-        "https://interswitchng.com/collections/public/webpay.js";
+        "https://sandbox.interswitchng.com/collections/public/webpay.js";
       document.getElementsByTagName("head")[0].appendChild(script);
       if (script.readyState) {
         // IE
