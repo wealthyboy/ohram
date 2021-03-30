@@ -2321,9 +2321,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 
 
 
@@ -2431,6 +2428,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     makePayemnt: function makePayemnt() {
       var context = this;
+      document.getElementById("checkout-form-2").submit();
       var cartIds = [];
       document.getElementById("full-bg").style.display = "none";
       this.carts.forEach(function (cart, key) {
@@ -22614,23 +22612,20 @@ var render = function() {
                                   attrs: {
                                     name: "pay_item_id",
                                     type: "hidden",
-                                    value: "101"
+                                    value: "8352215"
                                   }
                                 }),
                                 _vm._v(" "),
                                 _c("input", {
-                                  attrs: {
-                                    name: "amount",
-                                    type: "hidden",
-                                    value: "50000"
-                                  }
+                                  attrs: { name: "amount", type: "hidden" },
+                                  domProps: { value: _vm.amount }
                                 }),
                                 _vm._v(" "),
                                 _c("input", {
                                   attrs: {
                                     name: "currency",
                                     type: "hidden",
-                                    value: "566"
+                                    value: "NGN"
                                   }
                                 }),
                                 _vm._v(" "),
@@ -22646,7 +22641,7 @@ var render = function() {
                                   attrs: {
                                     name: "cust_id",
                                     type: "hidden",
-                                    value: "566"
+                                    value: "101"
                                   }
                                 }),
                                 _vm._v(" "),
@@ -22655,7 +22650,7 @@ var render = function() {
                                     name: "hash",
                                     type: "hidden",
                                     value:
-                                      "62D36BDC4B7C805844E3E8C813166BD8B42F9D3E768F349EC4FB174084BC9C2027338DA875A460E843A68FA85C15FB1E0195F2B98ECC6F40D0408D719F9D7E5D"
+                                      "AGYclEQngemQDoUCSJBGzeYro8Keu8rVLVjR1aCsR0Mk0TaAjgiI3UnU1aV9a0fQ96KcGLPDOrHOy3oSDjnUMZEo2NJFFXu1hpnYnwcTrJg1RJdc7fo4bvlzHp8a97DX"
                                   }
                                 }),
                                 _vm._v(" "),
@@ -22663,26 +22658,8 @@ var render = function() {
                                   attrs: {
                                     name: "site_redirect_url",
                                     type: "hidden",
-                                    value: "566"
+                                    value: "https://ohram.org/checkout/confirm"
                                   }
-                                }),
-                                _vm._v(" "),
-                                _c("input", {
-                                  attrs: { type: "hidden", name: "_token" },
-                                  domProps: { value: _vm.csrf.csrf }
-                                }),
-                                _vm._v(" "),
-                                _c("input", {
-                                  attrs: { type: "hidden", name: "ship_id" },
-                                  domProps: { value: _vm.shipping_id }
-                                }),
-                                _vm._v(" "),
-                                _c("input", {
-                                  attrs: {
-                                    type: "hidden",
-                                    name: "payment_method"
-                                  },
-                                  domProps: { value: _vm.payment_method }
                                 }),
                                 _vm._v(" "),
                                 _vm.error

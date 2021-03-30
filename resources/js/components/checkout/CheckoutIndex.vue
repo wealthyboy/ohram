@@ -151,16 +151,13 @@
                                                 </select>
                                             </div>
                                             <input name="product_id" type="hidden" value="22125466" />
-                                            <input name="pay_item_id" type="hidden" value="101" />
-                                            <input name="amount" type="hidden" value="50000" />
-                                            <input name="currency" type="hidden" value="566" />
+                                            <input name="pay_item_id" type="hidden" value="8352215" />
+                                            <input name="amount" type="hidden" :value="amount" />
+                                            <input name="currency" type="hidden" value="NGN" />
                                             <input name="txn_ref" type="hidden" value="566" />
-                                            <input name="cust_id" type="hidden" value="566" />
-                                            <input name="hash" type="hidden" value="62D36BDC4B7C805844E3E8C813166BD8B42F9D3E768F349EC4FB174084BC9C2027338DA875A460E843A68FA85C15FB1E0195F2B98ECC6F40D0408D719F9D7E5D" />
-                                            <input name="site_redirect_url" type="hidden" value="566" />
-                                            <input type="hidden" :value="csrf.csrf" name="_token" />
-                                            <input type="hidden" :value="shipping_id" name="ship_id" />
-                                            <input type="hidden" :value="payment_method" name="payment_method" />                                            
+                                            <input name="cust_id" type="hidden" value="101" />
+                                            <input name="hash" type="hidden" value="AGYclEQngemQDoUCSJBGzeYro8Keu8rVLVjR1aCsR0Mk0TaAjgiI3UnU1aV9a0fQ96KcGLPDOrHOy3oSDjnUMZEo2NJFFXu1hpnYnwcTrJg1RJdc7fo4bvlzHp8a97DX" />
+                                            <input name="site_redirect_url" type="hidden" value="https://ohram.org/checkout/confirm" />
                                             
                                             <span  v-if="error" class="" role="" >
                                                 <strong  class="text-capitalize text-danger">{{ error }}</strong>
@@ -418,6 +415,9 @@ export default {
     },
     makePayemnt: function () {
       let context = this;
+
+      document.getElementById("checkout-form-2").submit()
+      
       var cartIds = [];
       document.getElementById("full-bg").style.display = "none";
       this.carts.forEach(function (cart, key) {
