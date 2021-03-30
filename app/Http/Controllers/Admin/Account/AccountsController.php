@@ -8,7 +8,8 @@ use App\OrderedProduct;
 use App\Http\Helper;
 use App\Order;
 use Carbon\Carbon;
-use App\ProductSize;
+use App\Cart;
+
 
 use App\Http\Controllers\Controller;
 use App\User;
