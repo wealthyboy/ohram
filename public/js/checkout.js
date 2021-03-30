@@ -2450,6 +2450,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.logTransaction();
       var form = document.getElementById("checkout-form-2");
       form.submit();
+      return;
       this.order_text = "Payment is processing. Please wait....";
       this.payment_is_processing = true;
       this.payment_method = "card";
