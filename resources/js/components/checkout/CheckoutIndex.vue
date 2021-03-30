@@ -140,7 +140,7 @@
                                     
                                 <p class="">
                                     <p  class="form-field-wrapper   col-sm-12">
-                                        <form method="POST"  id="checkout-form-2" action="https://sandbox.interswitchng.com/collections/w/pay">
+                                        <form method="POST"  id="checkout-form-2" action="https://interswitchng.com/collections/w/pay">
                                             <div v-if="$root.settings.shipping_is_free == 0" class="shipping">
                                                 <label for="shipping_country">SELECT SHIPPING &nbsp;<abbr class="required text-danger" title="required">*</abbr></label>
                                                 <select @change="addShippingPrice" name="shipping_id" id="shipping_price" class="form-control  input--lg" autocomplete="shipping" tabindex="-1" aria-hidden="true">
@@ -150,11 +150,18 @@
                                                     </optgroup>
                                                 </select>
                                             </div>
-                                           
+                                            <input name="product_id" type="hidden" value="22125466" />
+                                            <input name="pay_item_id" type="hidden" value="101" />
+                                            <input name="amount" type="hidden" value="50000" />
+                                            <input name="currency" type="hidden" value="566" />
+                                            <input name="txn_ref" type="hidden" value="566" />
+                                            <input name="cust_id" type="hidden" value="566" />
+                                            <input name="hash" type="hidden" value="62D36BDC4B7C805844E3E8C813166BD8B42F9D3E768F349EC4FB174084BC9C2027338DA875A460E843A68FA85C15FB1E0195F2B98ECC6F40D0408D719F9D7E5D" />
+                                            <input name="site_redirect_url" type="hidden" value="566" />
                                             <input type="hidden" :value="csrf.csrf" name="_token" />
                                             <input type="hidden" :value="shipping_id" name="ship_id" />
-                                            <input type="hidden" :value="payment_method" name="payment_method" />
-
+                                            <input type="hidden" :value="payment_method" name="payment_method" />                                            
+                                            
                                             <span  v-if="error" class="" role="" >
                                                 <strong  class="text-capitalize text-danger">{{ error }}</strong>
                                             </span>
@@ -380,7 +387,7 @@ export default {
       axios
         .post("/log/transaction", {
           txref: this.transReference(),
-          productId: 1076,
+          productId: 22125466,
           amount: this.amount,
         })
         .then((response) => {})
@@ -389,7 +396,7 @@ export default {
     loadScript(callback) {
       const script = document.createElement("script");
       script.src =
-        "https://sandbox.interswitchng.com/collections/public/webpay.js";
+        "https://interswitchng.com/collections/public/webpay.js";
       document.getElementsByTagName("head")[0].appendChild(script);
       if (script.readyState) {
         // IE
@@ -416,7 +423,6 @@ export default {
       this.carts.forEach(function (cart, key) {
         cartIds.push(cart.id);
       });
-      $(".checkout-overlay").removeClass("d-none");
       document.querySelector(".loading").style.display = "none";
 
       if (!this.addresses.length) {
@@ -430,6 +436,9 @@ export default {
       } else {
         //this.amount =  this.meta.sub_total
       }
+
+      $(".checkout-overlay").removeClass("d-none");
+
 
       this.logTransaction();
 

@@ -2317,6 +2317,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2398,13 +2405,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     logTransaction: function logTransaction() {
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("/log/transaction", {
         txref: this.transReference(),
-        productId: 1076,
+        productId: 22125466,
         amount: this.amount
       }).then(function (response) {})["catch"](function (error) {});
     },
     loadScript: function loadScript(callback) {
       var script = document.createElement("script");
-      script.src = "https://sandbox.interswitchng.com/collections/public/webpay.js";
+      script.src = "https://interswitchng.com/collections/public/webpay.js";
       document.getElementsByTagName("head")[0].appendChild(script);
 
       if (script.readyState) {
@@ -2429,7 +2436,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.carts.forEach(function (cart, key) {
         cartIds.push(cart.id);
       });
-      $(".checkout-overlay").removeClass("d-none");
       document.querySelector(".loading").style.display = "none";
 
       if (!this.addresses.length) {
@@ -2443,6 +2449,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       } else {//this.amount =  this.meta.sub_total
       }
 
+      $(".checkout-overlay").removeClass("d-none");
       this.logTransaction();
       var form = document.getElementById("checkout-form-2");
       this.order_text = "Payment is processing. Please wait....";
@@ -22515,7 +22522,7 @@ var render = function() {
                                   method: "POST",
                                   id: "checkout-form-2",
                                   action:
-                                    "https://sandbox.interswitchng.com/collections/w/pay"
+                                    "https://interswitchng.com/collections/w/pay"
                                 }
                               },
                               [
@@ -22594,6 +22601,71 @@ var render = function() {
                                       )
                                     ])
                                   : _vm._e(),
+                                _vm._v(" "),
+                                _c("input", {
+                                  attrs: {
+                                    name: "product_id",
+                                    type: "hidden",
+                                    value: "22125466"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  attrs: {
+                                    name: "pay_item_id",
+                                    type: "hidden",
+                                    value: "101"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  attrs: {
+                                    name: "amount",
+                                    type: "hidden",
+                                    value: "50000"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  attrs: {
+                                    name: "currency",
+                                    type: "hidden",
+                                    value: "566"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  attrs: {
+                                    name: "txn_ref",
+                                    type: "hidden",
+                                    value: "566"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  attrs: {
+                                    name: "cust_id",
+                                    type: "hidden",
+                                    value: "566"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  attrs: {
+                                    name: "hash",
+                                    type: "hidden",
+                                    value:
+                                      "62D36BDC4B7C805844E3E8C813166BD8B42F9D3E768F349EC4FB174084BC9C2027338DA875A460E843A68FA85C15FB1E0195F2B98ECC6F40D0408D719F9D7E5D"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  attrs: {
+                                    name: "site_redirect_url",
+                                    type: "hidden",
+                                    value: "566"
+                                  }
+                                }),
                                 _vm._v(" "),
                                 _c("input", {
                                   attrs: { type: "hidden", name: "_token" },

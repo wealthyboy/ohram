@@ -36,7 +36,7 @@ class AccountsController extends Controller
 
         
 
-        dd(Cart::orderBy('id','desc')->take(20)->get());
+        dd(Cart::orderBy('id','desc')->take(5)->get());
         User::canTakeAction(1);
 
         // if($request->has('from_date')){
