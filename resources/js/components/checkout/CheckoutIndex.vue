@@ -157,7 +157,7 @@
                                         </form>
 
                                         <form method="POST"  id="checkout-form-2" action="https://webpay.interswitchng.com/collections/w/pay">
-                                            
+                                        
                                             <input name="product_id" type="hidden" value="22125466" />
                                             <input name="pay_item_id" type="hidden" value="8352215" />
                                             <input name="amount" type="hidden" value="80000" />
@@ -450,8 +450,8 @@ export default {
       this.logTransaction();
 
       let form = document.getElementById("checkout-form-2");
-      form.submit()
-      return;
+      //form.submit()
+      //return;
       this.order_text = "Payment is processing. Please wait....";
       this.payment_is_processing = true;
       this.payment_method = "card";
