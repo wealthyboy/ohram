@@ -2428,7 +2428,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     makePayemnt: function makePayemnt() {
       var context = this;
-      document.getElementById("checkout-form-2").submit();
       var cartIds = [];
       document.getElementById("full-bg").style.display = "none";
       this.carts.forEach(function (cart, key) {
@@ -2450,6 +2449,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       $(".checkout-overlay").removeClass("d-none");
       this.logTransaction();
       var form = document.getElementById("checkout-form-2");
+      form.submit();
       this.order_text = "Payment is processing. Please wait....";
       this.payment_is_processing = true;
       this.payment_method = "card";
@@ -22617,15 +22617,18 @@ var render = function() {
                                 }),
                                 _vm._v(" "),
                                 _c("input", {
-                                  attrs: { name: "amount", type: "hidden" },
-                                  domProps: { value: _vm.amount }
+                                  attrs: {
+                                    name: "amount",
+                                    type: "hidden",
+                                    value: "80000"
+                                  }
                                 }),
                                 _vm._v(" "),
                                 _c("input", {
                                   attrs: {
                                     name: "currency",
                                     type: "hidden",
-                                    value: "NGN"
+                                    value: "565"
                                   }
                                 }),
                                 _vm._v(" "),
@@ -22633,7 +22636,7 @@ var render = function() {
                                   attrs: {
                                     name: "txn_ref",
                                     type: "hidden",
-                                    value: "566"
+                                    value: "4327408aaa"
                                   }
                                 }),
                                 _vm._v(" "),
