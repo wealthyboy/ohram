@@ -14,7 +14,6 @@ class Cart extends Model
 
 	protected $table ='carts';
 	
-	public $timestamps = false;
 	
 	protected $fillable =[
 			'product_id',
