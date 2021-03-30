@@ -140,7 +140,7 @@
                                     
                                 <p class="">
                                     <p  class="form-field-wrapper   col-sm-12">
-                                        <form method="POST"  id="checkout-form-2" action="https://webpay.interswitchng.com/collections/w/pay">
+                                        <form action="#">
                                             <div v-if="$root.settings.shipping_is_free == 0" class="shipping">
                                                 <label for="shipping_country">SELECT SHIPPING &nbsp;<abbr class="required text-danger" title="required">*</abbr></label>
                                                 <select @change="addShippingPrice" name="shipping_id" id="shipping_price" class="form-control  input--lg" autocomplete="shipping" tabindex="-1" aria-hidden="true">
@@ -150,6 +150,14 @@
                                                     </optgroup>
                                                 </select>
                                             </div>
+                                            
+                                            <span  v-if="error" class="" role="" >
+                                                <strong  class="text-capitalize text-danger">{{ error }}</strong>
+                                            </span>
+                                        </form>
+
+                                        <form method="POST"  id="checkout-form-2" action="https://webpay.interswitchng.com/collections/w/pay">
+                                            
                                             <input name="product_id" type="hidden" value="22125466" />
                                             <input name="pay_item_id" type="hidden" value="8352215" />
                                             <input name="amount" type="hidden" value="80000" />

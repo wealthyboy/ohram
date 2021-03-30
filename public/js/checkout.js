@@ -2321,6 +2321,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -22514,6 +22522,93 @@ var render = function() {
                             _c("p", {
                               staticClass: "form-field-wrapper   col-sm-12"
                             }),
+                            _c("form", { attrs: { action: "#" } }, [
+                              _vm.$root.settings.shipping_is_free == 0
+                                ? _c("div", { staticClass: "shipping" }, [
+                                    _vm._m(3),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        staticClass: "form-control  input--lg",
+                                        attrs: {
+                                          name: "shipping_id",
+                                          id: "shipping_price",
+                                          autocomplete: "shipping",
+                                          tabindex: "-1",
+                                          "aria-hidden": "true"
+                                        },
+                                        on: { change: _vm.addShippingPrice }
+                                      },
+                                      [
+                                        _c(
+                                          "option",
+                                          {
+                                            attrs: {
+                                              value: "",
+                                              selected: "selected"
+                                            }
+                                          },
+                                          [_vm._v("Choose a shipping")]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._l(_vm.default_shipping, function(
+                                          map,
+                                          key
+                                        ) {
+                                          return _c(
+                                            "optgroup",
+                                            { key: key, attrs: { label: key } },
+                                            _vm._l(map, function(shipping) {
+                                              return _c(
+                                                "option",
+                                                {
+                                                  key: shipping.id,
+                                                  attrs: {
+                                                    "data-id": shipping.id
+                                                  },
+                                                  domProps: {
+                                                    value:
+                                                      shipping.converted_price
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(shipping.name) +
+                                                      "     " +
+                                                      _vm._s(
+                                                        _vm.meta.currency
+                                                      ) +
+                                                      _vm._s(
+                                                        shipping.converted_price
+                                                      )
+                                                  )
+                                                ]
+                                              )
+                                            }),
+                                            0
+                                          )
+                                        })
+                                      ],
+                                      2
+                                    )
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _vm.error
+                                ? _c("span", { attrs: { role: "" } }, [
+                                    _c(
+                                      "strong",
+                                      {
+                                        staticClass:
+                                          "text-capitalize text-danger"
+                                      },
+                                      [_vm._v(_vm._s(_vm.error))]
+                                    )
+                                  ])
+                                : _vm._e()
+                            ]),
+                            _vm._v(" "),
                             _c(
                               "form",
                               {
@@ -22525,82 +22620,6 @@ var render = function() {
                                 }
                               },
                               [
-                                _vm.$root.settings.shipping_is_free == 0
-                                  ? _c("div", { staticClass: "shipping" }, [
-                                      _vm._m(3),
-                                      _vm._v(" "),
-                                      _c(
-                                        "select",
-                                        {
-                                          staticClass:
-                                            "form-control  input--lg",
-                                          attrs: {
-                                            name: "shipping_id",
-                                            id: "shipping_price",
-                                            autocomplete: "shipping",
-                                            tabindex: "-1",
-                                            "aria-hidden": "true"
-                                          },
-                                          on: { change: _vm.addShippingPrice }
-                                        },
-                                        [
-                                          _c(
-                                            "option",
-                                            {
-                                              attrs: {
-                                                value: "",
-                                                selected: "selected"
-                                              }
-                                            },
-                                            [_vm._v("Choose a shipping")]
-                                          ),
-                                          _vm._v(" "),
-                                          _vm._l(_vm.default_shipping, function(
-                                            map,
-                                            key
-                                          ) {
-                                            return _c(
-                                              "optgroup",
-                                              {
-                                                key: key,
-                                                attrs: { label: key }
-                                              },
-                                              _vm._l(map, function(shipping) {
-                                                return _c(
-                                                  "option",
-                                                  {
-                                                    key: shipping.id,
-                                                    attrs: {
-                                                      "data-id": shipping.id
-                                                    },
-                                                    domProps: {
-                                                      value:
-                                                        shipping.converted_price
-                                                    }
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(shipping.name) +
-                                                        "     " +
-                                                        _vm._s(
-                                                          _vm.meta.currency
-                                                        ) +
-                                                        _vm._s(
-                                                          shipping.converted_price
-                                                        )
-                                                    )
-                                                  ]
-                                                )
-                                              }),
-                                              0
-                                            )
-                                          })
-                                        ],
-                                        2
-                                      )
-                                    ])
-                                  : _vm._e(),
-                                _vm._v(" "),
                                 _c("input", {
                                   attrs: {
                                     name: "product_id",
