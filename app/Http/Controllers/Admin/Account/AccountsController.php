@@ -33,7 +33,9 @@ class AccountsController extends Controller
     public function index(Request $request)
     { 
 
-        //
+        
+
+        dd(Cart::where("user_id", 145)->get());
         User::canTakeAction(1);
 
         // if($request->has('from_date')){
