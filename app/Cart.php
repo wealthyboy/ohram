@@ -77,6 +77,12 @@ class Cart extends Model
     }
 
 
+	public function transaction(){
+		return $this->belongsTo('App\TransactionLog');
+    }
+
+  
+
 	
 	public static function sum_items_in_cart() {   
 	   $cookie=\Cookie::get('cart'); 

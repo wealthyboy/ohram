@@ -9,4 +9,8 @@ class TransactionLog extends Model
     public function user(){
         return $this->belongsTo('App\User');
     }
+
+    public function carts(){
+		return $this->hasMany('App\Cart');
+    }
 }
