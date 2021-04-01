@@ -2405,9 +2405,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     getRandomInt: function getRandomInt(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     },
-    logTransaction: function logTransaction() {
+    logTransaction: function logTransaction(txref) {
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("/log/transaction", {
-        txref: this.transReference(),
+        txref: txref,
         productId: 22125466,
         amount: this.amount
       }).then(function (response) {})["catch"](function (error) {});
@@ -2453,7 +2453,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       $(".checkout-overlay").removeClass("d-none");
-      this.logTransaction();
       var form = document.getElementById("checkout-form-2"); //form.submit()
       //return;
 
@@ -2469,6 +2468,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var reqRef = this.transReference();
       var shipping_id = this.shipping_id;
       var signatureCipher = reqRef + product_id + pay_item_id + amount + site_redirect_url + mac;
+      this.logTransaction(reqRef);
       var iswPay = new IswPay({
         postUrl: "https://webpay.interswitchng.com/collections/w/pay",
         amount: amount,
