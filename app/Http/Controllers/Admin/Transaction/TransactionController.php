@@ -76,6 +76,8 @@ class TransactionController extends Controller
 				// Show me the result
                 $json = json_decode($data, TRUE);
                 curl_close($ch); 
+
+                dd($json);
                 
                 //END CURL SESSION///////////////////////////////
                 if(isset($json["MerchantReference"])){
