@@ -256,17 +256,17 @@
                                           </div>
                                           <div id="j-details"  class="j-details j-activate">
                                                 
-                                             @if(optional($product->default_variation)->images->count())
-                                             @foreach(optional(optional($product->default_variation)->images) as $image)
-                                                <div id="{{ $image->id }}" class="j-complete">
-                                                   <div class="j-preview">
-                                                      <img class="img-thumnail" src="{{ $image->image }}">
-                                                      <div id="remove_image" class="remove_image remove-image">
-                                                         <a class="remove-image"  data-randid="{{ $image->id }}" data-model="Image" data-type="complete"  data-id="{{ $image->id }}" data-url="{{ $image->image }}" href="#">Remove</a>
+                                             @if(optional(optional($product->default_variation)->images)->count())
+                                                @foreach(optional(optional($product->default_variation)->images) as $image)
+                                                   <div id="{{ $image->id }}" class="j-complete">
+                                                      <div class="j-preview">
+                                                         <img class="img-thumnail" src="{{ $image->image }}">
+                                                         <div id="remove_image" class="remove_image remove-image">
+                                                            <a class="remove-image"  data-randid="{{ $image->id }}" data-model="Image" data-type="complete"  data-id="{{ $image->id }}" data-url="{{ $image->image }}" href="#">Remove</a>
+                                                         </div>
                                                       </div>
                                                    </div>
-                                                </div>
-                                             @endforeach
+                                                @endforeach
                                              @endif
                                           </div>
                                        </div>
