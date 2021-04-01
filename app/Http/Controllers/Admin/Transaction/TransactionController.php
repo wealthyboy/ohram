@@ -32,7 +32,6 @@ class TransactionController extends Controller
         $prudid = 22125466;
         $transaction_log = TransactionLog::find($id);
 
-        dd($transaction_log);
 			
         $parameters = array(
                "productid"=>$prudid,
@@ -79,7 +78,6 @@ class TransactionController extends Controller
                 $json = json_decode($data, TRUE);
                 curl_close($ch); 
 
-                dd($json);
                 
                 //END CURL SESSION///////////////////////////////
                 if(isset($json["MerchantReference"])){
