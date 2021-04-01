@@ -11,6 +11,6 @@ class TransactionLog extends Model
     }
 
     public function carts(){
-		return $this->hasMany('App\Cart');
+		return $this->belongsToMany('App\Cart');
     }
 }

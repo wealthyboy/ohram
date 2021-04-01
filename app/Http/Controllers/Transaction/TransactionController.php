@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Transaction;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\TransactionLog;
+use App\Cart;
+
 
 class TransactionController extends Controller
 {
@@ -27,20 +29,22 @@ class TransactionController extends Controller
         if ( $cookie !== null ) {
             $request->session()->put('user_id', $cookie);
             $tl = TransactionLog::where('token',$cookie)->first();
-            
-            if ($tl !== null) {
-                $tl->status = 'Awaiting Payment Confirmation';
-                $tl->user_id = request()->user()->id;
-                $tl->token = $cookie;
-                $tl->approved_amount =  $request->amount;
-                $tl->transaction_reference = $request->txref;
-                $tl->product_id = $request->productId;
-                $tl->save();
-                Cart::update([
-                   'transaction_id' => $tl
-                ]);
-                return response(null,200);
-            }
+            $carts =  Cart::all_items_in_cart();
+            dd($carts->pluck('id'));
+
+            // if ($tl !== null) {
+            //     $tl->status = 'Awaiting Payment Confirmation';
+            //     $tl->user_id = request()->user()->id;
+            //     $tl->token = $cookie;
+            //     $tl->approved_amount =  $request->amount;
+            //     $tl->transaction_reference = $request->txref;
+            //     $tl->product_id = $request->productId;
+            //     $tl->save();
+            //     Cart::update([
+            //        'transaction_id' => $tl
+            //     ]);
+            //     return response(null,200);
+            // }
 
             $transaction_log->status = 'Awaiting Payment Confirmation';
             $transaction_log->user_id = request()->user()->id;

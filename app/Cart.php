@@ -77,18 +77,17 @@ class Cart extends Model
     }
 
 
-	public function transaction(){
-		return $this->belongsTo('App\TransactionLog');
+	public function transactions(){
+		return $this->belongsToMany("App\TransactionLog");
     }
 
   
-
-	
 	public static function sum_items_in_cart() {   
 	   $cookie=\Cookie::get('cart'); 
        $total = \DB::table('carts')->select(\DB::raw('SUM(carts.total) as items_total'))->where('remember_token',$cookie)->get();
        return 	static::ConvertCurrencyRate($total = $total[0]->items_total);
 	}
+
 
 	public static function cart_number() { 
 		$cookie=\Cookie::get('cart');
@@ -103,8 +102,8 @@ class Cart extends Model
 		  return round(($price * $rate->rate),0);  
 		}
 		return round($price,0);  
-  
-	 }
+	}
+
 
 	public static function delete_items_in_cart_purchased() { 
 		$cookie=\Cookie::get('cart');
