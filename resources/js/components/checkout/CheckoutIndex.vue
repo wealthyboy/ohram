@@ -167,9 +167,7 @@
                                             <input name="hash" type="hidden" value="AGYclEQngemQDoUCSJBGzeYro8Keu8rVLVjR1aCsR0Mk0TaAjgiI3UnU1aV9a0fQ96KcGLPDOrHOy3oSDjnUMZEo2NJFFXu1hpnYnwcTrJg1RJdc7fo4bvlzHp8a97DX" />
                                             <input name="site_redirect_url" type="hidden" value="https://ohram.org/checkout/confirm" />
                                             
-                                            <span  v-if="error" class="" role="" >
-                                                <strong  class="text-capitalize text-danger">{{ error }}</strong>
-                                            </span>
+                                            
                                         </form>
                                         
                                     </p>
@@ -423,8 +421,6 @@ export default {
     },
     makePayemnt: function () {
       let context = this;
-
-      
       var cartIds = [];
       document.getElementById("full-bg").style.display = "none";
       this.carts.forEach(function (cart, key) {
@@ -474,7 +470,7 @@ export default {
         transRef: reqRef,
         siteName: "OHRAM COMPANY INTERNATIONAL",
         itemId: pay_item_id,
-        customerId: this.getRandomInt(12345678, 10000000000),
+        customerId: context.meta.user.id,
         siteRedirectUrl: site_redirect_url,
         currency: context.currencyCode(),
         hash: Sha512.hash(signatureCipher),
