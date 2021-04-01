@@ -386,10 +386,10 @@ export default {
     getRandomInt: function (min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     },
-    logTransaction: function () {
+    logTransaction: function (txref) {
       axios
         .post("/log/transaction", {
-          txref: this.transReference(),
+          txref: txref,
           productId: 22125466,
           amount: this.amount,
         })
@@ -443,7 +443,6 @@ export default {
       $(".checkout-overlay").removeClass("d-none");
 
 
-      this.logTransaction();
 
       let form = document.getElementById("checkout-form-2");
       //form.submit()
@@ -463,6 +462,8 @@ export default {
       var shipping_id = this.shipping_id;
       var signatureCipher =
         reqRef + product_id + pay_item_id + amount + site_redirect_url + mac;
+      this.logTransaction(reqRef);
+
       var iswPay = new IswPay({
         postUrl: "https://webpay.interswitchng.com/collections/w/pay",
         amount: amount,
