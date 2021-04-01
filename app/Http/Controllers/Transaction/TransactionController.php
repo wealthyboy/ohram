@@ -22,21 +22,37 @@ class TransactionController extends Controller
     {   
         $transaction_log = new TransactionLog;
         $request->session()->put('user_id', 'value');
-        if (\Cookie::get('cart') !== null) {
-            $cookie = \Cookie::get('cart');
-            $request->session()->put('user_id', $cookie);
+        $cookie = \Cookie::get('cart');
 
+        if ( $cookie !== null ) {
+            $request->session()->put('user_id', $cookie);
             $tl = TransactionLog::where('token',$cookie)->first();
             
-            $transaction_log->status = 'Pending';
+            if ($tl !== null) {
+                $tl->status = 'Awaiting Payment Confirmation';
+                $tl->user_id = request()->user()->id;
+                $tl->token = $cookie;
+                $tl->approved_amount =  $request->amount;
+                $tl->transaction_reference = $request->txref;
+                $tl->product_id = $request->productId;
+                $tl->save();
+                Cart::update([
+                   'transaction_id' => $tl
+                ]);
+                return response(null,200);
+            }
+
+            $transaction_log->status = 'Awaiting Payment Confirmation';
             $transaction_log->user_id = request()->user()->id;
             $transaction_log->token = $cookie;
             $transaction_log->approved_amount =  $request->amount;
             $transaction_log->transaction_reference = $request->txref;
             $transaction_log->product_id = $request->productId;
             $transaction_log->save();
+            Cart::update([
+                'transaction_id' => $transaction_log
+            ]);
             return response(null,200);
-        
         }
         
         return response(null,404);
