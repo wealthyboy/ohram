@@ -115,8 +115,8 @@ class ProcessPayment implements ShouldQueue
 
                     //Log the order
 
-                    $order->user_id = $transaction_log->id;
-                    $order->address_id     =  $transaction_log->user->active_address->id;
+                    $order->user_id = optional($transaction_log->user)->id;
+                    $order->address_id     =  optional(optional($transaction_log->user)->active_address)->id;
                     $order->coupon         =  null;
                     $order->status         = 'Processing';
                     $order->shipping_id    =  $transaction_log->shipping_id;
@@ -145,16 +145,19 @@ class ProcessPayment implements ShouldQueue
                         $product_variation->quantity =  $qty < 1 ? 0 : $qty;
                         $product_variation->save();
                     }
-                   // $admin_emails = explode(',',$settings->alert_email);
-                    $symbol = 'NGN';
-                    try {
-                        $when = now()->addMinutes(5);
-                        \Mail::to($transaction_log->user->email)
-                        ->bcc("jacob.atam@gmail.com")
-                        ->send(new OrderReceipt($order,$settings,$symbol));
-                    } catch (\Throwable $th) {
-                        //throw $th;
+                    $admin_emails = explode(',',$settings->alert_email);
+                    $symbol = $transaction_log->currency;
+
+                    foreach ($admin_emails as $recipient) {
+                        try {
+                            $when = now()->addMinutes(5);
+                            \Mail::to($recipient)
+                            ->send(new OrderReceipt($order,$settings,$symbol));
+                        } catch (\Throwable $th) {
+                            //throw $th;
+                        }
                     }
+                    
 
                     \Log::info("Transction ok");
 
