@@ -103,7 +103,7 @@ class ProcessPayment implements ShouldQueue
                 \Log::info($json);
  
                 //END CURL SESSION///////////////////////////////
-                if(isset($json["MerchantReference"])){
+                if(isset($json["ResponseCode"]) &&  $json['ResponseCode'] == '00' ){
 
                     if ( $json['ResponseCode'] == '00' ) {
                             $transaction_log->transaction_reference = $json["MerchantReference"];
