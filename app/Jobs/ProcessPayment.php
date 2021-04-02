@@ -36,7 +36,7 @@ class ProcessPayment implements ShouldQueue
     {
         //query 
 
-        $transactions = $transactionLog::where('status', "Awaiting Payment Confirmation")->pluck("id","transaction_reference")->get();
+        $transactions = $transactionLog::where('status', "Awaiting Payment Confirmation")->get();
 
         $prudid = 22125466;
 
