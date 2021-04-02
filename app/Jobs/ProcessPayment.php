@@ -34,7 +34,7 @@ class ProcessPayment implements ShouldQueue
     {
         //query 
 
-        \Log::info($transactionLog::all());
+        Log::info($transactionLog::where('status', "Awaiting Payment Confirmation")->pluck("id","transaction_reference")->get());
 
 
 

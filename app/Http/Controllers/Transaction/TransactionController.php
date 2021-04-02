@@ -62,6 +62,8 @@ class TransactionController extends Controller
 
             $delay = now()->addMinutes(5);
 
+        
+
             Notification::route('mail', 'jacob.atam@gmail.com')
             ->notify((new SendAwaitingPayment())->delay($delay));
             ProcessPayment::dispatch()->delay(now()->addMinutes(5));
