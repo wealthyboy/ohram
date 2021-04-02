@@ -58,7 +58,7 @@ class CartController  extends Controller {
 					'product_variation_id' => $request->product_variation_id,
 					'quantity'   => $request->quantity,
 					'price'      => $price,
-					'total'      => $price * $request->quantity
+					'total'      => $price * $request->quantity,
 					'status'     => 'Pending'
 				]
 			);
