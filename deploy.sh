@@ -15,6 +15,10 @@ composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
 # Run database migrations
 php artisan migrate --force
 
+
+# Build assets using Laravel Mix
+npm run prod
+
 # Clear caches
 php artisan cache:clear
 
@@ -33,8 +37,6 @@ php artisan view:cache
 # Install node modules
 #npm install
 
-# Build assets using Laravel Mix
-npm run prod
 
 # Turn off maintenance mode
 php artisan up
