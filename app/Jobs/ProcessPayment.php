@@ -8,6 +8,8 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\TransactionLog;
+use Throwable;
+
 
 class ProcessPayment implements ShouldQueue
 {
