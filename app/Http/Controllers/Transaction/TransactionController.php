@@ -53,7 +53,7 @@ class TransactionController extends Controller
             $transaction_log->transaction_reference = $request->txref;
             $transaction_log->product_id = $request->productId;
             $transaction_log->save();
-            $transaction_log->carts(array_values($carts->pluck('id')));
+            $transaction_log->carts($carts->pluck('id')->toArray());
 
             //
             return response(null,200);
