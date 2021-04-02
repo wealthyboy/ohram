@@ -116,11 +116,11 @@ Route::group(['middleware' => 'admin','prefix' => 'admin'], function(){
 
 });
 
-Route::get('/mailable', function () {
-    $order = App\Order::find(104);
-    $settings =  App\SystemSetting::first();
-    return new App\Mail\OrderReceipt($order,$settings,'₦');
-}); 
+// Route::get('/mailable', function () {
+//     $order = App\Order::find(104);
+//     $settings =  App\SystemSetting::first();
+//     return new App\Mail\OrderReceipt($order,$settings,'₦');
+// }); 
 
 
 
@@ -179,9 +179,7 @@ Route::group(['middleware' => 'currencyByIp'], function(){
         return view('modal.login.modal_body');
     });
 
-    Route::post('/admin/permission-denied', function ( ) { 
-        return view('errors.503');
-    });
+    
     
     Route::get('/search',                        'Products\ProductsController@search');
     Route::post('log/transaction',               'Transaction\TransactionController@log');
