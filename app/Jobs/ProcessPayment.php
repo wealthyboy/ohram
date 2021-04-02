@@ -164,9 +164,12 @@ class ProcessPayment implements ShouldQueue
                                 //throw $th;
                             }
                             
+                        \Log::info("Transction ok");
+
+                            
                     }
                     
-                    \Log::info("Transction ok");
+                    \Log::info("Transction having issues...");
 
                 }else{
                     $transaction_log->response_description = $json["ResponseDescription"];
