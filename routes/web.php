@@ -224,10 +224,5 @@ Route::post('/transaction/status', 'Transaction\TransactionController@confirm');
 
 
 
-sudo supervisorctl start send-cartmails:*
-
-
-
-
 
 
