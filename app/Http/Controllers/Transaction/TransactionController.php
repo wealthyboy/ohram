@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\TransactionLog;
 use App\Cart;
-use Illuminate\Support\Facades\DB;
 use App\Jobs\ProcessPayment;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\SendAwaitingPayment;
@@ -65,10 +64,9 @@ class TransactionController extends Controller
 
             Notification::route('mail', 'jacob.atam@gmail.com')
             ->notify((new ProcessPayment())->delay($delay));
-            ProcessPayment::dispatch()->delay(now()->addMinutes(5));
-
-
-            //
+            $job = new ProcessPayment();
+            $job->delay(now()->addMinutes(5));
+            dispatch($job);
             return response($transaction_log,200);
         }
         
