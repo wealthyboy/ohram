@@ -9,7 +9,7 @@ use App\Cart;
 use Illuminate\Support\Facades\DB;
 use App\Jobs\ProcessPayment;
 use Illuminate\Support\Facades\Notification;
-use App\Notifications\ProcessPayment;
+use App\Notifications\SendAwaitingPayment;
 
 
 
