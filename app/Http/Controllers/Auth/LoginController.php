@@ -51,6 +51,13 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
+
+    public function loadModal()
+    {    
+        return view('modal.login.modal_body');
+
+    }
+
 	
 	  /**
      * Handle a login request to the application.
