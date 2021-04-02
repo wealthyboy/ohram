@@ -54,6 +54,8 @@ class TransactionController extends Controller
             $transaction_log->user_id = request()->user()->id;
             $transaction_log->token = $cookie;
             $transaction_log->shipping_id = $request->shipping_id;
+            $transaction_log->currency = $request->currencyCode;
+            $transaction_log->coupon = $request->coupon;
             $transaction_log->approved_amount =  $request->amount;
             $transaction_log->transaction_reference = $request->txref;
             $transaction_log->product_id = $request->productId;

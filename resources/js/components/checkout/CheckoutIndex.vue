@@ -386,13 +386,15 @@ export default {
     getRandomInt: function (min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     },
-    logTransaction: function (txref,shipping_id) {
+    logTransaction: function (txref,shipping_id,coupon,currencyCode) {
       axios
         .post("/log/transaction", {
           txref: txref,
           productId: 22125466,
           amount: this.amount,
           shipping_id: shipping_id,
+          coupon: coupon,
+          currencyCode: currencyCode 
         })
         .then((response) => {})
         .catch((error) => {});
@@ -424,9 +426,7 @@ export default {
       let context = this;
       var cartIds = [];
       document.getElementById("full-bg").style.display = "none";
-      this.carts.forEach(function (cart, key) {
-        cartIds.push(cart.id);
-      });
+      
       document.querySelector(".loading").style.display = "none";
 
       if (!this.addresses.length) {
@@ -463,7 +463,7 @@ export default {
       var shipping_id = this.shipping_id;
       var signatureCipher =
         reqRef + product_id + pay_item_id + amount + site_redirect_url + mac;
-      this.logTransaction(reqRef,shipping_id);
+      this.logTransaction(reqRef,shipping_id,this.coupon,this.meta.currency);
 
       var iswPay = new IswPay({
         postUrl: "https://webpay.interswitchng.com/collections/w/pay",

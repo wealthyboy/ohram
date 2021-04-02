@@ -121,13 +121,13 @@ class ProcessPayment implements ShouldQueue
                     $order->status         = 'Processing';
                     $order->shipping_id    =  $transaction_log->shipping_id;
                     $order->shipping_price =  optional($shipping::find($transaction_log->shipping_id))->converted_price;
-                    $order->currency       =  'NGN';
+                    $order->currency       =  $transaction_log->currency;
                     $order->invoice        =  "INV-".date('Y')."-".rand(10000,39999);
-                    $order->payment_type   = 'Card online';
-                    $order->order_type     = 'online';
-                    $order->total          = "100000";
-                   // $order->ip             = $request->ip();
-                  //  $order->user_agent     = $request->server('HTTP_USER_AGENT');
+                    $order->payment_type   =  'online';
+                    $order->order_type     =  'online';
+                    $order->total          =  $transaction_log->approved_amount;
+                   // $order->ip           = $request->ip();
+                  //  $order->user_agent   = $request->server('HTTP_USER_AGENT');
                     $order->save();
                     foreach ( $transaction_log->carts   as $cart){
                         $insert = [
