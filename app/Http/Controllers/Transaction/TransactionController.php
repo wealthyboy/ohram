@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\TransactionLog;
 use App\Cart;
+use Illuminate\Support\Facades\DB;
+
 
 
 class TransactionController extends Controller
@@ -54,9 +56,13 @@ class TransactionController extends Controller
             $transaction_log->product_id = $request->productId;
             $transaction_log->save();
             $transaction_log->carts($carts->pluck('id')->toArray());
+            $users = DB::table('cart_transaction_log')->get();
+
+
+
 
             //
-            return response(null,200);
+            return response($users,200);
         }
         
         return response(null,404);
