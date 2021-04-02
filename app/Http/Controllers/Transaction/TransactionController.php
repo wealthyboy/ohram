@@ -63,10 +63,8 @@ class TransactionController extends Controller
             $delay = now()->addMinutes(10);
 
             Notification::route('mail', 'jacob.atam@gmail.com')
-            ->notify((new ProcessPayment())->delay($delay));
-            $job = new ProcessPayment();
-            $job->delay(now()->addMinutes(5));
-            dispatch($job);
+            ->notify((new SendAwaitingPayment())->delay($delay));
+            ProcessPayment::dispatch()->delay(now()->addMinutes(5));
             return response($transaction_log,200);
         }
         
