@@ -33,14 +33,16 @@ class Cart extends Model
 	];
 	
 	
-	public static function items_in_cart() {  
+	public static function items_in_cart() 
+	{  
 	    //SELECT ALL FROM THE USER ID && FROM THE USER COOKIE
 	    $cookie=\Cookie::get('cart');
 	    $cart = \DB::table('carts')->select('carts.*')->where(['remember_token'=>$cookie])->get();
 	    return null !== $cart ? $cart : null;
 	}
 
-	public static function all_items_in_cart() {  
+	public static function all_items_in_cart() 
+	{  
 	    //SELECT ALL FROM THE USER ID && FROM THE USER COOKIE
 		$cookie=\Cookie::get('cart');
 		$carts = Cart::with(["product_variation","product_variation.product","product_variation.product_variation_values"])->where(['carts.remember_token'=>$cookie])->get();
