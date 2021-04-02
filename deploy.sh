@@ -34,6 +34,8 @@ php artisan config:cache
 # Clear and cache views
 php artisan view:cache
 
+php artisan queue:restart
+
 # Install node modules
 #npm install
 
