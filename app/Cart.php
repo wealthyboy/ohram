@@ -70,9 +70,11 @@ class Cart extends Model
 		}
 	}
 
+
 	public function product(){
 	  	return $this->belongsTo('App\Product');
 	}
+
 
 	public function product_variation(){
 		return $this->belongsTo('App\ProductVariation');
@@ -84,20 +86,23 @@ class Cart extends Model
     }
 
   
-	public static function sum_items_in_cart() {   
+	public static function sum_items_in_cart() 
+	{   
 	   $cookie=\Cookie::get('cart'); 
        $total = \DB::table('carts')->select(\DB::raw('SUM(carts.total) as items_total'))->where('remember_token',$cookie)->get();
        return 	static::ConvertCurrencyRate($total = $total[0]->items_total);
 	}
 
 
-	public static function cart_number() { 
+	public static function cart_number() 
+	{ 
 		$cookie=\Cookie::get('cart');
 		$number_products_in_cart = \DB::table('carts')->select('carts.*')->where('remember_token',$cookie)->count();
 		return $number_products_in_cart;
 	}
 
-	public static function ConvertCurrencyRate($price){
+	public static function ConvertCurrencyRate($price)
+	{
       
 		$rate = Helper::rate();
 		if ($rate){
