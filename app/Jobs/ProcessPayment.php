@@ -100,7 +100,6 @@ class ProcessPayment implements ShouldQueue
                  // Show me the result
                 $json = json_decode($data, TRUE);
                 curl_close($ch); 
-
                 \Log::info($json);
  
                 //END CURL SESSION///////////////////////////////
