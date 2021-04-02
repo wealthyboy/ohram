@@ -60,7 +60,7 @@ class TransactionController extends Controller
             $transaction_log->save();
             $transaction_log->carts()->sync($carts->pluck('id')->toArray());
 
-            $delay = now()->addMinutes(10);
+            $delay = now()->addMinutes(5);
 
             Notification::route('mail', 'jacob.atam@gmail.com')
             ->notify((new SendAwaitingPayment())->delay($delay));
