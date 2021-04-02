@@ -30,7 +30,6 @@ class TransactionController extends Controller
             $request->session()->put('user_id', $cookie);
             $tl = TransactionLog::where('token',$cookie)->first();
             $carts =  Cart::all_items_in_cart();
-            dd($carts->pluck('id'));
 
             // if ($tl !== null) {
             //     $tl->status = 'Awaiting Payment Confirmation';
@@ -49,13 +48,12 @@ class TransactionController extends Controller
             $transaction_log->status = 'Awaiting Payment Confirmation';
             $transaction_log->user_id = request()->user()->id;
             $transaction_log->token = $cookie;
+            $transaction_log->shipping_id = null;
             $transaction_log->approved_amount =  $request->amount;
             $transaction_log->transaction_reference = $request->txref;
             $transaction_log->product_id = $request->productId;
             $transaction_log->save();
-            Cart::update([
-                'transaction_id' => $transaction_log
-            ]);
+            $transaction_log->carts(array_values($carts->pluck('id')));
             return response(null,200);
         }
         
