@@ -59,6 +59,7 @@ class CartController  extends Controller {
 					'quantity'   => $request->quantity,
 					'price'      => $price,
 					'total'      => $price * $request->quantity
+					'status'     => 'Pending'
 				]
 			);
 
@@ -72,6 +73,8 @@ class CartController  extends Controller {
 			$cart->quantity   = $request->quantity;
 			$cart->price      = $price;
 			$cart->total      = $price * $request->quantity;
+			$cart->status     = 'Pending';
+
 			$cart->remember_token =$cookie->getValue();
 			$cart->save();
 			$carts = Cart::all_items_in_cart();
