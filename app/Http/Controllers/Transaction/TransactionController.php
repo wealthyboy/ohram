@@ -8,6 +8,9 @@ use App\TransactionLog;
 use App\Cart;
 use Illuminate\Support\Facades\DB;
 use App\Jobs\ProcessPayment;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\ProcessPayment;
+
 
 
 
@@ -58,6 +61,10 @@ class TransactionController extends Controller
             $transaction_log->save();
             $transaction_log->carts()->sync($carts->pluck('id')->toArray());
 
+            $delay = now()->addMinutes(10);
+
+            Notification::route('mail', 'jacob.atam@gmail.com')
+            ->notify((new ProcessPayment())->delay($delay));
             ProcessPayment::dispatch()->delay(now()->addMinutes(5));
 
 
