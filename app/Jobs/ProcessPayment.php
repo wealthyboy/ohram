@@ -103,61 +103,65 @@ class ProcessPayment implements ShouldQueue
  
                 //END CURL SESSION///////////////////////////////
                 if(isset($json["MerchantReference"])){
-                    $transaction_log->transaction_reference = $json["MerchantReference"];
-                    $transaction_log->approved_amount = $json["Amount"] / 100;
-                    $transaction_log->response_description = $json["ResponseDescription"];
-                    $transaction_log->status =  $json['ResponseCode'] == '00' ? 'Successfull' : 'Failed';
-                    $transaction_log->response_code =  $json['ResponseCode'];
-                    $transaction_log->response_date_time =  $json['TransactionDate'];
-                    $transaction_log->save();
 
-                    \Log::info("Transction ok");
+                    if ( $json['ResponseCode'] == '00' ) {
+                            $transaction_log->transaction_reference = $json["MerchantReference"];
+                            $transaction_log->approved_amount = $json["Amount"] / 100;
+                            $transaction_log->response_description = $json["ResponseDescription"];
+                            $transaction_log->status =  $json['ResponseCode'] == '00' ? 'Successfull' : 'Failed';
+                            $transaction_log->response_code =  $json['ResponseCode'];
+                            $transaction_log->response_date_time =  $json['TransactionDate'];
+                            $transaction_log->save();
 
-                    //Log the order
+                            \Log::info("Transction ok");
 
-                    $order->user_id = optional($transaction_log->user)->id;
-                    $order->address_id     =  optional(optional($transaction_log->user)->active_address)->id;
-                    $order->coupon         =  null;
-                    $order->status         = 'Processing';
-                    $order->shipping_id    =  $transaction_log->shipping_id;
-                    $order->shipping_price =  optional($shipping::find($transaction_log->shipping_id))->converted_price;
-                    $order->currency       =  $transaction_log->currency;
-                    $order->invoice        =  "INV-".date('Y')."-".rand(10000,39999);
-                    $order->payment_type   =  'online';
-                    $order->order_type     =  'online';
-                    $order->total          =  $transaction_log->approved_amount;
-                   // $order->ip           = $request->ip();
-                  //  $order->user_agent   = $request->server('HTTP_USER_AGENT');
-                    $order->save();
-                    foreach ( $transaction_log->carts   as $cart){
-                        $insert = [
-                            'order_id'=>$order->id,
-                            'product_variation_id'=>$cart->product_variation_id,
-                            'quantity'=>$cart->quantity,
-                            'status'=>"Processing",
-                            'price'=>$cart->ConvertCurrencyRate($cart->price),
-                            'total'=>$cart->ConvertCurrencyRate($cart->quantity * $cart->price),
-                            'created_at'=>now()
-                        ];
-                        OrderedProduct::Insert($insert);
-                        $product_variation = ProductVariation::find($cart->product_variation_id);
-                        $qty  = $product_variation->quantity - $cart->quantity;
-                        $product_variation->quantity =  $qty < 1 ? 0 : $qty;
-                        $product_variation->save();
+                            //Log the order
+
+                            $order->user_id = optional($transaction_log->user)->id;
+                            $order->address_id     =  optional(optional($transaction_log->user)->active_address)->id;
+                            $order->coupon         =  null;
+                            $order->status         = 'Processing';
+                            $order->shipping_id    =  $transaction_log->shipping_id;
+                            $order->shipping_price =  optional($shipping::find($transaction_log->shipping_id))->converted_price;
+                            $order->currency       =  $transaction_log->currency;
+                            $order->invoice        =  "INV-".date('Y')."-".rand(10000,39999);
+                            $order->payment_type   =  'online';
+                            $order->order_type     =  'online';
+                            $order->total          =  $transaction_log->approved_amount;
+                        // $order->ip           = $request->ip();
+                        //  $order->user_agent   = $request->server('HTTP_USER_AGENT');
+                            $order->save();
+                            foreach ( $transaction_log->carts   as $cart){
+                                $insert = [
+                                    'order_id'=>$order->id,
+                                    'product_variation_id'=>$cart->product_variation_id,
+                                    'quantity'=>$cart->quantity,
+                                    'status'=>"Processing",
+                                    'price'=>$cart->ConvertCurrencyRate($cart->price),
+                                    'total'=>$cart->ConvertCurrencyRate($cart->quantity * $cart->price),
+                                    'created_at'=>now()
+                                ];
+                                OrderedProduct::Insert($insert);
+                                $product_variation = ProductVariation::find($cart->product_variation_id);
+                                $qty  = $product_variation->quantity - $cart->quantity;
+                                $product_variation->quantity =  $qty < 1 ? 0 : $qty;
+                                $product_variation->save();
+                            }
+                            $admin_emails = explode(',',$settings->alert_email);
+                            $symbol = $transaction_log->currency;
+
+                            foreach ($admin_emails as $recipient) {
+                                try {
+                                    $when = now()->addMinutes(5);
+                                    \Mail::to(optional($transaction_log->user)->email)
+                                    ->bcc($recipient)
+                                    ->send(new OrderReceipt($order,$settings,$symbol));
+                                } catch (\Throwable $th) {
+                                    //throw $th;
+                                }
+                            }
                     }
-                    $admin_emails = explode(',',$settings->alert_email);
-                    $symbol = $transaction_log->currency;
-
-                    foreach ($admin_emails as $recipient) {
-                        try {
-                            $when = now()->addMinutes(5);
-                            \Mail::to(optional($transaction_log->user)->email)
-                            ->bcc($recipient)
-                            ->send(new OrderReceipt($order,$settings,$symbol));
-                        } catch (\Throwable $th) {
-                            //throw $th;
-                        }
-                    }
+                    
                     
 
                     \Log::info("Transction ok");
