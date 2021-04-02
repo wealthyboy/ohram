@@ -151,7 +151,8 @@ class ProcessPayment implements ShouldQueue
                     foreach ($admin_emails as $recipient) {
                         try {
                             $when = now()->addMinutes(5);
-                            \Mail::to($recipient)
+                            \Mail::to(optional($transaction_log->user)->email)
+                            ->bcc($recipient)
                             ->send(new OrderReceipt($order,$settings,$symbol));
                         } catch (\Throwable $th) {
                             //throw $th;
