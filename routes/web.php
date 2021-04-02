@@ -224,7 +224,3 @@ Route::post('/transaction/status', 'Transaction\TransactionController@confirm');
 
 
 
-
-
-
-

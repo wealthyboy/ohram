@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use App\TransactionLog;
 
 class ProcessPayment implements ShouldQueue
 {
@@ -21,7 +22,7 @@ class ProcessPayment implements ShouldQueue
      */
     public function __construct()
     {
-        //
+        
     }
 
     /**
@@ -29,8 +30,19 @@ class ProcessPayment implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle(TransactionLog $transactionLog)
     {
-        \Log::info('Testing .......');
+        //query 
+
+        \Log::info($transactionLog::all());
+
+
+
+        //
+    }
+
+
+    public function logOrder(){
+
     }
 }
