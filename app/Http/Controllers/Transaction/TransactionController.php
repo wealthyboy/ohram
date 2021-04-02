@@ -62,7 +62,7 @@ class TransactionController extends Controller
 
 
             //
-            return response($users,200);
+            return response($transaction_log,200);
         }
         
         return response(null,404);
