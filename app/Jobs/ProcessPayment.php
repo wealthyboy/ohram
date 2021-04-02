@@ -107,6 +107,8 @@ class ProcessPayment implements ShouldQueue
                     $transaction_log->response_code =  $json['ResponseCode'];
                     $transaction_log->response_date_time =  $json['TransactionDate'];
                     $transaction_log->save();
+                    \Log::info("Transction failed");
+
                 }
 
             }
