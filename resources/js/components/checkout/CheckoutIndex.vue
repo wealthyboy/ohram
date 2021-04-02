@@ -501,7 +501,7 @@ export default {
               .catch((error) => {
                 console.log(error);
               });
-              context.paymentIsComplete = true
+              //context.paymentIsComplete = true
 
           } else {
             context.failedStatus = response.data.status;

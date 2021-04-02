@@ -153,6 +153,13 @@ class TransactionController extends Controller
                     $transaction_log->response_date_time =  $json['TransactionDate'];
                     $transaction_log->save();
                 }
+                //cd /etc/supervisor/conf.d
+                //nano  ~/ohram.org/storage/logs/worker.log
+               // sudo supervisorctl status process-payment:*
+
+
+
+
 
 
 			    return back();
