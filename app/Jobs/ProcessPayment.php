@@ -100,7 +100,6 @@ class ProcessPayment implements ShouldQueue
 
                     //Log the order
 
-
                 }else{
                     $transaction_log->response_description = $json["ResponseDescription"];
                     $transaction_log->status =  'Transaction incomplete';
