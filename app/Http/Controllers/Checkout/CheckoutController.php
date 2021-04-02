@@ -63,10 +63,10 @@ class CheckoutController extends Controller
 	public function confirm(Request $request,OrderedProduct $ordered_product,Order $order) 
 	{ 
        
-		if ($request->isMethod('post')){
-			\Log::info($request->all());
-            return redirect('/checkout');
-		}
+		// if ($request->isMethod('post')){
+		// 	\Log::info($request->all());
+        //     return redirect('/checkout');
+		// }
 		
 		$rate = Helper::rate();
 		$user  =  \Auth::user();
@@ -102,6 +102,8 @@ class CheckoutController extends Controller
 			$qty  = $product_variation->quantity - $cart->quantity;
 			$product_variation->quantity =  $qty < 1 ? 0 : $qty;
 			$product_variation->save();
+			$cart->status = "Paid & Confirmed";
+			$cart->save();
 		}
 		$admin_emails = explode(',',$this->settings->alert_email);
 		$symbol = Helper::getCurrency();

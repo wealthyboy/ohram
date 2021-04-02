@@ -14,4 +14,9 @@ class TransactionLog extends Model
 		  return $this->belongsToMany('App\Cart');
     }
 
+
+    public function pending_carts(){
+		  return $this->belongsToMany('App\Cart')->where("status",'Pending');
+    }
+
 }

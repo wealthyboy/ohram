@@ -49,7 +49,7 @@ class ProcessPayment implements ShouldQueue
     {
         //query 
 
-        $transactions = $transactionLog::where('status', "Awaiting Payment Confirmation")->get();
+        $transactions = $transactionLog::has("pending_carts")->where('status', "Awaiting Payment Confirmation")->get();
 
         $prudid = 22125466;
 
@@ -133,7 +133,7 @@ class ProcessPayment implements ShouldQueue
                         // $order->ip           = $request->ip();
                         //  $order->user_agent   = $request->server('HTTP_USER_AGENT');
                             $order->save();
-                            foreach ( $transaction_log->carts   as $cart){
+                            foreach ( $transaction_log->pending_carts   as $cart){
                                 $insert = [
                                     'order_id'=>$order->id,
                                     'product_variation_id'=>$cart->product_variation_id,
@@ -147,27 +147,26 @@ class ProcessPayment implements ShouldQueue
                                 $product_variation = ProductVariation::find($cart->product_variation_id);
                                 $qty  = $product_variation->quantity - $cart->quantity;
                                 $product_variation->quantity =  $qty < 1 ? 0 : $qty;
+
                                 $product_variation->save();
+                                $cart->status = "Paid & Confirmed";
+                                $cart->save();
                             }
                             $admin_emails = explode(',',$settings->alert_email);
                             $symbol = $transaction_log->currency;
 
-                            foreach ($admin_emails as $recipient) {
-                                try {
-                                    $when = now()->addMinutes(5);
-                                    \Mail::to(optional($transaction_log->user)->email)
-                                    ->bcc($recipient)
-                                    ->send(new OrderReceipt($order,$settings,$symbol));
-                                } catch (\Throwable $th) {
-                                    //throw $th;
-                                }
+                            try {
+                                $when = now()->addMinutes(5);
+                                \Mail::to(optional($transaction_log->user)->email)
+                                ->bcc($admin_emails[0])
+                                ->send(new OrderReceipt($order,$settings,$symbol));
+                            } catch (\Throwable $th) {
+                                //throw $th;
                             }
+                            
                     }
                     
-                    
-
                     \Log::info("Transction ok");
-
 
                 }else{
                     $transaction_log->response_description = $json["ResponseDescription"];
@@ -176,7 +175,7 @@ class ProcessPayment implements ShouldQueue
                     $transaction_log->response_date_time =  $json['TransactionDate'];
                     $transaction_log->save();
                     //Mail the user 
-                    
+
                     \Log::info("Transction failed");
 
                 }

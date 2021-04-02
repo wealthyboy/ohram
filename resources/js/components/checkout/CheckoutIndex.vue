@@ -478,30 +478,31 @@ export default {
         hash: Sha512.hash(signatureCipher),
         onComplete: function (paymentResponse) {
           if (paymentResponse.resp == "00") {
-            // let link =
-            //   site_redirect_url +
-            //   "?txref=" +
-            //   paymentResponse.txnref +
-            //   "&rr=" +
-            //   paymentResponse.retRef +
-            //   "&ship_id=" +
-            //   shipping_id +
-            //   "&desc=" +
-            //   paymentResponse.desc +
-            //   "&amount=" +
-            //   paymentResponse.apprAmt;
+            let link =
+              site_redirect_url +
+              "?txref=" +
+              paymentResponse.txnref +
+              "&rr=" +
+              paymentResponse.retRef +
+              "&ship_id=" +
+              shipping_id +
+              "&desc=" +
+              paymentResponse.desc +
+              "&amount=" +
+              paymentResponse.apprAmt;
 
+
+              axios
+              .get(link)
+              .then((response) => {
+                context.paymentIsComplete = true;
+                $(".checkout-overlay").addClass("d-none");
+              })
+              .catch((error) => {
+                console.log(error);
+              });
               context.paymentIsComplete = true
 
-              // axios
-              // .get(link)
-              // .then((response) => {
-              //   context.paymentIsComplete = true;
-              //   $(".checkout-overlay").addClass("d-none");
-              // })
-              // .catch((error) => {
-              //   console.log(error);
-              // });
           } else {
             context.failedStatus = response.data.status;
             context.order_text = "Place Order";
