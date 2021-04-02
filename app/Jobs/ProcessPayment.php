@@ -116,7 +116,7 @@ class ProcessPayment implements ShouldQueue
                     //Log the order
 
                     $order->user_id = $transaction_log->id;
-                    $order->address_id     =  $user->active_address->id;
+                    $order->address_id     =  $transaction_log->user->active_address->id;
                     $order->coupon         =  null;
                     $order->status         = 'Processing';
                     $order->shipping_id    =  $transaction_log->shipping_id;
