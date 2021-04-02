@@ -505,22 +505,21 @@ export default {
               //context.paymentIsComplete = true
 
           } else {
-            context.failedStatus = response.data.status;
             context.order_text = "Place Order";
-          //   axios
-          //     .post("/transaction/status", {
-          //       productId: product_id,
-          //       reqRef: reqRef,
-          //       amount: amount,
-          //       hash: Sha512.hash(signatureCipher),
-          //     })
-          //     .then((response) => {
-          //       context.failedStatus = response.data.status;
-          //       $(".checkout-overlay").addClass("d-none");
-          //     })
-          //     .catch((error) => {
-          //       console.log(error);
-          //     });
+            axios
+              .post("/transaction/status", {
+                productId: product_id,
+                reqRef: reqRef,
+                amount: amount,
+                hash: Sha512.hash(signatureCipher),
+              })
+              .then((response) => {
+                context.failedStatus = response.data.status;
+                $(".checkout-overlay").addClass("d-none");
+              })
+              .catch((error) => {
+                console.log(error);
+              });
           }
         },
       });
