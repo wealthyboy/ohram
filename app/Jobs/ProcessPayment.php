@@ -12,6 +12,8 @@ class ProcessPayment implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+
+
     /**
      * Create a new job instance.
      *
@@ -29,6 +31,6 @@ class ProcessPayment implements ShouldQueue
      */
     public function handle()
     {
-        //
+        \Log::info('Testing .......');
     }
 }

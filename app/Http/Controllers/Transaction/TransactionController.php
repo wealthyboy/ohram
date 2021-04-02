@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\TransactionLog;
 use App\Cart;
 use Illuminate\Support\Facades\DB;
+use App\Jobs\ProcessPayment;
 
 
 
@@ -56,9 +57,8 @@ class TransactionController extends Controller
             $transaction_log->product_id = $request->productId;
             $transaction_log->save();
             $transaction_log->carts()->sync($carts->pluck('id')->toArray());
-            $users = DB::table('cart_transaction_log')->get();
 
-
+            ProcessPayment::dispatch()->delay(now()->addMinutes(5));
 
 
             //
