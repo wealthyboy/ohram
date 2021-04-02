@@ -175,9 +175,11 @@ Route::group(['middleware' => 'currencyByIp'], function(){
     Route::get('cart/all/in/cart',                'Cart\CartController@all_in_cart');
     Route::get('reviews/{product}',               'Api\Reviews\ReviewsController@index');
     Route::post('reviews/store',                  'Api\Reviews\ReviewsController@store');
-    Route::post('/load-login-modal', function ( ) { 
-        return view('modal.login.modal_body');
-    });
+    Route::post('/load-login-modal',              'Auth\Login\LoginController@loadModal');
+
+
+
+
 
     
     
@@ -218,6 +220,11 @@ Route::get('/requery',            'Requery\RequeryController@index');
 Route::post('/transaction/status', 'Transaction\TransactionController@confirm');
 
 
+
+
+
+
+sudo supervisorctl start send-cartmails:*
 
 
 
