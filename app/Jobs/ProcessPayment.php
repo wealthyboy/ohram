@@ -10,6 +10,19 @@ use Illuminate\Queue\SerializesModels;
 use App\TransactionLog;
 use Throwable;
 
+use App\Order;
+use App\OrderedProduct;
+use App\Http\Helper;
+use App\Shipping;
+use App\ProductVariation;
+use App\SystemSetting;
+use App\Mail\OrderReceipt;
+
+
+
+
+
+
 
 class ProcessPayment implements ShouldQueue
 {
@@ -32,13 +45,15 @@ class ProcessPayment implements ShouldQueue
      *
      * @return void
      */
-    public function handle(TransactionLog $transactionLog)
+    public function handle(ProductVariation $product_variation, SystemSetting $settings, TransactionLog $transactionLog, Helper $helper, OrderedProduct $ordered_product,Order $order,Shipping $shipping)
     {
         //query 
 
         $transactions = $transactionLog::where('status', "Awaiting Payment Confirmation")->get();
 
         $prudid = 22125466;
+
+        $settings = $settings::first();
 
 		foreach ($transactions as $transaction_log) {
             $parameters = array(
@@ -99,6 +114,50 @@ class ProcessPayment implements ShouldQueue
                     \Log::info("Transction ok");
 
                     //Log the order
+
+                    $order->user_id = $transaction_log->id;
+                    $order->address_id     =  $user->active_address->id;
+                    $order->coupon         =  null;
+                    $order->status         = 'Processing';
+                    $order->shipping_id    =  $transaction_log->shipping_id;
+                    $order->shipping_price =  optional($shipping::find($transaction_log->shipping_id))->converted_price;
+                    $order->currency       =  'NGN';
+                    $order->invoice        =  "INV-".date('Y')."-".rand(10000,39999);
+                    $order->payment_type   = 'Card online';
+                    $order->order_type     = 'online';
+                    $order->total          = "100000";
+                   // $order->ip             = $request->ip();
+                  //  $order->user_agent     = $request->server('HTTP_USER_AGENT');
+                    $order->save();
+                    foreach ( $transaction_log->carts   as $cart){
+                        $insert = [
+                            'order_id'=>$order->id,
+                            'product_variation_id'=>$cart->product_variation_id,
+                            'quantity'=>$cart->quantity,
+                            'status'=>"Processing",
+                            'price'=>$cart->ConvertCurrencyRate($cart->price),
+                            'total'=>$cart->ConvertCurrencyRate($cart->quantity * $cart->price),
+                            'created_at'=>now()
+                        ];
+                        OrderedProduct::Insert($insert);
+                        $product_variation = ProductVariation::find($cart->product_variation_id);
+                        $qty  = $product_variation->quantity - $cart->quantity;
+                        $product_variation->quantity =  $qty < 1 ? 0 : $qty;
+                        $product_variation->save();
+                    }
+                   // $admin_emails = explode(',',$settings->alert_email);
+                    $symbol = 'NGN';
+                    try {
+                        $when = now()->addMinutes(5);
+                        \Mail::to($transaction_log->user->email)
+                        ->bcc("jacob.atam@gmail.com")
+                        ->send(new OrderReceipt($order,$settings,$symbol));
+                    } catch (\Throwable $th) {
+                        //throw $th;
+                    }
+
+                    \Log::info("Transction ok");
+
 
                 }else{
                     $transaction_log->response_description = $json["ResponseDescription"];
