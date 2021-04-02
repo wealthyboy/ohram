@@ -477,6 +477,7 @@ export default {
         currency: context.currencyCode(),
         hash: Sha512.hash(signatureCipher),
         onComplete: function (paymentResponse) {
+          console.log(paymentResponse)
           if (paymentResponse.resp == "00") {
             let link =
               site_redirect_url +
