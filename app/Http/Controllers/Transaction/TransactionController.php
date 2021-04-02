@@ -54,6 +54,8 @@ class TransactionController extends Controller
             $transaction_log->product_id = $request->productId;
             $transaction_log->save();
             $transaction_log->carts(array_values($carts->pluck('id')));
+
+            //
             return response(null,200);
         }
         
