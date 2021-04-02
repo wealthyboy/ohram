@@ -55,7 +55,7 @@ class TransactionController extends Controller
             $transaction_log->transaction_reference = $request->txref;
             $transaction_log->product_id = $request->productId;
             $transaction_log->save();
-            $transaction_log->carts($carts->pluck('id')->toArray());
+            $transaction_log->carts()->sync($carts->pluck('id')->toArray());
             $users = DB::table('cart_transaction_log')->get();
 
 
