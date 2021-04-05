@@ -8,7 +8,7 @@
             
             <div class="col-12">
                 <h5 class="d-inline-block text-uppercase mb-0"><b><i class="fas fa-money-check"></i>
-                    USE OHRAMXMAS and get 10% off when you shop over 250k</b>
+                    First ever BUY 2 and get a pack of 1 free 14 day teatox.</b>
                 </h5>
             </div>
 

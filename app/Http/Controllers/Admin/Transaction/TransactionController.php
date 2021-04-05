@@ -89,7 +89,7 @@ class TransactionController extends Controller
 
                 
                 //END CURL SESSION///////////////////////////////
-                if(isset($json["MerchantReference"])){
+                if( isset($json["ResponseCode"]) &&  $json['ResponseCode'] == '00' ){
                     $transaction_log->transaction_reference = $json["MerchantReference"];
                     $transaction_log->approved_amount = $json["Amount"] / 100;
                     $transaction_log->response_description = $json["ResponseDescription"];

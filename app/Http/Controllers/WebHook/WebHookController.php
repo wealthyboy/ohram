@@ -34,9 +34,9 @@ class WebHookController extends Controller
 
         \Log::info($request->all());
         return;
-        if ( !array_key_exists('x-paystack-signature', $_SERVER) ) {
-            return;
-        } 
+        // if ( !array_key_exists('x-paystack-signature', $_SERVER) ) {
+        //     return;
+        // } 
 
 
         try {
