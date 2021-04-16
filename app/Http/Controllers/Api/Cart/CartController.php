@@ -60,6 +60,7 @@ class CartController  extends Controller {
 					'product_variation_id' => $request->product_variation_id,
 					'quantity'   => $request->quantity,
 					'price'      => $price,
+					'sale_price' => $product_variation->discounted_price,
 					'total'      => $price * $request->quantity,
 					'status'     => 'Pending'
 				]
@@ -91,6 +92,7 @@ class CartController  extends Controller {
 						'image'        => optional($cart->product_variation)->image_to_show,
 						'quantity'     => $cart->quantity,
 						'price'        => $cart->converted_price,
+						'sale_price'   => $cart->converted_sale_price,
 						'product_name' => optional($cart->product_variation)->product->product_name,
 						'variations'   => optional($cart->product_variation)->product_variation_values->pluck('name')->toArray(),
 					]

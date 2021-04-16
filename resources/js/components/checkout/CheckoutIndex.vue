@@ -101,13 +101,13 @@
                                     <div class="product-item-prices d-flex"  v-if="cart.product_variation.discounted_price">
                                         <div class="product--price--amount">
                                             <span class="retail--title text-gold">SALE PRICE</span>
-                                            <span class="product--price text-danger">{{ meta.currency }}{{ cart.product_variation.discounted_price | priceFormat }}</span>
+                                            <span class="product--price text-danger">{{ meta.currency }}{{ cart.sale_price | priceFormat }}</span>
                                             <span class="retail--title">{{ cart.product_variation.percentage_off }}% off</span>
                                         </div>
 
                                         <div class="product--price--amount retail ml-5 ">
                                             <span class="retail--title text-gold">PRICE</span>
-                                            <span class="product--price retail--price ">{{ meta.currency }}{{ cart.product_variation.price | priceFormat }}</span>
+                                            <span class="product--price retail--price ">{{ meta.currency }}{{ cart.price | priceFormat }}</span>
                                             <span class="retail--title"></span>
                                         </div>
                                     </div>

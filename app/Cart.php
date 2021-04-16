@@ -23,12 +23,14 @@ class Cart extends Model
 			'total',
 			'price',
 			'product_variation_id',
-			'status'
+			'status',
+			'sale_price'
 		];
 
 	public $appends = [
 		'sub_total',
 		'converted_price',
+		'converted_sale_price',
 		'customer_price',
 		'cart_total'
 	];

@@ -22,6 +22,7 @@ class CartIndexResource extends JsonResource
             'image' => optional($this->product_variation)->image_tn,
             'quantity' => $this->quantity,
             'price' => Cart::ConvertCurrencyRate($this->price),
+            'sale_price' => Cart::ConvertCurrencyRate($this->sale_price),
             'currency' => optional($this->product_variation)->currency,
             'product_name' => optional(optional($this->product_variation)->product)->product_name,
             'variations' => optional(optional($this->product_variation)->product_variation_values)->pluck('name')->toArray(),
