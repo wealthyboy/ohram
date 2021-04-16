@@ -60,7 +60,7 @@ class CartController  extends Controller {
 					'product_variation_id' => $request->product_variation_id,
 					'quantity'   => $request->quantity,
 					'price'      => $product_variation->price,
-					'sale_price' => $product_variation->sale_price,
+					'sale_price' => $this->getDiscountedPrice($product_variation),
 					'total'      => $price * $request->quantity,
 					'status'     => 'Pending'
 				]
@@ -75,7 +75,7 @@ class CartController  extends Controller {
 			$cart->product_variation_id = $request->product_variation_id;
 			$cart->quantity   = $request->quantity;
 			$cart->price      = $product_variation->price;
-			$cart->sale_price = $product_variation->sale_price;
+			$cart->sale_price = $this->getDiscountedPrice($product_variation);
 			$cart->total      = $price * $request->quantity;
 			$cart->status     = 'Pending';
 
