@@ -59,8 +59,8 @@ class CartController  extends Controller {
 				[
 					'product_variation_id' => $request->product_variation_id,
 					'quantity'   => $request->quantity,
-					'price'      => $price,
-					'sale_price' => $product_variation->discounted_price,
+					'price'      => $product_variation->price,
+					'sale_price' => $product_variation->sale_price,
 					'total'      => $price * $request->quantity,
 					'status'     => 'Pending'
 				]
@@ -74,7 +74,8 @@ class CartController  extends Controller {
 			$cookie = cookie('cart',session()->get('cart'), 60*60*7);
 			$cart->product_variation_id = $request->product_variation_id;
 			$cart->quantity   = $request->quantity;
-			$cart->price      = $price;
+			$cart->price      = $product_variation->price;
+			$cart->sale_price = $product_variation->sale_price;
 			$cart->total      = $price * $request->quantity;
 			$cart->status     = 'Pending';
 

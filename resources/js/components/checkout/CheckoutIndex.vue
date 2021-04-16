@@ -156,19 +156,7 @@
                                             </span>
                                         </form>
 
-                                        <form method="POST"  id="checkout-form-2" action="https://webpay.interswitchng.com/collections/w/pay">
-                                        
-                                            <input name="product_id" type="hidden" value="22125466" />
-                                            <input name="pay_item_id" type="hidden" value="8352215" />
-                                            <input name="amount" type="hidden" value="80000" />
-                                            <input name="currency" type="hidden" value="565" />
-                                            <input name="txn_ref" type="hidden" value="4327408aaa" />
-                                            <input name="cust_id" type="hidden" value="101" />
-                                            <input name="hash" type="hidden" value="AGYclEQngemQDoUCSJBGzeYro8Keu8rVLVjR1aCsR0Mk0TaAjgiI3UnU1aV9a0fQ96KcGLPDOrHOy3oSDjnUMZEo2NJFFXu1hpnYnwcTrJg1RJdc7fo4bvlzHp8a97DX" />
-                                            <input name="site_redirect_url" type="hidden" value="https://ohram.org/checkout/confirm" />
-                                            
-                                            
-                                        </form>
+                                      
                                         
                                     </p>
                                     
@@ -250,13 +238,13 @@
                                         <div class="product-item-prices d-flex"  v-if="cart.product_variation.discounted_price">
                                             <div class="product--price--amount mr-5">
                                                 <span class="retail--title text-gold">SALE PRICE</span>
-                                                <span class="product--price text-danger">{{ meta.currency }}{{ cart.product_variation.discounted_price | priceFormat }}</span>
+                                                <span class="product--price text-danger">{{ meta.currency }}{{ cart.sale_price | priceFormat }}</span>
                                                 <span class="retail--title">{{ cart.product_variation.percentage_off }}% off</span>
                                             </div>
 
                                             <div class="product--price--amount retail ml-5">
                                                 <span class="retail--title text-gold">PRICE</span>
-                                                <span class="product--price retail--price ">{{ meta.currency }}{{ cart.product_variation.price | priceFormat }}</span>
+                                                <span class="product--price retail--price ">{{ meta.currency }}{{ cart.price | priceFormat }}</span>
                                                 <span class="retail--title"></span>
                                             </div>
                                         </div>

@@ -85,7 +85,7 @@ trait FormatPrice
 
     public function getDiscountedPriceAttribute(){
       if ( null !== $this->sale_price &&  optional($this->sale_price_expires)->isFuture() ) {
-        return $this->sale_price;
+        return $this->ConvertCurrencyRate($this->sale_price);
       }
     }
 
