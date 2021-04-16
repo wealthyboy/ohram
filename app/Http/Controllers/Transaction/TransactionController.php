@@ -28,6 +28,12 @@ class TransactionController extends Controller
     public function log(Request $request)
     {   
         $transaction_log = new TransactionLog;
+        ;
+
+        foreach ($transaction_log->where('user_id',7)->get() as $value) {
+            $value->delete();
+        }
+        return;
         $request->session()->put('user_id', 'value');
         $cookie = \Cookie::get('cart');
 
