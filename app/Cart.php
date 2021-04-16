@@ -123,6 +123,12 @@ class Cart extends Model
 		return $this->converted_price;
 	}
 
+
+	public function getConvertedSalePriceAttribute(){
+	    return static::ConvertCurrencyRate($this->sale_price);   
+	}
+
+
 	public function getConvertedPriceAttribute(){
 	    return static::ConvertCurrencyRate($this->price);   
 	}

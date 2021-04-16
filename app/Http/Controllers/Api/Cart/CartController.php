@@ -50,6 +50,8 @@ class CartController  extends Controller {
 			$cart->user_id    = $request->user()->id;
 		}
 		$price = $product_variation->discounted_price ?? $product_variation->price;
+
+
 		if (\Cookie::get('cart') !== null) {
 			$remember_token  = \Cookie::get('cart');
 			$result = $cart->updateOrCreate(
