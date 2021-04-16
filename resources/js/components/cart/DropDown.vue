@@ -13,7 +13,7 @@
                             </div>
                             <span class="cart-product-info">
                                 <span class="cart-product-qty">{{ cart.quantity }} </span>
-                                x <span class="cart-product-amount">{{ cart.currency }}</span>{{ cart.price | priceFormat }}
+                                x <span class="cart-product-amount">{{ cart.currency }}</span>{{ cart.sale_price || cart.price | priceFormat }}
                             </span>
                             <p v-if="cart.variations.length"> {{ cart.variations.toString() }} </p>
                         </div><!-- End .product-details -->
