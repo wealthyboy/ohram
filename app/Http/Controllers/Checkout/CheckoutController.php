@@ -88,13 +88,14 @@ class CheckoutController extends Controller
 		$order->user_agent     = $request->server('HTTP_USER_AGENT');
 		$order->save();
 		foreach ( $carts   as $cart){
+			$price = $cart->sale_price ?? $cart->price;
 			$insert = [
 				'order_id'=>$order->id,
 				'product_variation_id'=>$cart->product_variation_id,
 				'quantity'=>$cart->quantity,
 				'status'=>"Processing",
-				'price'=>$cart->ConvertCurrencyRate($cart->price),
-				'total'=>$cart->ConvertCurrencyRate($cart->quantity * $cart->price),
+				'price'=>$cart->ConvertCurrencyRate($price),
+				'total'=>$cart->ConvertCurrencyRate($cart->quantity * $price),
 				'created_at'=>\Carbon\Carbon::now()
 			];
 			OrderedProduct::Insert($insert);

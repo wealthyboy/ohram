@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\TransactionLog;
 use App\Cart;
+use App\Http\Helper;
+
 use App\Jobs\ProcessPayment;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\SendAwaitingPayment;
@@ -53,6 +55,10 @@ class TransactionController extends Controller
             //     return response(null,200);
             // }
 
+            $transaction_log->product_id = $request->productId;
+            $rate  = Helper::rate();
+            
+
             $transaction_log->status = 'Awaiting Payment Confirmation';
             $transaction_log->user_id = request()->user()->id;
             $transaction_log->token = $cookie;
@@ -62,6 +68,7 @@ class TransactionController extends Controller
             $transaction_log->approved_amount =  $request->amount;
             $transaction_log->transaction_reference = $request->txref;
             $transaction_log->product_id = $request->productId;
+            $transaction_log->rate = $rate  ? $rate->rate : 1;
             $transaction_log->save();
             $transaction_log->carts()->sync($carts->pluck('id')->toArray());
 

@@ -128,13 +128,14 @@ class ProcessPayment implements ShouldQueue
                     $order->total          =  $transaction_log->approved_amount;
                     $order->save();
                     foreach ( $transaction_log->pending_carts   as $cart){
+                        $price = $cart->sale_price ?? $cart->price;
                         $insert = [
                             'order_id'=>$order->id,
                             'product_variation_id'=>$cart->product_variation_id,
                             'quantity'=>$cart->quantity,
                             'status'=>"Processing",
-                            'price'=>$cart->ConvertCurrencyRate($cart->price),
-                            'total'=>$cart->ConvertCurrencyRate($cart->quantity * $cart->price),
+                            'price'=> round(($price * $transaction_log->rate),0),
+                            'total'=>$cart->ConvertCurrencyRate($cart->quantity * round(($price * $transaction_log->rate),0)),
                             'created_at'=>now()
                         ];
                         OrderedProduct::Insert($insert);

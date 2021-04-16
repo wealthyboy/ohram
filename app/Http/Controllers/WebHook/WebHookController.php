@@ -63,7 +63,7 @@ class WebHookController extends Controller
                     'product_variation_id'=>$cart->product_variation_id,
                     'quantity'=>$cart->quantity,
                     'status'=>"Processing",
-                    'price'=>$cart->ConvertCurrencyRate($cart->price),
+                    'price'=>$cart->ConvertCurrencyRate($cart->sale_price) ?? $cart->ConvertCurrencyRate($cart->price),
                     'total'=>$cart->ConvertCurrencyRate($cart->quantity * $cart->price),
                     'created_at'=>\Carbon\Carbon::now()
                 ];
