@@ -49,7 +49,7 @@ class CartController  extends Controller {
 		{   
 			$cart->user_id    = $request->user()->id;
 		}
-		$price = $product_variation->sale_price ?? $product_variation->price;
+		$price = $this->getDiscountedPrice($product_variation) ?? $product_variation->price;
 
 
 		if (\Cookie::get('cart') !== null) {
@@ -107,6 +107,14 @@ class CartController  extends Controller {
 			])->withCookie($cookie);
 		}
     }
+
+
+	public function getDiscountedPrice($prod){
+		if ( null !== $prod->sale_price &&  optional($prod->sale_price_expires)->isFuture() ) {
+		  return $prod->sale_price;
+		}
+		return null;
+	  }
 
 
 	public function loadCart(Request $request){
