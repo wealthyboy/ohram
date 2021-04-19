@@ -972,7 +972,7 @@ export default {
       this.loading = true;
       this.addProductToCart({
         product_variation_id: this.product_variation_id,
-        quantity: 1,
+        quantity: qty,
       })
         .then(() => {
           this.cText = "Add To Cart";
