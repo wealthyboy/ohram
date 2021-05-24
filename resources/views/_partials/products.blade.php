@@ -14,6 +14,12 @@
                     <div  class="product-label label-sale">-{{ $product->default_percentage_off }}%</div>
                 </div>
                 @endif
+
+                @if(!$product->qty)
+                <div class="label-group">
+                    <div  class="product-label label-sale">Sold Out</div>
+                </div>
+                @endif
                 <div class="btn-icon-group"></div>
                 @if($product->extra_percent)
                   <a href="" class="btn-quickview" title="Quick View">Extra {{ $product->extra_percent }}% OFF</a>
