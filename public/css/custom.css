@@ -488,11 +488,12 @@ div.items input[type="file"] {
 .product-default .sold-out .product-label.label-sale {
   background-color: "green";
   font-size: 1rem;
+  line-height: 5;
 }
 
 .product-default .sold-out .product-label {
   border-radius: 50%;
-  height: 50px;
+  height: 63px;
 }
 
 .product-share {
