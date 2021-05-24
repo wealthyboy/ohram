@@ -479,6 +479,22 @@ div.items input[type="file"] {
   font-size: 2rem;
 }
 
+.product-default .sold-out {
+  position: "absolute";
+  top: 0.8rem;
+  right: 0.8rem;
+}
+
+.product-default .sold-out .product-label.label-sale {
+  background-color: "green";
+  font-size: 1rem;
+}
+
+.product-default .sold-out .product-label {
+  border-radius: 50%;
+  height: 50px;
+}
+
 .product-share {
   display: block;
   color: #333;
