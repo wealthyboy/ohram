@@ -16,7 +16,7 @@
                 @endif
 
                 @if(!$product->qty)
-                <div class="label-group">
+                <div class="label-group sold-out">
                     <div  class="product-label label-sale">Sold Out</div>
                 </div>
                 @endif
