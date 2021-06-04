@@ -92,6 +92,7 @@
     <a id="scroll-top" href="#top" title="Top" role="button"><i class="icon-angle-up"></i></a>
     <script src="/js/Sha512.js" type="text/javascript"></script>
 
+    <script src="https://js.paystack.co/v1/inline.js" type="text/javascript"></script>
 
 	<!-- Plugins JS File -->
     <script src="/js/checkout.js?version={{ str_random(6) }}" type="text/javascript"></script>
