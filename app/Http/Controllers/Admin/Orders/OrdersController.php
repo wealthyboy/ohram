@@ -29,11 +29,7 @@ class OrdersController extends Controller{
 	
 		$orders = Order::orderBy('created_at','desc')->get();
 
-		$o = Order::where('user_id',7)->get();
-
-		foreach($o as $l){
-          $l->delete();
-		}
+		
 
         return view('admin.orders.index',compact('orders'));
     }
