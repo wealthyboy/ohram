@@ -575,7 +575,7 @@ export default {
               shipping_price: context.shipping_price,
               cart: cartIds,
               total: context.amount,
-              coupon: 'ujikij',
+              coupon: context.coupon_code ,
 
             },
           ],
