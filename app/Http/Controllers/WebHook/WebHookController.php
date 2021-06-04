@@ -57,7 +57,7 @@ class WebHookController extends Controller
         
             $order->user_id = $user->id;
             $order->address_id     =  optional($user->active_address)->id;
-            $order->coupon         =  isset($input['coupon']) ? $input['coupon'] : null;
+            $order->coupon         =  !empty($input['coupon']) ? $input['coupon'] : null;
             $order->status         = 'Processing';
             $order->shipping_id    =  $input['shipping_id'];
             $order->shipping_price =  optional(Shipping::find($input['shipping_id']))->converted_price;
