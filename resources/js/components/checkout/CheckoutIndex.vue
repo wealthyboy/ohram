@@ -411,6 +411,13 @@ export default {
       }
     },
     makePayemnt: function () {
+
+      if(this.meta.currency == '₦'){
+         this.payWithPaystack();
+         return;
+      }
+
+
       let context = this;
       var cartIds = [];
       document.getElementById("full-bg").style.display = "none";
@@ -465,7 +472,6 @@ export default {
         currency: context.currencyCode(),
         hash: Sha512.hash(signatureCipher),
         onComplete: function (paymentResponse) {
-          console.log(paymentResponse)
           if (paymentResponse.resp == "00") {
             let link =
               site_redirect_url +
@@ -533,6 +539,67 @@ export default {
          return 'EUR'
       }
     },
+    payWithPaystack: function () {
+      
+      if(this.meta.sub_total <1){return;}
+      let context = this;
+      var cartIds = [];
+      this.carts.forEach(function (cart, key) {
+        cartIds.push(cart.id);
+      });
+      if (!this.addresses.length) {
+        this.error = "You need to save your address before placing your order";
+        return false;
+      }
+
+     if (this.$root.settings.shipping_is_free == 0 && !this.shipping_price) {
+        this.error = "Please select your shipping method";
+        return false;
+      }
+
+      let form = document.getElementById("checkout-form-2");
+      this.order_text = "Please wait. We are almost done......";
+      this.payment_is_processing = true;
+      this.payment_method = "card";
+      var handler = PaystackPop.setup({
+        key: "pk_test_9da85e18cb810c930df5ec111edf9a2b0c4ac949", //'pk_live_c4f922bc8d4448065ad7bd3b0a545627fb2a084f',//'pk_test_844112398c9a22ef5ca147e85860de0b55a14e7c',
+        email: context.meta.user.email,
+        amount: context.amount * 100,
+        currency: "NGN",
+        first_name: context.meta.user.name,
+        metadata: {
+          custom_fields: [
+            {
+              display_name: context.meta.user.name,
+              customer_id: context.meta.user.id,
+              coupon: context.coupon_code,
+              shipping_id: context.shipping_id,
+              shipping_price: context.shipping_price,
+              cart: cartIds,
+              total: context.amount,
+              delivery_option: context.delivery_option,
+              delivery_note: context.delivery_note,
+            },
+          ],
+        },
+        callback: function (response) {
+          if (response.status == "success") {
+            context.paymentIsComplete = true;
+
+          } else {
+            this.error = "We could not complete your payment";
+            context.order_text = "Place Order";
+          }
+        },
+        onClose: function () {
+          context.order_text = "Place Order";
+          context.checkingout = false;
+          context.payment_is_processing = false;
+        },
+      });
+      handler.openIframe();
+    },
+    
     payAsAdmin: function () {
       if (!this.addresses.length) {
         this.error = "You need to save your address before placing your order";
