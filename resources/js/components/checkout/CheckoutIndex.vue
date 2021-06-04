@@ -571,11 +571,12 @@ export default {
             {
               display_name: context.meta.user.name,
               customer_id: context.meta.user.id,
-              coupon: context.coupon_code,
               shipping_id: context.shipping_id,
               shipping_price: context.shipping_price,
               cart: cartIds,
               total: context.amount,
+              coupon: 'ujikij',
+
             },
           ],
         },
