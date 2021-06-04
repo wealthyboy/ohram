@@ -30,12 +30,14 @@ class TransactionController extends Controller
     public function log(Request $request)
     {   
         $transaction_log = new TransactionLog;
-        
 
+        \Log::info($request->all());
         
         $request->session()->put('user_id', 'value');
         $cookie = \Cookie::get('cart');
 
+        try {
+            
         if ( $cookie !== null ) {
             $request->session()->put('user_id', $cookie);
             $tl = TransactionLog::where('token',$cookie)->first();
@@ -83,6 +85,11 @@ class TransactionController extends Controller
         }
         
         return response(null,404);
+        } catch (\Throwable $th) {
+            //throw $th;
+            \Log::error($th);
+        }
+
 
  
     }

@@ -109,7 +109,6 @@
 <!-- end row -->
 @endsection
 @section('page-scripts')
-   <script src="{{ asset('asset/js/sweetalert2.js') }}"></script>
 @stop
 
 @section('inline-scripts')   

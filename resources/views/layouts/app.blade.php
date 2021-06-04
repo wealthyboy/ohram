@@ -331,24 +331,8 @@
 	</div><!-- End .mobile-menu-container -->
 
 	
-
-	<!-- Add Cart Modal -->
-	<div class="modal fade" id="addCartModal" tabindex="-1" role="dialog" aria-labelledby="addCartModal" aria-hidden="true">
-	  <div class="modal-dialog" role="document">
-		<div class="modal-content">
-		  <div class="modal-body add-cart-box text-center">
-			<p>Product Added<br></p>
-			<h4 id="productTitle"></h4>
-			<img src="" id="productImage" width="100" height="100" alt="adding cart image">
-			<div class="btn-actions">
-				<a href=""><button class="btn-primary" data-dismiss="modal">Continue</button></a>
-			</div>
-		  </div>
-		</div>
-	  </div>
-	</div>
     <div class="watsapp pt-3">
-		<a class="chat-on-watsapp" target="_blank" href="https://wa.me/2348052342221">
+		<a class="chat-on-watsapp" target="_blank" href="https://wa.me/{{ $system_settings->store_phone }}">
 		  Need help? Chat with us  <i class="fab fa-whatsapp fa-2x float-right mr-2"></i></a>
 	</div>
 

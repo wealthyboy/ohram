@@ -84,7 +84,7 @@
 @if ($reviews->count()) 
 
 <div class="products-section p-3  pt-5 pb-5 ">
-    <h1 class=" text-center">CUSTOMER REVIEWS</h1>
+    <h1 class="text-center">CUSTOMER REVIEWS</h1>
 
     <div class="reviews-slider owl-carousel owl-theme dots-top">
         @foreach($reviews as $review)
