@@ -414,7 +414,6 @@ export default {
       if(this.meta.currency == '₦'){
         this.payWithPaystack();
         return;
-
       }
 
 
