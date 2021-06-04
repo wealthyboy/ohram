@@ -576,8 +576,6 @@ export default {
               shipping_price: context.shipping_price,
               cart: cartIds,
               total: context.amount,
-              delivery_option: context.delivery_option,
-              delivery_note: context.delivery_note,
             },
           ],
         },
