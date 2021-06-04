@@ -111,7 +111,6 @@
                                        @include('includes.product_categories_children',['obj'=>$category,'space'=>'&nbsp;&nbsp;','model' => 'category','url' => 'category'])
                                  </div>
                               @endforeach
-                             
                            </div>
                            <h4>Meta Fields  </h4>
                            

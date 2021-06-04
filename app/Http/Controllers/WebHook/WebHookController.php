@@ -38,10 +38,11 @@ class WebHookController extends Controller
         //     return;
         // } 
 
-
+ 
         try {
-            $input    =  $request->data['metadata']['custom_fields'][0];
-            $user     =  User::findOrFail($input['customer_id']);
+            
+            $input    =  $request->all();
+            $user     =  User::findOrFail($i);
             $carts    =  Cart::find($input['cart']);
             $currency =  Currency::where('iso_code3',$request->data['currency'])->first();
         

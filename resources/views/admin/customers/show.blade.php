@@ -82,7 +82,9 @@
                                 <td>{{ $system_settings->default_currency->symbol }}{{$order->product_variation->product->display_price() }}</td>
                                 <td>{{ $order->quantity }}</td>
                                 <td>{{ $order->total }}</td>
-                                <td class="td-actions text-center"></td>
+                                <td class="td-actions text-center">
+                                  {{  $order->created_at }}
+                                </td>
                             @endforeach   
                             
                         </tbody>
