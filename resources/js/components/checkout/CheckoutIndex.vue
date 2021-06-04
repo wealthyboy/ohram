@@ -411,10 +411,9 @@ export default {
       }
     },
     makePayemnt: function () {
-
+      console.log(this.meta.currency)
       if(this.meta.currency == '₦'){
-         this.payWithPaystack();
-         return;
+         //this.payWithPaystack();
       }
 
 
@@ -598,6 +597,8 @@ export default {
         },
       });
       handler.openIframe();
+
+      return;
     },
     
     payAsAdmin: function () {
