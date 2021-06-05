@@ -27,7 +27,7 @@
         <h2 class="">Related Products</h2>
 
         <div class="products-slider owl-carousel owl-theme dots-top">
-            @foreach( $related_products as $related_product)
+            @foreach( $product->related_products as $related_product)
 
             <div class="product-default inner-quickview inner-icon">
                 <figure>
