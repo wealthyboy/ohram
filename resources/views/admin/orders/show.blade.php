@@ -181,7 +181,7 @@
                      </tr>
                      <tr>
                         <td colspan="6" class="text-right">Shipping</td>
-                        <td class="text-right"><small>{{ $order->currency }}</small>{{ $order->shipping_price  }}</td>
+                        <td class="text-right"><small>{{ $order->currency }}</small>{{ $order->shipping_price ?? optional($order->shipping)->price }}</td>
                      </tr>
                      <tr>
                         <td colspan="6" class="text-right">Total</td>

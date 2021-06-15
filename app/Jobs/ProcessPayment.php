@@ -115,12 +115,12 @@ class ProcessPayment implements ShouldQueue
                     $transaction_log->save();
                     //Log the order
 
-                    $order->user_id = optional($transaction_log->user)->id;
+                    $order->user_id        =  optional($transaction_log->user)->id;
                     $order->address_id     =  optional(optional($transaction_log->user)->active_address)->id;
                     $order->coupon         =  null;
-                    $order->status         = 'Processing';
+                    $order->status         =  'Processing';
                     $order->shipping_id    =  $transaction_log->shipping_id;
-                    $order->shipping_price =  optional($shipping::find($transaction_log->shipping_id))->converted_price;
+                    $order->shipping_price =  $transaction_log->shipping_price;
                     $order->currency       =  $transaction_log->currency;
                     $order->invoice        =  "INV-".date('Y')."-".rand(10000,39999);
                     $order->payment_type   =  'online';

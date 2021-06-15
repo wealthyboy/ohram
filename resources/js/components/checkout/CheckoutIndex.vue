@@ -381,6 +381,7 @@ export default {
           productId: 22125466,
           amount: this.amount,
           shipping_id: shipping_id,
+          shipping_price: this.shipping_price,
           coupon: coupon,
           currencyCode: currencyCode 
         })
@@ -420,7 +421,6 @@ export default {
       let context = this;
       var cartIds = [];
       document.getElementById("full-bg").style.display = "none";
-      
       document.querySelector(".loading").style.display = "none";
 
       if (!this.addresses.length) {
@@ -435,13 +435,9 @@ export default {
         //this.amount =  this.meta.sub_total
       }
 
+
       $(".checkout-overlay").removeClass("d-none");
-
-
-
       let form = document.getElementById("checkout-form-2");
-      //form.submit()
-      //return;
       this.order_text = "Payment is processing. Please wait....";
       this.payment_is_processing = true;
       this.payment_method = "card";
@@ -480,6 +476,8 @@ export default {
               paymentResponse.retRef +
               "&ship_id=" +
               shipping_id +
+              "&shipping_price=" +
+              context.shipping_price +
               "&desc=" +
               paymentResponse.desc +
               "&amount=" +

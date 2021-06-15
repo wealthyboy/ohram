@@ -68,6 +68,7 @@ class TransactionController extends Controller
             $transaction_log->currency = $request->currencyCode;
             $transaction_log->coupon = $request->coupon;
             $transaction_log->approved_amount =  $request->amount;
+            $transaction_log->shipping_price =  $request->shipping_price;
             $transaction_log->transaction_reference = $request->txref;
             $transaction_log->product_id = $request->productId;
             $transaction_log->rate = $rate  ? $rate->rate : 1;
