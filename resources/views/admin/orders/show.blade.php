@@ -185,7 +185,7 @@
                      </tr>
                      <tr>
                         <td colspan="6" class="text-right">Total</td>
-                        <td class="text-right">{{ $order->currency }}{{  $order->get_total() }}</td>
+                        <td class="text-right">{{ $order->currency }}{{   number_format($order->shipping_price ?? optional($order->shipping)->price + $sub_total) }}</td>
                      </tr>
                   </tfoot>
                </table>
