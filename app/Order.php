@@ -76,7 +76,8 @@ class order extends Model
 	public function get_total(){
 		$ship_price = $this->shipping_price ?? 0;
 		if($this->coupon){
-		    return number_format($this->getCouponDiscount($this->total) );  
+			
+		    return number_format( $this->getCouponDiscount($this->total) );  
 		}
 		return number_format($this->total);
 	}
