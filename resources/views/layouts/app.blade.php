@@ -59,7 +59,7 @@
 					@if( $system_settings->allow_multi_currency )
 						<div class="header-left header-dropdowns">
 							<div class="header-dropdown ml-4">
-								<a href="#">{{ optional($system_settings->currency)->iso_code3 }} {{ optional($system_settings->currency)->iso_code3 }}</a>
+								<a href="#">{{ optional($system_settings->currency)->iso_code3 }}</a>
 								<div class="header-menu">
 									<ul>
 									    @foreach($currencies as $currency)
