@@ -165,7 +165,7 @@
                                           <table width="100%" align="right" class="container" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
                                              <tbody>
                                                 <tr>
-                                                   <td align="left" class="pn" style="padding-left:40px;">
+                                                   <td align="left" class="pn" style="padding-left:10px;">
                                                       <table width="260" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:260px;">
                                                          <tbody>
                                                             <tr>
@@ -184,28 +184,14 @@
                                                             </tr>
                                                             <tr>
                                                                <td  class="text"  data-color="#000000" data-fontsize="13"  data-fontweight="400"  data-letterspacing="0.05" data-lineheight="20"  data-color="" data-align="left" style="text-align:left; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size:13px; line-height: 20px; text-decoration: none; color: #444444; font-weight:400;" data-size="img-left-text-size" data-color="img-left-text-color" data-link-color="img-left-link-color" data-link-style="color: blue;">
-                                                                  The sight of the tumblers restored Bob Sawy- er to a degree of equanimity which.
+                                                                  Price: {{ $cart->product_variation->price }}
                                                                </td>
                                                             </tr>
                                                             <tr>
                                                                <td height="35"></td>
                                                             </tr>
-                                                            <tr>
-                                                               <td align="left">
-                                                                  <table align="left" border="0" cellpadding="0" cellspacing="0" bgcolor="#3498db" style="border-radius: 15px; background-color: #3498db; min-width: 110px;" data-bgcolor="blue-btn-bg">
-                                                                     <tbody>
-                                                                        <tr>
-                                                                           <td width="18"></td>
-                                                                           <td height="30" class="text" data-color="#000000" align="center" style="height: 30px; text-align: center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size: 11px; line-height:11px; color: #ffffff; font-weight: 700; text-decoration: none !important; text-transform: uppercase; letter-spacing: 0.05em;vertical-align: middle;" data-size="blue-btn-txt-size" data-color="blue-btn-txt-color"><a class="anchor-link  anchor"  href="http://example.com" data-size="blue-btn-txt-size" data-color="blue-btn-txt-color" style="color:#ffffff;">Read more</a></td>
-                                                                           <td width="18"></td>
-                                                                        </tr>
-                                                                     </tbody>
-                                                                  </table>
-                                                               </td>
-                                                            </tr>
-                                                            <tr>
-                                                               <td height="40"></td>
-                                                            </tr>
+                                                            
+                                                            
                                                          </tbody>
                                                       </table>
                                                    </td>
