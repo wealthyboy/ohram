@@ -19,24 +19,14 @@ use App\Location;
 use App\Http\Helper;
 use App\Shipping;
 use App\Address;
+use App\Mail\AbandonedCart;
+
 
 
 
 class CheckoutController extends Controller
 {
-      /**
-     * object to authenticate the call.
-     * @param object $_apiContext
-     */
-   // private $_apiContext;
-   
-   
-    /**
-     * Set the ClientId and the ClientSecret.
-     * @param 
-     *string $_ClientId
-     *string $_ClientSecret
-     */
+     
 	
 	public  $cart;
 
@@ -55,6 +45,13 @@ class CheckoutController extends Controller
             return redirect()->to('/cart');
 		}
 		$csrf = json_encode(['csrf' => csrf_token()]);
+
+		//Run a job 
+
+		\Mail::to("jacob.atam@gmail.com")
+			->later(now()->addMinutes(2), new AbandonedCart());
+
+
 		return view('checkout.index',['csrf' => $csrf]);
 	}
 

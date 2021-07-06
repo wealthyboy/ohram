@@ -89,7 +89,7 @@
                                              </tr>
                                              <tr>
                                                 <td align="center">
-                                                   <a href="https://ohram.org"><img src="https://ohram.org/images/logo/1589383129OHRAM%203-2.png" data-crop="false" width="auto" height="auto" alt="" style="display:block; width:100px;"></a>
+                                                   <a href="#"><img src="https://ohram.org/images/logo/1589383129OHRAM%203-2.png" data-crop="false" width="auto" height="auto" alt="" style="display:block; width:100px;"></a>
                                                 </td>
                                              </tr>
                                              <tr>

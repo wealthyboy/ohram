@@ -116,11 +116,12 @@ Route::group(['middleware' => 'admin','prefix' => 'admin'], function(){
 
 });
 
-// Route::get('/mailable', function () {
-//     $order = App\Order::find(104);
-//     $settings =  App\SystemSetting::first();
-//     return new App\Mail\OrderReceipt($order,$settings,'₦');
-// }); 
+Route::get('/mailable', function () {
+    // $order = App\Order::find(104);
+    // $settings =  App\SystemSetting::first();
+    return new App\Mail\AbandonedCart();
+}); 
+
 
 
 
