@@ -226,7 +226,7 @@
                                        <td height="55"></td>
                                     </tr>
                                     <tr>
-                                       <td class="text"  data-color="#000000"  style="vertical-align:top; text-align:center; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size:13px; line-height: 20px; text-decoration: none; color: #444444; font-weight: 400;" data-size="footer-4-rights-size" data-color="footer-4-rights-color" data-link-color="footer-4-link-color" data-link-style="color: blue;">
+                                       <td class="text"  data-color="#000000"  style="vertical-align:top; padding-right:90px; padding-left:90px; text-align:center; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size:13px; line-height: 20px; text-decoration: none; color: #444444; font-weight: 400;" data-size="footer-4-rights-size" data-color="footer-4-rights-color" data-link-color="footer-4-link-color" data-link-style="color: blue;">
                                           Copyright © Ohram {{ date('Y') }}
                                        </td>
                                     </tr>
