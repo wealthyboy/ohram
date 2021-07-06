@@ -156,16 +156,16 @@
                                           <table width="100%" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
                                              <tbody>
                                                 <tr>
-                                                   <td align="center"  class="container-image"><img  class="p-img" src="https://ohram.org/images/products/m/EqbePFQyEVrC2be7O70u31zPf7fiYBabugw9UXWc.jpg" width="100%" height="auto" alt="" style="width: 100%; max-width: 200px; display: block; border: 0px;"></td>
+                                                   <td align="center"  class="container-image"><img  class="p-img" src="{{ $cart->product_variation->image_m  }}" width="100%" height="auto" alt="" style="width: 100%; max-width: 200px; display: block; border: 0px;"></td>
                                                 </tr>
                                              </tbody>
                                           </table>
                                        </th>
-                                       <th width="50%" align="right" class="container-wrap" valign="top" style="vertical-align: top; width:50%;">
+                                       <th width="50%" align="right" class="container-wrap" valign="top" style="vertical-align: middle; width:50%;">
                                           <table width="100%" align="right" class="container" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
                                              <tbody>
                                                 <tr>
-                                                   <td align="left" class="pn" style="padding-left:10px;">
+                                                   <td align="right" class="pn" style="padding-left:10px;">
                                                       <table width="260" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:260px;">
                                                          <tbody>
                                                             <tr>
