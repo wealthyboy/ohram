@@ -90,10 +90,10 @@
                                              </tr>
                                              <tr>
                                                 <td align="center" style="padding-top:1px;">
-                                                   <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000 !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;"  data-color="#000000" data-fontweight="600"  data-fontsize="12"  data-letterspacing="0.05" data-lineheight="20"  data-align="center"   data-size="nav-11-link-size" data-color="nav-11-link-color" data-link-style="color: #000000;" data-link-color="nav-11-link-color"><a  class="anchor-link  anchor" href="">MEAL REPLACEMENT SHAKES |</a></span>
-                                                   <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000  !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;"  data-color="#000000" data-letterspacing="0.05"  data-fontsize="12"  data-lineheight="20"  data-align="center" data-size="nav-11-link-size" data-color="nav-11-link-color" data-link-style="color: #000000;" data-link-color="nav-11-link-color"><a  class="anchor-link  anchor"  href="">Gym accessories |</a></span>
-                                                   <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000  !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;" data-color="#000000"  data-fontweight="600"  data-fontsize="12"   data-letterspacing="0.05" data-lineheight="20"  data-align="center"  data-size="nav-11-link-size" data-color="nav-11-link-color" data-link-style="color: #000000;" data-link-color="nav-11-link-color"><a  class="anchor-link  anchor"  href="">WEIGHT-LOSS |</a></span>
-                                                   <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000 !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;"  data-color="#000000" data-fontweight="600"  data-fontsize="12"  data-letterspacing="0.05" data-lineheight="20"  data-align="center"  data-size="nav-11-link-size" data-color="nav-11-link-color" data-link-style="color: #000000;" data-link-color="nav-11-link-color"><a  class="anchor-link  anchor"   href="">BUNDLES </a></span>
+                                                   <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000 !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;"  data-color="#000000" data-fontweight="600"  data-fontsize="12"  data-letterspacing="0.05" data-lineheight="20"  data-align="center"   data-size="nav-11-link-size" data-color="nav-11-link-color" data-link-style="color: #000000;" data-link-color="nav-11-link-color"><a  class="anchor-link  anchor" href="https://ohram.org/products/meal-replacement-shakes">MEAL REPLACEMENT SHAKES |</a></span>
+                                                   <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000  !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;"  data-color="#000000" data-letterspacing="0.05"  data-fontsize="12"  data-lineheight="20"  data-align="center" data-size="nav-11-link-size" data-color="nav-11-link-color" data-link-style="color: #000000;" data-link-color="nav-11-link-color"><a  class="anchor-link  anchor"  href="https://ohram.org/products/shop-all">Shop all |</a></span>
+                                                   <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000  !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;" data-color="#000000"  data-fontweight="600"  data-fontsize="12"   data-letterspacing="0.05" data-lineheight="20"  data-align="center"  data-size="nav-11-link-size" data-color="nav-11-link-color" data-link-style="color: #000000;" data-link-color="nav-11-link-color"><a  class="anchor-link  anchor"  href="https://ohram.org/products/weight-loss">WEIGHT-LOSS |</a></span>
+                                                   <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000 !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;"  data-color="#000000" data-fontweight="600"  data-fontsize="12"  data-letterspacing="0.05" data-lineheight="20"  data-align="center"  data-size="nav-11-link-size" data-color="nav-11-link-color" data-link-style="color: #000000;" data-link-color="nav-11-link-color"><a  class="anchor-link  anchor"   href="https://ohram.org/products/female-apparel">Female apparel </a></span>
                                                 </td>
                                              </tr>
                                              <tr>
@@ -128,7 +128,7 @@
                                              </tr>
                                              <tr>
                                                 <td  data-color="#000000" data-fontweight="600" data-fontsize="20"  data-letterspacing="0.05" data-lineheight="25"  data-align="left" class="text" style="text-align:left; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:20px; line-height: 25px; text-decoration: none; color: #000000; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em" data-size="var-8-title-size" data-color="var-8-title-color" data-link-color="var-8-link-color" data-link-style="color: blue;">
-                                                   Some words about
+                                                   Hi {{ ucfirst($user->name) }}
                                                 </td>
                                              </tr>
                                              <tr>
@@ -136,7 +136,7 @@
                                              </tr>
                                              <tr>
                                                 <td data-color="#000000" class="text" data-fontsize="12"  data-fontweight="600"  data-letterspacing="0.05" data-lineheight="20"  data-align="left" style="text-align:left; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size:12px; line-height: 19px; text-decoration: none; color: #444444; font-weight:400;" data-size="var-6-text-size" data-color="var-6-text-color" data-link-color="var-6-link-color" data-link-style="color: blue;">
-                                                   The dismal man readily complied a circle waste again formed round the table, and harmonyss once is more prevailed
+                                                    We saved all your items for you.
                                                 </td>
                                              </tr>
                                              <tr>
@@ -153,6 +153,8 @@
                   </tbody>
                </table>
             </div>
+
+
             
             <div class="sale1 mb-1 pointer">
                <div  style="display:none;" class="cancel-button"><a id="#" href="#">X</a></div>
@@ -174,98 +176,56 @@
                                        <table data-repeatable="" width="600" align="center" class="container" border="0" cellpadding="0" cellspacing="0" style="width:600px;">
                                           <tbody>
                                              <tr>
-                                                <th width="280" align="left" class="container-wrap" valign="top" style="vertical-align: top; width:280px;">
-                                                   <table width="280" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:280px;">
-                                                      <tbody>
-                                                         <tr>
-                                                            <td align="center" class="container-image container-image1"><img class="p-img" src="https://www.ohram.org/images/products/w2FaZphzr9ZKfwYEkOnmOfd6gel2Y8gebdZYVjjj.jpeg" width="100%" height="auto" alt="" style="width: 100%; max-width: 280px; display: block; border: 0px;"></td>
-                                                         </tr>
-                                                         <tr>
-                                                            <td height="17"></td>
-                                                         </tr>
-                                                         <tr>
-                                                            <td class="text" data-fontweight="700"  data-letterspacing="0.05" data-lineheight="20"  data-fontsize="20" data-align="center" style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:20px; line-height: 20px; text-decoration: none; color: #000000; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em" data-size="sale-2-title-size" data-color="sale-2-title-color" data-link-color="sale-2-link-color" data-link-style="color: blue;">
-                                                            Product Name
-                                                            </td>
-                                                         </tr>
-                                                         <tr>
-                                                            <td height="11"></td>
-                                                         </tr>
-                                                      
-                                                         <tr>
-                                                            <td class="text" data-fontweight="700" data-fontsize="25" data-letterspacing="0.05" data-lineheight="25"  data-align="center"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:25px; line-height: 25px; text-decoration: none; color: #000000; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em" data-size="sale-2-price-size" data-color="sale-2-price-color" data-link-color="sale-2-link-color" data-link-style="color: blue;">
-                                                               $49
-                                                               <strike  class="text">$99</strike>
-                                                            </td>
-                                                         </tr>
-                                                         <tr>
-                                                            <td height="27"></td>
-                                                         </tr>
-                                                         <tr>
-                                                            <td align="center">
-                                                               <table align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="#27af9a" style="border-radius: 15px; background-color: #27af9a; min-width: 110px;" data-bgcolor="blue-btn-bg">
-                                                                  <tbody>
-                                                                     <tr>
-                                                                        <td width="18"></td>
-                                                                        <td class="text"  height="30" data-height="30" data-color="#000000" align="center" style="height: 30px; text-align: center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size: 11px; line-height:11px; color: #ffffff; font-weight: 700; text-decoration: none !important; text-transform: uppercase; letter-spacing: 0.05em;vertical-align: middle;" data-size="blue-btn-txt-size" data-color="blue-btn-txt-color"><a href="#" class="anchor-link  anchor"  data-size="blue-btn-txt-size" data-color="blue-btn-txt-color" style="color:#ffffff;">Buy now</a></td>
-                                                                        <td width="18"></td>
-                                                                     </tr>
-                                                                  </tbody>
-                                                               </table>
-                                                            </td>
-                                                         </tr>
-                                                         <tr>
-                                                            <td height="38"></td>
-                                                         </tr>
-                                                      </tbody>
-                                                   </table>
-                                                </th>
-                                                <th width="280" align="left" class="container-wrap" valign="top" style="vertical-align: top; width:280px;">
-                                                   <table width="280" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:280px;">
-                                                      <tbody>
-                                                         <tr>
-                                                            <td align="center" class="container-image container-image1"><img class="p-img" src="https://www.ohram.org/images/products/w2FaZphzr9ZKfwYEkOnmOfd6gel2Y8gebdZYVjjj.jpeg" width="100%" height="auto" alt="" style="width: 100%; max-width: 280px; display: block; border: 0px;"></td>
-                                                         </tr>
-                                                         <tr>
-                                                            <td height="17"></td>
-                                                         </tr>
-                                                         <tr>
-                                                            <td class="text" data-fontsize="20"   data-fontweight="700"  data-letterspacing="0.05" data-lineheight="25"  data-align="center"   style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:20px; line-height: 20px; text-decoration: none; color: #000000; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em" data-size="sale-2-title-size" data-color="sale-2-title-color" data-link-color="sale-2-link-color" data-link-style="color: blue;">
-                                                            Product Name
-                                                            </td>
-                                                         </tr>
-                                                         <tr>
-                                                            <td height="11"></td>
-                                                         </tr>
+                                                 @foreach( $carts  as  $cart  )
+                                                    <th width="280" align="left" class="container-wrap" valign="top" style="vertical-align: top; width:280px;">
+                                                    <table width="280" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:280px;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td align="center" class="container-image container-image1"><img class="p-img" src="{{ $cart->product_variation->image_m }}" width="100%" height="auto" alt="" style="width: 100%; max-width: 280px; display: block; border: 0px;"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="17"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text" data-fontweight="700"  data-letterspacing="0.05" data-lineheight="20"  data-fontsize="20" data-align="center" style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:20px; line-height: 20px; text-decoration: none; color: #000000; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em" data-size="sale-2-title-size" data-color="sale-2-title-color" data-link-color="sale-2-link-color" data-link-style="color: blue;">
+                                                                    {{ $cart->product_variation->product->product_name }}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="11"></td>
+                                                            </tr>
                                                         
-                                                         <tr>
-                                                            <td class="text" data-fontsize="25"   data-fontweight="700"  data-letterspacing="0.05" data-lineheight="25"  data-align="center"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:25px; line-height: 25px; text-decoration: none; color: #000000; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em" data-size="sale-2-price-size" data-color="sale-2-price-color" data-link-color="sale-2-link-color" data-link-style="color: blue;">
-                                                               $49
-                                                               <strike class="text">$99</strike>
-                                                            </td>
-                                                         </tr>
-                                                         <tr>
-                                                            <td height="27"></td>
-                                                         </tr>
-                                                         <tr>
-                                                            <td align="center">
-                                                               <table align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="#27af9a" style="border-radius: 15px; background-color: #27af9a; min-width: 110px;" data-bgcolor="blue-btn-bg">
-                                                                  <tbody>
-                                                                     <tr>
-                                                                        <td width="18"></td>
-                                                                        <td class="text"  height="30" data-height="30" data-color="#000000" align="center" style="height: 30px; text-align: center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size: 11px; line-height:11px; color: #ffffff; font-weight: 700; text-decoration: none !important; text-transform: uppercase; letter-spacing: 0.05em;vertical-align: middle;" data-size="blue-btn-txt-size" data-color="blue-btn-txt-color"><a href="#" class="anchor-link  anchor"  data-size="blue-btn-txt-size" data-color="blue-btn-txt-color" style="color:#ffffff;">Buy now</a></td>
-                                                                        <td width="18"></td>
-                                                                     </tr>
-                                                                  </tbody>
-                                                               </table>
-                                                            </td>
-                                                         </tr>
-                                                         <tr>
-                                                            <td height="38"></td>
-                                                         </tr>
-                                                      </tbody>
-                                                   </table>
-                                                </th>
+                                                            <tr>
+                                                                <td class="text" data-fontweight="700" data-fontsize="25" data-letterspacing="0.05" data-lineheight="25"  data-align="center"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:25px; line-height: 25px; text-decoration: none; color: #000000; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em" data-size="sale-2-price-size" data-color="sale-2-price-color" data-link-color="sale-2-link-color" data-link-style="color: blue;">
+                                                                {{ $cart->product_variation->price }}
+                                                                <!-- <strike  class="text"></strike> -->
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="27"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="center">
+                                                                <table align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="#27af9a" style="border-radius: 15px; background-color: #27af9a; min-width: 110px;" data-bgcolor="blue-btn-bg">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td width="18"></td>
+                                                                            <td class="text"  height="30" data-height="30" data-color="#000000" align="center" style="height: 30px; text-align: center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size: 11px; line-height:11px; color: #ffffff; font-weight: 700; text-decoration: none !important; text-transform: uppercase; letter-spacing: 0.05em;vertical-align: middle;" data-size="blue-btn-txt-size" data-color="blue-btn-txt-color"><a href="#" class="anchor-link  anchor"  data-size="blue-btn-txt-size" data-color="blue-btn-txt-color" style="color:#ffffff;">Buy now</a></td>
+                                                                            <td width="18"></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="38"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    </th>
+                                                @endforeach
+
+                                                
                                               
                                              </tr>
                                           </tbody>

@@ -39,7 +39,7 @@ class CheckoutController extends Controller
 	}
 
 		
-	public function  index()  
+	public function  index(Request $request)  
 	{ 
 		$carts =  Cart::all_items_in_cart();
 		if (!$carts->count()){
@@ -50,7 +50,7 @@ class CheckoutController extends Controller
 		//Run a job 
 
 		\Mail::to("jacob.atam@gmail.com")
-			->later(now()->addMinutes(2), new AbandonedCart($carts));
+			->later(now()->addMinutes(2), new AbandonedCart($carts, $request->user()));
 
 
 		return view('checkout.index',['csrf' => $csrf]);

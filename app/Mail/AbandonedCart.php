@@ -14,9 +14,15 @@ class AbandonedCart extends Mailable
 
     public $carts;
 
-    public function __construct($carts)
+    public $user;
+
+
+    public function __construct($carts, $user)
     {
         $this->carts = $carts;
+
+        $this->user = $user;
+
     }
 
     /**
