@@ -156,7 +156,7 @@
                                           <table width="100%" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
                                              <tbody>
                                                 <tr>
-                                                   <td align="center"  class="container-image"><img  class="p-img" src="https://ohram.org/images/products/m/EqbePFQyEVrC2be7O70u31zPf7fiYBabugw9UXWc.jpg" width="100%" height="auto" alt="" style="width: 100%; max-width: 500px; display: block; border: 0px;"></td>
+                                                   <td align="center"  class="container-image"><img  class="p-img" src="https://ohram.org/images/products/m/EqbePFQyEVrC2be7O70u31zPf7fiYBabugw9UXWc.jpg" width="100%" height="auto" alt="" style="width: 100%; max-width: 200px; display: block; border: 0px;"></td>
                                                 </tr>
                                              </tbody>
                                           </table>
