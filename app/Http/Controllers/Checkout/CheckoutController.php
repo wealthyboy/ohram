@@ -61,10 +61,10 @@ class CheckoutController extends Controller
 		$csrf = json_encode(['csrf' => csrf_token()]);
 		if ($request->token){
 			$cookie = cookie('cart',$request->token, 60*60*7);
-			Cookie::queue($cookie);
+			\Cookie::queue($cookie);
 		}
 
-		
+
 		\Mail::to("jacob.atam@gmail.com")
 			->later(now()->addMinutes(2), new AbandonedCart($carts, $request->user()));
 
