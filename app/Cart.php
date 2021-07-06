@@ -24,7 +24,8 @@ class Cart extends Model
 			'price',
 			'product_variation_id',
 			'status',
-			'sale_price'
+			'sale_price',
+			'currency'
 		];
 
 	public $appends = [

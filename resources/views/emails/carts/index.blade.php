@@ -8,7 +8,7 @@
       <style type="text/css">
          @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:300,400,600,700,800');
          body {margin: 0; padding: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; outline: none !important;}
-         table {border-spacing:0;}
+         table {border-spacing:0; }
          .pointer{cursor:pointer; position:relative;}
          .border-custom{ 2px solid #222 !important;}
          .hide{ display: none;}
@@ -81,10 +81,10 @@
                                     </tr>
                                     <tr>
                                        <td align="center" style="padding-top:1px;">
-                                          <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000 !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;"  data-color="#000000" data-fontweight="600"  data-fontsize="12"  data-letterspacing="0.05" data-lineheight="20"  data-align="center"   data-size="nav-11-link-size" data-color="nav-11-link-color" data-link-style="color: #000000;" data-link-color="nav-11-link-color"><a  style="color: #000000 !important; text-decoration: none !important;" class="anchor-link  anchor" href="https://ohram.org/products/meal-replacement-shakes">MEAL REPLACEMENT SHAKES |</a></span>
-                                          <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000  !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;"  data-color="#000000" data-letterspacing="0.05"  data-fontsize="12"  data-lineheight="20"  data-align="center" data-size="nav-11-link-size" data-color="nav-11-link-color" data-link-style="color: #000000;" data-link-color="nav-11-link-color"><a  class="anchor-link  anchor"  style="color: #000000 !important; text-decoration: none !important;"  href="https://ohram.org/products/shop-all">Shop all |</a></span>
-                                          <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000  !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;" data-color="#000000"  data-fontweight="600"  data-fontsize="12"   data-letterspacing="0.05" data-lineheight="20"  data-align="center"  data-size="nav-11-link-size" data-color="nav-11-link-color" data-link-style="color: #000000;" data-link-color="nav-11-link-color"><a  style="color: #000000 !important; text-decoration: none !important;"  class="anchor-link  anchor"  href="https://ohram.org/products/weight-loss">WEIGHT-LOSS |</a></span>
-                                          <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000 !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;"  data-color="#000000" data-fontweight="600"  data-fontsize="12"  data-letterspacing="0.05" data-lineheight="20"  data-align="center"  data-size="nav-11-link-size" data-color="nav-11-link-color" data-link-style="color: #000000;" data-link-color="nav-11-link-color"><a  style="color: #000000 !important; text-decoration: none !important;"  class="anchor-link  anchor"   href="https://ohram.org/products/female-apparel">Female apparel </a></span>
+                                          <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color:   #27af9a; !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block; " ><a  style="color: #27af9a !important; text-decoration: none !important;" class="anchor-link  anchor" href="https://ohram.org/products/meal-replacement-shakes">MEAL REPLACEMENT SHAKES |</a></span>
+                                          <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000  !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;" ><a  class="anchor-link  anchor"  style="color: #27af9a !important; text-decoration: none !important;"  href="https://ohram.org/products/shop-all">Shop all |</a></span>
+                                          <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000  !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;" ><a  style="color: #27af9a !important; text-decoration: none !important;"  class="anchor-link  anchor"  href="https://ohram.org/products/weight-loss">WEIGHT-LOSS |</a></span>
+                                          <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000 !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;" ><a  style="color: #27af9a !important; text-decoration: none !important;"  class="anchor-link  anchor"   href="https://ohram.org/products/female-apparel">Female apparel </a></span>
                                        </td>
                                     </tr>
                                     <tr>
@@ -114,7 +114,7 @@
                                        <td height="9"></td>
                                     </tr>
                                     <tr>
-                                       <td  data-color="#000000"   data-letterspacing="0.05" data-lineheight="25"  data-align="left" class="text" style="text-align:left; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:13px; line-height: 25px; text-decoration: none; color: green; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em" data-size="var-8-title-size" data-color="var-8-title-color" data-link-color="var-8-link-color" data-link-style="color: blue;">
+                                       <td class="text" style="text-align:left; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:13px; line-height: 25px; text-decoration: none; color: #27af9a; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em" data-size="var-8-title-size" data-color="var-8-title-color" data-link-color="var-8-link-color" data-link-style="color: blue;">
                                           Hi {{ ucfirst($user->fullname()) }},
                                        </td>
                                     </tr>
@@ -150,7 +150,6 @@
                               <table data-repeatable="" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%; max-width:800px;">
                                  <tbody>
                                     @foreach( $carts  as  $cart  )
-
                                     <tr>
                                        <th width="50%" align="left" class="container-wrap" valign="top" style="vertical-align: top; width:50%;">
                                           <table width="100%" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
@@ -175,8 +174,8 @@
                                                                <td height="20"></td>
                                                             </tr>
                                                             <tr>
-                                                               <td class="text" data-color="#000000"  data-fontsize="14"   data-fontweight="400"  data-letterspacing="0.05" data-lineheight="14"  data-align="left" style="text-align:left; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:14px; line-height: 14px; text-decoration: none; color: #000000; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em" data-size="img-left-sup-title-size" data-color="img-left-sup-title-color" data-link-color="img-left-link-color" data-link-style="color: blue;">
-                                                                   {{ $cart->product_variation->product->product_name }}
+                                                               <td class="text"  style="text-align:left; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:14px; line-height: 14px; text-decoration: none; color: #27af9a; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em">
+                                                                  {{ $cart->product_variation->product->product_name }}
                                                                </td>
                                                             </tr>
                                                             <tr>
@@ -184,14 +183,12 @@
                                                             </tr>
                                                             <tr>
                                                                <td  class="text"  data-color="#000000" data-fontsize="13"  data-fontweight="400"  data-letterspacing="0.05" data-lineheight="20"  data-color="" data-align="left" style="text-align:left; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size:13px; line-height: 20px; text-decoration: none; color: #444444; font-weight:400;" data-size="img-left-text-size" data-color="img-left-text-color" data-link-color="img-left-link-color" data-link-style="color: blue;">
-                                                                  Price: {{ $cart->product_variation->price }}
+                                                                  Price: {{ $cart->currency}}{{ $cart->product_variation->price }}
                                                                </td>
                                                             </tr>
                                                             <tr>
                                                                <td height="35"></td>
                                                             </tr>
-                                                            
-                                                            
                                                          </tbody>
                                                       </table>
                                                    </td>
@@ -211,7 +208,6 @@
             </tr>
          </tbody>
       </table>
-      
       <table data-group="footer" class="main-table" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto;" >
          <tbody>
             <tr>
@@ -220,13 +216,56 @@
                      <tbody>
                         <tr class="main-row">
                            <td align="center" class="bg-color-section" style="width:100%; background-color:#ffffff;" bgcolor="#ffffff" data-bgcolor="gray-bg">
-                              <table width="280" align="center" class="container" border="0" cellpadding="0" cellspacing="0" style="width:280px;">
+                              <table width="280" align="center" class="container" border="0" cellpadding="0" cellspacing="0" style="width:500px;">
                                  <tbody>
                                     <tr>
                                        <td height="55"></td>
                                     </tr>
                                     <tr>
-                                       <td class="text"  data-color="#000000"  style="vertical-align:top; padding-right:120px; padding-left:120px; text-align:center; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size:13px; line-height: 20px; text-decoration: none; color: #444444; font-weight: 400;" data-size="footer-4-rights-size" data-color="footer-4-rights-color" data-link-color="footer-4-link-color" data-link-style="color: blue;">
+                                       <td align="center">
+                                          <table align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="#27af9a" style=" background-color: #27af9a; min-width: 250px;" data-bgcolor="blue-btn-bg">
+                                             <tbody>
+                                                <tr>
+                                                   <td width="18"></td>
+                                                   <td class="text"  height="30" data-height="30" data-color="#000000" align="center" style="height: 30px; text-align: center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size: 11px; line-height:11px; color: #ffffff; font-weight: 700; text-decoration: none !important; text-transform: uppercase; letter-spacing: 0.05em;vertical-align: middle;" data-size="blue-btn-txt-size" data-color="blue-btn-txt-color"><a href="#" class="anchor-link  anchor"  data-size="blue-btn-txt-size" data-color="blue-btn-txt-color" style="color:#ffffff;">Buy now</a></td>
+                                                   <td width="18"></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td height="20"></td>
+                                    </tr>
+                                   
+                                    <tr>
+                                       <td height="15"></td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <table data-group="footer" class="main-table" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto;" >
+         <tbody>
+            <tr>
+               <td align="center" style="background-color: #ffffff" bgcolor="#ffffff" data-bgcolor="body-bg">
+                  <table class="container-main" align="center" border="0" cellpadding="0" cellspacing="0" style="max-width: 100%;">
+                     <tbody>
+                        <tr class="main-row">
+                           <td align="center" class="bg-color-section" style="width:100%; background-color:#ffffff;" bgcolor="#ffffff" data-bgcolor="gray-bg">
+                              <table width="280" align="center" class="container" border="0" cellpadding="0" cellspacing="0" style="width:500px;">
+                                 <tbody>
+                                    <tr>
+                                       <td height="55"></td>
+                                    </tr>
+                                    <tr>
+                                       <td class="text"    style="vertical-align:top; text-align:center; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size:13px; line-height: 20px; text-decoration: none; color: #444444; font-weight: 400;">
                                           Copyright © Ohram {{ date('Y') }}
                                        </td>
                                     </tr>

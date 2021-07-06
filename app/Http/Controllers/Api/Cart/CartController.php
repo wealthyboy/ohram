@@ -50,6 +50,7 @@ class CartController  extends Controller {
 			$cart->user_id    = $request->user()->id;
 		}
 		$price = $this->getDiscountedPrice($product_variation) ?? $product_variation->price;
+		$currency = Helper::rate()->symbol ?? optional(optional($this->settings)->currency)->symbol;
 
 
 		if (\Cookie::get('cart') !== null) {
@@ -62,7 +63,8 @@ class CartController  extends Controller {
 					'price'      => $product_variation->price,
 					'sale_price' => $this->getDiscountedPrice($product_variation),
 					'total'      => $price * $request->quantity,
-					'status'     => 'Pending'
+					'status'     => 'Pending',
+					'currency' => $currency
 				]
 			);
 
@@ -75,6 +77,7 @@ class CartController  extends Controller {
 			$cart->product_variation_id = $request->product_variation_id;
 			$cart->quantity   = $request->quantity;
 			$cart->price      = $product_variation->price;
+			$cart->currency      = $currency;
 			$cart->sale_price = $this->getDiscountedPrice($product_variation);
 			$cart->total      = $price * $request->quantity;
 			$cart->status     = 'Pending';
