@@ -114,8 +114,8 @@
                                        <td height="9"></td>
                                     </tr>
                                     <tr>
-                                       <td  data-color="#000000" data-fontweight="600" data-fontsize="20"  data-letterspacing="0.05" data-lineheight="25"  data-align="left" class="text" style="text-align:left; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:20px; line-height: 25px; text-decoration: none; color: #000000; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em" data-size="var-8-title-size" data-color="var-8-title-color" data-link-color="var-8-link-color" data-link-style="color: blue;">
-                                          Hi {{ ucfirst($user->fullname()) }}
+                                       <td  data-color="#000000"   data-letterspacing="0.05" data-lineheight="25"  data-align="left" class="text" style="text-align:left; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:13px; line-height: 25px; text-decoration: none; color: green; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em" data-size="var-8-title-size" data-color="var-8-title-color" data-link-color="var-8-link-color" data-link-style="color: blue;">
+                                          Hi {{ ucfirst($user->fullname()) }},
                                        </td>
                                     </tr>
                                     <tr>
@@ -127,7 +127,7 @@
                                        </td>
                                     </tr>
                                     <tr>
-                                       <td height="15"></td>
+                                       <td height="25"></td>
                                     </tr>
                                  </tbody>
                               </table>
@@ -169,7 +169,7 @@
                                                       <table width="260" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:260px;">
                                                          <tbody>
                                                             <tr>
-                                                               <td height="10"></td>
+                                                               <td height="20"></td>
                                                             </tr>
                                                             <tr class="disable">
                                                                <td height="20"></td>
@@ -212,18 +212,18 @@
          </tbody>
       </table>
       
-      <table data-group="footer" class="main-table" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto;" data-module="footer-4" data-thumb="http://www.stampready.net/dashboard/editor/user_uploads/zip_uploads/2019/04/01/quA5rxOyIJGf1ltjV7sLaSM8/Full/thumbnails/footer-4.jpg">
+      <table data-group="footer" class="main-table" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto;" >
          <tbody>
             <tr>
                <td align="center" style="background-color: #ffffff" bgcolor="#ffffff" data-bgcolor="body-bg">
-                  <table class="container-main" align="center" border="0" cellpadding="0" cellspacing="0" style="min-width: 100%;">
+                  <table class="container-main" align="center" border="0" cellpadding="0" cellspacing="0" style="max-width: 100%;">
                      <tbody>
                         <tr class="main-row">
                            <td align="center" class="bg-color-section" style="width:100%; background-color:#ffffff;" bgcolor="#ffffff" data-bgcolor="gray-bg">
                               <table width="280" align="center" class="container" border="0" cellpadding="0" cellspacing="0" style="width:280px;">
                                  <tbody>
                                     <tr>
-                                       <td height="35"></td>
+                                       <td height="55"></td>
                                     </tr>
                                     <tr>
                                        <td class="text"  data-color="#000000"  style="vertical-align:top; text-align:center; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size:13px; line-height: 20px; text-decoration: none; color: #444444; font-weight: 400;" data-size="footer-4-rights-size" data-color="footer-4-rights-color" data-link-color="footer-4-link-color" data-link-style="color: blue;">

@@ -78,7 +78,6 @@ class CartController  extends Controller {
 			$cart->sale_price = $this->getDiscountedPrice($product_variation);
 			$cart->total      = $price * $request->quantity;
 			$cart->status     = 'Pending';
-
 			$cart->remember_token =$cookie->getValue();
 			$cart->save();
 			$carts = Cart::all_items_in_cart();
