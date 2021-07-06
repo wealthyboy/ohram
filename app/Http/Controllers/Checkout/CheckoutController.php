@@ -32,8 +32,20 @@ class CheckoutController extends Controller
 
 	public  $settings;
 
-	public function __construct()
-	{
+	public function __construct(Request $request)
+	{   
+		
+		if ($request->token)
+		{
+		    $verify = Cart::where([ 'remember_token' => $request->token ])->first();
+			if ( !$verify ){
+				return redirect()->to('/404');
+			}
+			\Auth::loginUsingId($request->token_id, $remember = true);
+
+
+	    }
+
 		$this->middleware('auth');
 		$this->settings =  SystemSetting::first();
 	}
@@ -41,19 +53,18 @@ class CheckoutController extends Controller
 		
 	public function  index(Request $request)  
 	{   
-		if ($request->token){
-		    $verify = Cart::where([ 'remember_token' => $request->token ])->first();
-			if ( !$verify ){
-				return redirect()->to('/404');
-			}
-	    }
+		
 
 
 		$carts =  Cart::all_items_in_cart($request->token);
 		if (!$carts->count()){ return redirect()->to('/cart'); }
 		$csrf = json_encode(['csrf' => csrf_token()]);
-        
+		if ($request->token){
+			$cookie = cookie('cart',$request->token, 60*60*7);
+			Cookie::queue($cookie);
+		}
 
+		
 		\Mail::to("jacob.atam@gmail.com")
 			->later(now()->addMinutes(2), new AbandonedCart($carts, $request->user()));
 
