@@ -42,7 +42,7 @@ class CheckoutController extends Controller
 	public function  index(Request $request)  
 	{   
 		if ($request->token){
-		    $verify = Cart::where([ 'token' => $request->token ])->first();
+		    $verify = Cart::where([ 'remember_token' => $request->token ])->first();
 			if ( !$verify ){
 				return redirect()->to('/404');
 			}
