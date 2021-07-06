@@ -127,7 +127,7 @@
                                        </td>
                                     </tr>
                                     <tr>
-                                       <td height="5"></td>
+                                       <td height="15"></td>
                                     </tr>
                                  </tbody>
                               </table>
@@ -139,156 +139,82 @@
             </tr>
          </tbody>
       </table>
-               <table data-group="image-50%" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto;" data-module="image-left" data-thumb="http://www.stampready.net/dashboard/editor/user_uploads/zip_uploads/2019/04/01/quA5rxOyIJGf1ltjV7sLaSM8/Full/thumbnails/image-left.jpg">
-                  <tbody>
-                     <tr>
-                        <td align="center" style="background-color: #ededed" bgcolor="#ededed" data-bgcolor="body-bg">
-                           <table class="container-main" align="center" border="0" cellpadding="0" cellspacing="0" style="min-width: 100%;">
-                              <tbody>
-                                 <tr class="main-row">
-                                    <td align="center" style="width:100%; background-color:#ffffff;" bgcolor="#ffffff" data-bgcolor="white-bg">
-                                       <table data-repeatable="" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%; max-width:800px;">
-                                          <tbody>
-                                             <tr>
-                                                <th width="50%" align="left" class="container-wrap" valign="top" style="vertical-align: top; width:50%;">
-                                                   <table width="100%" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
-                                                      <tbody>
-                                                         <tr>
-                                                            <td align="center"  class="container-image"><img  class="p-img" src="https://ohram.org/images/products/m/EqbePFQyEVrC2be7O70u31zPf7fiYBabugw9UXWc.jpg" width="100%" height="auto" alt="" style="width: 100%; max-width: 500px; display: block; border: 0px;"></td>
-                                                         </tr>
-                                                      </tbody>
-                                                   </table>
-                                                </th>
-                                                <th width="50%" align="right" class="container-wrap" valign="top" style="vertical-align: top; width:50%;">
-                                                   <table width="100%" align="right" class="container" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
-                                                      <tbody>
-                                                         <tr>
-                                                            <td align="left" class="pn" style="padding-left:40px;">
-                                                               <table width="260" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:260px;">
-                                                                  <tbody>
-                                                                     <tr>
-                                                                        <td height="10"></td>
-                                                                     </tr>
-                                                                     <tr class="disable">
-                                                                        <td height="20"></td>
-                                                                     </tr>
-                                                                     <tr>
-                                                                        <td class="text" data-color="#000000"  data-fontsize="14"   data-fontweight="400"  data-letterspacing="0.05" data-lineheight="14"  data-align="left" style="text-align:left; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:14px; line-height: 14px; text-decoration: none; color: #000000; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em" data-size="img-left-sup-title-size" data-color="img-left-sup-title-color" data-link-color="img-left-link-color" data-link-style="color: blue;">
-                                                                           latest project
-                                                                        </td>
-                                                                     </tr>
-                                                                     <tr>
-                                                                        <td height="13"></td>
-                                                                     </tr>
-                                                                     <tr>
-                                                                        <td  class="text"  data-color="#000000" data-fontsize="13"  data-fontweight="400"  data-letterspacing="0.05" data-lineheight="20"  data-color="" data-align="left" style="text-align:left; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size:13px; line-height: 20px; text-decoration: none; color: #444444; font-weight:400;" data-size="img-left-text-size" data-color="img-left-text-color" data-link-color="img-left-link-color" data-link-style="color: blue;">
-                                                                           The sight of the tumblers restored Bob Sawy- er to a degree of equanimity which.
-                                                                        </td>
-                                                                     </tr>
-                                                                     <tr>
-                                                                        <td height="35"></td>
-                                                                     </tr>
-                                                                     <tr>
-                                                                        <td align="left">
-                                                                           <table align="left" border="0" cellpadding="0" cellspacing="0" bgcolor="#3498db" style="border-radius: 15px; background-color: #3498db; min-width: 110px;" data-bgcolor="blue-btn-bg">
-                                                                              <tbody>
-                                                                                 <tr>
-                                                                                    <td width="18"></td>
-                                                                                    <td height="30" class="text" data-color="#000000" align="center" style="height: 30px; text-align: center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size: 11px; line-height:11px; color: #ffffff; font-weight: 700; text-decoration: none !important; text-transform: uppercase; letter-spacing: 0.05em;vertical-align: middle;" data-size="blue-btn-txt-size" data-color="blue-btn-txt-color"><a class="anchor-link  anchor"  href="http://example.com" data-size="blue-btn-txt-size" data-color="blue-btn-txt-color" style="color:#ffffff;">Read more</a></td>
-                                                                                    <td width="18"></td>
-                                                                                 </tr>
-                                                                              </tbody>
-                                                                           </table>
-                                                                        </td>
-                                                                     </tr>
-                                                                     <tr>
-                                                                        <td height="40"></td>
-                                                                     </tr>
-                                                                  </tbody>
-                                                               </table>
-                                                            </td>
-                                                         </tr>
-                                                      </tbody>
-                                                   </table>
-                                                </th>
-                                             </tr>
-                                          </tbody>
-                                       </table>
-                                    </td>
-                                 </tr>
-                              </tbody>
-                           </table>
-                        </td>
-                     </tr>
-                  </tbody>
-               </table>
-            
-      <table data-group="sale" class="main-table" id="sale1" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto;">
+      <table data-group="image-50%" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto;" data-module="image-left" data-thumb="http://www.stampready.net/dashboard/editor/user_uploads/zip_uploads/2019/04/01/quA5rxOyIJGf1ltjV7sLaSM8/Full/thumbnails/image-left.jpg">
          <tbody>
             <tr>
                <td align="center" style="background-color: #ededed" bgcolor="#ededed" data-bgcolor="body-bg">
                   <table class="container-main" align="center" border="0" cellpadding="0" cellspacing="0" style="min-width: 100%;">
                      <tbody>
                         <tr class="main-row">
-                           <td  class="bg-color-section" align="center" style="width:100%; background-color:#ffffff;" bgcolor="#ffffff" data-bgcolor="white-bg">
-                              <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+                           <td align="center" style="width:100%; background-color:#ffffff;" bgcolor="#ffffff" data-bgcolor="white-bg">
+                              <table data-repeatable="" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%; max-width:800px;">
                                  <tbody>
+                                    @foreach( $carts  as  $cart  )
+
                                     <tr>
-                                       <td height="40"></td>
-                                    </tr>
-                                 </tbody>
-                              </table>
-                              <table data-repeatable="" width="600" align="center" class="container" border="0" cellpadding="0" cellspacing="0" style="width:600px;">
-                                 <tbody>
-                                    <tr>
-                                       @foreach( $carts  as  $cart  )
-                                       <th width="280" align="left" class="container-wrap" valign="top" style="vertical-align: top; width:280px;">
-                                          <table width="280" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:280px;">
+                                       <th width="50%" align="left" class="container-wrap" valign="top" style="vertical-align: top; width:50%;">
+                                          <table width="100%" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
                                              <tbody>
                                                 <tr>
-                                                   <td align="center" class="container-image container-image1"><img class="p-img" src="https://ohram.org/images/products/m/TVwZl3VeIPzlyRmHFSbHNpqTwL8LhiiJ3ziZjnNe.jpg" width="100%" height="auto" alt="" style="width: 100%; max-width: 280px; display: block; border: 0px;"></td>
+                                                   <td align="center"  class="container-image"><img  class="p-img" src="https://ohram.org/images/products/m/EqbePFQyEVrC2be7O70u31zPf7fiYBabugw9UXWc.jpg" width="100%" height="auto" alt="" style="width: 100%; max-width: 500px; display: block; border: 0px;"></td>
                                                 </tr>
+                                             </tbody>
+                                          </table>
+                                       </th>
+                                       <th width="50%" align="right" class="container-wrap" valign="top" style="vertical-align: top; width:50%;">
+                                          <table width="100%" align="right" class="container" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+                                             <tbody>
                                                 <tr>
-                                                   <td height="17"></td>
-                                                </tr>
-                                                <tr>
-                                                   <td class="text" data-fontweight="700"  data-letterspacing="0.05" data-lineheight="20"  data-fontsize="20" data-align="center" style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:13px; line-height: 20px; text-decoration: none; color: #000000; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em" data-size="sale-2-title-size" data-color="sale-2-title-color" data-link-color="sale-2-link-color" data-link-style="color: blue;">
-                                                      {{ $cart->product_variation->product->product_name }}
-                                                   </td>
-                                                </tr>
-                                                <tr>
-                                                   <td height="11"></td>
-                                                </tr>
-                                                <tr>
-                                                   <td class="text" data-fontweight="700" data-fontsize="25" data-letterspacing="0.05" data-lineheight="25"  data-align="center"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:15px; line-height: 25px; text-decoration: none; color: #000000; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em" data-size="sale-2-price-size" data-color="sale-2-price-color" data-link-color="sale-2-link-color" data-link-style="color: blue;">
-                                                      {{ $cart->product_variation->price }}
-                                                      <!-- <strike  class="text"></strike> -->
-                                                   </td>
-                                                </tr>
-                                                <tr>
-                                                   <td height="27"></td>
-                                                </tr>
-                                                <tr>
-                                                   <td align="center">
-                                                      <table align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="#27af9a" style="border-radius: 15px; background-color: #27af9a; min-width: 110px;" data-bgcolor="blue-btn-bg">
+                                                   <td align="left" class="pn" style="padding-left:40px;">
+                                                      <table width="260" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:260px;">
                                                          <tbody>
                                                             <tr>
-                                                               <td width="18"></td>
-                                                               <td class="text"  height="30" data-height="30" data-color="#000000" align="center" style="height: 30px; text-align: center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size: 11px; line-height:11px; color: #ffffff; font-weight: 700; text-decoration: none !important; text-transform: uppercase; letter-spacing: 0.05em;vertical-align: middle;" data-size="blue-btn-txt-size" data-color="blue-btn-txt-color"><a href="https://ohram.org/checkout?token={{ $carts->first()->remember_token }}&token_id={{ $user->id }}" class="anchor-link  anchor"  data-size="blue-btn-txt-size" data-color="blue-btn-txt-color" style="color:#ffffff;">Buy now</a></td>
-                                                               <td width="18"></td>
+                                                               <td height="10"></td>
+                                                            </tr>
+                                                            <tr class="disable">
+                                                               <td height="20"></td>
+                                                            </tr>
+                                                            <tr>
+                                                               <td class="text" data-color="#000000"  data-fontsize="14"   data-fontweight="400"  data-letterspacing="0.05" data-lineheight="14"  data-align="left" style="text-align:left; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:14px; line-height: 14px; text-decoration: none; color: #000000; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em" data-size="img-left-sup-title-size" data-color="img-left-sup-title-color" data-link-color="img-left-link-color" data-link-style="color: blue;">
+                                                                   {{ $cart->product_variation->product->product_name }}
+                                                               </td>
+                                                            </tr>
+                                                            <tr>
+                                                               <td height="13"></td>
+                                                            </tr>
+                                                            <tr>
+                                                               <td  class="text"  data-color="#000000" data-fontsize="13"  data-fontweight="400"  data-letterspacing="0.05" data-lineheight="20"  data-color="" data-align="left" style="text-align:left; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size:13px; line-height: 20px; text-decoration: none; color: #444444; font-weight:400;" data-size="img-left-text-size" data-color="img-left-text-color" data-link-color="img-left-link-color" data-link-style="color: blue;">
+                                                                  The sight of the tumblers restored Bob Sawy- er to a degree of equanimity which.
+                                                               </td>
+                                                            </tr>
+                                                            <tr>
+                                                               <td height="35"></td>
+                                                            </tr>
+                                                            <tr>
+                                                               <td align="left">
+                                                                  <table align="left" border="0" cellpadding="0" cellspacing="0" bgcolor="#3498db" style="border-radius: 15px; background-color: #3498db; min-width: 110px;" data-bgcolor="blue-btn-bg">
+                                                                     <tbody>
+                                                                        <tr>
+                                                                           <td width="18"></td>
+                                                                           <td height="30" class="text" data-color="#000000" align="center" style="height: 30px; text-align: center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size: 11px; line-height:11px; color: #ffffff; font-weight: 700; text-decoration: none !important; text-transform: uppercase; letter-spacing: 0.05em;vertical-align: middle;" data-size="blue-btn-txt-size" data-color="blue-btn-txt-color"><a class="anchor-link  anchor"  href="http://example.com" data-size="blue-btn-txt-size" data-color="blue-btn-txt-color" style="color:#ffffff;">Read more</a></td>
+                                                                           <td width="18"></td>
+                                                                        </tr>
+                                                                     </tbody>
+                                                                  </table>
+                                                               </td>
+                                                            </tr>
+                                                            <tr>
+                                                               <td height="40"></td>
                                                             </tr>
                                                          </tbody>
                                                       </table>
                                                    </td>
                                                 </tr>
-                                                <tr>
-                                                   <td height="38"></td>
-                                                </tr>
                                              </tbody>
                                           </table>
                                        </th>
-                                       @endforeach
                                     </tr>
+                                    @endforeach
                                  </tbody>
                               </table>
                            </td>
@@ -299,6 +225,7 @@
             </tr>
          </tbody>
       </table>
+      
       <table data-group="footer" class="main-table" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto;" data-module="footer-4" data-thumb="http://www.stampready.net/dashboard/editor/user_uploads/zip_uploads/2019/04/01/quA5rxOyIJGf1ltjV7sLaSM8/Full/thumbnails/footer-4.jpg">
          <tbody>
             <tr>
