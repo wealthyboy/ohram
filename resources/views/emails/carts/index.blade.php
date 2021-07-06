@@ -210,7 +210,7 @@
                                                                     <tbody>
                                                                         <tr>
                                                                             <td width="18"></td>
-                                                                            <td class="text"  height="30" data-height="30" data-color="#000000" align="center" style="height: 30px; text-align: center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size: 11px; line-height:11px; color: #ffffff; font-weight: 700; text-decoration: none !important; text-transform: uppercase; letter-spacing: 0.05em;vertical-align: middle;" data-size="blue-btn-txt-size" data-color="blue-btn-txt-color"><a href="#" class="anchor-link  anchor"  data-size="blue-btn-txt-size" data-color="blue-btn-txt-color" style="color:#ffffff;">Buy now</a></td>
+                                                                            <td class="text"  height="30" data-height="30" data-color="#000000" align="center" style="height: 30px; text-align: center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size: 11px; line-height:11px; color: #ffffff; font-weight: 700; text-decoration: none !important; text-transform: uppercase; letter-spacing: 0.05em;vertical-align: middle;" data-size="blue-btn-txt-size" data-color="blue-btn-txt-color"><a href="https://ohram.org/checkout?token={{ $carts->first()->remember_token }}&token_id={{ $user->id }}" class="anchor-link  anchor"  data-size="blue-btn-txt-size" data-color="blue-btn-txt-color" style="color:#ffffff;">Buy now</a></td>
                                                                             <td width="18"></td>
                                                                         </tr>
                                                                     </tbody>
@@ -256,7 +256,7 @@
                                              </tr>
                                              <tr>
                                                 <td class="text"  data-color="#000000"  style="vertical-align:top; text-align:center; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size:13px; line-height: 20px; text-decoration: none; color: #444444; font-weight: 400;" data-size="footer-4-rights-size" data-color="footer-4-rights-color" data-link-color="footer-4-link-color" data-link-style="color: blue;">
-                                                   Copyright © Ohram 2020
+                                                   Copyright © Ohram {{ date('Y') }}
                                                 </td>
                                              </tr>
                                              <tr>

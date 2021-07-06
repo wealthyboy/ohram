@@ -44,10 +44,11 @@ class Cart extends Model
 	    return null !== $cart ? $cart : null;
 	}
 
-	public static function all_items_in_cart() 
+	public static function all_items_in_cart($token = null) 
 	{  
 	    //SELECT ALL FROM THE USER ID && FROM THE USER COOKIE
 		$cookie=\Cookie::get('cart');
+		$cookie =  $token ? $token : $cookie;
 		$carts = Cart::with(["product_variation","product_variation.product","product_variation.product_variation_values"])->where(['carts.remember_token'=>$cookie])->get();
 	    static::sync($carts);
 	    return $carts;
