@@ -156,7 +156,7 @@
                                           <table width="100%" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
                                              <tbody>
                                                 <tr>
-                                                   <td align="center"  class="container-image"><img  class="p-img" src="{{ $cart->product_variation->image_m  }}" width="100%" height="auto" alt="" style="width: 100%; max-width: 200px; display: block; border: 0px;"></td>
+                                                   <td align="right"  class="container-image"><img  class="p-img" src="{{-- $cart->product_variation->image_m  --}}https://ohram.org/images/products/m/eDal5J1rsYlerVtdUAeb4USD50c7vdhUsUlURi73.jpg" width="100%" height="auto" alt="" style="width: 100%; max-width: 200px; display: block; border: 0px;"></td>
                                                 </tr>
                                              </tbody>
                                           </table>
