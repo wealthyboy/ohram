@@ -14,7 +14,7 @@ class AlterCartsTableAddUpdatedAt extends Migration
     public function up()
     {
         Schema::table('carts', function (Blueprint $table) {
-            $table->timestamp('updated_at')->nullable();
+            //$table->timestamp('updated_at')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AlterCartsTableAddUpdatedAt extends Migration
     public function down()
     {
         Schema::table('carts', function (Blueprint $table) {
-            $table->dropColumn('updated_at');
+           // $table->dropColumn('updated_at');
         });
     }
 }

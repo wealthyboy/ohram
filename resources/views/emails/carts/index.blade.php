@@ -90,10 +90,10 @@
                                              </tr>
                                              <tr>
                                                 <td align="center" style="padding-top:1px;">
-                                                   <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000 !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;"  data-color="#000000" data-fontweight="600"  data-fontsize="12"  data-letterspacing="0.05" data-lineheight="20"  data-align="center"   data-size="nav-11-link-size" data-color="nav-11-link-color" data-link-style="color: #000000;" data-link-color="nav-11-link-color"><a  class="anchor-link  anchor" href="https://ohram.org/products/meal-replacement-shakes">MEAL REPLACEMENT SHAKES |</a></span>
-                                                   <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000  !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;"  data-color="#000000" data-letterspacing="0.05"  data-fontsize="12"  data-lineheight="20"  data-align="center" data-size="nav-11-link-size" data-color="nav-11-link-color" data-link-style="color: #000000;" data-link-color="nav-11-link-color"><a  class="anchor-link  anchor"  href="https://ohram.org/products/shop-all">Shop all |</a></span>
-                                                   <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000  !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;" data-color="#000000"  data-fontweight="600"  data-fontsize="12"   data-letterspacing="0.05" data-lineheight="20"  data-align="center"  data-size="nav-11-link-size" data-color="nav-11-link-color" data-link-style="color: #000000;" data-link-color="nav-11-link-color"><a  class="anchor-link  anchor"  href="https://ohram.org/products/weight-loss">WEIGHT-LOSS |</a></span>
-                                                   <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000 !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;"  data-color="#000000" data-fontweight="600"  data-fontsize="12"  data-letterspacing="0.05" data-lineheight="20"  data-align="center"  data-size="nav-11-link-size" data-color="nav-11-link-color" data-link-style="color: #000000;" data-link-color="nav-11-link-color"><a  class="anchor-link  anchor"   href="https://ohram.org/products/female-apparel">Female apparel </a></span>
+                                                   <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000 !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;"  data-color="#000000" data-fontweight="600"  data-fontsize="12"  data-letterspacing="0.05" data-lineheight="20"  data-align="center"   data-size="nav-11-link-size" data-color="nav-11-link-color" data-link-style="color: #000000;" data-link-color="nav-11-link-color"><a  style="color: #000000 !important; text-decoration: none !important;" class="anchor-link  anchor" href="https://ohram.org/products/meal-replacement-shakes">MEAL REPLACEMENT SHAKES |</a></span>
+                                                   <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000  !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;"  data-color="#000000" data-letterspacing="0.05"  data-fontsize="12"  data-lineheight="20"  data-align="center" data-size="nav-11-link-size" data-color="nav-11-link-color" data-link-style="color: #000000;" data-link-color="nav-11-link-color"><a  class="anchor-link  anchor"  style="color: #000000 !important; text-decoration: none !important;"  href="https://ohram.org/products/shop-all">Shop all |</a></span>
+                                                   <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000  !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;" data-color="#000000"  data-fontweight="600"  data-fontsize="12"   data-letterspacing="0.05" data-lineheight="20"  data-align="center"  data-size="nav-11-link-size" data-color="nav-11-link-color" data-link-style="color: #000000;" data-link-color="nav-11-link-color"><a  style="color: #000000 !important; text-decoration: none !important;"  class="anchor-link  anchor"  href="https://ohram.org/products/weight-loss">WEIGHT-LOSS |</a></span>
+                                                   <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000 !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;"  data-color="#000000" data-fontweight="600"  data-fontsize="12"  data-letterspacing="0.05" data-lineheight="20"  data-align="center"  data-size="nav-11-link-size" data-color="nav-11-link-color" data-link-style="color: #000000;" data-link-color="nav-11-link-color"><a  style="color: #000000 !important; text-decoration: none !important;"  class="anchor-link  anchor"   href="https://ohram.org/products/female-apparel">Female apparel </a></span>
                                                 </td>
                                              </tr>
                                              <tr>
@@ -128,7 +128,7 @@
                                              </tr>
                                              <tr>
                                                 <td  data-color="#000000" data-fontweight="600" data-fontsize="20"  data-letterspacing="0.05" data-lineheight="25"  data-align="left" class="text" style="text-align:left; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:20px; line-height: 25px; text-decoration: none; color: #000000; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em" data-size="var-8-title-size" data-color="var-8-title-color" data-link-color="var-8-link-color" data-link-style="color: blue;">
-                                                   Hi {{ ucfirst($user->name) }}
+                                                   Hi {{ ucfirst($user->fullname()) }}
                                                 </td>
                                              </tr>
                                              <tr>
@@ -181,13 +181,13 @@
                                                     <table width="280" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:280px;">
                                                         <tbody>
                                                             <tr>
-                                                                <td align="center" class="container-image container-image1"><img class="p-img" src="{{ $cart->product_variation->image_m }}" width="100%" height="auto" alt="" style="width: 100%; max-width: 280px; display: block; border: 0px;"></td>
+                                                                <td align="center" class="container-image container-image1"><img class="p-img" src="{{ $cart->product_variation->image_tn  }}" width="100%" height="auto" alt="" style="width: 100%; max-width: 280px; display: block; border: 0px;"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td height="17"></td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="text" data-fontweight="700"  data-letterspacing="0.05" data-lineheight="20"  data-fontsize="20" data-align="center" style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:20px; line-height: 20px; text-decoration: none; color: #000000; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em" data-size="sale-2-title-size" data-color="sale-2-title-color" data-link-color="sale-2-link-color" data-link-style="color: blue;">
+                                                                <td class="text" data-fontweight="700"  data-letterspacing="0.05" data-lineheight="20"  data-fontsize="20" data-align="center" style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:13px; line-height: 20px; text-decoration: none; color: #000000; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em" data-size="sale-2-title-size" data-color="sale-2-title-color" data-link-color="sale-2-link-color" data-link-style="color: blue;">
                                                                     {{ $cart->product_variation->product->product_name }}
                                                                 </td>
                                                             </tr>
@@ -196,7 +196,7 @@
                                                             </tr>
                                                         
                                                             <tr>
-                                                                <td class="text" data-fontweight="700" data-fontsize="25" data-letterspacing="0.05" data-lineheight="25"  data-align="center"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:25px; line-height: 25px; text-decoration: none; color: #000000; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em" data-size="sale-2-price-size" data-color="sale-2-price-color" data-link-color="sale-2-link-color" data-link-style="color: blue;">
+                                                                <td class="text" data-fontweight="700" data-fontsize="25" data-letterspacing="0.05" data-lineheight="25"  data-align="center"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:15px; line-height: 25px; text-decoration: none; color: #000000; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em" data-size="sale-2-price-size" data-color="sale-2-price-color" data-link-color="sale-2-link-color" data-link-style="color: blue;">
                                                                 {{ $cart->product_variation->price }}
                                                                 <!-- <strike  class="text"></strike> -->
                                                                 </td>
@@ -241,7 +241,6 @@
             </div>
             
             <div class="footer mb-1 pointer">
-               <div style="display:none;" class="cancel-button"><a id="#" href="#">X</a></div>
                <table data-group="footer" class="main-table" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto;" data-module="footer-4" data-thumb="http://www.stampready.net/dashboard/editor/user_uploads/zip_uploads/2019/04/01/quA5rxOyIJGf1ltjV7sLaSM8/Full/thumbnails/footer-4.jpg">
                   <tbody>
                      <tr>
@@ -276,7 +275,7 @@
                                                                <table data-repeatable="" border="0" cellpadding="0" cellspacing="0" style="display:table-cell;vertical-align:middle;">
                                                                   <tbody>
                                                                      <tr>
-                                                                        <td align="center" style="padding-right:6px;" valign="middle"><img src="/images/icons/t-icon-blue.png" border="0" data-crop="false" width="auto" height="auto" alt="" style="display:block; border: 0px; width: auto;"></td>
+                                                                        <td align="center" style="padding-right:6px;" valign="middle"><img src="https://ohram.org/images/icons/t-icon-blue.png" border="0" data-crop="false" width="auto" height="auto" alt="" style="display:block; border: 0px; width: auto;"></td>
                                                                      </tr>
                                                                   </tbody>
                                                                </table>
@@ -292,7 +291,7 @@
                                                                <table data-repeatable="" border="0" cellpadding="0" cellspacing="0" style="display:table-cell;vertical-align:middle;">
                                                                   <tbody>
                                                                      <tr>
-                                                                        <td align="center" style="padding:0 6px;" valign="middle"><img src="/images/icons/f-icon-blue.png" border="0" data-crop="false" width="auto" height="auto" alt="" style="display:block; border: 0px; width: auto;"></td>
+                                                                        <td align="center" style="padding:0 6px;" valign="middle"><img src="https://ohram.org/images/icons/f-icon-blue.png" border="0" data-crop="false" width="auto" height="auto" alt="" style="display:block; border: 0px; width: auto;"></td>
                                                                      </tr>
                                                                   </tbody>
                                                                </table>
@@ -313,7 +312,7 @@
                                                                <table data-repeatable="" border="0" cellpadding="0" cellspacing="0" style="display:table-cell;vertical-align:middle;">
                                                                   <tbody>
                                                                      <tr>
-                                                                        <td align="center" style="padding:0 6px;" valign="middle"><img src="/images/icons/ins-icon-blue.png" border="0" data-crop="false" width="auto" height="auto" alt="" style="display:block; border: 0px; width: auto;"></td>
+                                                                        <td align="center" style="padding:0 6px;" valign="middle"><img src="https://ohram.org/images/icons/ins-icon-blue.png" border="0" data-crop="false" width="auto" height="auto" alt="" style="display:block; border: 0px; width: auto;"></td>
                                                                      </tr>
                                                                   </tbody>
                                                                </table>
@@ -331,12 +330,7 @@
                                              <tr>
                                                 <td height="15"></td>
                                              </tr>
-                                             <tr>
-                                                <td class="text" data-color="#444444" style="vertical-align:top; text-align:center; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size:13px; line-height: 13px; text-decoration: none; color: #444444; font-weight: 400;" data-size="footer-4-unsub-size" data-color="footer-4-unsub-color" data-link-color="footer-4-link-color" data-link-style="color: blue;"><a href="sr_unsubscribe" style="vertical-align:top; text-align:center; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size:13px; line-height: 13px; text-decoration: none; color: #444444; font-weight: 400;" data-size="footer-4-unsub-size" data-color="footer-4-unsub-color" data-link-color="footer-4-link-color" data-link-style="color: blue;"><a href="https://ohram.org/newsletter/unsubscribe">Unsubscribe</a></td>
-                                             </tr>
-                                             <tr>
-                                                <td height="44"></td>
-                                             </tr>
+                                           
                                           </tbody>
                                        </table>
                                     </td>

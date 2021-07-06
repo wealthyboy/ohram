@@ -117,9 +117,12 @@ Route::group(['middleware' => 'admin','prefix' => 'admin'], function(){
 });
 
 Route::get('/mailable', function () {
-    // $order = App\Order::find(104);
-    // $settings =  App\SystemSetting::first();
-    return new App\Mail\AbandonedCart();
+    $carts =  App\Cart::all_items_in_cart();
+    //$settings =  App\SystemSetting::first();
+   // dd($carts);
+     
+     $user = auth()->user();
+    return new App\Mail\AbandonedCart($carts, $user);
 }); 
 
 
