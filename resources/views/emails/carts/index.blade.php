@@ -101,7 +101,7 @@
             </tr>
          </tbody>
       </table>
-      <table data-group="titles" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto;" data-module="title-variant-8" data-thumb="http://www.stampready.net/dashboard/editor/user_uploads/zip_uploads/2019/04/01/quA5rxOyIJGf1ltjV7sLaSM8/Full/thumbnails/var-8.jpg">
+      <table data-group="titles" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto; width: 100%;" >
          <tbody>
             <tr>
                <td align="center" style="background-color: #ededed" bgcolor="#ededed" data-bgcolor="body-bg">
@@ -112,7 +112,7 @@
                               <table width="600" align="center" class="container" border="0" cellpadding="0" cellspacing="0" style="width:600px;">
                                  <tbody>
                                     <tr>
-                                       <td height="19"></td>
+                                       <td height="9"></td>
                                     </tr>
                                     <tr>
                                        <td  data-color="#000000" data-fontweight="600" data-fontsize="20"  data-letterspacing="0.05" data-lineheight="25"  data-align="left" class="text" style="text-align:left; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:20px; line-height: 25px; text-decoration: none; color: #000000; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em" data-size="var-8-title-size" data-color="var-8-title-color" data-link-color="var-8-link-color" data-link-style="color: blue;">
@@ -120,15 +120,15 @@
                                        </td>
                                     </tr>
                                     <tr>
-                                       <td height="15"></td>
+                                       <td height="5"></td>
                                     </tr>
                                     <tr>
                                        <td data-color="#000000" class="text" data-fontsize="12"  data-fontweight="600"  data-letterspacing="0.05" data-lineheight="20"  data-align="left" style="text-align:left; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size:12px; line-height: 19px; text-decoration: none; color: #444444; font-weight:400;" data-size="var-6-text-size" data-color="var-6-text-color" data-link-color="var-6-link-color" data-link-style="color: blue;">
-                                          We saved all your items for you.
+                                          We saved all your great items for you so when you are ready to buy you can complete your purchase.
                                        </td>
                                     </tr>
                                     <tr>
-                                       <td height="25"></td>
+                                       <td height="5"></td>
                                     </tr>
                                  </tbody>
                               </table>
@@ -140,7 +140,7 @@
             </tr>
          </tbody>
       </table>
-      <table data-group="sale" class="main-table" id="sale1" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto;" data-module="sale-2" data-thumb="">
+      <table data-group="sale" class="main-table" id="sale1" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto;">
          <tbody>
             <tr>
                <td align="center" style="background-color: #ededed" bgcolor="#ededed" data-bgcolor="body-bg">
@@ -163,7 +163,7 @@
                                           <table width="280" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:280px;">
                                              <tbody>
                                                 <tr>
-                                                   <td align="center" class="container-image container-image1"><img class="p-img" src="{{ $cart->product_variation->image_tn  }}" width="100%" height="auto" alt="" style="width: 100%; max-width: 280px; display: block; border: 0px;"></td>
+                                                   <td align="center" class="container-image container-image1"><img class="p-img" src="https://ohram.org/images/products/m/TVwZl3VeIPzlyRmHFSbHNpqTwL8LhiiJ3ziZjnNe.jpg" width="100%" height="auto" alt="" style="width: 100%; max-width: 280px; display: block; border: 0px;"></td>
                                                 </tr>
                                                 <tr>
                                                    <td height="17"></td>
