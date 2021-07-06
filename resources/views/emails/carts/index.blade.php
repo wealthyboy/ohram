@@ -4,7 +4,6 @@
       <meta charset="UTF-8" />
       <title>{{ Config('app.name')}}  Reciept</title>
       <meta charset="UTF-8" />
-      <meta name="format-detection" content="telephone=no">
       <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,600,700" rel="stylesheet" type="text/css">
       <style type="text/css">
          @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:300,400,600,700,800');
