@@ -59,10 +59,7 @@ class CheckoutController extends Controller
 		$carts =  Cart::all_items_in_cart($request->token);
 		if (!$carts->count()){ return redirect()->to('/cart'); }
 		$csrf = json_encode(['csrf' => csrf_token()]);
-		if ($request->token){
-			$cookie = cookie('cart',$request->token, 60*60*7);
-			\Cookie::queue($cookie);
-		}
+		if ($request->token){ \Cookie::queue('cart', $request->token, 60*60*7); }
 
 
 		\Mail::to("jacob.atam@gmail.com")
