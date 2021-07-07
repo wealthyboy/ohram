@@ -114,8 +114,8 @@
                                        <td height="9"></td>
                                     </tr>
                                     <tr>
-                                       <td class="text" style="text-align:left; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:13px; line-height: 25px; text-decoration: none; color: #27af9a; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em" data-size="var-8-title-size" data-color="var-8-title-color" data-link-color="var-8-link-color" data-link-style="color: blue;">
-                                          Hi {{ ucfirst($user->name }},
+                                       <td class="text" style="text-align:left; font-family: 'sans-serif', 'Montserrat', Arial, Helvetica; font-size:11px; line-height: 25px; text-decoration: none; color: #27af9a; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em" data-size="var-8-title-size" data-color="var-8-title-color" data-link-color="var-8-link-color" data-link-style="color: blue;">
+                                          Hi {{ ucfirst($user->name) }},
                                        </td>
                                     </tr>
                                     <tr>
@@ -155,7 +155,7 @@
                                           <table width="100%" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
                                              <tbody>
                                                 <tr>
-                                                   <td align="right"  class="container-image"><img  class="p-img" src="{{-- $cart->product_variation->image_m  --}}https://ohram.org/images/products/m/eDal5J1rsYlerVtdUAeb4USD50c7vdhUsUlURi73.jpg" width="100%" height="auto" alt="" style="width: 100%; max-width: 200px; display: block; border: 0px;"></td>
+                                                   <td align="right"  class="container-image"><img  class="p-img" src="{{-- $cart->product_variation->image_m  --}}https://ohram.org/images/products/m/eDal5J1rsYlerVtdUAeb4USD50c7vdhUsUlURi73.jpg" width="100%" height="auto" alt="" style="width: 100%; max-width: 150px; display: block; border: 0px;"></td>
                                                 </tr>
                                              </tbody>
                                           </table>
