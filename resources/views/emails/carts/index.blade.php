@@ -115,7 +115,7 @@
                                     </tr>
                                     <tr>
                                        <td class="text" style="text-align:left; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:13px; line-height: 25px; text-decoration: none; color: #27af9a; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em" data-size="var-8-title-size" data-color="var-8-title-color" data-link-color="var-8-link-color" data-link-style="color: blue;">
-                                          Hi {{ ucfirst($user->fullname()) }},
+                                          Hi {{ ucfirst($user->name }},
                                        </td>
                                     </tr>
                                     <tr>
