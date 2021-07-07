@@ -216,7 +216,7 @@
                      <tbody>
                         <tr class="main-row">
                            <td align="center" class="bg-color-section" style="width:100%; background-color:#ffffff;" bgcolor="#ffffff" data-bgcolor="gray-bg">
-                              <table width="280" align="center" class="container" border="0" cellpadding="0" cellspacing="0" style="width:500px;">
+                              <table width="500" align="center" class="container" border="0" cellpadding="0" cellspacing="0" style="width:500px;">
                                  <tbody>
                                     <tr>
                                        <td height="55"></td>
