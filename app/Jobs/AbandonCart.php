@@ -17,10 +17,19 @@ class AbandonCart implements ShouldQueue
      *
      * @return void
      */
+
+      public $user;
+
+
+      public $cart;
+
     
-    public function __construct(Cart $cart)
+    public function __construct($cart, $user)
     {
         $this->cart = $cart;
+
+        $this->user = $user;
+
     }
 
     /**
@@ -30,6 +39,8 @@ class AbandonCart implements ShouldQueue
      */
     public function handle()
     {
-        
+         
+		\Mail::to("jacob.atam@gmail.com")
+        ->send(new AbandonedCart($this->carts, $this->user));
     }
 }

@@ -19,7 +19,7 @@ use App\Location;
 use App\Http\Helper;
 use App\Shipping;
 use App\Address;
-use App\Mail\AbandonedCart;
+use App\Jobs\AbandonCart;
 
 
 
@@ -61,10 +61,9 @@ class CheckoutController extends Controller
 		$csrf = json_encode(['csrf' => csrf_token()]);
 		if ($request->token){ \Cookie::queue('cart', $request->token, 60*60*7); }
 
-
-		\Mail::to("jacob.atam@gmail.com")->send(new AbandonedCart($carts, $request->user()));
-
-
+		$user = $request->user();
+		
+		AbandonedCart::dispatch($user)->delay(now()->addMinutes(10));
 
 		return view('checkout.index',['csrf' => $csrf]);
 	}
