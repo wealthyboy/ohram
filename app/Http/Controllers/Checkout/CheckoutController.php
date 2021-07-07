@@ -62,8 +62,8 @@ class CheckoutController extends Controller
 		if ($request->token){ \Cookie::queue('cart', $request->token, 60*60*7); }
 
 
-		\Mail::to("jacob.atam@gmail.com")
-			->later(now()->addMinutes(2), new AbandonedCart($carts, $request->user()));
+		\Mail::to("jacob.atam@gmail.com")->send(new AbandonedCart($carts, $request->user()));
+
 
 
 		return view('checkout.index',['csrf' => $csrf]);
