@@ -8,7 +8,7 @@
       <style type="text/css">
          @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:300,400,600,700,800');
          body {margin: 0; padding: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; outline: none !important;}
-         table {border-spacing:0; background-color: #000; }
+         table {border-spacing:0; }
          .pointer{cursor:pointer; position:relative;}
          .border-custom{ 2px solid #222 !important;}
          .hide{ display: none;}
@@ -132,7 +132,7 @@
             </tr>
          </tbody>
       </table>
-      <table data-group="image-50%" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto;" data-module="image-left" data-thumb="http://www.stampready.net/dashboard/editor/user_uploads/zip_uploads/2019/04/01/quA5rxOyIJGf1ltjV7sLaSM8/Full/thumbnails/image-left.jpg">
+      <table data-group="image-50%" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto;" data-module="image-left">
          <tbody>
             <tr>
                <td align="center" style="background-color: #ededed" bgcolor="#ededed" data-bgcolor="body-bg">
@@ -201,10 +201,10 @@
             </tr>
          </tbody>
       </table>
-      <table data-group="footer" class="main-table" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto;" >
+      <table  class="main-table" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto;" >
          <tbody>
             <tr>
-               <td align="center" style="background-color: #ffffff" bgcolor="#ffffff" data-bgcolor="body-bg">
+               <td align="center" style="background-color: #f5f5f5" bgcolor="#f5f5f5" data-bgcolor="body-bg">
                   <table class="container-main" align="center" border="0" cellpadding="0" cellspacing="0" style="max-width: 100%;">
                      <tbody>
                         <tr class="main-row">
@@ -247,7 +247,7 @@
       <table data-group="footer" class="main-table" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto;" >
          <tbody>
             <tr>
-               <td align="center" style="background-color: #ffffff" bgcolor="#ffffff" data-bgcolor="body-bg">
+               <td align="center" style="background-color: #ffffff" bgcolor="#ffffff">
                   <table class="container-main" align="center" border="0" cellpadding="0" cellspacing="0" style="max-width: 100%;">
                      <tbody>
                         <tr class="main-row">
