@@ -226,9 +226,9 @@
                                           <table align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="#27af9a" style=" background-color: #27af9a; min-width: 250px;" data-bgcolor="blue-btn-bg">
                                              <tbody>
                                                 <tr>
-                                                   <td width="18"></td>
+                                                   <td width="5000"></td>
                                                    <td class="text"  height="30" data-height="30" data-color="#000000" align="center" style="height: 30px; text-align: center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size: 11px; line-height:11px; color: #ffffff; font-weight: 700; text-decoration: none !important; text-transform: uppercase; letter-spacing: 0.05em;vertical-align: middle;" data-size="blue-btn-txt-size" data-color="blue-btn-txt-color"><a href="#" class="anchor-link  anchor"  data-size="blue-btn-txt-size" data-color="blue-btn-txt-color" style="color:#ffffff;">Buy now</a></td>
-                                                   <td width="18"></td>
+                                                   <td width="5000"></td>
                                                 </tr>
                                              </tbody>
                                           </table>
