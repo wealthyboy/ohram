@@ -63,7 +63,7 @@ class CheckoutController extends Controller
 
 		$user = $request->user();
 		
-		AbandonedCart::dispatch($user)->delay(now()->addMinutes(10));
+		AbandonCart::dispatch($user)->delay(now()->addMinutes(10));
 
 		return view('checkout.index',['csrf' => $csrf]);
 	}
