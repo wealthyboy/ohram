@@ -8,7 +8,7 @@
       <style type="text/css">
          @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:300,400,600,700,800');
          body {margin: 0; padding: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; outline: none !important;}
-         table {border-spacing:0; background-color: #000; width: 100%; !important;}
+         table {border-spacing:0; background-color: #000; }
          .pointer{cursor:pointer; position:relative;}
          .border-custom{ 2px solid #222 !important;}
          .hide{ display: none;}
@@ -79,14 +79,7 @@
                                     <tr>
                                        <td height="13"></td>
                                     </tr>
-                                    <tr>
-                                       <td align="center" style="padding-top:1px;">
-                                          <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color:   #27af9a; !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block; " ><a  style="color: #27af9a !important; text-decoration: none !important;" class="anchor-link  anchor" href="https://ohram.org/products/meal-replacement-shakes">MEAL REPLACEMENT SHAKES |</a></span>
-                                          <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000  !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;" ><a  class="anchor-link  anchor"  style="color: #27af9a !important; text-decoration: none !important;"  href="https://ohram.org/products/shop-all">Shop all |</a></span>
-                                          <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000  !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;" ><a  style="color: #27af9a !important; text-decoration: none !important;"  class="anchor-link  anchor"  href="https://ohram.org/products/weight-loss">WEIGHT-LOSS |</a></span>
-                                          <span class="text"  style="text-align:center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:12px; line-height: 20px; text-decoration: none; color: #000000 !important; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;" ><a  style="color: #27af9a !important; text-decoration: none !important;"  class="anchor-link  anchor"   href="https://ohram.org/products/female-apparel">Female apparel </a></span>
-                                       </td>
-                                    </tr>
+                                    
                                     <tr>
                                        <td height="15"></td>
                                     </tr>
@@ -223,12 +216,12 @@
                                     </tr>
                                     <tr>
                                        <td align="center">
-                                          <table align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="#27af9a" style=" background-color: #27af9a; min-width: 250px;" data-bgcolor="blue-btn-bg">
+                                          <table align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="#27af9a" style=" background-color: #27af9a; min-width: 350px;">
                                              <tbody>
                                                 <tr>
-                                                   <td width="5000"></td>
-                                                   <td class="text"  height="30" data-height="30" data-color="#000000" align="center" style="height: 30px; text-align: center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size: 11px; line-height:11px; color: #ffffff; font-weight: 700; text-decoration: none !important; text-transform: uppercase; letter-spacing: 0.05em;vertical-align: middle;" data-size="blue-btn-txt-size" data-color="blue-btn-txt-color"><a href="#" class="anchor-link  anchor"  data-size="blue-btn-txt-size" data-color="blue-btn-txt-color" style="color:#ffffff;">Buy now</a></td>
-                                                   <td width="5000"></td>
+                                                   <td width="18"></td>
+                                                   <td class="text"  height="30"  align="center" style="height: 30px; text-align: center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size: 11px; line-height:11px; color: #ffffff; font-weight: 700; text-decoration: none !important; text-transform: uppercase; letter-spacing: 0.05em;vertical-align: middle;"><a href="#" class="anchor-link  anchor"  style="color:#ffffff;">Buy now</a></td>
+                                                   <td width="18"></td>
                                                 </tr>
                                              </tbody>
                                           </table>
