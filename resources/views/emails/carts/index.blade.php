@@ -8,7 +8,7 @@
       <style type="text/css">
          @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:300,400,600,700,800');
          body {margin: 0; padding: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; outline: none !important;}
-         table {border-spacing:0; background-color: #f5f5f5;}
+         table {border-spacing:0; background-color: #000; width: 100%; !important;}
          .pointer{cursor:pointer; position:relative;}
          .border-custom{ 2px solid #222 !important;}
          .hide{ display: none;}
