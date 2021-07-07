@@ -23,12 +23,12 @@ class AbandonCart implements ShouldQueue
       public $user;
 
 
-      public $cart;
+      public $carts;
 
     
-    public function __construct($cart, $user)
+    public function __construct($carts, $user)
     {
-        $this->cart = $cart;
+        $this->carts = $carts;
 
         $this->user = $user;
 
