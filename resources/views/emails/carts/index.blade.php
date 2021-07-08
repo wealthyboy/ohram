@@ -134,11 +134,11 @@
             </tr>
          </tbody>
       </table>
-      <table data-bgcolor="tbc" style="table-layout: fixed; margin: 0px auto; background-color: rgb(234, 235, 235);" data-module="WelcomeTextModule"  class="" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#384855" align="center">
+      <table data-bgcolor="tbc" style="table-layout: fixed; margin: 0px auto; background-color: rgb(234, 235, 235);" data-module="WelcomeTextModule"  class="" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#384855" align="left">
          <tbody>
             <tr>
-               <td align="center" style="background-color: #ededed" bgcolor="#ededed" data-bgcolor="body-bg">
-               <table data-bgcolor="tbc" class="table600Min" style="table-layout: fixed; margin: 0px auto; min-width: 668px; background-color: rgb(234, 235, 235);" width="668" cellspacing="0" cellpadding="0" border="0" bgcolor="#384855" align="center">
+               <td align="left" style="background-color: #ededed" bgcolor="#ededed" data-bgcolor="body-bg">
+               <table data-bgcolor="tbc" class="table600Min" style="table-layout: fixed; margin: 0px auto; min-width: 668px; background-color: rgb(234, 235, 235);" width="668" cellspacing="0" cellpadding="0" border="0" bgcolor="#384855" align="left">
                      <tbody>
                         <tr class="main-row">
                            <td align="center" style="width:100%; background-color:#ffffff;" bgcolor="#ffffff" data-bgcolor="white-bg">
@@ -146,7 +146,7 @@
                                  <tbody>
                                     @foreach( $carts  as  $cart  )
                                     <tr>
-                                       <th width="50%" align="left" class="container-wrap" valign="top" style="vertical-align: top; width:50%;">
+                                       <th width="50%" align="left" class="container-wrap" valign="top" style="vertical-align: top; width:30%;">
                                           <table width="100%" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
                                              <tbody>
                                                 <tr>
@@ -155,11 +155,11 @@
                                              </tbody>
                                           </table>
                                        </th>
-                                       <th width="50%" align="right" class="container-wrap" valign="top" style="vertical-align: middle; width:50%;">
-                                          <table width="100%" align="right" class="container" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+                                       <th width="50%" align="left" class="container-wrap" valign="top" style="vertical-align: middle; width:70%;">
+                                          <table width="100%" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
                                              <tbody>
                                                 <tr>
-                                                   <td align="right" class="pn" style="padding-left:10px;">
+                                                   <td align="left" class="pn" style="padding-left:10px;">
                                                       <table width="260" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:260px;">
                                                          <tbody>
                                                             <tr>
