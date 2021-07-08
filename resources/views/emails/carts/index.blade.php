@@ -248,11 +248,11 @@
       </table>
       <table data-bgcolor="tbc" style="table-layout: fixed; margin: 0px auto; background-color: rgb(234, 235, 235);" data-module="WelcomeTextModule"  class="" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#384855" align="center">
             <tr>
-               <td align="center" style="background-color: #ffffff" bgcolor="#ffffff">
-                  <table class="container-main" align="center" border="0" cellpadding="0" cellspacing="0" style="max-width: 100%;">
+               <td align="center" >
+                  <table data-bgcolor="tbc" class="table600Min" style="table-layout: fixed; margin: 0px auto; min-width: 668px; background-color: rgb(234, 235, 235);" width="668" cellspacing="0" cellpadding="0" border="0" bgcolor="#384855" align="center">
                         <tr class="main-row">
-                           <td align="center" class="bg-color-section" style="width:100%; background-color:#ffffff;" bgcolor="#ffffff" data-bgcolor="gray-bg">
-                              <table width="280" align="center" class="container" border="0" cellpadding="0" cellspacing="0" style="width:500px;">
+                        <td class="table600st" style="min-width:668px;" align="center">
+                           <table data-bgcolor="cbc" class="table600Min" style="min-width:629px;" width="629" cellspacing="0" cellpadding="0" border="0" bgcolor="#fdfdfd" align="center">
                                     <tr>
                                        <td height="55"></td>
                                     </tr>
