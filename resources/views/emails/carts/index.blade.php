@@ -246,16 +246,13 @@
             </tr>
          </tbody>
       </table>
-      <table data-group="footer" class="main-table" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto;" >
-         <tbody>
+      <table data-bgcolor="tbc" style="table-layout: fixed; margin: 0px auto; background-color: rgb(234, 235, 235);" data-module="WelcomeTextModule"  class="" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#384855" align="center">
             <tr>
                <td align="center" style="background-color: #ffffff" bgcolor="#ffffff">
                   <table class="container-main" align="center" border="0" cellpadding="0" cellspacing="0" style="max-width: 100%;">
-                     <tbody>
                         <tr class="main-row">
                            <td align="center" class="bg-color-section" style="width:100%; background-color:#ffffff;" bgcolor="#ffffff" data-bgcolor="gray-bg">
                               <table width="280" align="center" class="container" border="0" cellpadding="0" cellspacing="0" style="width:500px;">
-                                 <tbody>
                                     <tr>
                                        <td height="55"></td>
                                     </tr>
@@ -270,7 +267,6 @@
                                     <tr>
                                        <td valign="top" align="center">
                                           <table border="0" cellpadding="0" cellspacing="0" align="center">
-                                             <tbody>
                                                 <tr>
                                                    <td align="center">
                                                       <!--[if (gte mso 9)|(IE)]>
@@ -324,22 +320,21 @@
                                                       <![endif]-->
                                                    </td>
                                                 </tr>
-                                             </tbody>
+                                             
                                           </table>
                                        </td>
                                     </tr>
                                     <tr>
                                        <td height="15"></td>
                                     </tr>
-                                 </tbody>
+                                 
                               </table>
                            </td>
                         </tr>
-                     </tbody>
+                     
                   </table>
                </td>
             </tr>
-         </tbody>
       </table>
    </body>
 </html>
