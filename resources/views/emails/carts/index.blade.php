@@ -56,7 +56,7 @@
                                                       </tbody>
                                                    </table>
                                                 </th>
-                                                <th width="50%" align="left" class="container-wrap" valign="top" style="vertical-align: middle; width:70%;">
+                                                <th width="50%" align="left" class="container-wrap" valign="top" style="vertical-align: top; width:70%;">
                                                    <table width="100%" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
                                                       <tbody>
                                                          <tr>
