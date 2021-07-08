@@ -42,8 +42,6 @@ class CheckoutController extends Controller
 				return redirect()->to('/404');
 			}
 			\Auth::loginUsingId($request->token_id, $remember = true);
-
-
 	    }
 
 		$this->middleware('auth');
@@ -54,14 +52,13 @@ class CheckoutController extends Controller
 	public function  index(Request $request)  
 	{   
 		
-
-
 		$carts =  Cart::all_items_in_cart($request->token);
 		if (!$carts->count()){ return redirect()->to('/cart'); }
 		$csrf = json_encode(['csrf' => csrf_token()]);
 		if ($request->token){ \Cookie::queue('cart', $request->token, 60*60*7); }
 
 		$user = $request->user();
+
 		
 		AbandonCart::dispatch($carts, $user)->delay(now()->addMinutes(1));
 
@@ -78,10 +75,10 @@ class CheckoutController extends Controller
             return redirect('/checkout');
 		}
 		
-		$rate = Helper::rate();
+		$rate  =  Helper::rate();
 		$user  =  \Auth::user();
 		$carts =  Cart::all_items_in_cart();
-		$cart = new Cart();
+		$cart  =  new Cart();
 
 		$order->user_id = $user->id;
 		$order->address_id     =  $user->active_address->id;

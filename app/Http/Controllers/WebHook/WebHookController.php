@@ -85,8 +85,6 @@ class WebHookController extends Controller
                 $qty  = $product_variation->quantity - $cart->quantity;
                 $product_variation->quantity =  $qty < 1 ? 0 : $qty;
                 $product_variation->save();
-
-                
                 //Delete all the cart
                 $cart->remember_token = null;
                 $cart->status = 'paid';

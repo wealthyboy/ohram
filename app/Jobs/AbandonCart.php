@@ -41,8 +41,9 @@ class AbandonCart implements ShouldQueue
      */
     public function handle()
     {
-         
-		\Mail::to("jacob.atam@gmail.com")
-        ->send(new AbandonedCart($this->carts, $this->user));
+        if ($this->carts->first()->status  == 'Pending'){
+            \Mail::to($this->user->email)
+            ->send(new AbandonedCart($this->carts, $this->user));
+        } 
     }
 }
