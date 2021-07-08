@@ -1,340 +1,154 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
    <head>
-      <meta charset="UTF-8" />
-      <title>{{ Config('app.name')}}  Reciept</title>
-      <meta charset="UTF-8" />
-      <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,600,700" rel="stylesheet" type="text/css">
-      <style type="text/css">
-         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:300,400,600,700,800');
-         body {margin: 0; padding: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; outline: none !important;}
-         table {border-spacing:0; }
-         .pointer{cursor:pointer; position:relative;}
-         .border-custom{ 2px solid #222 !important;}
-         .hide{ display: none;}
-         .cancel-button{ position: absolute; top: 10px;  right: 0px; height: 30px; color: #ffffff;  width: 30px; border-radius: 100%; padding-right: 10px; background-color: #007bff;}
-         .cancel-button a{display: inline-block;left: 10px;position: relative;top: 3px;}
-         table td {border-collapse: collapse;}
-         img {-ms-interpolation-mode: bicubic; display: block; outline: none !important;}
-         .ExternalClass {width: 100%;}
-         .ExternalClass,.ExternalClass p,.ExternalClass span,.ExternalClass font,.ExternalClass td,.ExternalClass div {line-height: inherit;}
-         .ReadMsgBody {width: 100%;background-color: #ffffff;}
-         a[x-apple-data-detectors] { color: inherit !important; text-decoration: none !important; font-size: inherit !important; font-family: inherit !important; font-weight: inherit !important; line-height: inherit !important; }
-         td a {color: inherit; text-decoration: none; outline: none !important; }
-         a {color: inherit; text-decoration: none; border-style: none; outline: none !important; }
-         .undoreset a, .undoreset a:hover {text-decoration: none !important;}
-         .yshortcuts a {border-bottom: none !important;}
-         .ios-footer a {color: #aaaaaa !important;text-decoration: none;}
-         table p, table h1, table h2, table h3, table h4{ margin-top:0!important;margin-right:0!important;margin-bottom:0!important;margin-left:0!important;padding-top:0!important;padding-right:0!important;padding-bottom:0!important;padding-left:0!important;display: inline-block!important;font-family: inherit!important;}
-         #canspamBar a img{display: inline-block !important;}
-         .badge a img{display: inline-block !important;}
-         @media screen and (max-width: 599px)
-         {
-         body{width:100% !important;}
-         .container-main {width:100% !important; min-width:100% !important;}
-         .container {width:100% !important; min-width:100% !important;}
-         .container-wrap {display:inline-block !important; width:100% !important; height:auto !important; border-radius:0 !important;}
-         .container-wrap>table{width:100% !important; min-width:100% !important;}
-         .main-row>td{padding-left:15px !important; padding-right:15px !important;}
-         .row {padding-left:15px !important; padding-right:15px !important;}
-         .container-image img {width: 100% !important; height: auto !important; max-width:100% !important;}
-         .fl-center {display: block !important; text-align: center !important;}
-         .fl-center table {display: inline-block !important; float: none !important;}
-         .fl-left {display:inline-block !important;}
-         .icon-center {display:block !important; text-align:center !important;}
-         .icon-center img {display:inline-block !important; float:none !important;}
-         .icon-left {display:block !important; text-align:left !important;}
-         .disable {display: none !important;}
-         .pn {padding: 0 !important;}
-         .pt-10 {padding-top: 10px !important;}
-         .pt-20 {padding-top: 20px !important;}
-         .pt-40 {padding-top: 40px !important;}
-         .mob-40 {height:40px !important;}
-         .txt-center {text-align: center !important;}
-         .txt-left {text-align: left !important;}
-         .bg-cov-perc {background-size: 100% 79% !important;}
-         .border-none {border:0 !important;}
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   </head>
+   <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; background-color: #f8fafc; color: #74787e; height: 100%; hyphens: auto; line-height: 1.4; margin: 0; -moz-hyphens: auto; -ms-word-break: break-all; width: 100% !important; -webkit-hyphens: auto; -webkit-text-size-adjust: none; word-break: break-word;">
+      <style>
+         @media  only screen and (max-width: 600px) {
+         .inner-body {
+         width: 100% !important;
+         }
+         .footer {
+         width: 100% !important;
+         }
+         }
+         @media  only screen and (max-width: 500px) {
+         .button {
+         width: 100% !important;
+         }
          }
       </style>
-   </head>
-   <body style="margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; width: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;" offset="0" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
-      <table data-bgcolor="tbc" style="table-layout: fixed; margin: 0px auto; background-color: rgb(234, 235, 235);"   class="" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#384855" align="center">
-         <tbody>
-            <tr>
-               <td align="center" style="background-color: #ededed" bgcolor="#ededed" data-bgcolor="body-bg">
-                  <table class="container-main" align="center" border="0" cellpadding="0" cellspacing="0" style="min-width: 100%;">
-                     <tbody>
-                        <tr class="main-row">
-                           <td align="center" style="width:100%; background-color:#ffffff;" bgcolor="#ffffff" data-bgcolor="white-bg">
-                              <table width="600" align="center" class="container" border="0" cellpadding="0" cellspacing="0" style="width:600px;">
-                                 <tbody>
-                                    <tr>
-                                       <td height="20"></td>
-                                    </tr>
-                                    <tr>
-                                       <td align="center">
-                                          <a href="#"><img src="https://ohram.org/images/logo/1589383129OHRAM%203-2.png" data-crop="false" width="auto" height="auto" alt="" style="display:block; width:100px;"></a>
-                                       </td>
-                                    </tr>
-                                    <tr>
-                                       <td height="13"></td>
-                                    </tr>
-                                    
-                                    <tr>
-                                       <td height="15"></td>
-                                    </tr>
-                                 </tbody>
-                              </table>
-                           </td>
-                        </tr>
-                     </tbody>
-                  </table>
-               </td>
-            </tr>
-         </tbody>
-      </table>
-       <!--= MAILING BODY =-->    
-       
-      <table data-group="titles" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto; width: 100%;" >
-         <tbody>
-            <tr>
-               <td align="center" style="background-color: #ededed" bgcolor="#ededed" data-bgcolor="body-bg">
-                  <table class="container-main" align="center" border="0" cellpadding="0" cellspacing="0" style="min-width: 100%;">
-                     <tbody>
-                        <tr class="main-row">
-                           <td align="center" style="width:100%; background-color:#ffffff;" bgcolor="#ffffff" data-bgcolor="white-bg">
-                              <table width="600" align="center" class="container" border="0" cellpadding="0" cellspacing="0" style="width:600px;">
-                                 <tbody>
-                                    <tr>
-                                       <td height="9"></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="text" style="text-align:left; font-family: 'sans-serif', 'Montserrat', Arial, Helvetica; font-size:11px; line-height: 25px; text-decoration: none; color: #27af9a; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em" data-size="var-8-title-size" data-color="var-8-title-color" data-link-color="var-8-link-color" data-link-style="color: blue;">
-                                          Hi {{ ucfirst($user->name) }},
-                                       </td>
-                                    </tr>
-                                    <tr>
-                                       <td height="5"></td>
-                                    </tr>
-                                    <tr>
-                                       <td data-color="#000000" class="text" data-fontsize="12"  data-fontweight="600"  data-letterspacing="0.05" data-lineheight="20"  data-align="left" style="text-align:left; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size:12px; line-height: 19px; text-decoration: none; color: #444444; font-weight:400;" data-size="var-6-text-size" data-color="var-6-text-color" data-link-color="var-6-link-color" data-link-style="color: blue;">
-                                          We saved all your great items for you so when you are ready to buy you can complete your purchase.
-                                       </td>
-                                    </tr>
-                                    <tr>
-                                       <td height="25"></td>
-                                    </tr>
-                                 </tbody>
-                              </table>
-                           </td>
-                        </tr>
-                     </tbody>
-                  </table>
-               </td>
-            </tr>
-         </tbody>
-      </table>
-      <table data-bgcolor="tbc" style="table-layout: fixed; margin: 0px auto; background-color: rgb(234, 235, 235);" data-module="WelcomeTextModule"  class="" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#384855" align="left">
-         <tbody>
-            <tr>
-               <td align="left" style="background-color: #ededed" bgcolor="#ededed" data-bgcolor="body-bg">
-               <table data-bgcolor="tbc" class="table600Min" style="table-layout: fixed; margin: 0px auto; min-width: 668px; background-color: rgb(234, 235, 235);" width="668" cellspacing="0" cellpadding="0" border="0" bgcolor="#384855" align="left">
-                     <tbody>
-                        <tr class="main-row">
-                           <td align="center" style="width:100%; background-color:#ffffff;" bgcolor="#ffffff" data-bgcolor="white-bg">
-                           <table data-bgcolor="cbc" class="table600Min" style="min-width:629px;" width="629" cellspacing="0" cellpadding="0" border="0" bgcolor="#fdfdfd" align="center">
-                                 <tbody>
-                                    @foreach( $carts  as  $cart  )
-                                    <tr>
-                                       <th width="50%" align="left" class="container-wrap" valign="top" style="vertical-align: top; width:30%;">
-                                          <table width="100%" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
-                                             <tbody>
-                                                <tr>
-                                                   <td align="right"  class="container-image"><img  class="p-img" src="{{-- $cart->product_variation->image_m  --}}https://ohram.org/images/products/m/eDal5J1rsYlerVtdUAeb4USD50c7vdhUsUlURi73.jpg" width="100%" height="auto" alt="" style="width: 100%; max-width: 150px; display: block; border: 0px;"></td>
-                                                </tr>
-                                             </tbody>
-                                          </table>
-                                       </th>
-                                       <th width="50%" align="left" class="container-wrap" valign="top" style="vertical-align: middle; width:70%;">
-                                          <table width="100%" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
-                                             <tbody>
-                                                <tr>
-                                                   <td align="left" class="pn" style="padding-left:10px;">
-                                                      <table width="260" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:260px;">
-                                                         <tbody>
-                                                            <tr>
-                                                               <td height="20"></td>
-                                                            </tr>
-                                                            <tr class="disable">
-                                                               <td height="20"></td>
-                                                            </tr>
-                                                            <tr>
-                                                               <td class="text"  style="text-align:left; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:14px; line-height: 14px; text-decoration: none; color: #27af9a; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em">
-                                                                  {{ $cart->product_variation->product->product_name }}
-                                                               </td>
-                                                            </tr>
-                                                            <tr>
-                                                               <td height="13"></td>
-                                                            </tr>
-                                                            <tr>
-                                                               <td  class="text"  data-color="#000000" data-fontsize="13"  data-fontweight="400"  data-letterspacing="0.05" data-lineheight="20"  data-color="" data-align="left" style="text-align:left; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size:13px; line-height: 20px; text-decoration: none; color: #444444; font-weight:400;" data-size="img-left-text-size" data-color="img-left-text-color" data-link-color="img-left-link-color" data-link-style="color: blue;">
-                                                                  Price: {{ $cart->currency}}{{ $cart->product_variation->price }}
-                                                               </td>
-                                                            </tr>
-                                                            <tr>
-                                                               <td height="35"></td>
-                                                            </tr>
-                                                         </tbody>
-                                                      </table>
-                                                   </td>
-                                                </tr>
-                                             </tbody>
-                                          </table>
-                                       </th>
-                                    </tr>
-                                    @endforeach
-                                 </tbody>
-                              </table>
-                           </td>
-                        </tr>
-                     </tbody>
-                  </table>
-               </td>
-            </tr>
-         </tbody>
-      </table>
-      <table  class="main-table" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto;" >
-         <tbody>
-            <tr>
-               <td align="center" style="background-color: #f5f5f5" bgcolor="#f5f5f5" data-bgcolor="body-bg">
-                  <table class="container-main" align="center" border="0" cellpadding="0" cellspacing="0" style="max-width: 100%;">
-                     <tbody>
-                        <tr class="main-row">
-                           <td align="center" class="bg-color-section" style="width:100%; background-color:#ffffff;" bgcolor="#ffffff" data-bgcolor="gray-bg">
-                              <table width="500" align="center" class="container" border="0" cellpadding="0" cellspacing="0" style="width:1000px;">
-                                 <tbody>
-                                    <tr>
-                                       <td height="55"></td>
-                                    </tr>
-                                    <tr>
-                                       <td align="center">
-                                          <table align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="#27af9a" style=" background-color: #27af9a; min-width: 350px;">
-                                             <tbody>
-                                                <tr>
-                                                   <td width="18"></td>
-                                                   <td class="text"  height="30"  align="center" style="height: 30px; text-align: center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size: 11px; line-height:11px; color: #ffffff; font-weight: 700; text-decoration: none !important; text-transform: uppercase; letter-spacing: 0.05em;vertical-align: middle;"><a href="https://ohram.org/checkout?token={{ $carts->first()->remember_token }}&token_id={{ $user->id }}" class="anchor-link  anchor"  style="color:#ffffff;">Buy now</a></td>
-                                                   <td width="18"></td>
-                                                </tr>
-                                             </tbody>
-                                          </table>
-                                       </td>
-                                    </tr>
-                                    <tr>
-                                       <td height="20"></td>
-                                    </tr>
-                                   
-                                    <tr>
-                                       <td height="15"></td>
-                                    </tr>
-                                 </tbody>
-                              </table>
-                           </td>
-                        </tr>
-                     </tbody>
-                  </table>
-               </td>
-            </tr>
-         </tbody>
-      </table>
-      <table data-bgcolor="tbc" style="table-layout: fixed; margin: 0px auto; background-color: rgb(234, 235, 235);" data-module="WelcomeTextModule"  class="" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#384855" align="center">
-            <tr>
-               <td align="center" >
-                  <table data-bgcolor="tbc" class="table600Min" style="table-layout: fixed; margin: 0px auto; min-width: 668px; background-color: rgb(234, 235, 235);" width="668" cellspacing="0" cellpadding="0" border="0" bgcolor="#384855" align="center">
-                        <tr class="main-row">
-                        <td class="table600st" style="min-width:668px;" align="center">
-                           <table data-bgcolor="cbc" class="table600Min" style="min-width:629px;" width="629" cellspacing="0" cellpadding="0" border="0" bgcolor="#fdfdfd" align="center">
-                                    <tr>
-                                       <td height="55"></td>
-                                    </tr>
-                                    <tr>
-                                       <td class="text"    style="vertical-align:top; text-align:center; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size:13px; line-height: 20px; text-decoration: none; color: #444444; font-weight: 400;">
-                                          Copyright © Ohram {{ date('Y') }}
-                                       </td>
-                                    </tr>
-                                    <tr>
-                                       <td height="20"></td>
-                                    </tr>
-                                    <tr>
-                                       <td valign="top" align="center">
-                                          <table border="0" cellpadding="0" cellspacing="0" align="center">
-                                                <tr>
-                                                   <td align="center">
-                                                      <!--[if (gte mso 9)|(IE)]>
-                                                   </td>
-                                                   <td valign="middle">
-                                                      <![endif]-->
-                                                      <table data-repeatable="" border="0" cellpadding="0" cellspacing="0" style="display:table-cell;vertical-align:middle;">
-                                                         <tbody>
-                                                            <tr>
-                                                               <td align="center" style="padding-right:6px;" valign="middle"><img src="https://ohram.org/images/icons/t-icon-blue.png" border="0" data-crop="false" width="auto" height="auto" alt="" style="display:block; border: 0px; width: auto;"></td>
-                                                            </tr>
-                                                         </tbody>
-                                                      </table>
-                                                      <!--[if (gte mso 9)|(IE)]>
-                                                   </td>
-                                                   <td valign="middle">
-                                                      <![endif]-->
-                                                      <!--[if (gte mso 9)|(IE)]>
-                                                   </td>
-                                                   <td valign="middle">
-                                                      <![endif]-->
-                                                      <table data-repeatable="" border="0" cellpadding="0" cellspacing="0" style="display:table-cell;vertical-align:middle;">
-                                                         <tbody>
-                                                            <tr>
-                                                               <td align="center" style="padding:0 6px;" valign="middle"><img src="https://ohram.org/images/icons/f-icon-blue.png" border="0" data-crop="false" width="auto" height="auto" alt="" style="display:block; border: 0px; width: auto;"></td>
-                                                            </tr>
-                                                         </tbody>
-                                                      </table>
-                                                      <!--[if (gte mso 9)|(IE)]>
-                                                   </td>
-                                                   <td valign="middle">
-                                                      <![endif]-->
-                                                      <!--[if (gte mso 9)|(IE)]>
-                                                   </td>
-                                                   <td valign="middle">
-                                                      <![endif]-->
-                                                      <!--[if (gte mso 9)|(IE)]>
-                                                   </td>
-                                                   <td valign="middle">
-                                                      <![endif]-->
-                                                      <table data-repeatable="" border="0" cellpadding="0" cellspacing="0" style="display:table-cell;vertical-align:middle;">
-                                                         <tbody>
-                                                            <tr>
-                                                               <td align="center" style="padding:0 6px;" valign="middle"><img src="https://ohram.org/images/icons/ins-icon-blue.png" border="0" data-crop="false" width="auto" height="auto" alt="" style="display:block; border: 0px; width: auto;"></td>
-                                                            </tr>
-                                                         </tbody>
-                                                      </table>
-                                                      <!--[if (gte mso 9)|(IE)]>
-                                                   </td>
-                                                   <td valign="middle">
-                                                      <![endif]-->
-                                                   </td>
-                                                </tr>
-                                             
-                                          </table>
-                                       </td>
-                                    </tr>
-                                    <tr>
-                                       <td height="15"></td>
-                                    </tr>
+      <table class="wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; background-color: #f8fafc; margin: 0; padding: 0; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;">
+         <tr>
+            <td align="center" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box;">
+               <table class="content" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; margin: 0; padding: 0; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;">
+                  <tr>
+                     <td align="center" style=" box-sizing: border-box; padding: 25px 0; ">
+                        
+                        <a href="#"><img src="https://ohram.org/images/logo/1589383129OHRAM%203-2.png" data-crop="false" width="auto" height="auto" alt="" style="display:block; width:100px;"></a>
+
+                     </td>
+                  </tr>
+                  <!-- Email Body -->
+                  <tr>
+                     <td class="body" width="100%" cellpadding="0" cellspacing="0" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; background-color: #ffffff; border-bottom: 1px solid #edeff2; border-top: 1px solid #edeff2; margin: 0; padding: 0; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;">
+                        <table class="inner-body" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; background-color: #ffffff; margin: 0 auto; padding: 0; width: 570px; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 570px;">
+                           <!-- Body content -->
+                           <tr>
+                              <td class="content-cell" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; padding: 35px;">
+                                 <h1 style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #3d4852; font-size: 19px; font-weight: bold; margin-top: 0; text-align: left;">Hello!</h1>
+                                 <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #3d4852; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Hello Admin,</p>
+                                 <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #3d4852; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">There is a new order awaiting confirmation</p>
                                  
-                              </table>
-                           </td>
-                        </tr>
-                     
-                  </table>
-               </td>
-            </tr>
+                                 <table class="action" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; margin: 30px auto; padding: 0; text-align: center; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;">
+                                    <tr>
+                                       <td align="center" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box;">
+                                          <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box;">
+                                             @foreach( $carts  as  $cart  )
+                                             <tr>
+                                                <th width="50%" align="left" class="container-wrap" valign="top" style="vertical-align: top; width:30%;">
+                                                   <table width="100%" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+                                                      <tbody>
+                                                         <tr>
+                                                            <td align="right"  class="container-image"><img  class="p-img" src="{{-- $cart->product_variation->image_m  --}}https://ohram.org/images/products/m/eDal5J1rsYlerVtdUAeb4USD50c7vdhUsUlURi73.jpg" width="100%" height="auto" alt="" style="width: 100%; max-width: 150px; display: block; border: 0px;"></td>
+                                                         </tr>
+                                                      </tbody>
+                                                   </table>
+                                                </th>
+                                                <th width="50%" align="left" class="container-wrap" valign="top" style="vertical-align: middle; width:70%;">
+                                                   <table width="100%" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+                                                      <tbody>
+                                                         <tr>
+                                                            <td align="left" class="pn" style="padding-left:10px;">
+                                                               <table width="260" align="left" class="container" border="0" cellpadding="0" cellspacing="0" style="width:260px;">
+                                                                  <tbody>
+                                                                     <tr>
+                                                                        <td height="20"></td>
+                                                                     </tr>
+                                                                     <tr class="disable">
+                                                                        <td height="20"></td>
+                                                                     </tr>
+                                                                     <tr>
+                                                                        <td class="text"  style="text-align:left; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size:14px; line-height: 14px; text-decoration: none; color: #27af9a; font-weight:600; text-transform: uppercase; letter-spacing: 0.05em">
+                                                                           {{ $cart->product_variation->product->product_name }}
+                                                                        </td>
+                                                                     </tr>
+                                                                     <tr>
+                                                                        <td height="13"></td>
+                                                                     </tr>
+                                                                     <tr>
+                                                                        <td  class="text"  data-color="#000000" data-fontsize="13"  data-fontweight="400"  data-letterspacing="0.05" data-lineheight="20"  data-color="" data-align="left" style="text-align:left; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size:13px; line-height: 20px; text-decoration: none; color: #444444; font-weight:400;" data-size="img-left-text-size" data-color="img-left-text-color" data-link-color="img-left-link-color" data-link-style="color: blue;">
+                                                                           Price: {{ $cart->currency}}{{ $cart->product_variation->price }}
+                                                                        </td>
+                                                                     </tr>
+                                                                     <tr>
+                                                                        <td height="35"></td>
+                                                                     </tr>
+                                                                  </tbody>
+                                                               </table>
+                                                            </td>
+                                                         </tr>
+                                                   </table>
+                                                </th>
+                                             </tr>
+                                             @endforeach
+                                          </table>
+                                       </td>
+                                    </tr>
+                                 </table>
+
+                                 <table class="action" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; margin: 30px auto; padding: 0; text-align: center; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;">
+                                    <tr>
+                                       <td align="center" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box;">
+                                          <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box;">
+                                             <tr>
+                                                <td align="center" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box;">
+                                                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box;">
+                                                      <tr>
+                                                         <td style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box;">
+                                                            <a href="https://ohram.org/checkout?token={{ $carts->first()->remember_token }}&token_id={{ $user->id }}" class="button button-primary" target="_blank" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; border-radius: 3px; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16); color: #fff; display: inline-block; text-decoration: none; -webkit-text-size-adjust: none; background-color: #3490dc; border-top: 10px solid #3490dc; border-right: 18px solid #3490dc; border-bottom: 10px solid #3490dc; border-left: 18px solid #3490dc;">Click here</a>
+                                                         </td>
+                                                      </tr>
+                                                   </table>
+                                                </td>
+                                             </tr>
+                                          </table>
+                                       </td>
+                                    </tr>
+                                 </table>
+                                 <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #3d4852; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Regards,<br>
+                                    Ohram
+                                 </p>
+                                 <table class="subcopy" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; border-top: 1px solid #edeff2; margin-top: 25px; padding-top: 25px;">
+                                    <tr>
+                                       <td style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box;">
+                                          <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #3d4852; line-height: 1.5em; margin-top: 0; text-align: left; font-size: 12px;">If you’re having trouble clicking the "Click here " button, copy and paste the URL below
+                                             into your web browser: <span class="break-all" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; word-break: break-all;"><a href="https://ohram.org/admin" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #3869d4;">https://ohram.org/admin</a></span>
+                                          </p>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </td>
+                           </tr>
+                        </table>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box;">
+                        <table class="footer" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; margin: 0 auto; padding: 0; text-align: center; width: 570px; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 570px;">
+                           <tr>
+                              <td class="content-cell" align="center" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; padding: 35px;">
+                                 <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; line-height: 1.5em; margin-top: 0; color: #aeaeae; font-size: 12px; text-align: center;">© 2021 Ohram. All rights reserved.</p>
+                              </td>
+                           </tr>
+                        </table>
+                     </td>
+                  </tr>
+               </table>
+            </td>
+         </tr>
       </table>
    </body>
 </html>

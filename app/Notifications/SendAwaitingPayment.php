@@ -41,7 +41,7 @@ class SendAwaitingPayment extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Payement Awaiting confirmation')
+                    ->subject('Payment Awaiting confirmation')
                     ->line('Hello Admin,')
 
                     ->line('There is a new order awaiting confirmation')
