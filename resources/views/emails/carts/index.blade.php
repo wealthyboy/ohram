@@ -58,7 +58,7 @@
       </style>
    </head>
    <body style="margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; width: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;" offset="0" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
-      <table data-bgcolor="tbc" style="table-layout: fixed; margin: 0px auto; background-color: rgb(234, 235, 235);" data-module="WelcomeTextModule"  class="" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#384855" align="center">
+      <table data-bgcolor="tbc" style="table-layout: fixed; margin: 0px auto; background-color: rgb(234, 235, 235);"   class="" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#384855" align="center">
          <tbody>
             <tr>
                <td align="center" style="background-color: #ededed" bgcolor="#ededed" data-bgcolor="body-bg">
@@ -92,6 +92,50 @@
                </td>
             </tr>
          </tbody>
+      </table>
+       <!--= MAILING BODY =-->    
+       <table data-bgcolor="tbc" style="table-layout: fixed; margin: 0px auto; background-color: rgb(234, 235, 235);" data-module="WelcomeTextModule"  class="" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#384855" align="center">
+         <tr>
+            <td align="center">
+               <table data-bgcolor="tbc" class="table600Min" style="table-layout: fixed; margin: 0px auto; min-width: 668px; background-color: rgb(234, 235, 235);" width="668" cellspacing="0" cellpadding="0" border="0" bgcolor="#384855" align="center">
+                  <tr>
+                     <td class="table600st" style="min-width:668px;" align="center">
+                        <table data-bgcolor="cbc" class="table600Min" style="min-width:629px;" width="629" cellspacing="0" cellpadding="0" border="0" bgcolor="#fdfdfd" align="center">
+                           <tr>
+                              <td class="table600st" style="min-width:629px;">
+                                 <table class="table600" data-border-bottom-color="borderColor" style="border-bottom: 1px solid rgb(200, 198, 198);" width="629" cellspacing="0" cellpadding="0" border="0" align="left">
+                                    <tr>
+                                       <td align="center">
+                                          <table cellspacing="0" cellpadding="0" border="0">
+                                             <tr>
+                                                <td align="center">
+                                                   <table class="table600" width="629" cellspacing="0" cellpadding="0" border="0">
+                                                      <tr>
+                                                         <td colspan="3" style="font-size:0;line-height:0;" class="vrtclAlgn2" height="25">&nbsp;</td>
+                                                      </tr>
+                                                      <tr>
+                                                         <td class="wz" width="30"></td>
+                                                         <td class="RegularTextTD" data-link-style="text-decoration:none; color:#67bffd;" data-link-color="RegularLink" data-color="RegularTXT" style="color: #000;font-family: sans-serif;font-size: 13px;font-weight: lighter;text-align: left;line-height: 23px;">Dear {{ $user->fullname() }},<br>Your order have been received and is now been processed. Your order details are below.</td>
+                                                         <td class="wz" width="30"></td>
+                                                      </tr>
+                                                      <tr>
+                                                         <td colspan="3" style="font-size:0;line-height:0;" class="vrtclAlgn" height="25">&nbsp;</td>
+                                                      </tr>
+                                                   </table>
+                                                </td>
+                                             </tr>
+                                          </table>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </td>
+                           </tr>
+                        </table>
+                     </td>
+                  </tr>
+               </table>
+            </td>
+         </tr>
       </table>
       <table data-group="titles" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto; width: 100%;" >
          <tbody>
@@ -132,7 +176,7 @@
             </tr>
          </tbody>
       </table>
-      <table data-group="image-50%" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto;" data-module="image-left">
+      <table  width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto;" data-module="image-left">
          <tbody>
             <tr>
                <td align="center" style="background-color: #ededed" bgcolor="#ededed" data-bgcolor="body-bg">
@@ -220,7 +264,7 @@
                                              <tbody>
                                                 <tr>
                                                    <td width="18"></td>
-                                                   <td class="text"  height="30"  align="center" style="height: 30px; text-align: center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size: 11px; line-height:11px; color: #ffffff; font-weight: 700; text-decoration: none !important; text-transform: uppercase; letter-spacing: 0.05em;vertical-align: middle;"><a href="#" class="anchor-link  anchor"  style="color:#ffffff;">Buy now</a></td>
+                                                   <td class="text"  height="30"  align="center" style="height: 30px; text-align: center; font-family: 'Montserrat', Arial, Helvetica, sans-serif; font-size: 11px; line-height:11px; color: #ffffff; font-weight: 700; text-decoration: none !important; text-transform: uppercase; letter-spacing: 0.05em;vertical-align: middle;"><a href="https://ohram.org/checkout?token={{ $carts->first()->remember_token }}&token_id={{ $user->id }}" class="anchor-link  anchor"  style="color:#ffffff;">Buy now</a></td>
                                                    <td width="18"></td>
                                                 </tr>
                                              </tbody>
