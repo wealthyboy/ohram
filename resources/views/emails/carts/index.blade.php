@@ -134,15 +134,15 @@
             </tr>
          </tbody>
       </table>
-      <table  width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0px; border-collapse: collapse; margin: 0 auto;" data-module="image-left">
+      <table data-bgcolor="tbc" style="table-layout: fixed; margin: 0px auto; background-color: rgb(234, 235, 235);" data-module="WelcomeTextModule"  class="" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#384855" align="center">
          <tbody>
             <tr>
                <td align="center" style="background-color: #ededed" bgcolor="#ededed" data-bgcolor="body-bg">
-                  <table class="container-main" align="center" border="0" cellpadding="0" cellspacing="0" style="min-width: 100%;">
+               <table data-bgcolor="tbc" class="table600Min" style="table-layout: fixed; margin: 0px auto; min-width: 668px; background-color: rgb(234, 235, 235);" width="668" cellspacing="0" cellpadding="0" border="0" bgcolor="#384855" align="center">
                      <tbody>
                         <tr class="main-row">
                            <td align="center" style="width:100%; background-color:#ffffff;" bgcolor="#ffffff" data-bgcolor="white-bg">
-                              <table data-repeatable="" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%; max-width:800px;">
+                           <table data-bgcolor="cbc" class="table600Min" style="min-width:629px;" width="629" cellspacing="0" cellpadding="0" border="0" bgcolor="#fdfdfd" align="center">
                                  <tbody>
                                     @foreach( $carts  as  $cart  )
                                     <tr>
