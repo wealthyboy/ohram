@@ -218,7 +218,6 @@ Route::group(['prefix' => '/api','middleware' => 'currencyByIp'], function () {
 
 Route::post('webhook/payment',    'WebHook\WebHookController@payment');
 Route::post('webhook/github',     'WebHook\WebHookController@gitHub');
-Route::post('webhook/payment/paystack',    'WebHook\WebHookController@paymentPaystack');
 
 Route::get('/requery',            'Requery\RequeryController@index');
 Route::post('/transaction/status', 'Transaction\TransactionController@confirm');
