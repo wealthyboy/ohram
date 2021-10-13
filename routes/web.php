@@ -155,7 +155,7 @@ Route::group(['middleware' => 'currencyByIp'], function(){
     Route::get('returns',                         'Returns\ReturnsController@index')->name('returns');
     Route::get('checkout',                        'Checkout\CheckoutController@index')->name('checkout');
     Route::post('checkout/coupon',                'Checkout\CheckoutController@coupon');
-    Route::get('checkout/confirm',               'Checkout\CheckoutController@confirm')->name('confirm_order');
+    //Route::get('checkout/confirm',               'Checkout\CheckoutController@confirm')->name('confirm_order');
     Route::post('checkout/confirm',               'Checkout\CheckoutController@confirm');
 
     Route::get('orders',                          'Orders\OrdersController@index')->name('orders');

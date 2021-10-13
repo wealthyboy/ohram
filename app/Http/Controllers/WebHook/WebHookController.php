@@ -41,12 +41,13 @@ class WebHookController extends Controller
         try {
             $input    =  $request->data['metadata']['custom_fields'][0];
             $user     =  User::findOrFail($input['customer_id']);
-            $carts    =  Cart::find($input['cart']);
 
-            // if (empty( $carts )){
-            //   return;
-            // }
-            // Log::info($carts);
+            $carts    =  Cart::whereIn('id',$input['cart'])->where('status', '!=', 'paid');
+
+            if (null !== $carts ){
+               return  http_response_code(200);
+            }
+
             foreach ($carts as $cart) {
                 if ( $cart->quantity  < 1){
                     $cart->delete();
@@ -64,8 +65,6 @@ class WebHookController extends Controller
             $order->currency       =  optional($currency)->symbol ?? '₦';
             $order->invoice        =  "INV-".date('Y')."-".rand(10000,39999);
             $order->payment_type   =  $request->data['authorization']['channel'];
-            //$order->delivery_option   =  $input['delivery_option'];
-            //$order->delivery_note   =  $input['delivery_note'];
             $order->total          =  $input['total'];
             $order->ip             =  $request->data['ip_address'];
             $order->save();

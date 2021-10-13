@@ -60,7 +60,7 @@ class CheckoutController extends Controller
 		$user = $request->user();
 
 		
-		AbandonCart::dispatch($carts, $user)->delay(now()->addMinutes(10));
+		//AbandonCart::dispatch($carts, $user)->delay(now()->addMinutes(10));
 		return view('checkout.index',['csrf' => $csrf]);
 	}
 
@@ -69,11 +69,8 @@ class CheckoutController extends Controller
 	public function confirm(Request $request,OrderedProduct $ordered_product,Order $order) 
 	{ 
        
-		if ($request->isMethod('post')){
-			\Log::info($request->all());
-            return redirect('/checkout');
-		}
-		
+		\Log::info($request->all());
+            
 		$rate  =  Helper::rate();
 		$user  =  \Auth::user();
 		$carts =  Cart::all_items_in_cart();
@@ -83,13 +80,13 @@ class CheckoutController extends Controller
 		$order->address_id     =  $user->active_address->id;
 		$order->coupon         =  session('coupon');
 		$order->status         = 'Processing';
-		$order->shipping_id    =  $request->ship_id;
+		$order->shipping_id    =  $request->shipping_id;
 		$order->shipping_price =  $request->shipping_price;
 		$order->currency       =  Helper::getCurrency();
 		$order->invoice        =  "INV-".date('Y')."-".rand(10000,39999);
 		$order->payment_type   = $request->payment_method;
-		$order->order_type     = $request->admin;
-		$order->total          = Cart::sum_items_in_cart() + $request->shipping_price;
+		$order->order_type     = $request->type;
+		$order->total          = $request->total;
 		$order->ip             = $request->ip();
 		$order->user_agent     = $request->server('HTTP_USER_AGENT');
 		$order->save();
@@ -109,7 +106,7 @@ class CheckoutController extends Controller
 			$qty  = $product_variation->quantity - $cart->quantity;
 			$product_variation->quantity =  $qty < 1 ? 0 : $qty;
 			$product_variation->save();
-			$cart->status = "Paid & Confirmed";
+			$cart->status = 'paid';
 			$cart->save();
 		}
 		$admin_emails = explode(',',$this->settings->alert_email);

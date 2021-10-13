@@ -1,6 +1,12 @@
 
 <template>
     <div>
+      <div v-if="payment_is_processing" class="c-overlay">
+          <div class=" mr-2 ml-2 bold text-center" id="text">
+            <span  class='spinner-border spinner-border-lg' role='status' aria-hidden='true'></span>
+            Please wait while we finish processing your order. Do not leave your browser.
+            </div>
+       </div>
         <div v-if="paymentIsComplete" class="page-contaiter">
             <!--Content-->
             <section class="sec-padding--lg vh--100">
@@ -190,10 +196,10 @@
                         
                                         </template>
                                         <template v-else>
-                                            <span class="price-amount amount bold float-right mr-3">
-                                                <span style="" class="currencySymbol fa-2x">{{ meta.currency }}{{ amount ||  meta.sub_total | priceFormat }}
-                                                </span>
-                                            </span>
+                                          <span class="price-amount amount bold float-right mr-3">
+                                              <span style="" class="currencySymbol fa-2x">{{ meta.currency }}{{ amount ||  meta.sub_total | priceFormat }}
+                                              </span>
+                                          </span>
                                         </template>
                                     </p>
                             </div>
@@ -559,7 +565,7 @@ export default {
       this.payment_is_processing = true;
       this.payment_method = "card";
       var handler = PaystackPop.setup({
-        key: "pk_live_8260bf35964c9d1f60fe6b2adfb96994117c1b16", //'pk_live_c4f922bc8d4448065ad7bd3b0a545627fb2a084f',//'pk_test_844112398c9a22ef5ca147e85860de0b55a14e7c',
+        key: "pk_test_844112398c9a22ef5ca147e85860de0b55a14e7c", //'pk_live_c4f922bc8d4448065ad7bd3b0a545627fb2a084f',//'pk_test_844112398c9a22ef5ca147e85860de0b55a14e7c',
         email: context.meta.user.email,
         amount: context.amount * 100,
         currency: "NGN",
@@ -579,8 +585,31 @@ export default {
           ],
         },
         callback: function (response) {
+          // if (response.status == "success") {
+          //   context.paymentIsComplete = true;
+
+          // } else {
+          //   this.error = "We could not complete your payment";
+          //   context.order_text = "Place Order";
+          // }
+
           if (response.status == "success") {
-            context.paymentIsComplete = true;
+           this.order_text = "Please wait. We are almost done......";
+            axios.post('/checkout/confirm', {
+              customer_id: context.meta.user.id,
+              coupon: context.coupon_code,
+              shipping_id: context.shipping_id,
+              shipping_price: context.shipping_price,
+              cart: cartIds,
+              total: context.amount,
+            }).then((response) => {
+              context.payment_is_processing = false;
+              context.paymentIsComplete =true
+              context.order_text = "Place Order";
+            })
+              .catch((error) => {
+                alert('We could not process your order.')
+            })
 
           } else {
             this.error = "We could not complete your payment";
