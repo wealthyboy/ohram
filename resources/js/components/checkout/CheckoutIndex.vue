@@ -488,8 +488,6 @@ export default {
               paymentResponse.desc +
               "&amount=" +
               paymentResponse.apprAmt;
-
-
               axios
               .get(link)
               .then((response) => {
@@ -499,7 +497,6 @@ export default {
               .catch((error) => {
                 console.log(error);
               });
-              //context.paymentIsComplete = true
 
           } else {
             context.order_text = "Place Order";
@@ -565,7 +562,7 @@ export default {
       this.payment_is_processing = true;
       this.payment_method = "card";
       var handler = PaystackPop.setup({
-        key: "pk_live_c4f922bc8d4448065ad7bd3b0a545627fb2a084f", //'pk_live_c4f922bc8d4448065ad7bd3b0a545627fb2a084f',//'pk_test_844112398c9a22ef5ca147e85860de0b55a14e7c',
+        key: "pk_test_844112398c9a22ef5ca147e85860de0b55a14e7c", //'pk_live_c4f922bc8d4448065ad7bd3b0a545627fb2a084f',//'pk_test_844112398c9a22ef5ca147e85860de0b55a14e7c',
         email: context.meta.user.email,
         amount: context.amount * 100,
         currency: "NGN",
@@ -594,23 +591,11 @@ export default {
           // }
 
           if (response.status == "success") {
-           this.order_text = "Please wait. We are almost done......";
-            axios.post('/checkout/confirm', {
-              customer_id: context.meta.user.id,
-              coupon: context.coupon_code,
-              shipping_id: context.shipping_id,
-              shipping_price: context.shipping_price,
-              cart: cartIds,
-              total: context.amount,
-            }).then((response) => {
+            
               context.payment_is_processing = false;
               context.paymentIsComplete =true
               context.order_text = "Place Order";
-            })
-              .catch((error) => {
-                alert('We could not process your order.')
-            })
-
+          
           } else {
             this.error = "We could not complete your payment";
             context.order_text = "Place Order";
