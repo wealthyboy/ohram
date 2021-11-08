@@ -70,7 +70,6 @@ class WebHookController extends Controller
                return  http_response_code(200);
             }
 
-            $order = null;
 
             if ($foreign){
                 $order->user_id = $txref->user_id;
