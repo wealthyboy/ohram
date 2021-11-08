@@ -35,11 +35,11 @@ class WebHookController extends Controller
         //     return;
         // } 
 
-       Log::info($request->all());
+       Log::info($request->all()[0]);
 
 
        $inter = $request->all();
-       Log::info($inter[0]['txref']);
+       //Log::info($inter[0]['txref']);
 
 
 
