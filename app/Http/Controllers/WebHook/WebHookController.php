@@ -48,11 +48,11 @@ class WebHookController extends Controller
                return  http_response_code(200);
             }
 
-            foreach ($carts as $cart) {
-                if ( $cart->quantity  < 1){
-                    $cart->delete();
-                }
-            }
+            // foreach ($carts as $cart) {
+            //     if ( $cart->quantity  < 1){
+            //         $cart->delete();
+            //     }
+            // }
 
             $currency =  Currency::where('iso_code3',$request->data['currency'])->first();
         
