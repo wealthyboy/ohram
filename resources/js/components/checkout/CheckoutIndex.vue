@@ -338,6 +338,7 @@ export default {
       failedStatus: null,
       txref: null,
       paymentIsComplete: false,
+      allowPayemnt: false
 
     };
   },
@@ -390,7 +391,9 @@ export default {
           coupon: coupon,
           currencyCode: currencyCode 
         })
-        .then((response) => {})
+        .then((response) => {
+          this.allowPayemnt = true;
+        })
         .catch((error) => {});
     },
     loadScript(callback) {
@@ -440,8 +443,6 @@ export default {
         //this.amount =  this.meta.sub_total
       }
 
-      alert(true)
-
 
       $(".checkout-overlay").removeClass("d-none");
       let form = document.getElementById("checkout-form-2");
@@ -449,39 +450,27 @@ export default {
       this.payment_is_processing = true;
       this.payment_method = "card";
       var reqRef = this.transReference();
-      var product_id = 1076; //22125466
-      var pay_item_id = 101; //8352215
+      var product_id = 22125466
+      var pay_item_id = 8352215
       var amount = this.amount * 100;
-      var mac = "D3D1D05AFE42AD50818167EAC73C109168A0F108F32645C8B59E897FA930DA44F9230910DAC9E20641823799A107A02068F7BC0F4CC41D2952E249552255710F"
 
 
-     // var mac =
-       // "AGYclEQngemQDoUCSJBGzeYro8Keu8rVLVjR1aCsR0Mk0TaAjgiI3UnU1aV9a0fQ96KcGLPDOrHOy3oSDjnUMZEo2NJFFXu1hpnYnwcTrJg1RJdc7fo4bvlzHp8a97DX";
+      var mac = "AGYclEQngemQDoUCSJBGzeYro8Keu8rVLVjR1aCsR0Mk0TaAjgiI3UnU1aV9a0fQ96KcGLPDOrHOy3oSDjnUMZEo2NJFFXu1hpnYnwcTrJg1RJdc7fo4bvlzHp8a97DX";
       var site_redirect_url = "https://ohram.org/checkout/confirm";
 
       var reqRef = this.transReference();
       var shipping_id = this.shipping_id;
       var signatureCipher =
         reqRef + product_id + pay_item_id + amount + site_redirect_url + mac;
-      //this.logTransaction(reqRef,shipping_id,this.coupon,this.meta.currency);
-      // axios
-      //   .post("/log/transaction", {
-      //     txref: txref,
-      //     productId: 1076,
-      //     amount: this.amount,
-      //     shipping_id: shipping_id,
-      //     shipping_price: this.shipping_price,
-      //     coupon: coupon,
-      //     currencyCode: currencyCode 
-      //   })
-      //   .then((response) => {
-      //     this.payment_is_processing = false; 
-      //  }).catch((error) => {
-
-      //   });
+      this.logTransaction(reqRef,shipping_id,this.coupon,this.meta.currency);
+       if (!this.allowPayemnt) {
+           alert("Payment gateway error. Please try again");
+           return false
+       }
+        
 
         var iswPay = new IswPay({
-                postUrl: "https://sandbox.interswitchng.com/collections/w/pay", //"https://webpay.interswitchng.com/collections/w/pay"
+                postUrl: "https://webpay.interswitchng.com/collections/w/pay",
                 amount: amount,
                 productId: product_id,
                 transRef: reqRef,
