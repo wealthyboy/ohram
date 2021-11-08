@@ -82,7 +82,7 @@ class WebHookController extends Controller
                 $OrderedProduct->price = $cart->ConvertCurrencyRate($cart->price);
                 $OrderedProduct->total = $cart->ConvertCurrencyRate($cart->quantity * $cart->price);
                 $OrderedProduct->created_at = \Carbon\Carbon::now();
-                $$OrderedProduct->save();
+                $OrderedProduct->save();
                 //\Log::info($ord);
                 $product_variation = ProductVariation::find($cart->product_variation_id);
                 $qty  = $product_variation->quantity - $cart->quantity;
