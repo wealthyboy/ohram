@@ -2430,8 +2430,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     },
     makePayemnt: function makePayemnt() {
-      var _this2 = this;
-
       if (this.meta.currency == '₦') {
         this.payWithPaystack();
         return;
@@ -2472,18 +2470,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var reqRef = this.transReference();
       var shipping_id = this.shipping_id;
       var signatureCipher = reqRef + product_id + pay_item_id + amount + site_redirect_url + mac; //this.logTransaction(reqRef,shipping_id,this.coupon,this.meta.currency);
+      // axios
+      //   .post("/log/transaction", {
+      //     txref: txref,
+      //     productId: 1076,
+      //     amount: this.amount,
+      //     shipping_id: shipping_id,
+      //     shipping_price: this.shipping_price,
+      //     coupon: coupon,
+      //     currencyCode: currencyCode 
+      //   })
+      //   .then((response) => {
+      //     this.payment_is_processing = false; 
+      //  }).catch((error) => {
+      //   });
 
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("/log/transaction", {
-        txref: txref,
-        productId: 1076,
-        amount: this.amount,
-        shipping_id: shipping_id,
-        shipping_price: this.shipping_price,
-        coupon: coupon,
-        currencyCode: currencyCode
-      }).then(function (response) {
-        _this2.payment_is_processing = false;
-      })["catch"](function (error) {});
       var iswPay = new IswPay({
         postUrl: "https://sandbox.interswitchng.com/collections/w/pay",
         //"https://webpay.interswitchng.com/collections/w/pay"
@@ -2649,12 +2650,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     getAddresses: "getAddresses"
   })), {}, {
     applyCoupon: function applyCoupon() {
-      var _this3 = this;
+      var _this2 = this;
 
       if (!this.coupon) {
         this.coupon_error = "Enter a coupon code";
         setTimeout(function () {
-          _this3.error = null;
+          _this2.error = null;
         }, 2000);
         return;
       }
@@ -2664,27 +2665,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("/checkout/coupon", {
         coupon: this.coupon
       }).then(function (response) {
-        _this3.submiting = false;
-        _this3.coupon = "";
+        _this2.submiting = false;
+        _this2.coupon = "";
 
-        _this3.voucher.push(response.data);
+        _this2.voucher.push(response.data);
 
-        if (_this3.shipping_price) {
-          _this3.amount = parseInt(_this3.shipping_price) + parseInt(response.data.sub_total);
+        if (_this2.shipping_price) {
+          _this2.amount = parseInt(_this2.shipping_price) + parseInt(response.data.sub_total);
         } else {
-          _this3.amount = parseInt(response.data.sub_total);
+          _this2.amount = parseInt(response.data.sub_total);
         }
       })["catch"](function (error) {
-        _this3.submiting = false;
-        _this3.coupon_error = error.response.data.error;
+        _this2.submiting = false;
+        _this2.coupon_error = error.response.data.error;
 
         if (error.response.status) {
-          _this3.submiting = false;
+          _this2.submiting = false;
         }
       });
     },
     checkout: function checkout() {
-      var _this4 = this;
+      var _this3 = this;
 
       this.order_text = "Please wait. We are almost done......";
       this.checkingout = true;
@@ -2699,10 +2700,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           location.href = "/thankyou";
         }
       })["catch"](function (error) {
-        _this4.order_text = "Place Order";
-        _this4.payment_is_processing = false;
-        _this4.checkingout = false;
-        _this4.error = "We could not complete your order .Please send a mail to info@ohram.org";
+        _this3.order_text = "Place Order";
+        _this3.payment_is_processing = false;
+        _this3.checkingout = false;
+        _this3.error = "We could not complete your order .Please send a mail to info@ohram.org";
       });
     },
     updateCartTotal: function updateCartTotal(obj) {

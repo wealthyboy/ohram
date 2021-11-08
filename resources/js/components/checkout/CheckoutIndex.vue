@@ -464,21 +464,21 @@ export default {
       var signatureCipher =
         reqRef + product_id + pay_item_id + amount + site_redirect_url + mac;
       //this.logTransaction(reqRef,shipping_id,this.coupon,this.meta.currency);
-      axios
-        .post("/log/transaction", {
-          txref: txref,
-          productId: 1076,
-          amount: this.amount,
-          shipping_id: shipping_id,
-          shipping_price: this.shipping_price,
-          coupon: coupon,
-          currencyCode: currencyCode 
-        })
-        .then((response) => {
-          this.payment_is_processing = false; 
-       }).catch((error) => {
+      // axios
+      //   .post("/log/transaction", {
+      //     txref: txref,
+      //     productId: 1076,
+      //     amount: this.amount,
+      //     shipping_id: shipping_id,
+      //     shipping_price: this.shipping_price,
+      //     coupon: coupon,
+      //     currencyCode: currencyCode 
+      //   })
+      //   .then((response) => {
+      //     this.payment_is_processing = false; 
+      //  }).catch((error) => {
 
-        });
+      //   });
 
         var iswPay = new IswPay({
                 postUrl: "https://sandbox.interswitchng.com/collections/w/pay", //"https://webpay.interswitchng.com/collections/w/pay"
