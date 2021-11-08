@@ -42,7 +42,7 @@ class WebHookController extends Controller
             $input    =  $request->data['metadata']['custom_fields'][0];
             $user     =  User::findOrFail($input['customer_id']);
 
-            $carts    =  Cart::whereIn('id',$input['cart'])->where('status', '!=', 'paid');
+            $carts    =  Cart::find($input['cart']);
 
             if (null == $carts ){
                return  http_response_code(200);
