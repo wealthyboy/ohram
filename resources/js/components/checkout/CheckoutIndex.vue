@@ -440,6 +440,8 @@ export default {
         //this.amount =  this.meta.sub_total
       }
 
+      alert(true)
+
 
       $(".checkout-overlay").removeClass("d-none");
       let form = document.getElementById("checkout-form-2");
@@ -450,8 +452,11 @@ export default {
       var product_id = 1076; //22125466
       var pay_item_id = 101; //8352215
       var amount = this.amount * 100;
-      var mac =
-        "AGYclEQngemQDoUCSJBGzeYro8Keu8rVLVjR1aCsR0Mk0TaAjgiI3UnU1aV9a0fQ96KcGLPDOrHOy3oSDjnUMZEo2NJFFXu1hpnYnwcTrJg1RJdc7fo4bvlzHp8a97DX";
+      var mac = "D3D1D05AFE42AD50818167EAC73C109168A0F108F32645C8B59E897FA930DA44F9230910DAC9E20641823799A107A02068F7BC0F4CC41D2952E249552255710F"
+
+
+     // var mac =
+       // "AGYclEQngemQDoUCSJBGzeYro8Keu8rVLVjR1aCsR0Mk0TaAjgiI3UnU1aV9a0fQ96KcGLPDOrHOy3oSDjnUMZEo2NJFFXu1hpnYnwcTrJg1RJdc7fo4bvlzHp8a97DX";
       var site_redirect_url = "https://ohram.org/checkout/confirm";
 
       var reqRef = this.transReference();
