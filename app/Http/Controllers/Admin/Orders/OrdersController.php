@@ -51,12 +51,24 @@ class OrdersController extends Controller{
 		];
 	}
 
+	
+
 	public function show($id) { 
-       $order       =  Order::find($id);
-       $sub_total   =  $order->ordered_products[0]->sum_items($order->id)->items_total;
-	   $statuses    =  static::order_status();
-	   return view('admin.orders.show',compact('statuses','order','sub_total'));
-	}
+		$order     =  Order::find($id);
+		$statuses   =  static::order_status();
+		$sub_total = $this->subTotal($order);
+ 
+		return view('admin.orders.show',compact('statuses','order','sub_total'));
+	 }
+ 
+ 
+	 public function subTotal($order)
+	 {
+		 $total = \Db::table('ordered_product')->select(\DB::raw('SUM(ordered_product.price*ordered_product.quantity) as items_total'))->where('order_id',$order->id)->get();
+		 return $sub_total = $total[0]->items_total ?? '0.00';
+		
+	 }
+	 
 	
 	public function updateStatus(Request $request){
 		$ordered_product = OrderedProduct::findOrFail($request->ordered_product_id);
