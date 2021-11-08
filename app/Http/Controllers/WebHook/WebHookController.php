@@ -73,17 +73,17 @@ class WebHookController extends Controller
 
 
             foreach ( $carts   as $cart){
-                $insert = [
-                    'order_id'=>$order->id,
-                    'product_variation_id'=>$cart->product_variation_id,
-                    'quantity'=>$cart->quantity,
-                    'status'=>"Processing",
-                    'price'=>$cart->ConvertCurrencyRate($cart->price),
-                    'total'=>$cart->ConvertCurrencyRate($cart->quantity * $cart->price),
-                    'created_at'=>\Carbon\Carbon::now()
-                ];
-                $ord = OrderedProduct::Insert($insert);
-                \Log::info($ord);
+                
+                $OrderedProduct = new OrderedProduct;
+                $OrderedProduct->order_id = $order->id;
+                $OrderedProduct->product_variation_id = $cart->product_variation_id;
+                $OrderedProduct->quantity = $cart->quantity;
+                $OrderedProduct->status = "Processing";
+                $OrderedProduct->price = $cart->ConvertCurrencyRate($cart->price);
+                $OrderedProduct->total = $cart->ConvertCurrencyRate($cart->quantity * $cart->price);
+                $OrderedProduct->created_at = \Carbon\Carbon::now();
+                $$OrderedProduct->save();
+                //\Log::info($ord);
                 $product_variation = ProductVariation::find($cart->product_variation_id);
                 $qty  = $product_variation->quantity - $cart->quantity;
                 $product_variation->quantity =  $qty < 1 ? 0 : $qty;
