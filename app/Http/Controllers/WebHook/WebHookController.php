@@ -35,11 +35,11 @@ class WebHookController extends Controller
         //     return;
         // } 
 
-        Log::info($request->all());
+       // Log::info($request->all());
 
 
         try {
-            \Log::info($request->all()[0]);
+            Log::info($request->txref);
             $input    =  $request->data['metadata']['custom_fields'][0];
             $user     =  User::findOrFail($input['customer_id']);
 
