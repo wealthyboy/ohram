@@ -29,7 +29,7 @@ class WebHookController extends Controller
     }
 
 
-    public function payment(Request $request,OrderedProduct $ordered_product,Order $order)
+    public function payment(Request $request,Order $order)
     {   
         // if ( !array_key_exists('x-paystack-signature', $_SERVER) ) {
         //     return;
@@ -79,15 +79,14 @@ class WebHookController extends Controller
                     'total'=>$cart->ConvertCurrencyRate($cart->quantity * $cart->price),
                     'created_at'=>\Carbon\Carbon::now()
                 ];
-                OrderedProduct::Insert($insert);
+                $ord = OrderedProduct::Insert($insert);
+                \Log::info($ord);
                 $product_variation = ProductVariation::find($cart->product_variation_id);
                 $qty  = $product_variation->quantity - $cart->quantity;
                 $product_variation->quantity =  $qty < 1 ? 0 : $qty;
                 $product_variation->save();
                 //Delete all the cart
-                $cart->remember_token = null;
-                $cart->status = 'paid';
-                $cart->save();
+                $cart->delete();
             }
             $admin_emails = explode(',',$this->settings->alert_email);
             $symbol = optional($currency)->symbol  ;
