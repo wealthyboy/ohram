@@ -36,11 +36,14 @@ class WebHookController extends Controller
         // } 
 
        // Log::info($request->all());
-       Log::info($request->txref);
 
 
 
         try {
+            $inter = $request->all();
+            Log::info($inter['txref']);
+
+
             $input    =  $request->data['metadata']['custom_fields'][0];
             $user     =  User::findOrFail($input['customer_id']);
 
