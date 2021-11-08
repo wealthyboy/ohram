@@ -15,6 +15,8 @@ use App\ProductVariation;
 use App\Voucher;
 use App\Mail\OrderReceipt;
 use App\SystemSetting;
+use App\TransactionLog;
+
 
 
 
@@ -45,13 +47,17 @@ class WebHookController extends Controller
 
         try {
             $inter = $request->all();
-            Log::info($inter['txref']);
+            $carts = null;
+            if ( isset($inter['txref'])) {
+                $txref = TransactionLog::where('txref', $inter['txref'])->first();
+                $carts    =  Cart::where('transaction_id', $txref->id)->get();
+            } else {
+                $input    =  $request->data['metadata']['custom_fields'][0];
+                $user     =  User::findOrFail($input['customer_id']);
+                $carts    =  Cart::find($input['cart']);
+            }
 
 
-            $input    =  $request->data['metadata']['custom_fields'][0];
-            $user     =  User::findOrFail($input['customer_id']);
-
-            $carts    =  Cart::find($input['cart']);
 
             if (null == $carts ){
                return  http_response_code(200);
