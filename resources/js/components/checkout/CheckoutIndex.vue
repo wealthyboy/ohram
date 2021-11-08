@@ -475,8 +475,12 @@ export default {
           currencyCode: currencyCode 
         })
         .then((response) => {
-              this.payment_is_processing = false;
-              var iswPay = new IswPay({
+          this.payment_is_processing = false; 
+       }).catch((error) => {
+
+        });
+
+        var iswPay = new IswPay({
                 postUrl: "https://sandbox.interswitchng.com/collections/w/pay", //"https://webpay.interswitchng.com/collections/w/pay"
                 amount: amount,
                 productId: product_id,
@@ -510,11 +514,6 @@ export default {
               }
             },
           })
-          
-            
-       }).catch((error) => {
-
-        });
      
     },
     transReference: function () {

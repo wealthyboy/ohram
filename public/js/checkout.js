@@ -2483,39 +2483,39 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         currencyCode: currencyCode
       }).then(function (response) {
         _this2.payment_is_processing = false;
-        var iswPay = new IswPay({
-          postUrl: "https://sandbox.interswitchng.com/collections/w/pay",
-          //"https://webpay.interswitchng.com/collections/w/pay"
-          amount: amount,
-          productId: product_id,
-          transRef: reqRef,
-          siteName: "OHRAM COMPANY INTERNATIONAL",
-          itemId: pay_item_id,
-          customerId: context.meta.user.id,
-          siteRedirectUrl: site_redirect_url,
-          currency: context.currencyCode(),
-          hash: Sha512.hash(signatureCipher),
-          onComplete: function onComplete(paymentResponse) {
-            if (paymentResponse.resp == "00") {
-              context.paymentIsComplete = true;
-              $(".checkout-overlay").addClass("d-none");
-            } else {
-              context.order_text = "Place Order";
-              axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("/transaction/status", {
-                productId: product_id,
-                reqRef: reqRef,
-                amount: amount,
-                hash: Sha512.hash(signatureCipher)
-              }).then(function (response) {
-                context.failedStatus = response.data.status;
-                $(".checkout-overlay").addClass("d-none");
-              })["catch"](function (error) {
-                console.log(error);
-              });
-            }
-          }
-        });
       })["catch"](function (error) {});
+      var iswPay = new IswPay({
+        postUrl: "https://sandbox.interswitchng.com/collections/w/pay",
+        //"https://webpay.interswitchng.com/collections/w/pay"
+        amount: amount,
+        productId: product_id,
+        transRef: reqRef,
+        siteName: "OHRAM COMPANY INTERNATIONAL",
+        itemId: pay_item_id,
+        customerId: context.meta.user.id,
+        siteRedirectUrl: site_redirect_url,
+        currency: context.currencyCode(),
+        hash: Sha512.hash(signatureCipher),
+        onComplete: function onComplete(paymentResponse) {
+          if (paymentResponse.resp == "00") {
+            context.paymentIsComplete = true;
+            $(".checkout-overlay").addClass("d-none");
+          } else {
+            context.order_text = "Place Order";
+            axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("/transaction/status", {
+              productId: product_id,
+              reqRef: reqRef,
+              amount: amount,
+              hash: Sha512.hash(signatureCipher)
+            }).then(function (response) {
+              context.failedStatus = response.data.status;
+              $(".checkout-overlay").addClass("d-none");
+            })["catch"](function (error) {
+              console.log(error);
+            });
+          }
+        }
+      });
     },
     transReference: function transReference() {
       var a = this.getRandomInt(12345678, 10000000000);
