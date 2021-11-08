@@ -69,6 +69,9 @@ class WebHookController extends Controller
             $order->ip             =  $request->data['ip_address'];
             $order->save();
 
+            \Log::info($carts);
+
+
             foreach ( $carts   as $cart){
                 $insert = [
                     'order_id'=>$order->id,
