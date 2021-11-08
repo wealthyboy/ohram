@@ -43,19 +43,7 @@ class TransactionController extends Controller
             $tl = TransactionLog::where('token',$cookie)->first();
             $carts =  Cart::all_items_in_cart();
 
-            // if ($tl !== null) {
-            //     $tl->status = 'Awaiting Payment Confirmation';
-            //     $tl->user_id = request()->user()->id;
-            //     $tl->token = $cookie;
-            //     $tl->approved_amount =  $request->amount;
-            //     $tl->transaction_reference = $request->txref;
-            //     $tl->product_id = $request->productId;
-            //     $tl->save();
-            //     Cart::update([
-            //        'transaction_id' => $tl
-            //     ]);
-            //     return response(null,200);
-            // }
+            
 
             $transaction_log->product_id = $request->productId;
             $rate  = Helper::rate();
@@ -73,7 +61,13 @@ class TransactionController extends Controller
             $transaction_log->product_id = $request->productId;
             $transaction_log->rate = $rate  ? $rate->rate : 1;
             $transaction_log->save();
-            $transaction_log->carts()->sync($carts->pluck('id')->toArray());
+            //$transaction_log->carts()->sync($carts->pluck('id')->toArray());
+
+            foreach ( $carts   as $cart){
+                $cart->transaction_id = $transaction_log->id;
+                $cart->save();
+                //return response(null,200);
+            }
 
             $delay = now()->addMinutes(10);
             Notification::route('mail', 'ohraminternational@gmail.com')
@@ -81,7 +75,7 @@ class TransactionController extends Controller
             Notification::route('mail', 'jacob.atam@gmail.com')
             ->notify((new SendAwaitingPayment())->delay($delay));
             
-            ProcessPayment::dispatch()->delay(now()->addMinutes(10));
+           // ProcessPayment::dispatch()->delay(now()->addMinutes(10));
             return response($transaction_log,200);
         }
         

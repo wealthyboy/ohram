@@ -4,7 +4,6 @@
       <div v-if="payment_is_processing" class="c-overlay">
           <div class=" mr-2 ml-2 bold text-center" id="text">
             <span  class='spinner-border spinner-border-lg' role='status' aria-hidden='true'></span>
-            Please wait while we finish processing your order. Do not leave your browser.
             </div>
        </div>
         <div v-if="paymentIsComplete" class="page-contaiter">
@@ -448,8 +447,8 @@ export default {
       this.payment_is_processing = true;
       this.payment_method = "card";
       var reqRef = this.transReference();
-      var product_id = 22125466;
-      var pay_item_id = 8352215;
+      var product_id = 1076; //22125466
+      var pay_item_id = 101; //8352215
       var amount = this.amount * 100;
       var mac =
         "AGYclEQngemQDoUCSJBGzeYro8Keu8rVLVjR1aCsR0Mk0TaAjgiI3UnU1aV9a0fQ96KcGLPDOrHOy3oSDjnUMZEo2NJFFXu1hpnYnwcTrJg1RJdc7fo4bvlzHp8a97DX";
@@ -459,64 +458,60 @@ export default {
       var shipping_id = this.shipping_id;
       var signatureCipher =
         reqRef + product_id + pay_item_id + amount + site_redirect_url + mac;
-      this.logTransaction(reqRef,shipping_id,this.coupon,this.meta.currency);
-
-      var iswPay = new IswPay({
-        postUrl: "https://webpay.interswitchng.com/collections/w/pay",
-        amount: amount,
-        productId: product_id,
-        transRef: reqRef,
-        siteName: "OHRAM COMPANY INTERNATIONAL",
-        itemId: pay_item_id,
-        customerId: context.meta.user.id,
-        siteRedirectUrl: site_redirect_url,
-        currency: context.currencyCode(),
-        hash: Sha512.hash(signatureCipher),
-        onComplete: function (paymentResponse) {
-          if (paymentResponse.resp == "00") {
-            let link =
-              site_redirect_url +
-              "?txref=" +
-              paymentResponse.txnref +
-              "&rr=" +
-              paymentResponse.retRef +
-              "&ship_id=" +
-              shipping_id +
-              "&shipping_price=" +
-              context.shipping_price +
-              "&desc=" +
-              paymentResponse.desc +
-              "&amount=" +
-              paymentResponse.apprAmt;
-              axios
-              .get(link)
-              .then((response) => {
+      //this.logTransaction(reqRef,shipping_id,this.coupon,this.meta.currency);
+      axios
+        .post("/log/transaction", {
+          txref: txref,
+          productId: 1076,
+          amount: this.amount,
+          shipping_id: shipping_id,
+          shipping_price: this.shipping_price,
+          coupon: coupon,
+          currencyCode: currencyCode 
+        })
+        .then((response) => {
+          if (response.data.txref) {
+              this.payment_is_processing = false;
+              var iswPay = new IswPay({
+                postUrl: "https://sandbox.interswitchng.com/collections/w/pay", //"https://webpay.interswitchng.com/collections/w/pay"
+                amount: amount,
+                productId: product_id,
+                transRef: reqRef,
+                siteName: "OHRAM COMPANY INTERNATIONAL",
+                itemId: pay_item_id,
+                customerId: context.meta.user.id,
+                siteRedirectUrl: site_redirect_url,
+                currency: context.currencyCode(),
+                hash: Sha512.hash(signatureCipher),
+                onComplete: function (paymentResponse) {
+            if (paymentResponse.resp == "00") {
                 context.paymentIsComplete = true;
                 $(".checkout-overlay").addClass("d-none");
-              })
-              .catch((error) => {
-                console.log(error);
-              });
-
-          } else {
-            context.order_text = "Place Order";
-            axios
-              .post("/transaction/status", {
-                productId: product_id,
-                reqRef: reqRef,
-                amount: amount,
-                hash: Sha512.hash(signatureCipher),
-              })
-              .then((response) => {
-                context.failedStatus = response.data.status;
-                $(".checkout-overlay").addClass("d-none");
-              })
-              .catch((error) => {
-                console.log(error);
-              });
+            } else {
+              context.order_text = "Place Order";
+                 axios
+                  .post("/transaction/status", {
+                    productId: product_id,
+                    reqRef: reqRef,
+                    amount: amount,
+                    hash: Sha512.hash(signatureCipher),
+                  })
+                  .then((response) => {
+                    context.failedStatus = response.data.status;
+                    $(".checkout-overlay").addClass("d-none");
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  });
+              }
+            },
+          })
           }
-        },
-      });
+            
+       }).catch((error) => {
+
+        });
+     
     },
     transReference: function () {
       var a = this.getRandomInt(12345678, 10000000000);
@@ -547,6 +542,7 @@ export default {
       this.carts.forEach(function (cart, key) {
         cartIds.push(cart.id);
       });
+
       if (!this.addresses.length) {
         this.error = "You need to save your address before placing your order";
         return false;
@@ -582,13 +578,7 @@ export default {
           ],
         },
         callback: function (response) {
-          // if (response.status == "success") {
-          //   context.paymentIsComplete = true;
 
-          // } else {
-          //   this.error = "We could not complete your payment";
-          //   context.order_text = "Place Order";
-          // }
 
           if (response.status == "success") {
             
