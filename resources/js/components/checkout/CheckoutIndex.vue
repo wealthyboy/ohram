@@ -470,7 +470,6 @@ export default {
           currencyCode: currencyCode 
         })
         .then((response) => {
-          if (response.data.txref) {
               this.payment_is_processing = false;
               var iswPay = new IswPay({
                 postUrl: "https://sandbox.interswitchng.com/collections/w/pay", //"https://webpay.interswitchng.com/collections/w/pay"
@@ -506,7 +505,7 @@ export default {
               }
             },
           })
-          }
+          
             
        }).catch((error) => {
 
