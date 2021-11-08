@@ -338,7 +338,7 @@ export default {
       failedStatus: null,
       txref: null,
       paymentIsComplete: false,
-      allowPayemnt: false
+      allowPayment: false
 
     };
   },
@@ -380,8 +380,8 @@ export default {
     getRandomInt: function (min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     },
-    logTransaction: function (txref,shipping_id,coupon,currencyCode) {
-      axios
+    async logTransaction (txref,shipping_id,coupon,currencyCode) {
+      await axios
         .post("/log/transaction", {
           txref: txref,
           productId: 22125466,
@@ -392,7 +392,7 @@ export default {
           currencyCode: currencyCode 
         })
         .then((response) => {
-          this.allowPayemnt = true;
+          this.allowPayment = true;
         })
         .catch((error) => {});
     },
@@ -419,7 +419,7 @@ export default {
         };
       }
     },
-    makePayemnt: function () {
+    async makePayemnt () {
       if(this.meta.currency == '₦'){
         this.payWithPaystack();
         return;
@@ -462,8 +462,8 @@ export default {
       var shipping_id = this.shipping_id;
       var signatureCipher =
         reqRef + product_id + pay_item_id + amount + site_redirect_url + mac;
-      this.logTransaction(reqRef,shipping_id,this.coupon,this.meta.currency);
-       if (!this.allowPayemnt) {
+        var res = await this.logTransaction(reqRef,shipping_id,this.coupon,this.meta.currency);
+       if (!this.allowPayment) {
            alert("Payment gateway error. Please try again");
            return false
        }
