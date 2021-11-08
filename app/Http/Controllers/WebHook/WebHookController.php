@@ -48,6 +48,8 @@ class WebHookController extends Controller
         try {
             $inter = $request->all();
             $carts = null;
+            $input = null;
+            $user = null;
             if ( isset($inter['txref'])) {
                 $txref = TransactionLog::where('txref', $inter['txref'])->first();
                 $carts    =  Cart::where('transaction_id', $txref->id)->get();
