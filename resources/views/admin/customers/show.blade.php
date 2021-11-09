@@ -93,8 +93,9 @@
                 <div class="tab-pane" id="Addresses">
                    @foreach($user->addresses as $address )
                     <div>
-                        {{ $address->first_name }} </br> {{ $address->last_name }}  </br> {{ $address->city }}
+                        {{ $address->first_name }} </br> {{ $address->last_name }}  </br> {{ $address->city }} 
                         </br> {{ $address->address }} 
+                        </br> {{ $address->postcode }}
                         </br> {{ null !== $address->address_state ? $address->address_state->name : '' }} 
                     </div>
                     @endforeach
