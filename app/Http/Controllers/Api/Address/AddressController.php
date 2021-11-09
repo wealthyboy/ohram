@@ -91,6 +91,8 @@ class AddressController extends Controller
         $address->address_2                   =  $request->address_2;
         $address->city                        =  $request->city;
         $address->country_id                  =  $request->country_id;
+        $address->postcode   =  $request->postal_code;
+
         $address->state_id                    =  $request->state_id;
         $address->save();
         $addresses =  Address::where('user_id',\Auth::id())->get();
@@ -167,6 +169,7 @@ class AddressController extends Controller
         $address->address    =  $request->address ; 
         $address->address_2  =  $request->address_2;
         $address->city       =  $request->city;
+        $address->postcode   =  $request->postal_code;
         $address->state_id   =  $request->state_id;
         $address->country_id =  $request->country_id;
         $address->save();

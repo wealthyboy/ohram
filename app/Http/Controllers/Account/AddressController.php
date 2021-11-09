@@ -84,6 +84,8 @@ class AddressController extends Controller
 				$address->city                        =  $request->city;
 				$address->country                     =  Location::find($request->country)->name;
 				$address->state                       =  Location::find($request->state)->name;
+				$address->postcode   =  $request->postcode;
+
 				$address->state_id                    =  $request->state;
 				$address->save();
 				$addresses =  Address::where('user_id',\Auth::id())->get();
@@ -178,6 +180,8 @@ class AddressController extends Controller
 					$address->address_2                   =   $request->address_2;
 					$address->city                        =   $request->city;
 					$address->state_id                    =   $request->state;
+					$address->postcode   =  $request->postcode;
+
 					$address->save();
 					//Get The Address
 					$address = User::find($foriegn_key)->address;
