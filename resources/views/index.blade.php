@@ -156,7 +156,7 @@
             </div>
         </div>
         <div class="col-md-3   col-4">
-            <a href="">
+            <a href="https://ohram.org/product/shop-all/beth-set">
                 <div class="custom-banner">
                     <section  style=" cursor: pointer; height: 100vh;background-repeat: no-repeat;background-size: cover;background-image: url('https://ohram.org/images/products/r9QOtQz1xTSqOSijiD5ox3vzOXBCr11DLLZpzIwF.jpg'); background-position: center center; background-color: #b4224f;" class="breadcrumb justify-content-center zoom"></section>
                 </div>
@@ -164,7 +164,7 @@
             
         </div>
         <div class="col-md-3 col-4">
-            <a href="http://">
+            <a href="https://ohram.org/product/shop-all/a-babe-jacket-blue">
                 <div class="custom-banner">
                     <section  style="height: 100vh;background-repeat: no-repeat;background-size: cover;background-image: url('/images/banners/ohram_sports_apparel_1.jpeg'); background-position: center center; background-color: #b4224f;" class="breadcrumb justify-content-center  zoom"></section>
                 </div>
@@ -172,7 +172,7 @@
             
         </div>
         <div class="col-md-3 col-4">
-            <a href="">
+            <a href="https://ohram.org/product/shop-all/sydney-set">
                 <div class="custom-banner">
                     <section  style="height: 100vh;background-repeat: no-repeat;background-size: cover;background-image: url('http://ohram.test/images/banners/ohram_sports_apparel_2.jpeg'); background-position: center center; background-color: #b4224f;" class="breadcrumb justify-content-center zoom"></section>
                 </div>
