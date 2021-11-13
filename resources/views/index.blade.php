@@ -130,7 +130,7 @@
 
                         <div class="item position-relative">
                             <a href="https://ohram.org/product/shop-all/ohram-zoom-x">
-                            <img src="http://ohram.test/images/banners/buy_ohram_Air_zoom_in_nigeria_white-removebg-preview.png" alt="" srcset="">
+                            <img src="/images/banners/buy_ohram_Air_zoom_in_nigeria_white-removebg-preview.png" alt="" srcset="">
                             </a>
                             <div class=" text-center">
                                 <a href="https://ohram.org/product/shop-all/ohram-zoom-x">
