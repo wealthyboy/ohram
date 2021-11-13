@@ -1244,12 +1244,36 @@ footer a:focus {
   background-color: #00c2ad;
 }
 
-.weight-loss-banner .mobile-weight-loss-banner {
+.mobile-weight-loss-banner {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   white-space: nowrap;
+}
+
+.text-break {
+  white-space: normal !important;
+}
+
+.sal-content.mobile.text-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  bottom: 0px;
+}
+
+.custom-banner {
+  overflow: hidden;
+}
+
+.zoom:hover {
+  transform: scale(1.5);
+  transition: 1s ease-in-out;
+  z-index: 1;
+  width: 100%;
+  overflow: hidden;
 }
 
 @media only screen and (max-width: 600px) {

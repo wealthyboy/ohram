@@ -127,7 +127,6 @@
                             </div>
                         </div>
 
-
                         <div class="item position-relative">
                             <a href="https://ohram.org/product/shop-all/ohram-zoom-x">
                             <img src="/images/banners/buy_ohram_Air_zoom_in_nigeria_white-removebg-preview.png" alt="" srcset="">
@@ -144,23 +143,50 @@
             </div>
         </div>
     </div>
-<!-- 
-    <div  class="row no-gutters">
-        <div class="col-md-6 bg--danger  d-flex justify-content-center align-items-center">
-            <div class="sal-content text-center">
-                <div class="text-uppercase bold fa-3x">Stay Fit, Not Still</div>
-                <div  class="text-uppercase bold fa-4x">Not</div>
+
+    <div  class="row no-gutters mar-1 position-relative">
+        
+        <div class="col-md-3 col-12 bg--primary  d-none d-lg-block">
+            
+            <div class="sal-content text-center mobile-weight-loss-banner text-break">
+                <h1  class="text-uppercase  fa-8x">TOP PICKS</h1>               
                 <div class="buttons">
-                   <a href="/" class="btn btn--lg btn--primary bold h-font">Shop Gummies</a>
+                   <a href="https://ohram.org/products/female-apparel" class="btn btn--lg border btn--primary bold h-font">Shop Now</a>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="custom-banner">
-                <section  style="height: 100vh;background-repeat: no-repeat;background-size: cover;background-image: url({{ isset($category) ? $category->image : 'http://ohram.test/images/banners/buy_gummies_in_nigeria.jpeg' }}); background-position: center center; background-color: #b4224f;" class="breadcrumb justify-content-center"></section>
+        <div class="col-md-3   col-4">
+            <a href="">
+                <div class="custom-banner">
+                    <section  style=" cursor: pointer; height: 100vh;background-repeat: no-repeat;background-size: cover;background-image: url('https://ohram.org/images/products/r9QOtQz1xTSqOSijiD5ox3vzOXBCr11DLLZpzIwF.jpg'); background-position: center center; background-color: #b4224f;" class="breadcrumb justify-content-center zoom"></section>
+                </div>
+           </a>
+            
+        </div>
+        <div class="col-md-3 col-4">
+            <a href="http://">
+                <div class="custom-banner">
+                    <section  style="height: 100vh;background-repeat: no-repeat;background-size: cover;background-image: url('/images/banners/ohram_sports_apparel_1.jpeg'); background-position: center center; background-color: #b4224f;" class="breadcrumb justify-content-center  zoom"></section>
+                </div>
+            </a>
+            
+        </div>
+        <div class="col-md-3 col-4">
+            <a href="">
+                <div class="custom-banner">
+                    <section  style="height: 100vh;background-repeat: no-repeat;background-size: cover;background-image: url('http://ohram.test/images/banners/ohram_sports_apparel_2.jpeg'); background-position: center center; background-color: #b4224f;" class="breadcrumb justify-content-center zoom"></section>
+                </div>
+            </a>
+            
+        </div>
+
+        <div class="sal-content mobile text-center   d-block d-sm-none">
+            <h1  class="text-uppercase  text-white fa-8x">TOP PICKS</h1>
+            <div class="buttons">
+                <a href="https://ohram.org/products/female-apparel" class="btn btn--lg border btn--primary bold h-font">Shop Now</a>
             </div>
         </div>
-    </div>  -->
+    </div>  
 </div>
 
 @if ($posts->count()) 
