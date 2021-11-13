@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="">
-                <h1  class="text-uppercase  bold fa-3x text-white">From 12% off</h1>
+                <h1  class="text-uppercase  bold fa-2x text-white">From 12% off</h1>
                 </div>
 
 
@@ -145,24 +145,22 @@
         </div>
     </div>
 
-
-    <!-- <div  class="row no-gutters">
+    <div  class="row no-gutters">
         <div class="col-md-6 bg--danger  d-flex justify-content-center align-items-center">
-           <div class="sal-content text-center">
-               <div class="text-uppercase bold fa-3x">Stay Fit, Not Still</div>
-               <div  class="text-uppercase bold fa-4x">Not</div>
-               <div class="buttons">
-                 <a href="#" class="btn btn--lg btn--primary bold h-font">Shop Gummies</a>
-               </div>
-               
-           </div>
+            <div class="sal-content text-center">
+                <div class="text-uppercase bold fa-3x">Stay Fit, Not Still</div>
+                <div  class="text-uppercase bold fa-4x">Not</div>
+                <div class="buttons">
+                   <a href="/" class="btn btn--lg btn--primary bold h-font">Shop Gummies</a>
+                </div>
+            </div>
         </div>
         <div class="col-md-6">
             <div class="custom-banner">
                 <section  style="height: 100vh;background-repeat: no-repeat;background-size: cover;background-image: url({{ isset($category) ? $category->image : 'http://ohram.test/images/banners/buy_gummies_in_nigeria.jpeg' }}); background-position: center center; background-color: #b4224f;" class="breadcrumb justify-content-center"></section>
             </div>
         </div>
-    </div> -->
+    </div> 
 </div>
 
 @if ($posts->count()) 
