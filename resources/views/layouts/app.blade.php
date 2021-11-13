@@ -23,6 +23,12 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 	<!-- Main CSS File -->
+	<link
+	type="text/css"
+    rel="stylesheet"
+    href="/css/animate.css"
+  />
+
 	<link rel="stylesheet" href="/css/style.min.css?version={{ str_random(6) }}">
 	<link rel="stylesheet" type="text/css" href="/vendor/fontawesome-free/css/all.min.css">
 	<link rel="stylesheet" href="/css/skins/skin-default.css?version={{ str_random(6) }}">

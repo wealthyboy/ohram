@@ -23,6 +23,7 @@
         "webpack-bundle-analyzer": "^3.8.0"
     },
     "dependencies": {
+        "animate.css": "^4.1.1",
         "bootstrap": "^4.5.0",
         "btecu-eonasdan-bootstrap-datetimepicker": "^4.17.50",
         "jquery": "^3.5.1",

@@ -5,6 +5,12 @@
 }
 
 @font-face {
+  font-family: GalaxiePolarisCondensed-heavy;
+  src: url(../fonts/GalaxiePolarisCondensed-Heavy.otf);
+  font-weight: bold;
+}
+
+@font-face {
   font-family: luxurySaleFont4;
   src: url(../fonts/ProximaNovaAltCondensedLight.otf);
   font-weight: bold;
@@ -1193,4 +1199,72 @@ footer a:focus {
   padding: 10px;
   width: 100%;
   z-index: 1090;
+}
+
+/* //Custom Banners */
+
+.mar-1 {
+  margin-top: 0.2rem;
+}
+
+.sneakers-content {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.sale-text {
+  font-size: 15em;
+  font-family: "GalaxiePolarisCondensed-heavy", sans-serif !important;
+}
+
+.btn-raised {
+  box-shadow: 0 2px 2px 0 rgb(176 132 45 / 18%),
+    0 3px 1px -2px rgb(176 132 45 / 20%), 0 1px 5px 0 rgb(176 132 45 / 12%);
+  background-color: #000 !important;
+  width: 100%;
+}
+
+.sale-percent-off {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  right: 0px;
+  top: -30px;
+  border-radius: 50%;
+  background-color: #939393;
+  color: #fff;
+}
+
+.weight-loss-banner {
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("/images/banners/weight_loss_in_nigeria.jpeg");
+  background-position: center center;
+  background-color: #00c2ad;
+}
+
+.weight-loss-banner .mobile-weight-loss-banner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+@media only screen and (max-width: 600px) {
+  .weight-loss-banner {
+    height: 60vh;
+    background-size: contain;
+  }
+
+  .sneakers-content {
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+  }
+
+  .col-md-4.sneakers-content {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
 }
