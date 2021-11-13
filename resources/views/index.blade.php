@@ -174,7 +174,7 @@
         <div class="col-md-3 col-4">
             <a href="https://ohram.org/product/shop-all/sydney-set">
                 <div class="custom-banner">
-                    <section  style="height: 100vh;background-repeat: no-repeat;background-size: cover;background-image: url('http://ohram.test/images/banners/ohram_sports_apparel_2.jpeg'); background-position: center center; background-color: #b4224f;" class="breadcrumb justify-content-center zoom"></section>
+                    <section  style="height: 100vh;background-repeat: no-repeat;background-size: cover;background-image: url('/images/banners/ohram_sports_apparel_2.jpeg'); background-position: center center; background-color: #b4224f;" class="breadcrumb justify-content-center zoom"></section>
                 </div>
             </a>
             
