@@ -1210,6 +1210,12 @@ footer a:focus {
 .sneakers-content {
   padding-top: 6rem;
   padding-bottom: 6rem;
+  background-color: #222;
+  color: #fff !important;
+}
+
+.sneakers-content h1 {
+  color: #fff !important;
 }
 
 .sale-text {
@@ -1299,12 +1305,18 @@ footer a:focus {
   }
 
   .sneakers-content {
-    padding-top: 0rem;
-    padding-bottom: 0rem;
+    padding-top: 1rem !important;
+    padding-bottom: 0rem !important;
+    background-color: #fff;
+  }
+
+  .sneakers-content h1 {
+    color: #000 !important;
   }
 
   .col-md-4.sneakers-content {
     padding-top: 6rem;
     padding-bottom: 6rem;
+    color: #000 !important;
   }
 }

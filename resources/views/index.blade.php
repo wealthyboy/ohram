@@ -79,22 +79,19 @@
         </div>
     </div>
     <div id="sneakers"  class="row no-gutters  mar-1">
-        <!-- <div class="col-md-4 bg-primary  sneakers-content d-flex justify-content-center align-items-center">
+        <div class="col-md-4   sneakers-content d-flex justify-content-center align-items-center">
            <div class="sal-content text-left   ml-5 pl-3">
-               <h1  class="text-uppercase  text-white">RUN WITH CONFIDENCE</h1>
-               <p class="text-white ml-">When the world is your gym, it’s all about the components of your shoe.</p>
-               <div class="buttons">
-                 <a href="https://ohram.org/products/sneakers" class="btn btn--lg btn--primary bold h-font">Shop Now</a> 
-               </div>
+               <h1  class="text-uppercase  m-0">RUN WITH CONFIDENCE</h1>
+               <p class=" ml-">When the world is your gym, it’s all about the components of your shoe.</p>
            </div>
-        </div> -->
-
+        </div>
+<!-- 
         <div class="col-md-4  d-flex justify-content-center align-items-center">
            <div class="sal-content text-left   ml-5 ">
                <h1  class="text-uppercase m-0">RUN WITH CONFIDENCE</h1>
                <p class="">When the world is your gym, it’s all about the components of your shoe.</p>
            </div>
-        </div>
+        </div>  -->
         <div style="  background-color: #000;" class="col-md-8 sneakers-content">
             <div  class="custom-banner">
                 <section  style="background-repeat: no-repeat;background-size: contain;  background-color: #000;" class="breadcrumb pt-5 pb-5 justify-content-center">
