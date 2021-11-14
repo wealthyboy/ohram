@@ -58,7 +58,7 @@
         </div>
         <div class="col-md-6 order-first">
             <div class="custom-banner">
-                <section   class="weight-loss-banner banner-filter">
+                <section   class="weight-loss-banner">
                     <div class="mobile-weight-loss-banner  d-block d-sm-none">
                         <div class="text-uppercase fa-2x  bold text-white">Tummy Make over</div>
                             <div class=" text-center">
@@ -304,6 +304,14 @@
     }
  }
  setInterval(changeColor, 1000)
+
+
+$(function() {      
+    let isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+    if (isMobile) {
+        $('.weight-loss-banner').addClass('banner-filter')
+    }
+});
 
 @stop
 
