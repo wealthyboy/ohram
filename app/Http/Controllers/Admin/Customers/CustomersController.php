@@ -23,9 +23,6 @@ class CustomersController extends Controller
     {
         $users = (new User())->customers()->latest()->get();
 
-        $user = User::find(187);
-        $user->password=bcrypt('amarachi');
-        $user->save();
 
         return   view('admin.customers.index', compact('users'));  
 
