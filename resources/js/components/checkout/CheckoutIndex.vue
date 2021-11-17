@@ -217,7 +217,7 @@
                                         {{ order_text }}
                                     </button>
                                 </template >
-                                
+                    
                             </p>
                            
                         </div>
@@ -550,7 +550,7 @@ export default {
       this.payment_is_processing = true;
       this.payment_method = "card";
       var handler = PaystackPop.setup({
-        key: "pk_live_8260bf35964c9d1f60fe6b2adfb96994117c1b16", //'pk_live_c4f922bc8d4448065ad7bd3b0a545627fb2a084f',//'pk_test_844112398c9a22ef5ca147e85860de0b55a14e7c',
+        key: "pk_live_8260bf35964c9d1f60fe6b2adfb96994117c1b16", //'pk_live_8260bf35964c9d1f60fe6b2adfb96994117c1b16',//'pk_test_844112398c9a22ef5ca147e85860de0b55a14e7c',
         email: context.meta.user.email,
         amount: context.amount * 100,
         currency: "NGN",

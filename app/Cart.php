@@ -106,11 +106,13 @@ class Cart extends Model
 		return $number_products_in_cart;
 	}
 
-	public static function ConvertCurrencyRate($price)
+	public static function ConvertCurrencyRate($price, $r =null)
 	{
-      
+        if ($r){
+		   return round(($price * $r),0);  
+		}
 		$rate = Helper::rate();
-		if ($rate){
+		if ($rate ){
 		  return round(($price * $rate->rate),0);  
 		}
 		return round($price,0);  

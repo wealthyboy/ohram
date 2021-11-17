@@ -64,12 +64,9 @@ class WebHookController extends Controller
                 $carts    =  Cart::find($input['cart']);
             }
 
-
-
             if (null == $carts ){
                return  http_response_code(200);
             }
-
 
             if ($foreign){
                 $order->user_id = $txref->user_id;
@@ -114,12 +111,14 @@ class WebHookController extends Controller
             foreach ( $carts   as $cart){
                 
                 $OrderedProduct = new OrderedProduct;
+                $price = $cart->sale_price ?? $cart->price;
+                $quantity = $cart->quantity * $price;
                 $OrderedProduct->order_id = $order->id;
                 $OrderedProduct->product_variation_id = $cart->product_variation_id;
                 $OrderedProduct->quantity = $cart->quantity;
                 $OrderedProduct->status = "Processing";
-                $OrderedProduct->price = $cart->ConvertCurrencyRate($cart->price);
-                $OrderedProduct->total = $cart->ConvertCurrencyRate($cart->quantity * $cart->price);
+                $OrderedProduct->price = $cart->ConvertCurrencyRate($price, $cart->rate);
+                $OrderedProduct->total = $cart->ConvertCurrencyRate($quantity, $cart->rate);
                 $OrderedProduct->created_at = \Carbon\Carbon::now();
                 $OrderedProduct->save();
                 //\Log::info($ord);
@@ -156,8 +155,7 @@ class WebHookController extends Controller
         }
 
         return http_response_code(200);
-        
-        
+    
     }
     
 

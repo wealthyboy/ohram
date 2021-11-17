@@ -137,7 +137,7 @@ class Helper{
             'col-lg-3',
             'col-lg-2',
             'col-lg-1',
-    ];
+       ];
     }
 
 
