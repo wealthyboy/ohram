@@ -74,7 +74,7 @@ class WebHookController extends Controller
                 $order->coupon         =  $txref->coupon;
                 $order->status         = 'Processing';
                 $order->shipping_id    =  $txref->shipping_id;
-                $order->shipping_price =  optional(Shipping::find( $txref->shipping_id))->converted_price;
+                $order->shipping_price =  $txref->shipping_price;
                 $order->currency       =  $txref->currency;
                 $order->invoice        =  "INV-".date('Y')."-".rand(10000,39999);
                 $order->payment_type   =  'online';
