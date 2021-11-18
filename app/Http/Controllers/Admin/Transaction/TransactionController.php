@@ -20,7 +20,16 @@ use App\Cart;
 use App\Mail\OrderReceipt;
 
 class TransactionController extends Controller
-{
+{   
+
+    public  $settings;
+
+	public function __construct()
+	{
+		$this->settings =  SystemSetting::first();
+    }
+
+    
     /**
      * Display a listing of the resource.
      *
