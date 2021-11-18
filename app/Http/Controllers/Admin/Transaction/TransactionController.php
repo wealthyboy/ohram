@@ -29,7 +29,7 @@ class TransactionController extends Controller
 		$this->settings =  SystemSetting::first();
     }
 
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -137,7 +137,6 @@ class TransactionController extends Controller
 
 
                     foreach ( $carts   as $cart ){
-                        
                         $OrderedProduct = new OrderedProduct;
                         $price = $cart->sale_price ?? $cart->price;
                         $quantity = $cart->quantity * $price;
@@ -145,8 +144,8 @@ class TransactionController extends Controller
                         $OrderedProduct->product_variation_id = $cart->product_variation_id;
                         $OrderedProduct->quantity = $cart->quantity;
                         $OrderedProduct->status = "Processing";
-                        $OrderedProduct->price = $cart->ConvertCurrencyRate($price, $cart->rate);
-                        $OrderedProduct->total = $cart->ConvertCurrencyRate($quantity, $cart->rate);
+                        $OrderedProduct->price = $cart->ConvertCurrencyRate($price, $transaction_log->rate);
+                        $OrderedProduct->total = $cart->ConvertCurrencyRate($quantity, $transaction_log->rate);
                         $OrderedProduct->created_at = \Carbon\Carbon::now();
                         $OrderedProduct->save();
                         //\Log::info($ord);
