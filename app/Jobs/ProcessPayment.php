@@ -60,11 +60,10 @@ class ProcessPayment implements ShouldQueue
         $carts    =  Cart::where('transaction_id', $this->transaction_log->id)->get();
         $tr_log = TransactionLog::find($this->transaction_log->id);
 
-        \Log::info($tr_log);
+        \Log::info($this->transaction_log->approved_amount);
 
 
         $user     =  User::findOrFail($this->transaction_log->user_id);        
-
 
         $parameters = array(
                "productid"=>$prudid,
