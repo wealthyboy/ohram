@@ -154,8 +154,11 @@ class TransactionController extends Controller
                     try {
                         $when = now()->addMinutes(5); 
                         \Mail::to($user->email)
+                        ->cc("jacob.atam@gmail.com")
                         ->bcc($admin_emails[0])
                         ->send(new OrderReceipt($order,$this->settings,$symbol));
+
+
                     } catch (\Throwable $th) {
                         Log::info("Mail error :".$th);
                     }
