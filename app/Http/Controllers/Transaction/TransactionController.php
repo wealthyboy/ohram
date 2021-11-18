@@ -43,8 +43,7 @@ class TransactionController extends Controller
             $tl = TransactionLog::where('token',$cookie)->first();
             $carts =  Cart::all_items_in_cart();
 
-            
-
+        
             $transaction_log->product_id = $request->productId;
             $rate  = Helper::rate();
             

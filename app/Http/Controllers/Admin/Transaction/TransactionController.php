@@ -59,7 +59,6 @@ class TransactionController extends Controller
         $user     =  User::findOrFail($transaction_log->user_id);        
 
 
-			
         $parameters = array(
                "productid"=>$prudid,
                "transactionreference"=>$transaction_log->transaction_reference,
@@ -131,41 +130,45 @@ class TransactionController extends Controller
                 
                     \Log::info($carts);
 
-
-                    foreach ( $carts   as $cart ){
-                        $OrderedProduct = new OrderedProduct;
-                        $price = $cart->sale_price ?? $cart->price;
-                        $quantity = $cart->quantity * $price;
-                        $OrderedProduct->order_id = $order->id;
-                        $OrderedProduct->product_variation_id = $cart->product_variation_id;
-                        $OrderedProduct->quantity = $cart->quantity;
-                        $OrderedProduct->status = "Processing";
-                        $OrderedProduct->price = $cart->ConvertCurrencyRate($price, $transaction_log->rate);
-                        $OrderedProduct->total = $cart->ConvertCurrencyRate($quantity, $transaction_log->rate);
-                        $OrderedProduct->created_at = \Carbon\Carbon::now();
-                        $OrderedProduct->save();
-                        //\Log::info($ord);
-                        $product_variation = ProductVariation::find($cart->product_variation_id);
-                        $qty  = $product_variation->quantity - $cart->quantity;
-                        $product_variation->quantity =  $qty < 1 ? 0 : $qty;
-                        $product_variation->save();
-                        //Delete all the cart
-                        //$cart->delete();
+                    if ($carts->count()){
+                        foreach ( $carts   as $cart ){
+                            $OrderedProduct = new OrderedProduct;
+                            $price = $cart->sale_price ?? $cart->price;
+                            $quantity = $cart->quantity * $price;
+                            $OrderedProduct->order_id = $order->id;
+                            $OrderedProduct->product_variation_id = $cart->product_variation_id;
+                            $OrderedProduct->quantity = $cart->quantity;
+                            $OrderedProduct->status = "Processing";
+                            $OrderedProduct->price = $cart->ConvertCurrencyRate($price, $transaction_log->rate);
+                            $OrderedProduct->total = $cart->ConvertCurrencyRate($quantity, $transaction_log->rate);
+                            $OrderedProduct->created_at = \Carbon\Carbon::now();
+                            $OrderedProduct->save();
+                            //\Log::info($ord);
+                            $product_variation = ProductVariation::find($cart->product_variation_id);
+                            $qty  = $product_variation->quantity - $cart->quantity;
+                            $product_variation->quantity =  $qty < 1 ? 0 : $qty;
+                            $product_variation->save();
+                            //Delete all the cart
+                            $cart->delete();
+                        }
+                        $admin_emails = explode(',',$this->settings->alert_email);
+                        $symbol = $transaction_log->currency  ;
+                        
+                        try {
+                            $when = now()->addMinutes(5); 
+                            \Mail::to($user->email)
+                            ->cc("jacob.atam@gmail.com")
+                            ->bcc($admin_emails[0])
+                            ->send(new OrderReceipt($order,$this->settings,$symbol));
+    
+    
+                        } catch (\Throwable $th) {
+                            Log::info("Mail error :".$th);
+                        }
                     }
-                    $admin_emails = explode(',',$this->settings->alert_email);
-                    $symbol = $transaction_log->currency  ;
+
+
                     
-                    try {
-                        $when = now()->addMinutes(5); 
-                        \Mail::to($user->email)
-                        ->cc("jacob.atam@gmail.com")
-                        ->bcc($admin_emails[0])
-                        ->send(new OrderReceipt($order,$this->settings,$symbol));
-
-
-                    } catch (\Throwable $th) {
-                        Log::info("Mail error :".$th);
-                    }
 
                 }else{
                     $transaction_log->response_description = $json["ResponseDescription"];

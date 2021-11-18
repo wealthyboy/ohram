@@ -111,6 +111,8 @@ class Cart extends Model
         if ($r){
 		   return round(($price * $r),0);  
 		}
+
+		
 		$rate = Helper::rate();
 		if ($rate ){
 		  return round(($price * $rate->rate),0);  
