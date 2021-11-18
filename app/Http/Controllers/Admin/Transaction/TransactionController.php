@@ -48,7 +48,7 @@ class TransactionController extends Controller
 
         $carts    =  Cart::where('transaction_id', $transaction_log->id)->get();
         $user     =  User::findOrFail($transaction_log->user_id);
-        dd($transaction_log);
+       // dd($transaction_log);
 
 			
         $parameters = array(
@@ -114,101 +114,52 @@ class TransactionController extends Controller
                     $order->status         = 'Processing';
                     $order->shipping_id    =  $transaction_log->shipping_id;
                     $order->shipping_price =  $transaction_log->shipping_price;
-                    $order->currency       =  $txref->currency;
+                    $order->currency       =  $transaction_log->currency;
                     $order->invoice        =  "INV-".date('Y')."-".rand(10000,39999);
-                    $order->payment_type   =  'online';
-                    $order->total          =  $txref->amount;
+                    $order->payment_type   =  'interswitch - online';
+                    $order->total          =  $transaction_log->approved_amount;
                     $order->save();
                 
 
 
                 
 
-                \Log::info($carts);
+                    \Log::info($carts);
 
 
-                foreach ( $carts   as $cart){
+                    foreach ( $carts   as $cart ){
+                        
+                        $OrderedProduct = new OrderedProduct;
+                        $price = $cart->sale_price ?? $cart->price;
+                        $quantity = $cart->quantity * $price;
+                        $OrderedProduct->order_id = $order->id;
+                        $OrderedProduct->product_variation_id = $cart->product_variation_id;
+                        $OrderedProduct->quantity = $cart->quantity;
+                        $OrderedProduct->status = "Processing";
+                        $OrderedProduct->price = $cart->ConvertCurrencyRate($price, $cart->rate);
+                        $OrderedProduct->total = $cart->ConvertCurrencyRate($quantity, $cart->rate);
+                        $OrderedProduct->created_at = \Carbon\Carbon::now();
+                        $OrderedProduct->save();
+                        //\Log::info($ord);
+                        $product_variation = ProductVariation::find($cart->product_variation_id);
+                        $qty  = $product_variation->quantity - $cart->quantity;
+                        $product_variation->quantity =  $qty < 1 ? 0 : $qty;
+                        $product_variation->save();
+                        //Delete all the cart
+                        //$cart->delete();
+                    }
+                    $admin_emails = explode(',',$this->settings->alert_email);
+                    $symbol = $transaction_log->currency  ;
                     
-                    $OrderedProduct = new OrderedProduct;
-                    $price = $cart->sale_price ?? $cart->price;
-                    $quantity = $cart->quantity * $price;
-                    $OrderedProduct->order_id = $order->id;
-                    $OrderedProduct->product_variation_id = $cart->product_variation_id;
-                    $OrderedProduct->quantity = $cart->quantity;
-                    $OrderedProduct->status = "Processing";
-                    $OrderedProduct->price = $cart->ConvertCurrencyRate($price, $cart->rate);
-                    $OrderedProduct->total = $cart->ConvertCurrencyRate($quantity, $cart->rate);
-                    $OrderedProduct->created_at = \Carbon\Carbon::now();
-                    $OrderedProduct->save();
-                    //\Log::info($ord);
-                    $product_variation = ProductVariation::find($cart->product_variation_id);
-                    $qty  = $product_variation->quantity - $cart->quantity;
-                    $product_variation->quantity =  $qty < 1 ? 0 : $qty;
-                    $product_variation->save();
-                    //Delete all the cart
-                    $cart->delete();
-                }
-                $admin_emails = explode(',',$this->settings->alert_email);
-                $symbol = optional($currency)->symbol  ;
-                
-                try {
-                    $when = now()->addMinutes(5); 
-                    \Mail::to($user->email)
-                    ->bcc($admin_emails[0])
-                    ->send(new OrderReceipt($order,$this->settings,$symbol));
-                } catch (\Throwable $th) {
-                    Log::info("Mail error :".$th);
-                }
-
-
-                    if ($transaction_log->pending_carts->count()) {
-                        $order->user_id = optional($transaction_log->user)->id;
-                        $order->address_id     =  optional(optional($transaction_log->user)->active_address)->id;
-                        $order->coupon         =  null;
-                        $order->status         = 'Processing';
-                        $order->shipping_id    =  $transaction_log->shipping_id;
-                        $order->shipping_price =  optional($shipping::find($transaction_log->shipping_id))->converted_price;
-                        $order->currency       =  $transaction_log->currency;
-                        $order->invoice        =  "INV-".date('Y')."-".rand(10000,39999);
-                        $order->payment_type   =  'online';
-                        $order->order_type     =  'online';
-                        $order->total          =  $transaction_log->approved_amount;
-                    //  $order->ip           = $request->ip();
-                    //  $order->user_agent   = $request->server('HTTP_USER_AGENT');
-                        $order->save();
-                        foreach ( $transaction_log->pending_carts   as $cart){
-                            $insert = [
-                                'order_id'=>$order->id,
-                                'product_variation_id'=>$cart->product_variation_id,
-                                'quantity'=>$cart->quantity,
-                                'status'=>"Processing",
-                                'price'=>$cart->ConvertCurrencyRate($cart->price),
-                                'total'=>$cart->ConvertCurrencyRate($cart->quantity * $cart->price),
-                                'created_at'=>now()
-                            ];
-                            OrderedProduct::Insert($insert);
-                            $product_variation = ProductVariation::find($cart->product_variation_id);
-                            $qty  = $product_variation->quantity - $cart->quantity;
-                            $product_variation->quantity =  $qty < 1 ? 0 : $qty;
-
-                            $product_variation->save();
-                            $cart->status = "Paid & Confirmed";
-                            $cart->save();
-                        }
-                        $admin_emails = explode(',',$settings->alert_email);
-                        $symbol = $transaction_log->currency;
-
-                        try {
-                            $when = now()->addMinutes(5);
-                            \Mail::to(optional($transaction_log->user)->email)
-                            ->bcc($admin_emails[0])
-                            ->send(new OrderReceipt($order,$settings,$symbol));
-                        } catch (\Throwable $th) {
-                            //throw $th;
-                        }
+                    try {
+                        $when = now()->addMinutes(5); 
+                        \Mail::to($user->email)
+                        ->bcc($admin_emails[0])
+                        ->send(new OrderReceipt($order,$this->settings,$symbol));
+                    } catch (\Throwable $th) {
+                        Log::info("Mail error :".$th);
                     }
 
-                    
                 }else{
                     $transaction_log->response_description = $json["ResponseDescription"];
                     $transaction_log->status =  'Transaction incomplete';
