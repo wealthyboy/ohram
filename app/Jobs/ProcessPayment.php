@@ -128,7 +128,6 @@ class ProcessPayment implements ShouldQueue
                     $order->save();
                 
                     \Log::info($carts);
-
                     if ($carts->count()){
                         foreach ( $carts   as $cart ){
                             $OrderedProduct = new OrderedProduct;
