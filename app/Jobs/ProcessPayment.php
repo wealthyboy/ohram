@@ -52,17 +52,11 @@ class ProcessPayment implements ShouldQueue
     public function handle(ProductVariation $product_variation, SystemSetting $settings, Helper $helper, OrderedProduct $ordered_product,Order $order,Shipping $shipping)
     {
         //query 
-
-
         $settings = $settings::first();
 
 		$prudid = 22125466;
         $carts    =  Cart::where('transaction_id', $this->transaction_log->id)->get();
         $tr_log = TransactionLog::find($this->transaction_log->id);
-
-        \Log::info($this->transaction_log->approved_amount);
-
-
         $user     =  User::findOrFail($this->transaction_log->user_id);        
 
         $parameters = array(
@@ -117,12 +111,10 @@ class ProcessPayment implements ShouldQueue
                     $tr_log->transaction_reference = $json["MerchantReference"];
                     $tr_log->approved_amount = $json["Amount"] / 100;
                     $tr_log->response_description = $json["ResponseDescription"];
-                    $tr_log->status =  $json['ResponseCode'] == '00' ? 'Successfulls' : 'Failed';
+                    $tr_log->status =  $json['ResponseCode'] == '00' ? 'Successfull' : 'Failed';
                     $tr_log->response_code =  $json['ResponseCode'];
                     $tr_log->response_date_time =  $json['TransactionDate'];
                     $tr_log->save();
-
-
                     $order->user_id = $this->transaction_log->user_id;
                     $order->address_id     =  optional($user->active_address)->id;
                     $order->coupon         =  $this->transaction_log->coupon;
@@ -172,8 +164,6 @@ class ProcessPayment implements ShouldQueue
                         }
                     }
 
-
-                    
 
                 }else{
                     $tr_log->response_description = $json["ResponseDescription"];
