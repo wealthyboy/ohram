@@ -48,7 +48,7 @@ class TransactionController extends Controller
 
         $carts    =  Cart::where('transaction_id', $transaction_log->id)->get();
         $user     =  User::findOrFail($transaction_log->user_id);
-        dd($carts);
+        //dd($transaction_log);
 
 			
         $parameters = array(
@@ -106,6 +106,59 @@ class TransactionController extends Controller
                     $transaction_log->response_code =  $json['ResponseCode'];
                     $transaction_log->response_date_time =  $json['TransactionDate'];
                     $transaction_log->save();
+
+
+                    $order->user_id = $transaction_log->user_id;
+                    $order->address_id     =  optional($user->active_address)->id;
+                    $order->coupon         =  $transaction_log->coupon;
+                    $order->status         = 'Processing';
+                    $order->shipping_id    =  $transaction_log->shipping_id;
+                    $order->shipping_price =  $transaction_log->shipping_price;
+                    $order->currency       =  $txref->currency;
+                    $order->invoice        =  "INV-".date('Y')."-".rand(10000,39999);
+                    $order->payment_type   =  'online';
+                    $order->total          =  $txref->amount;
+                    $order->save();
+                
+
+
+                
+
+                \Log::info($carts);
+
+
+                foreach ( $carts   as $cart){
+                    
+                    $OrderedProduct = new OrderedProduct;
+                    $price = $cart->sale_price ?? $cart->price;
+                    $quantity = $cart->quantity * $price;
+                    $OrderedProduct->order_id = $order->id;
+                    $OrderedProduct->product_variation_id = $cart->product_variation_id;
+                    $OrderedProduct->quantity = $cart->quantity;
+                    $OrderedProduct->status = "Processing";
+                    $OrderedProduct->price = $cart->ConvertCurrencyRate($price, $cart->rate);
+                    $OrderedProduct->total = $cart->ConvertCurrencyRate($quantity, $cart->rate);
+                    $OrderedProduct->created_at = \Carbon\Carbon::now();
+                    $OrderedProduct->save();
+                    //\Log::info($ord);
+                    $product_variation = ProductVariation::find($cart->product_variation_id);
+                    $qty  = $product_variation->quantity - $cart->quantity;
+                    $product_variation->quantity =  $qty < 1 ? 0 : $qty;
+                    $product_variation->save();
+                    //Delete all the cart
+                    $cart->delete();
+                }
+                $admin_emails = explode(',',$this->settings->alert_email);
+                $symbol = optional($currency)->symbol  ;
+                
+                try {
+                    $when = now()->addMinutes(5); 
+                    \Mail::to($user->email)
+                    ->bcc($admin_emails[0])
+                    ->send(new OrderReceipt($order,$this->settings,$symbol));
+                } catch (\Throwable $th) {
+                    Log::info("Mail error :".$th);
+                }
 
 
                     if ($transaction_log->pending_carts->count()) {
