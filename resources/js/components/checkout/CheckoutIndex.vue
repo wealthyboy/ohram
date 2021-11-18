@@ -494,6 +494,7 @@ export default {
                   })
                   .then((response) => {
                     context.failedStatus = response.data.status;
+                    context.payment_is_processing =false
                     $(".checkout-overlay").addClass("d-none");
                   })
                   .catch((error) => {
