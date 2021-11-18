@@ -56,13 +56,7 @@ class TransactionController extends Controller
 
 
         $carts    =  Cart::where('transaction_id', $transaction_log->id)->get();
-        $user     =  User::findOrFail($transaction_log->user_id);
-
-        $or = Order::find([141]);
-        foreach($or as $o){
-           $o->delete();
-        }
-        dd($carts);
+        $user     =  User::findOrFail($transaction_log->user_id);        
 
 
 			
