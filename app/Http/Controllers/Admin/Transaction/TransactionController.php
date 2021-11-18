@@ -8,11 +8,15 @@ use App\TransactionLog;
 
 
 use App\Order;
+use App\User;
+
 use App\OrderedProduct;
 use App\Http\Helper;
 use App\Shipping;
 use App\ProductVariation;
 use App\SystemSetting;
+use App\Cart;
+
 use App\Mail\OrderReceipt;
 
 class TransactionController extends Controller
@@ -40,7 +44,11 @@ class TransactionController extends Controller
     {
         $prudid = 22125466;
         $transaction_log = TransactionLog::find($id);
-        dd($transaction_log);
+
+
+        $carts    =  Cart::where('transaction_id', $transaction_log->id)->get();
+        $user     =  User::findOrFail($transaction_log->user_id);
+        dd($carts);
 
 			
         $parameters = array(
@@ -98,6 +106,7 @@ class TransactionController extends Controller
                     $transaction_log->response_code =  $json['ResponseCode'];
                     $transaction_log->response_date_time =  $json['TransactionDate'];
                     $transaction_log->save();
+
 
                     if ($transaction_log->pending_carts->count()) {
                         $order->user_id = optional($transaction_log->user)->id;
