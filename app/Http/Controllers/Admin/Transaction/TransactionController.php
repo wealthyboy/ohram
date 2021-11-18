@@ -57,7 +57,7 @@ class TransactionController extends Controller
 
         $carts    =  Cart::where('transaction_id', $transaction_log->id)->get();
         $user     =  User::findOrFail($transaction_log->user_id);
-       // dd($transaction_log);
+        dd($carts);
 
 			
         $parameters = array(
