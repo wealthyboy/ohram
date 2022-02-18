@@ -79,7 +79,7 @@ class CartController  extends Controller {
 			$cart->product_variation_id = $request->product_variation_id;
 			$cart->quantity   = $request->quantity;
 			$cart->price      = $product_variation->price;
-			$cart->rate      = $rate->rate;
+			$cart->rate      = optional($rate)->rate;
 			$cart->currency      = $currency;
 			$cart->sale_price = $this->getDiscountedPrice($product_variation);
 			$cart->total      = $price * $request->quantity;

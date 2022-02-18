@@ -37,7 +37,7 @@ class CheckoutController extends Controller
 		
 		if ($request->token)
 		{
-		    $verify = Cart::where([ 'remember_token' => $request->token ])->first();
+		    $verify = Cart::where(['remember_token' => $request->token])->first();
 			if ( !$verify ){
 				return redirect()->to('/404');
 			}
@@ -59,7 +59,6 @@ class CheckoutController extends Controller
 
 		$user = $request->user();
 
-		
 		//AbandonCart::dispatch($carts, $user)->delay(now()->addMinutes(10));
 		return view('checkout.index',['csrf' => $csrf]);
 	}
