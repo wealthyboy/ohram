@@ -24,21 +24,6 @@
 <div class="container-fliud ">
     
 
-    <div  class="row align-items-start">
-        @foreach( $banners as $banner )
-            <div class="{{ $banner->col }} pr-1 mb-1 position-relative text-center">
-                <div class="banner-box">
-                    <a class="portfolio-thumb" href="{{ $banner->link }}">
-                        <img src="{{ $banner->image }}" alt="" />
-                    </a>
-                </div>
-                <!-- <div class="shop-title text-center  position-absolute">
-                    <h1 class="title color--light">{{  $banner->title }} </h1>
-                    <a href="{{ $banner->link }}" class="btn btn-block btn-sm btn-primary text--light bold">Shop Now</a>
-                </div> -->
-            </div>
-        @endforeach
-    </div>
 
 
     <div  class="row no-gutters">
