@@ -13,6 +13,8 @@ use App\Review;
 use App\Information;
 use Stevebauman\Location\Location;
 use App\SystemSetting;
+use App\User;
+
 use App\Http\Helper;
 
 use App\Currency;
