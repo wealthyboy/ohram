@@ -1,6 +1,8 @@
 @extends('layouts.checkout')
 
 @section('content')
+
+
 <div class="checkout-overlay d-none">
     <div class="text fa-2x">Please wait, while we round things up. Do not leave this page.</div>
 </div>

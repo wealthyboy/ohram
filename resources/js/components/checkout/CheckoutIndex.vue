@@ -515,6 +515,7 @@ export default {
       error: null,
       showForm: false,
       scriptLoaded: null,
+      stripeKey: null,
       submiting: false,
       checkingout: false,
       coupon_error: null,
@@ -556,11 +557,9 @@ export default {
     },
   },
   mounted() {
+    console.log(this.stripeKey)
     setTimeout(() => {
-      console.log(process.env.MIX_STRIPE_SECRET);
-      this.stripe = Stripe(
-        "pk_test_51R3MciGfsCHlyH9ZolTvz4wFnziDeaWK6BqzywHydhaidCK7Xn4LvsgJbN2DtNTaemgkYGwTGKg9j6qQsAcpwyuk00piyDMugb"
-      );
+      this.stripe = Stripe(Window.MIX_STRIPE_KEY);
       this.elements = this.stripe.elements();
 
       const style = {
