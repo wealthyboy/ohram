@@ -15,7 +15,7 @@ class AddUpdatedAtToCartsTable extends Migration
     {
         Schema::table('carts', function (Blueprint $table) {
             $table->timestamp('updated_at')->nullable()->after('created_at');
-            $table->string('rate')->nullable();
+            //$table->string('rate')->nullable();
         });
     }
 
