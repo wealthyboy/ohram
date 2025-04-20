@@ -515,7 +515,6 @@ export default {
       error: null,
       showForm: false,
       scriptLoaded: null,
-      stripeKey: null,
       submiting: false,
       checkingout: false,
       coupon_error: null,
@@ -557,7 +556,6 @@ export default {
     },
   },
   mounted() {
-    console.log(this.stripeKey)
     setTimeout(() => {
       this.stripe = Stripe(Window.MIX_STRIPE_KEY);
       this.elements = this.stripe.elements();

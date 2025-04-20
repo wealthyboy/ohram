@@ -30,11 +30,15 @@ class HomeController extends Controller
     {
 
         $site_status = Live::first();
+
+        dd($site_status);
         $banners =  Banner::banners()->get();
         $products = Product::where('featured', 1)->orderBy('created_at', 'DESC')->take(8)->get();
         $reviews  = Review::orderBy('created_at', 'DESC')->take(4)->get();
         $posts  =   Information::orderBy('created_at', 'DESC')->where('blog', true)->take(6)->get();
         $page_title = 'Ohram | From detox teas to meal replacement protein shakes, our babes do it all. Get back on track, reduce bloating, and flatten that tummy!';
+
+
 
 
         if (empty($site_status->make_live)) {
