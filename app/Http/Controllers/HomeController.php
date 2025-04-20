@@ -40,7 +40,6 @@ class HomeController extends Controller
         $page_title = 'Ohram | From detox teas to meal replacement protein shakes, our babes do it all. Get back on track, reduce bloating, and flatten that tummy!';
 
 
-        dd($posts);
 
         if (
             null === $site_status->make_live
