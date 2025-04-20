@@ -1,299 +1,487 @@
-
 <template>
-    <div>
-      <div v-if="payment_is_processing" class="c-overlay">
-          <div class=" mr-2 ml-2 bold text-center" id="text">
-            <span  class='spinner-border spinner-border-lg' role='status' aria-hidden='true'></span>
+  <div>
+    <div v-if="payment_is_processing" class="c-overlay">
+      <div class="mr-2 ml-2 bold text-center" id="text">
+        <span
+          class="spinner-border spinner-border-lg"
+          role="status"
+          aria-hidden="true"
+        ></span>
+      </div>
+    </div>
+    <div v-if="paymentIsComplete" class="page-contaiter">
+      <!--Content-->
+      <section class="sec-padding--lg vh--100">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 offset-md-2">
+              <div class="error-page text-center">
+                <h1>Thank you for shopping with us</h1>
+                <p class="large">Your order has been received .</p>
+                <p class="large"></p>
+                <a href="/" class="btn btn--primary space-t--2">Continue</a>
+                <a href="/orders" class="btn btn--primary space-t--2"
+                  >View order history</a
+                >
+              </div>
             </div>
-       </div>
-        <div v-if="paymentIsComplete" class="page-contaiter">
-            <!--Content-->
-            <section class="sec-padding--lg vh--100">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8 offset-md-2">
-                            <div class="error-page text-center">
-                                <h1>Thank you for shopping with us</h1>
-                                <p class="large">Your order has been received .</p>
-                                <p class="large"></p>
-                                <a href="/" class="btn btn--primary space-t--2">Continue</a>
-                                <a href="/orders" class="btn btn--primary space-t--2">View order history</a>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-            <!--End Content-->
+          </div>
         </div>
-        
-        <div v-if="failedStatus" class="page-contaiter">
-            <!--Content-->
-            <section class="sec-padding--lg vh--100">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8 offset-md-2">
-                            <div class="error-page text-center">
-                                <h1>Payment Status</h1>
-                                <p class="large text-danger bold">{{ failedStatus.ResponseDescription }}.</p>
-                                <p class="large text-danger bold">Transaction Reference: {{ failedStatus.MerchantReference }}.</p>
-                                <p class="large"></p>
-                                <a href="" class="btn btn--primary space-t--2">Try again</a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-            <!--End Content-->
-        </div>
-        <div  v-if="!pageIsLoading  && !failedStatus && !paymentIsComplete" class="container   mt-1">
-            <div  class="row d-none justify-content-center">
-                <ul class="checkout-progress-bar">
-                    <li :class="{'active': !addresses.length}">
-                        <span>Shipping Address</span>
-                    </li>
-                    <li :class="{'active': addresses.length}">
-                        <span>Review &amp; Payments</span>
-                    </li>
-                </ul>
-            </div>
-            <div  class="row   align-items-start">
-                <div class="col-12 col-md-7">
-                    <div class="col-md-12 m7 bg--light border border-gray mb-2">
-                        <div class="head  border-bottom  pt-3 mb-3">
-                            <h3>1. SHIPPING ADDRESS</h3>
-                        </div>
-                        <ship-address   />
-                    </div>
-
-                    <div class="col-md-12 bg--light ">
-                    <div class="pt-3 pb-2 ">
-                        <span class="float-right">
-                            <div class="payment-icons mt-1 d-flex">
-                
-                                <div class="interswitch mb-1">
-                                    <img  src="/img/interswitch_logo.svg" alt="interswitch" />
-                                </div>
-                                <div class="payment-image ms mr-3">
-                                    <img src="/img/business.png"  alt="make payment with mastercard">
-                                </div>
-                                <div class="payment-image mr-3">
-                                    <img src="/img/visa-card-ohram.png"  alt="make payment with mastercard">
-                                </div>
-
-                                <div class="payment-image">
-                                    <img src="/img/Verve.png"  alt="make payment with mastercard">
-                                </div>
-                            </div>
-                           
-                        </span>
-                        <h3>2. PAYMENT</h3>
-                    </div>
-                    <div class="row" v-if="addresses.length" id="add-new-address-form" >
-                        <div class="form-field-wrapper  col-sm-12 ">
-                            <div v-for="cart in carts"  :key="cart.id" class="row cart-rows  mb-2 pt-4 pb-2 border-top border-gray">
-                                <div class="col-md-2 col-6">
-                                    <div class="cart-image">
-                                        <img :src="cart.product_variation.image_tn" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-md-7 col-6">
-                                    <div class="mb-1"><a href="#">{{ cart.product_name }}</a></div>
-                                    <!--Product Ratting-->
-                                    <div class="product-item-prices d-flex"  v-if="cart.product_variation.discounted_price">
-                                        <div class="product--price--amount">
-                                            <span class="retail--title text-gold">SALE PRICE</span>
-                                            <span class="product--price text-danger">{{ meta.currency }}{{ cart.sale_price | priceFormat }}</span>
-                                            <span class="retail--title">{{ cart.product_variation.percentage_off }}% off</span>
-                                        </div>
-
-                                        <div class="product--price--amount retail ml-5 ">
-                                            <span class="retail--title text-gold">PRICE</span>
-                                            <span class="product--price retail--price ">{{ meta.currency }}{{ cart.price | priceFormat }}</span>
-                                            <span class="retail--title"></span>
-                                        </div>
-                                    </div>
-
-                                        <div class="product-item-prices" v-else>
-                                            <div class="product--price--amount">
-                                                <span class="retail--title text-gold">PRICE</span>
-                                                <span class="product--price">{{ meta.currency }}{{ cart.price | priceFormat}}</span>
-                                                <span class="retail--title"></span>
-                                            </div>
-                                        </div>
-                                        <p v-if="cart.variations.length"> {{ cart.variations.toString() }}</p>
-                                    </div>
-                                    
-                                </div>
-                                <p class="border-bottom pb-3">
-                                    <span  style="font-size: 22px;" class="bold">Subtotal</span> 
-                                        <span class="float-right"><span  style="font-size: 22px" class="currencySymbol f-20 bold">{{  meta.currency }}{{ meta.sub_total | priceFormat}}</span>
-                                    </span>
-                                </p>
-                                <div class="border-bottom pb-3">
-                                    <span class="bold">Shipping</span> 
-
-                                    <span class="float-right">
-                                        <span v-if="shipping_price" class="currencySymbol bold">{{  meta.currency }}{{ shipping_price }}</span>
-                                        <span class="" v-else>{{  shippingIsFree }}</span>
-                                    </span>
-                                </div>
-                                
-                                    
-                                <p class="">
-                                    <p  class="form-field-wrapper   col-sm-12">
-                                        <form action="#">
-                                            <div v-if="$root.settings.shipping_is_free == 0" class="shipping">
-                                                <label for="shipping_country">SELECT SHIPPING &nbsp;<abbr class="required text-danger" title="required">*</abbr></label>
-                                                <select @change="addShippingPrice" name="shipping_id" id="shipping_price" class="form-control  input--lg" autocomplete="shipping" tabindex="-1" aria-hidden="true">
-                                                    <option value="" selected="selected">Choose a shipping</option> 
-                                                    <optgroup  v-for="(map, key) in  default_shipping" :key="key" :label="key">
-                                                        <option :data-id="shipping.id"  :key="shipping.id" v-for="shipping in map"  :value="shipping.converted_price">{{ shipping.name }}  &nbsp;&nbsp;&nbsp;{{ meta.currency }}{{ shipping.converted_price }}</option>
-                                                    </optgroup>
-                                                </select>
-                                            </div>
-                                            
-                                            <span  v-if="error" class="" role="" >
-                                                <strong  class="text-capitalize text-danger">{{ error }}</strong>
-                                            </span>
-                                        </form>
-
-                                      
-                                        
-                                    </p>
-                                    
-
-                                    <div class="cart-discount col-sm-12">
-                                        
-                                        <h4>Apply Discount Code</h4>
-                                        <div class="input-group">
-                                            <input type="text" v-model="coupon"  class="form-control" placeholder="Enter discount code" required="">
-                                            <div class="input-group-append">
-                                                <button  @click.prevent="applyCoupon" class="btn btn-sm btn-primary" type="submit">
-                                                    <span v-if="submiting" class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>
-                                                    Apply Coupon
-                                                </button>
-                                            </div>
-                                        </div><!-- End .input-group -->
-                                    </div>
-                        
-                                    <span v-if="coupon_error"  class="text-capitalize bold ml-3 text-danger">{{coupon_error}}</span >
-
-                                    <p>
-                                        <span    class="bold fa-2x ml-3">Total</span> 
-                                        <template v-if="voucher.length">
-                                            <span class="price-amount amount bold float-right mr-3">
-                                                <span  class="currencySymbol fa-2x text-danger"><del>{{ meta.currency }}{{  meta.sub_total | priceFormat }}</del></span>
-                                            </span>
-                                            <span class="price-amount amount bold float-right mr-3">
-                                                <span style="" class="currencySymbol fa-2x">{{ meta.currency }}{{ amount ||  meta.sub_total | priceFormat }}</span>
-                                                <p class="retail-title fa-1x">{{ voucher[0].percent }}</p>
-                                            </span>
-                        
-                                        </template>
-                                        <template v-else>
-                                          <span class="price-amount amount bold float-right mr-3">
-                                              <span style="" class="currencySymbol fa-2x">{{ meta.currency }}{{ amount ||  meta.sub_total | priceFormat }}
-                                              </span>
-                                          </span>
-                                        </template>
-                                    </p>
-                            </div>
-
-                            <p class="form-field-wrapper   col-sm-12 mb-3">
-                                
-                                <template v-if="$root.settings.shipping_is_free == 0 && amount > 1">
-                                    <button @click="makePayemnt" :class="{'disabled': payment_is_processing}"   type="button" class="btn btn-round btn-lg btn-block btn--primary bold  l-f1  btn--full" name="checkout_place_order" id="place_order" value="Place order" data-value="Place Order">
-                                        <span v-if="checkingout" class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>
-                                        {{ order_text }}
-                                    </button>
-                                </template >
-                                <template v-else>
-                                    <button @click="makePayemnt" type="button" :class="{'disabled': payment_is_processing}" class="btn   bold  btn--primary btn-round btn-lg btn-block" name="checkout_place_order" id="p lace_order" value="Place order" data-value="Place Order">
-                                        <span v-if="checkingout" class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>
-                                        {{ order_text }}
-                                    </button>
-                                </template >
-                    
-                            </p>
-                           
-                        </div>
-                    </div>
-                </div>
-                <div class="col-5">
-                    <div class="col-md-12 d-none d-lg-block  mb-3">
-                        <div class="cart-collateralse bg--light  border pb-3 pt-3 pl-3 pt-3 pr-3">
-                            <div class="cart_totalse">
-                                <div class="head  border-bottom">
-                                    <h3>SUMMARY</h3>
-                                </div>
-
-                                <div v-for="cart in carts"  :key="cart.id" class="row cart-rows  mb-2 pt-4 pb-2 border-top border-gray">
-                                    <div class="col-md-2 col-6">
-                                        <div class="cart-image">
-                                            <img :src="cart.product_variation.image_tn" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7 col-6">
-                                        <div><a href="#">{{ cart.product_name }}</a></div>
-                                        <!--Product Ratting-->
-                                        <div class="product-item-prices d-flex"  v-if="cart.product_variation.discounted_price">
-                                            <div class="product--price--amount mr-5">
-                                                <span class="retail--title text-gold">SALE PRICE</span>
-                                                <span class="product--price text-danger">{{ meta.currency }}{{ cart.sale_price | priceFormat }}</span>
-                                                <span class="retail--title">{{ cart.product_variation.percentage_off }}% off</span>
-                                            </div>
-
-                                            <div class="product--price--amount retail ml-5">
-                                                <span class="retail--title text-gold">PRICE</span>
-                                                <span class="product--price retail--price ">{{ meta.currency }}{{ cart.price | priceFormat }}</span>
-                                                <span class="retail--title"></span>
-                                            </div>
-                                        </div>
-
-                                            <div class="product-item-prices" v-else>
-                                                <div class="product--price--amount">
-                                                    <span class="retail--title text-gold">PRICE</span>
-                                                    <span class="product--price">{{ meta.currency }}{{ cart.price | priceFormat}}</span>
-                                                    <span class="retail--title"></span>
-                                                </div>
-                                            </div>
-                                            <p v-if="cart.variations.length"> {{ cart.variations.toString() }}</p>
-                                        </div>
-                                        
-                                    </div>
-                            
-                                <p class="pt-3 pb-1">
-                                    <span style="font-size: 22px;"  class="bold">Subtotal</span> 
-                                    <span class="bold float-right"><span class="currencySymbol">{{  meta.currency }}{{ meta.sub_total | priceFormat }}</span></span>
-                                </p>
-                                <p class="border-top border-bottom pb-3 pt-3">
-                                <span class="bold">Shipping</span> 
-                                    <span class="bold float-right">
-                                        <span v-if="shipping_price" class="currencySymbol">{{  meta.currency }}{{ shipping_price }}</span>
-                                        <small v-else> {{ shippingIsFree }}</small>
-                                    </span>
-                                </p>
-                                
-                                <p>
-                                <span style="font-size: 28px" class="bold ">Total</span> 
-                                    <span class="price-amount amount bold float-right"><span style="font-size: 28px" class="currencySymbol">{{ meta.currency }}{{ amount ||  meta.sub_total | priceFormat }}</span></span>
-                                </p>
-                                <div class="proceed-to-checkout"></div>
-
-                            </div>
-                        </div> 
-                       
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        
+      </section>
+      <!--End Content-->
     </div>
 
+    <div v-if="failedStatus" class="page-contaiter">
+      <!--Content-->
+      <section class="sec-padding--lg vh--100">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 offset-md-2">
+              <div class="error-page text-center">
+                <h1>Payment Status</h1>
+                <p class="large text-danger bold">
+                  {{ failedStatus.ResponseDescription }}.
+                </p>
+                <p class="large text-danger bold">
+                  Transaction Reference: {{ failedStatus.MerchantReference }}.
+                </p>
+                <p class="large"></p>
+                <a href="" class="btn btn--primary space-t--2">Try again</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--End Content-->
+    </div>
+    <div
+      v-if="!pageIsLoading && !failedStatus && !paymentIsComplete"
+      class="container mt-1"
+    >
+      <div class="row d-none justify-content-center">
+        <ul class="checkout-progress-bar">
+          <li :class="{ active: !addresses.length }">
+            <span>Shipping Address</span>
+          </li>
+          <li :class="{ active: addresses.length }">
+            <span>Review &amp; Payments</span>
+          </li>
+        </ul>
+      </div>
+      <div class="row align-items-start">
+        <div class="col-12 col-md-7">
+          <div class="col-md-12 m7 bg--light border border-gray mb-2">
+            <div class="head border-bottom pt-3 mb-3">
+              <h3>1. SHIPPING ADDRESS</h3>
+            </div>
+            <ship-address />
+          </div>
+
+          <div class="col-md-12 bg--light">
+            <div class="pt-3 pb-2">
+              <span class="float-right">
+                <div class="payment-icons mt-1 d-flex">
+                  <div class="interswitch mb-1">
+                    <img src="/img/interswitch_logo.svg" alt="interswitch" />
+                  </div>
+                  <div class="payment-image ms mr-3">
+                    <img
+                      src="/img/business.png"
+                      alt="make payment with mastercard"
+                    />
+                  </div>
+                  <div class="payment-image mr-3">
+                    <img
+                      src="/img/visa-card-ohram.png"
+                      alt="make payment with mastercard"
+                    />
+                  </div>
+
+                  <div class="payment-image">
+                    <img
+                      src="/img/Verve.png"
+                      alt="make payment with mastercard"
+                    />
+                  </div>
+                </div>
+              </span>
+              <h3>2. PAYMENT</h3>
+            </div>
+            <div class="" v-if="addresses.length" id="add-new-address-form">
+              <div class="form-field-wrapper col-sm-12">
+                <div
+                  v-for="cart in carts"
+                  :key="cart.id"
+                  class="row cart-rows mb-2 pt-4 pb-2 border-top border-gray"
+                >
+                  <div class="col-md-2 col-6">
+                    <div class="cart-image">
+                      <img :src="cart.product_variation.image_tn" alt="" />
+                    </div>
+                  </div>
+                  <div class="col-md-7 col-6">
+                    <div class="mb-1">
+                      <a href="#">{{ cart.product_name }}</a>
+                    </div>
+                    <!--Product Ratting-->
+                    <div
+                      class="product-item-prices d-flex"
+                      v-if="cart.product_variation.discounted_price"
+                    >
+                      <div class="product--price--amount">
+                        <span class="retail--title text-gold">SALE PRICE</span>
+                        <span class="product--price text-danger"
+                          >{{ meta.currency
+                          }}{{ cart.sale_price | priceFormat }}</span
+                        >
+                        <span class="retail--title"
+                          >{{ cart.product_variation.percentage_off }}%
+                          off</span
+                        >
+                      </div>
+
+                      <div class="product--price--amount retail ml-5">
+                        <span class="retail--title text-gold">PRICE</span>
+                        <span class="product--price retail--price"
+                          >{{ meta.currency
+                          }}{{ cart.price | priceFormat }}</span
+                        >
+                        <span class="retail--title"></span>
+                      </div>
+                    </div>
+
+                    <div class="product-item-prices" v-else>
+                      <div class="product--price--amount">
+                        <span class="retail--title text-gold">PRICE</span>
+                        <span class="product--price"
+                          >{{ meta.currency
+                          }}{{ cart.price | priceFormat }}</span
+                        >
+                        <span class="retail--title"></span>
+                      </div>
+                    </div>
+                    <p v-if="cart.variations.length">
+                      {{ cart.variations.toString() }}
+                    </p>
+                  </div>
+                </div>
+                <p class="border-bottom pb-3">
+                  <span style="font-size: 22px" class="bold">Subtotal</span>
+                  <span class="float-right"
+                    ><span
+                      style="font-size: 22px"
+                      class="currencySymbol f-20 bold"
+                      >{{ meta.currency
+                      }}{{ meta.sub_total | priceFormat }}</span
+                    >
+                  </span>
+                </p>
+                <div class="border-bottom pb-3">
+                  <span class="bold">Shipping</span>
+
+                  <span class="float-right">
+                    <span v-if="shipping_price" class="currencySymbol bold"
+                      >{{ meta.currency }}{{ shipping_price }}</span
+                    >
+                    <span class="" v-else>{{ shippingIsFree }}</span>
+                  </span>
+                </div>
+
+                <div class="">
+                  <p class="form-field-wrapper col-sm-12"></p>
+                  <form action="#">
+                    <div v-if="settings.shipping_is_free == 0" class="shipping">
+                      <label for="shipping_country"
+                        >SELECT SHIPPING &nbsp;<abbr
+                          class="required text-danger"
+                          title="required"
+                          >*</abbr
+                        ></label
+                      >
+                      <select
+                        @change="addShippingPrice"
+                        name="shipping_id"
+                        id="shipping_price"
+                        class="form-control input--lg"
+                        autocomplete="shipping"
+                        tabindex="-1"
+                        aria-hidden="true"
+                      >
+                        <option value="" selected="selected">
+                          Choose a shipping
+                        </option>
+                        <optgroup
+                          v-for="(map, key) in default_shipping"
+                          :key="key"
+                          :label="key"
+                        >
+                          <option
+                            :data-id="shipping.id"
+                            :key="shipping.id"
+                            v-for="shipping in map"
+                            :value="shipping.converted_price"
+                          >
+                            {{ shipping.name }} &nbsp;&nbsp;&nbsp;{{
+                              meta.currency
+                            }}{{ shipping.converted_price }}
+                          </option>
+                        </optgroup>
+                      </select>
+                    </div>
+
+                    <span v-if="error" class="" role="">
+                      <strong class="text-capitalize text-danger">{{
+                        error
+                      }}</strong>
+                    </span>
+                  </form>
+                </div>
+
+                <div class="cart-discount col-sm-12 p-0">
+                  <h4>Apply Discount Code</h4>
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      v-model="coupon"
+                      class="form-control"
+                      placeholder="Enter discount code"
+                      required=""
+                    />
+                    <div class="input-group-append">
+                      <button
+                        @click.prevent="applyCoupon"
+                        class="btn btn-sm btn-primary"
+                        type="submit"
+                      >
+                        <span
+                          v-if="submiting"
+                          class="spinner-border spinner-border-sm"
+                          role="status"
+                          aria-hidden="true"
+                        ></span>
+                        Apply Coupon
+                      </button>
+                    </div>
+                  </div>
+                  <!-- End .input-group -->
+                </div>
+
+                <span
+                  v-if="coupon_error"
+                  class="text-capitalize bold ml-3 text-danger"
+                  >{{ coupon_error }}</span
+                >
+
+                <p>
+                  <span class="bold fa-2x ">Total</span>
+                  <template v-if="voucher.length">
+                    <span class="price-amount amount bold float-right mr-3">
+                      <span class="currencySymbol fa-2x text-danger"
+                        ><del
+                          >{{ meta.currency
+                          }}{{ meta.sub_total | priceFormat }}</del
+                        ></span
+                      >
+                    </span>
+                    <span class="price-amount amount bold float-right mr-3">
+                      <span style="" class="currencySymbol fa-2x"
+                        >{{ meta.currency
+                        }}{{ amount || meta.sub_total | priceFormat }}</span
+                      >
+                      <p class="retail-title fa-1x">{{ voucher[0].percent }}</p>
+                    </span>
+                  </template>
+                  <template v-else>
+                    <span class="price-amount amount bold float-right mr-3">
+                      <span style="" class="currencySymbol fa-2x"
+                        >{{ meta.currency
+                        }}{{ amount || meta.sub_total | priceFormat }}
+                      </span>
+                    </span>
+                  </template>
+                </p>
+
+               
+              </div>
+
+              <p class="form-field-wrapper col-sm-12 ">
+
+                <div class="">
+                  <div class="mb-3 position-relative px-3">
+                    <label class="form-labelm">Card information</label>
+
+                    <div class="position-relative">
+                      <!-- Card Element Wrapper with padding on the right to make room for icons -->
+                      <div id="card-number-element" class="form-control py-4 pe-5"></div>
+
+                    </div>
+                  </div>
+
+                  <!-- Expiry + CVC -->
+                  <div class="row px-3">
+                    <div  style="margin-top: -25px;" class=" col-md-6">
+                      <div
+                        id="card-expiry-element"
+                        class="form-control "
+                      ></div>
+                    </div>
+                    <div style="margin-top: -25px;" class="col-md-6">
+                      <div
+                        id="card-cvc-element"
+                        class="form-control "
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div></div>
+                <template v-if="settings.shipping_is_free == 0 && amount > 1">
+                  <button
+                    @click="makePayemnt"
+                    :class="{ disabled: payment_is_processing }"
+                    type="button"
+                    class="btn btn-round btn-lg btn-block btn--primary bold l-f1 btn--full"
+                    name="checkout_place_order"
+                    id="place_order"
+                    value="Place order"
+                    data-value="Place Order"
+                  >
+                    <span
+                      v-if="checkingout"
+                      class="spinner-border spinner-border-sm"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                    {{ order_text }}
+                  </button>
+                </template>
+                <template v-else>
+                  <button
+                    @click="makePayemnt"
+                    type="button"
+                    :class="{ disabled: payment_is_processing }"
+                    class="btn bold btn--primary btn-round btn-lg btn-block"
+                    name="checkout_place_order"
+                    id="p lace_order"
+                    value="Place order"
+                    data-value="Place Order"
+                  >
+                    <span
+                      v-if="checkingout"
+                      class="spinner-border spinner-border-sm"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                    {{ order_text }}
+                  </button>
+                </template>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-5">
+          <div class="col-md-12 d-none d-lg-block mb-3">
+            <div
+              class="cart-collateralse bg--light border pb-3 pt-3 pl-3 pt-3 pr-3"
+            >
+              <div class="cart_totalse">
+                <div class="head border-bottom">
+                  <h3>SUMMARY</h3>
+                </div>
+
+                <div
+                  v-for="cart in carts"
+                  :key="cart.id"
+                  class="row cart-rows mb-2 pt-4 pb-2 border-top border-gray"
+                >
+                  <div class="col-md-2 col-6">
+                    <div class="cart-image">
+                      <img :src="cart.product_variation.image_tn" alt="" />
+                    </div>
+                  </div>
+                  <div class="col-md-7 col-6">
+                    <div>
+                      <a href="#">{{ cart.product_name }}</a>
+                    </div>
+                    <!--Product Ratting-->
+                    <div
+                      class="product-item-prices d-flex"
+                      v-if="cart.product_variation.discounted_price"
+                    >
+                      <div class="product--price--amount mr-5">
+                        <span class="retail--title text-gold">SALE PRICE</span>
+                        <span class="product--price text-danger"
+                          >{{ meta.currency
+                          }}{{ cart.sale_price | priceFormat }}</span
+                        >
+                        <span class="retail--title"
+                          >{{ cart.product_variation.percentage_off }}%
+                          off</span
+                        >
+                      </div>
+
+                      <div class="product--price--amount retail ml-5">
+                        <span class="retail--title text-gold">PRICE</span>
+                        <span class="product--price retail--price"
+                          >{{ meta.currency
+                          }}{{ cart.price | priceFormat }}</span
+                        >
+                        <span class="retail--title"></span>
+                      </div>
+                    </div>
+
+                    <div class="product-item-prices" v-else>
+                      <div class="product--price--amount">
+                        <span class="retail--title text-gold">PRICE</span>
+                        <span class="product--price"
+                          >{{ meta.currency
+                          }}{{ cart.price | priceFormat }}</span
+                        >
+                        <span class="retail--title"></span>
+                      </div>
+                    </div>
+                    <p v-if="cart.variations.length">
+                      {{ cart.variations.toString() }}
+                    </p>
+                  </div>
+                </div>
+
+                <p class="pt-3 pb-1">
+                  <span style="font-size: 22px" class="bold">Subtotal</span>
+                  <span class="bold float-right"
+                    ><span class="currencySymbol"
+                      >{{ meta.currency
+                      }}{{ meta.sub_total | priceFormat }}</span
+                    ></span
+                  >
+                </p>
+                <p class="border-top border-bottom pb-3 pt-3">
+                  <span class="bold">Shipping</span>
+                  <span class="bold float-right">
+                    <span v-if="shipping_price" class="currencySymbol"
+                      >{{ meta.currency }}{{ shipping_price }}</span
+                    >
+                    <small v-else> {{ shippingIsFree }}</small>
+                  </span>
+                </p>
+
+                <p>
+                  <span style="font-size: 28px" class="bold">Total</span>
+                  <span class="price-amount amount bold float-right"
+                    ><span style="font-size: 28px" class="currencySymbol"
+                      >{{ meta.currency
+                      }}{{ amount || meta.sub_total | priceFormat }}</span
+                    ></span
+                  >
+                </p>
+                <div class="proceed-to-checkout"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 import ShipAddress from "./ShipAddress";
@@ -311,6 +499,7 @@ export default {
   props: {
     csrf: Object,
     payment: Array,
+    settings: Object,
   },
   data() {
     return {
@@ -337,10 +526,18 @@ export default {
       failedStatus: null,
       txref: null,
       paymentIsComplete: false,
-      allowPayment: false
-
+      allowPayment: false,
+      stripe: null,
+      elements: null,
+      cardNumber: null,
+      cardExpiry: null,
+      cardCvc: null,
+      processing: false,
+      error: "",
+      success: false,
     };
   },
+
   computed: {
     ...mapGetters({
       carts: "carts",
@@ -349,7 +546,7 @@ export default {
       default_shipping: "default_shipping",
     }),
     shippingIsFree() {
-      return this.$root.settings.shipping_is_free == 0
+      return this.settings?.shipping_is_free == 0
         ? "Shipping is based on your location"
         : this.meta.currency + "0.00";
     },
@@ -357,6 +554,40 @@ export default {
       let p = this.amount || this.meta.sub_total;
       return p * 100;
     },
+  },
+  mounted() {
+    setTimeout(() => {
+      console.log(process.env.MIX_STRIPE_SECRET);
+      this.stripe = Stripe(
+        "pk_test_51R3MciGfsCHlyH9ZolTvz4wFnziDeaWK6BqzywHydhaidCK7Xn4LvsgJbN2DtNTaemgkYGwTGKg9j6qQsAcpwyuk00piyDMugb"
+      );
+      this.elements = this.stripe.elements();
+
+      const style = {
+        base: {
+          fontSize: '16px',
+          color: '#32325d',
+          '::placeholder': {
+            color: '#aab7c4'
+          }
+        },
+        invalid: {
+          color: '#fa755a'
+        }
+      }
+
+      this.cardNumber = this.elements.create('cardNumber', {
+        style,
+        placeholder: 'Card Number',
+        showIcon: true
+      })
+      this.cardNumber.mount("#card-number-element");
+      this.cardExpiry = this.elements.create("cardExpiry", style);
+      this.cardExpiry.mount("#card-expiry-element", style);
+      this.cardCvc = this.elements.create("cardCvc", style);
+      this.cardCvc.mount("#card-cvc-element");
+
+    }, 3000);
   },
   created() {
     this.scriptLoaded = new Promise((resolve) => {
@@ -369,8 +600,6 @@ export default {
       document.getElementById("full-bg").style.display = "none";
       this.pageIsLoading = false;
     });
-
-
   },
   methods: {
     ...mapActions({
@@ -379,7 +608,38 @@ export default {
     getRandomInt: function (min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     },
-    async logTransaction (txref,shipping_id,coupon,currencyCode) {
+    async makePayemnt() {
+      this.processing = true;
+      this.error = "";
+      this.success = false;
+
+      try {
+        const response = await fetch("/create-payment-intent", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+        });
+
+        const { client_secret } = await response.json();
+
+        const result = await this.stripe.confirmCardPayment(client_secret, {
+          payment_method: {
+            card: this.cardNumber,
+          },
+        });
+
+        if (result.error) {
+          this.error = result.error.message;
+        } else if (result.paymentIntent.status === "succeeded") {
+          this.success = true;
+        }
+      } catch (err) {
+        this.error = "Something went wrong. Please try again.";
+      } finally {
+        this.processing = false;
+      }
+    },
+
+    async logTransaction(txref, shipping_id, coupon, currencyCode) {
       await axios
         .post("/log/transaction", {
           txref: txref,
@@ -388,7 +648,7 @@ export default {
           shipping_id: shipping_id,
           shipping_price: this.shipping_price,
           coupon: coupon,
-          currencyCode: currencyCode 
+          currencyCode: currencyCode,
         })
         .then((response) => {
           this.allowPayment = true;
@@ -418,12 +678,11 @@ export default {
         };
       }
     },
-    async makePayemnt () {
-      if(this.meta.currency == '₦'){
+    async makePayemnt() {
+      if (this.meta.currency == "₦") {
         this.payWithPaystack();
         return;
       }
-
 
       let context = this;
       var cartIds = [];
@@ -435,13 +694,12 @@ export default {
         return false;
       }
 
-      if (this.$root.settings.shipping_is_free == 0 && !this.shipping_price) {
+      if (this.settings.shipping_is_free == 0 && !this.shipping_price) {
         this.error = "Please select your shipping method";
         return false;
       } else {
         //this.amount =  this.meta.sub_total
       }
-
 
       $(".checkout-overlay").removeClass("d-none");
       let form = document.getElementById("checkout-form-2");
@@ -449,61 +707,64 @@ export default {
       this.payment_is_processing = true;
       this.payment_method = "card";
       var reqRef = this.transReference();
-      var product_id = 22125466
-      var pay_item_id = 8352215
+      var product_id = 22125466;
+      var pay_item_id = 8352215;
       var amount = this.amount * 100;
 
-
-      var mac = "AGYclEQngemQDoUCSJBGzeYro8Keu8rVLVjR1aCsR0Mk0TaAjgiI3UnU1aV9a0fQ96KcGLPDOrHOy3oSDjnUMZEo2NJFFXu1hpnYnwcTrJg1RJdc7fo4bvlzHp8a97DX";
+      var mac =
+        "AGYclEQngemQDoUCSJBGzeYro8Keu8rVLVjR1aCsR0Mk0TaAjgiI3UnU1aV9a0fQ96KcGLPDOrHOy3oSDjnUMZEo2NJFFXu1hpnYnwcTrJg1RJdc7fo4bvlzHp8a97DX";
       var site_redirect_url = "https://ohram.org/checkout/confirm";
 
       var reqRef = this.transReference();
       var shipping_id = this.shipping_id;
       var signatureCipher =
         reqRef + product_id + pay_item_id + amount + site_redirect_url + mac;
-        var res = await this.logTransaction(reqRef,shipping_id,this.coupon,this.meta.currency);
-       if (!this.allowPayment) {
-           alert("Payment gateway error. Please try again");
-           return false
-       }
-        
+      var res = await this.logTransaction(
+        reqRef,
+        shipping_id,
+        this.coupon,
+        this.meta.currency
+      );
+      if (!this.allowPayment) {
+        alert("Payment gateway error. Please try again");
+        return false;
+      }
 
-        var iswPay = new IswPay({
-                postUrl: "https://webpay.interswitchng.com/collections/w/pay",
-                amount: amount,
+      var iswPay = new IswPay({
+        postUrl: "https://webpay.interswitchng.com/collections/w/pay",
+        amount: amount,
+        productId: product_id,
+        transRef: reqRef,
+        siteName: "OHRAM COMPANY INTERNATIONAL",
+        itemId: pay_item_id,
+        customerId: context.meta.user.id,
+        siteRedirectUrl: site_redirect_url,
+        currency: context.currencyCode(),
+        hash: Sha512.hash(signatureCipher),
+        onComplete: function (paymentResponse) {
+          if (paymentResponse.resp == "00") {
+            context.paymentIsComplete = true;
+            $(".checkout-overlay").addClass("d-none");
+          } else {
+            context.order_text = "Place Order";
+            axios
+              .post("/transaction/status", {
                 productId: product_id,
-                transRef: reqRef,
-                siteName: "OHRAM COMPANY INTERNATIONAL",
-                itemId: pay_item_id,
-                customerId: context.meta.user.id,
-                siteRedirectUrl: site_redirect_url,
-                currency: context.currencyCode(),
+                reqRef: reqRef,
+                amount: amount,
                 hash: Sha512.hash(signatureCipher),
-                onComplete: function (paymentResponse) {
-            if (paymentResponse.resp == "00") {
-                context.paymentIsComplete = true;
+              })
+              .then((response) => {
+                context.failedStatus = response.data.status;
+                context.payment_is_processing = false;
                 $(".checkout-overlay").addClass("d-none");
-            } else {
-              context.order_text = "Place Order";
-                 axios
-                  .post("/transaction/status", {
-                    productId: product_id,
-                    reqRef: reqRef,
-                    amount: amount,
-                    hash: Sha512.hash(signatureCipher),
-                  })
-                  .then((response) => {
-                    context.failedStatus = response.data.status;
-                    context.payment_is_processing =false
-                    $(".checkout-overlay").addClass("d-none");
-                  })
-                  .catch((error) => {
-                    console.log(error);
-                  });
-              }
-            },
-          })
-     
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          }
+        },
+      });
     },
     transReference: function () {
       var a = this.getRandomInt(12345678, 10000000000);
@@ -512,23 +773,24 @@ export default {
       return b + a + c;
     },
     currencyCode: function () {
-      if(this.meta.currency == '₦'){
-         return 'NGN'
+      if (this.meta.currency == "₦") {
+        return "NGN";
       }
-      if(this.meta.currency == '$'){
-         return 'USD'
+      if (this.meta.currency == "$") {
+        return "USD";
       }
-      if(this.meta.currency == '£'){
-         return 'GBP'
+      if (this.meta.currency == "£") {
+        return "GBP";
       }
 
-      if(this.meta.currency == '€'){
-         return 'EUR'
+      if (this.meta.currency == "€") {
+        return "EUR";
       }
     },
     payWithPaystack: function () {
-      
-      if(this.meta.sub_total <1){return;}
+      if (this.meta.sub_total < 1) {
+        return;
+      }
       let context = this;
       var cartIds = [];
       this.carts.forEach(function (cart, key) {
@@ -540,7 +802,7 @@ export default {
         return false;
       }
 
-     if (this.$root.settings.shipping_is_free == 0 && !this.shipping_price) {
+      if (this.settings.shipping_is_free == 0 && !this.shipping_price) {
         this.error = "Please select your shipping method";
         return false;
       }
@@ -565,19 +827,14 @@ export default {
               cart: cartIds,
               total: context.amount,
               coupon: context.coupon_code || 0,
-
             },
           ],
         },
         callback: function (response) {
-
-
           if (response.status == "success") {
-            
-              context.payment_is_processing = false;
-              context.paymentIsComplete =true
-              context.order_text = "Place Order";
-          
+            context.payment_is_processing = false;
+            context.paymentIsComplete = true;
+            context.order_text = "Place Order";
           } else {
             this.error = "We could not complete your payment";
             context.order_text = "Place Order";
@@ -590,16 +847,15 @@ export default {
         },
       });
       handler.openIframe();
-
     },
-    
+
     payAsAdmin: function () {
       if (!this.addresses.length) {
         this.error = "You need to save your address before placing your order";
         return false;
       }
 
-      if (this.$root.settings.shipping_is_free == 0 && !this.shipping_price) {
+      if (this.settings.shipping_is_free == 0 && !this.shipping_price) {
         this.error = "Please select your shipping method";
         return false;
       }
@@ -704,6 +960,12 @@ export default {
 };
 </script>
 <style>
+
+.card-icons img {
+  height: 20px;
+  object-fit: contain;
+}
+
 .fa-20 {
   font-size: 20px;
 }
@@ -729,5 +991,3 @@ export default {
   text-align: center;
 }
 </style>
-
-

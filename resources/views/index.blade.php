@@ -72,7 +72,6 @@
         <div class="blog inner-quickview inner-icon text-center bg--light">
             <div class="img-container">
                 <a title="{{  $post->title }}" href="{{ route('blog.show',['blog'=> $post->slug]) }}" class="blog-img-link blog">
-                    <img title="{{  $post->title }}" src="{{ $post->image }}" alt="{{  $post->title }}" />
                 </a>
             </div>
             <div class="blog-details p-3">
@@ -117,7 +116,6 @@
         <div class="reviews-details  border inner-quickview inner-icon">
             <div class="img-container">
                 <a href="/reviews">
-                    <img title="{{ $review->title }}" src="{{ $review->img() }}" alt="{{ $review->title }} ">
                 </a>
             </div>
             <div class="reviews-item-content p-3">

@@ -199,11 +199,11 @@ class CheckoutController extends Controller
 		$cart  =  new Cart();
 
 		$order->user_id = $user->id;
-		$order->address_id     =  $user->active_address->id;
-		$order->coupon         =  session('coupon');
-		$order->status         = 'Processing';
-		$order->shipping_id    =  $request->shipping_id;
-		$order->shipping_price =  $request->shipping_price;
+		$order->address_id  =  $user->active_address->id;
+		$order->coupon  =  session('coupon');
+		$order->status  = 'Processing';
+		$order->shipping_id = $request->shipping_id;
+		$order->shipping_price = $request->shipping_price;
 		$order->currency       =  Helper::getCurrency();
 		$order->invoice        =  "INV-" . date('Y') . "-" . rand(10000, 39999);
 		$order->payment_type   = $request->payment_method;
@@ -231,6 +231,7 @@ class CheckoutController extends Controller
 			$cart->status = 'paid';
 			$cart->save();
 		}
+
 		$admin_emails = explode(',', $this->settings->alert_email);
 		$symbol = Helper::getCurrency();
 		try {
