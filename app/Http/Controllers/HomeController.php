@@ -33,16 +33,19 @@ class HomeController extends Controller
 
         $banners =  Banner::banners()->get();
         $products = Product::where('featured', 1)->orderBy('created_at', 'DESC')->take(8)->get();
-        dd($products);
 
         $reviews  = Review::orderBy('created_at', 'DESC')->take(4)->get();
+        dd($reviews);
+
         $posts  =   Information::orderBy('created_at', 'DESC')->where('blog', true)->take(6)->get();
         $page_title = 'Ohram | From detox teas to meal replacement protein shakes, our babes do it all. Get back on track, reduce bloating, and flatten that tummy!';
 
 
 
 
-        if (empty($site_status->make_live)) {
+        if (
+            null === $site_status->make_live
+        ) {
             return view('index', compact('banners', 'page_title', 'reviews', 'products', 'posts'));
         } else {
             //Show site if admin is logged in
