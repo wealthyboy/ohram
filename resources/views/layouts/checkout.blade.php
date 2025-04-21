@@ -42,7 +42,7 @@
     <meta name="twitter:title" content="Ohram - Cleanse &amp; Debloat or Cut The Cals">
     <meta name="twitter:description" content="From detox teas to meal replacement protein shakes, our babes do it all. Get back on track, reduce bloating, and flatten that tummy!">
     <script>
-        Window.MIX_STRIPE_KEY = "{{ config('services.stripe.key')) }}";
+        Window.MIX_STRIPE_KEY = "{{ config('services.stripe.key') }}";
     </script>
 
 </head>
