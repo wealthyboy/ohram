@@ -45,8 +45,6 @@ class HomeController extends Controller
             null !== $site_status->make_live
         ) {
 
-            dd(true);
-
             return view('index', compact('banners', 'page_title', 'reviews', 'products', 'posts'));
         } else {
             //Show site if admin is logged in
