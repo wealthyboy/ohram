@@ -42,8 +42,10 @@ class HomeController extends Controller
 
 
         if (
-            null === $site_status->make_live
+            null !== $site_status->make_live
         ) {
+
+            dd(true);
 
             return view('index', compact('banners', 'page_title', 'reviews', 'products', 'posts'));
         } else {
