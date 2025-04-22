@@ -204,12 +204,12 @@ class CheckoutController extends Controller
 		$order->status  = 'Processing';
 		$order->shipping_id = $request->shipping_id;
 		$order->shipping_price = $request->shipping_price;
-		$order->currency       =  Helper::getCurrency();
-		$order->invoice        =  "INV-" . date('Y') . "-" . rand(10000, 39999);
-		$order->payment_type   = $request->payment_method;
-		$order->order_type     = $request->type;
-		$order->total          = $request->total;
-		$order->ip             = $request->ip();
+		$order->currency  = Helper::getCurrency();
+		$order->invoice  =  "INV-" . date('Y') . "-" . rand(10000, 39999);
+		$order->payment_type  = $request->payment_method;
+		$order->order_type  = $request->type;
+		$order->total = $request->total;
+		$order->ip  = $request->ip();
 		$order->user_agent     = $request->server('HTTP_USER_AGENT');
 		$order->save();
 		foreach ($carts   as $cart) {
