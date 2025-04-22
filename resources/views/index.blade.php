@@ -127,7 +127,7 @@
                 </div>
 
                 <div class="blog-description-content text-center">
-                    <p></p>
+                    <p>{{ $review->short_description }}</p>
                 </div>
                 <p class="info text-center">
                     <i class="fa fa-clock-o"></i><span>{{ $review->created_at->diffForHumans() }}</span>

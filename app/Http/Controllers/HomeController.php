@@ -16,6 +16,7 @@ use App\SystemSetting;
 use App\User;
 
 use App\Http\Helper;
+use Illuminate\Support\Str;
 
 use App\Currency;
 
@@ -34,7 +35,12 @@ class HomeController extends Controller
         $banners = Banner::banners()->get();
         $products = Product::where('featured', 1)->orderBy('created_at', 'DESC')->take(8)->get();
 
+
         $reviews = Review::with(['user', 'product'])->orderBy('created_at', 'DESC')->take(4)->get();
+
+        $reviews->each(function ($review) {
+            $review->short_description = Str::limit(strip_tags($review->description), 100, '....');
+        });
 
         $posts = Information::orderBy('created_at', 'DESC')->where('blog', true)->take(6)->get();
         $page_title = 'Ohram | From detox teas to meal replacement protein shakes, our babes do it all. Get back on track, reduce bloating, and flatten that tummy!';
