@@ -63,6 +63,44 @@
 
 </div>
 
+@if ($posts->count())
+
+<div class="blog-section p-3  pt-5 pb-5 bg--gray">
+    <h1 class=" text-center">OHRAM BLOG</h1>
+    <div class="blog-slider owl-carousel owl-theme dots-top">
+        @foreach($posts as $post)
+        <div class="blog inner-quickview inner-icon text-center bg--light">
+            <div class="img-container">
+                <a title="{{  $post->title }}" href="{{ route('blog.show',['blog'=> $post->slug]) }}" class="blog-img-link blog">
+                </a>
+            </div>
+            <div class="blog-details p-3">
+                <p class="info text-center">
+                    <i class="fab fa-clock-o"></i><span>{{ $post->created_at->diffForHumans() }}</span>
+                </p>
+                <div class="tag text-center color--primary mb-1">
+                    @foreach($post->attributes as $tag)
+                    <a class="color--primary" href="/blog/tag/{{ $tag->id }}"><i class="fa fa-tags"></i> {{ $tag->name }}</a>
+                    @endforeach
+                </div>
+                <h4 class=" text-center pb-5">
+                    <a title="{{  $post->title }}" href="{{ route('blog.show',['blog'=> $post->slug]) }}" class="">
+                        {{ $post->title }}
+                    </a>
+                </h4>
+            </div><!-- End .product-details -->
+        </div>
+        @endforeach
+    </div><!-- End .products-slider -->
+
+    <div class="review-more-button mt-3">
+        <div class="justifiy-content-center  text-center">
+            <a href="/blog" class="btn btn--lg btn--primary bold h-font">Read More</a>
+        </div>
+    </div>
+</div><!-- End .blog-section -->
+
+@endif
 
 
 
