@@ -89,6 +89,7 @@
                 </div>
 
                 <div class="blog-description-content text-center">
+                    <p>{{ str_limit($review->description, 100, '....') }}</p>
                 </div>
                 <p class="info text-center">
                     <i class="fa fa-clock-o"></i><span>{{ $review->created_at->diffForHumans() }}</span>
