@@ -83,13 +83,13 @@
             <div class="reviews-item-content p-3">
 
                 <div class="text-center">
-                    <h4 class="blog-title text-uppercase color--primary mt-4"></h4>
+                    <h4 class="blog-title text-uppercase color--primary mt-4">{{ optional($review->user)->name }} </h4>
 
-                    <h5 class="text-uppercase mt-n3"> </h5>
+                    <h5 class="text-uppercase mt-n3"> {{ optional($review->product)->product_name }}</h5>
                 </div>
 
                 <div class="blog-description-content text-center">
-                    <p>{{ str_limit($review->description, 100, '....') }}</p>
+                    <p></p>
                 </div>
                 <p class="info text-center">
                     <i class="fa fa-clock-o"></i><span>{{ $review->created_at->diffForHumans() }}</span>
