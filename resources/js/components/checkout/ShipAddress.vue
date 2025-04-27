@@ -94,12 +94,12 @@
                         </p>
 
                         <p class="form-group reduce-gutters text-right col-lg-12 ">
-                            <button v-if="!addresses.length" type="submit" class="btn bold  btn--lg btn--primary btn--full" name="checkout_place_order" id="place_order" value="Place order" data-value="Place Order">
+                            <button v-if="!addresses.length" type="submit" class="btn btn-sm btn-primary" name="checkout_place_order" id="place_order" value="Place order" data-value="Place Order">
                                 <span  v-if="submiting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                 Save & Continue
                             </button>
                             <p v-if="addresses.length" class="form-group col-6 col-md-6 text-left">
-                                <button type="submit" class="btn btn--lg btn--white bold color--primary"  value="Submit">
+                                <button type="submit" class="btn btn-sm btn-primary"  value="Submit">
                                     <span  v-if="submiting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                     Save 
                                 </button>

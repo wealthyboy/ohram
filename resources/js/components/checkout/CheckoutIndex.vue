@@ -381,8 +381,7 @@
                   </div>
                 </div>
 
-                <div class="row px-3">
-                    
+                <div class="row px-3 mb-3 mt-3">
                     <div class="col-md-12">
                       <div id="payment-request-button"></div> 
                     </div>
