@@ -70,7 +70,6 @@
         <main class="main">
             @yield('content')
         </main>
-        <div id="payment-request-button"></div>
 
         <footer>
             <div class="footer-bottom">
