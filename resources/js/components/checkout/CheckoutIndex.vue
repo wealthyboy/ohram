@@ -301,12 +301,12 @@
                
               </div>
 
-              <div class="form-field-wrapper col-sm-12 ">
+              <p class="form-field-wrapper col-sm-12 ">
 
                 <div class="">
                   <div class="mb-3 position-relative px-3">
                      <div class="d-flex justify-content-between align-items-center">
-                         <h4 class="mb-0">Card information</h4>
+                         <h4 class="form-labelm">Card information</h4>
                           <div  class="d-flex">
                             <span id="vt-4d966fe6c1a14bada546b485b7306504-VISA" class="_6f3AR" style="view-transition-name: vt-4d966fe6c1a14bada546b485b7306504-VISA; display: flex;"><img alt="VISA" src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/visa.sxIq5Dot.svg" role="img" width="38" height="24" class="_1tgdqw61 _1tgdqw60 _1fragemsy _1fragemst _1fragemt8 _1fragemoq _1tgdqw66"></span>
                             <span id="vt-4d966fe6c1a14bada546b485b7306504-MASTERCARD" class="_6f3AR" style="view-transition-name: vt-4d966fe6c1a14bada546b485b7306504-MASTERCARD; display: flex;"><img alt="MASTERCARD" src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/mastercard.1c4_lyMp.svg" role="img" width="38" height="24" class="_1tgdqw61 _1tgdqw60 _1fragemsy _1fragemst _1fragemt8 _1fragemoq _1tgdqw66"></span>
@@ -322,8 +322,9 @@
                   </div>
 
                   <!-- Expiry + CVC -->
+                  <div id="payment-request-button"></div> 
+
                   <div class="row px-3">
-                    <div id="payment-request-button"></div> 
 
                     <div  style="margin-top: -25px;" class=" col-md-6 pr-1">
                       <div
