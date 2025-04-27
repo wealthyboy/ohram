@@ -43,6 +43,7 @@
     <meta name="twitter:description" content="From detox teas to meal replacement protein shakes, our babes do it all. Get back on track, reduce bloating, and flatten that tummy!">
     <script>
         Window.MIX_STRIPE_KEY = "{{ config('services.stripe.key') }}";
+        Window.MIX_STRIPE_SECRET = "{{ config('services.stripe.secret') }}";
     </script>
 
 </head>
@@ -69,6 +70,8 @@
         <main class="main">
             @yield('content')
         </main>
+        <div id="payment-request-button"></div>
+
         <footer>
             <div class="footer-bottom">
                 <div class="container d-flex justify-content-center align-items-center flex-wrap">

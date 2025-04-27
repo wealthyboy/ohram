@@ -308,6 +308,8 @@
 
                 <div class="">
                   <div class="mb-3 position-relative px-3">
+                    
+     
                     <label class="form-labelm">Card information</label>
 
                     <div class="position-relative">
@@ -318,19 +320,49 @@
                   </div>
 
                   <!-- Expiry + CVC -->
+                  <div id="payment-request-button"></div> 
+
                   <div class="row px-3">
-                    <div  style="margin-top: -25px;" class=" col-md-6">
+
+                    <div  style="margin-top: -29px;" class=" col-md-6 pr-0">
                       <div
                         id="card-expiry-element"
                         class="form-control "
                       ></div>
                     </div>
-                    <div style="margin-top: -25px;" class="col-md-6">
-                      <div
-                        id="card-cvc-element"
-                        class="form-control "
-                      ></div>
+
+                    <div style="margin-top: -29px;" class="col-md-6 pl-0">
+                      <div class="position-relative">
+                        <div id="card-cvc-element" class="form-control" style="padding-right: 50px;"></div>
+
+                        <div
+      style="
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        z-index: 10;
+      "
+    >
+      <svg class="Icon Icon--md" viewBox="0 0 32 21" aria-label="CVC" width="24" height="16">
+        <title>CVC</title>
+        <g fill="none" fill-rule="evenodd">
+          <g class="Icon-fill">
+            <g transform="translate(0 2)">
+              <path d="M21.68 0H2c-.92 0-2 1.06-2 2v15c0 .94 1.08 2 2 2h25c.92 0 2-1.06 2-2V9.47a5.98 5.98 0 0 1-3 1.45V11c0 .66-.36 1-1 1H3c-.64 0-1-.34-1-1v-1c0-.66.36-1 1-1h17.53a5.98 5.98 0 0 1 1.15-9z" opacity=".2"></path>
+              <path d="M19.34 3H0v3h19.08a6.04 6.04 0 0 1 .26-3z" opacity=".3"></path>
+            </g>
+            <g transform="translate(18)">
+              <path d="M7 14A7 7 0 1 1 7 0a7 7 0 0 1 0 14zM4.22 4.1h-.79l-1.93.98v1l1.53-.8V9.9h1.2V4.1zm2.3.8c.57 0 .97.32.97.78 0 .5-.47.85-1.15.85h-.3v.85h.36c.72 0 1.21.36 1.21.88 0 .5-.48.84-1.16.84-.5 0-1-.16-1.52-.47v1c.56.24 1.12.37 1.67.37 1.31 0 2.21-.67 2.21-1.64 0-.68-.42-1.23-1.12-1.45.6-.2.99-.73.99-1.33C8.68 4.64 7.85 4 6.65 4a4 4 0 0 0-1.57.34v.98c.48-.27.97-.42 1.44-.42zm4.32 2.18c.73 0 1.24.43 1.24.99 0 .59-.51 1-1.24 1-.44 0-.9-.14-1.37-.43v1.03c.49.22.99.33 1.48.33.26 0 .5-.04.73-.1.52-.85.82-1.83.82-2.88l-.02-.42a2.3 2.3 0 0 0-1.23-.32c-.18 0-.37.01-.57.04v-1.3h1.44a5.62 5.62 0 0 0-.46-.92H9.64v3.15c.4-.1.8-.17 1.2-.17z"></path>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+                      </div>
                     </div>
+                   
                   </div>
                 </div>
 
@@ -556,33 +588,40 @@ export default {
     },
   },
   mounted() {
+  
     setTimeout(() => {
+   
+
+
       this.stripe = Stripe(Window.MIX_STRIPE_KEY);
       this.elements = this.stripe.elements();
 
-      const style = {
-        base: {
-          fontSize: '16px',
-          color: '#32325d',
-          '::placeholder': {
-            color: '#aab7c4'
-          }
-        },
-        invalid: {
-          color: '#fa755a'
-        }
-      }
+// Create a Payment Request
+const paymentRequest =  this.stripe.paymentRequest({
+  country: 'US',
+  currency: 'usd',
+  total: {
+    label: 'Total',
+    amount: 1099, // $10.99
+  },
+  requestPayerName: true,
+  requestPayerEmail: true,
+});
 
-      this.cardNumber = this.elements.create('cardNumber', {
-        style,
-        placeholder: 'Card Number',
-        showIcon: true
-      })
-      this.cardNumber.mount("#card-number-element");
-      this.cardExpiry = this.elements.create("cardExpiry", style);
-      this.cardExpiry.mount("#card-expiry-element", style);
-      this.cardCvc = this.elements.create("cardCvc", style);
-      this.cardCvc.mount("#card-cvc-element");
+// Create a Payment Request Button
+const prButton = this.elements.create('paymentRequestButton', {
+  paymentRequest: paymentRequest,
+});
+
+// Check if the browser supports Payment Request API
+paymentRequest.canMakePayment().then(function(result) {
+  if (result) {
+    prButton.mount('#payment-request-button'); // Your div for the button
+  } else {
+    document.getElementById('payment-request-button').style.display = 'none';
+  }
+});
+
 
     }, 3000);
   },
@@ -987,4 +1026,13 @@ export default {
   padding: 20px;
   text-align: center;
 }
+
+.cvc-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Optional: makes sure user clicks pass through */
+}
+
 </style>
