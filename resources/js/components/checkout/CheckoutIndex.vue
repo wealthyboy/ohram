@@ -301,7 +301,7 @@
                
               </div>
 
-              <p class="form-field-wrapper col-sm-12 ">
+              <div class="form-field-wrapper col-sm-12 ">
 
                 <div class="">
                   <div class="mb-3 position-relative px-3">
