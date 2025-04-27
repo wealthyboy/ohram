@@ -322,7 +322,12 @@
                   </div>
 
                   <!-- Expiry + CVC -->
-                  <div id="payment-request-button"></div> 
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div id="payment-request-button"></div> 
+                    </div>
+                  </div>
 
                   <div class="row px-3">
 
