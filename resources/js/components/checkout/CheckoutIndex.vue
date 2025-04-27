@@ -301,8 +301,6 @@
                
               </div>
 
-              <p class="form-field-wrapper col-sm-12 ">
-
                 <div class="">
                   <div class="mb-3 position-relative px-3">
                      <div class="d-flex justify-content-between align-items-center">
@@ -323,11 +321,7 @@
 
                   <!-- Expiry + CVC -->
 
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div id="payment-request-button"></div> 
-                    </div>
-                  </div>
+                 
 
                   <div class="row px-3">
 
@@ -385,6 +379,12 @@
                     </div>
                    
                   </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                      <div id="payment-request-button"></div> 
+                    </div>
                 </div>
 
                 <div class="px-3">
