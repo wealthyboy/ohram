@@ -119,11 +119,11 @@
                     <li class="mb-3" v-for="(location, index) in addresses" :key="location.id">
                         <div class="shipping-info border border-gray pr-3 pt-3 pl-3">
                             <div class="shipping-address-info">
-                                <div  id="">{{ location.first_name }} {{ location.last_name }}  </div>
-                                <div> {{ location.address }} {{ location.address2}} </div>
-                                <div> {{ location.city }} , {{ location.zip }}</div>
-                                <div> {{ location.state}} ,{{ location.country }} </div>
-                                <div class="mt-3 mb-3">
+                                <p  id="">{{ location.first_name }} {{ location.last_name }}  </p>
+                                <p> {{ location.address }} {{ location.address2}} </p>
+                                <p> {{ location.city }} , {{ location.zip }}</p>
+                                <p> {{ location.state}} ,{{ location.country }} </p>
+                                <p class="mt-3 mb-3">
                                     <a  @click.prevent="editAddress(index)" data-placement="left"  href="#" class="ml-0 mr-4 color--primary bg--gray l-f1  p-3 border "> 
                                         <i class="fa fa-edit"></i> Edit
                                     </a>
@@ -141,7 +141,7 @@
                                         <span v-if="delete_id == location.id" class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>
                                         Delete
                                     </a>
-                                </div>
+                                </p>
                             </div>           
                         </div>
                     </li>

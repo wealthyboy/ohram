@@ -429,7 +429,7 @@
                   </button>
                 </template>
                 <small>
-                  🔒 Your payment information is safe. We use Stripe to securely manage your payment information and we never store your complete card number ourselves.
+                  🔒 Your payment information is safe. We use Stripe to securely manage your payment information and we never store your card number ourselves.
 
                 </small>
                </div>
