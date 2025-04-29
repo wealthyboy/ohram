@@ -226,7 +226,7 @@ Route::post('/create-payment-intent', function (Request $request) {
 
     $intent = PaymentIntent::create([
         'amount' => 1000, // ₦10.00 in kobo or $10.00 in cents
-        'currency' => 'usd',
+        'currency' => 'cad',
         'payment_method_types' => ['card', 'afterpay_clearpay'],
         'payment_method_types' => ['afterpay_clearpay', 'card'],
 
