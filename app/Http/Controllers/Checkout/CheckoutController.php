@@ -68,6 +68,41 @@ class CheckoutController extends Controller
 	}
 
 
+	public function createCheckoutSession(Request $request)
+	{
+		Stripe::setApiKey(env('STRIPE_SECRET'));
+
+		try {
+			$session = Session::create([
+				'payment_method_types' => ['card', 'affirm'], // Google Pay & Apple Pay come with 'card'
+				'line_items' => [
+					[
+						'price_data' => [
+							'currency' => 'usd',
+							'product_data' => [
+								'name' => 'Premium Subscription',
+							],
+							'unit_amount' => 20000, // $200
+						],
+						'quantity' => 1,
+					],
+				],
+				'mode' => 'payment',
+				'success_url' => route('checkout.success') . '?session_id={CHECKOUT_SESSION_ID}',
+				'cancel_url' => route('checkout.cancel'),
+				'payment_intent_data' => [
+					'capture_method' => 'automatic',
+				],
+			]);
+
+			return response()->json(['id' => $session->id]);
+		} catch (\Exception $e) {
+			return response()->json(['error' => $e->getMessage()], 500);
+		}
+	}
+
+
+
 	public function stripe(Request $request)
 	{
 		\Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));

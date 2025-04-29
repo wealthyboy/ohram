@@ -2,6 +2,10 @@
 
 
 use Illuminate\Http\Request;
+use Stripe\StripeClient;
+use Stripe\Stripe;
+use Stripe\PaymentIntent;
+
 
 
 
@@ -216,3 +220,15 @@ Route::post('webhook/github',     'WebHook\WebHookController@gitHub');
 
 Route::get('/requery',            'Requery\RequeryController@index');
 Route::post('/transaction/status', 'Transaction\TransactionController@confirm');
+
+Route::post('/create-payment-intent', function (Request $request) {
+    Stripe::setApiKey(config('services.stripe.secret'));
+
+    $intent = PaymentIntent::create([
+        'amount' => 1000, // ₦10.00 in kobo or $10.00 in cents
+        'currency' => 'usd',
+        'automatic_payment_methods' => ['enabled' => true],
+    ]);
+
+    return response()->json(['clientSecret' => $intent->client_secret]);
+});
