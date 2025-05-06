@@ -21,6 +21,8 @@ use App\Shipping;
 use App\Address;
 use App\Jobs\AbandonCart;
 use App\Currency;
+use App\Http\Resources\AddressResource;
+use App\Http\Resources\LocationResource;
 
 
 
@@ -53,6 +55,7 @@ class CheckoutController extends Controller
 	{
 
 		$carts =  Cart::all_items_in_cart($request->token);
+
 		if (!$carts->count()) {
 			return redirect()->to('/cart');
 		}
@@ -63,8 +66,11 @@ class CheckoutController extends Controller
 
 		$user = $request->user();
 
+
+		dd(Shipping::where('location_id', 109)->get());
+
 		//AbandonCart::dispatch($carts, $user)->delay(now()->addMinutes(10));
-		return view('checkout.index', ['csrf' => $csrf]);
+		return view('checkout.index', ['csrf' => $csrf, 'addressData' => $data]);
 	}
 
 
