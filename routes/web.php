@@ -140,25 +140,25 @@ Route::group(['middleware' => 'currencyByIp'], function () {
     Route::get('validate/token/{token}',         'Auth\ForgotPasswordController@validateToken');
 
     Auth::routes();
-    Route::get('login/{service}',                 'Auth\SocialLoginController@redirect');
-    Route::get('login/{service}/callback',        'Auth\SocialLoginController@callback');
-    Route::get('account',                         'Account\AccountController@index')->name('account');
-    Route::post('account',                        'Account\AccountController@update');
-    Route::get('address',                         'Account\AddressController@index')->name('address');
-    Route::get('partial/address',                 'Account\AddressController@getAddress');
-    Route::get('change/password',                 'ChangePassword\ChangePasswordController@index');
-    Route::put('change/password',                 'Api\ChangePassword\ChangePasswordController@update');
-    Route::resource('blog',                       'Blog\BlogController', ['name' => 'blog']);
-    Route::get('blog/tag/{tag_id}',               'Blog\BlogController@tag');
+    Route::get('login/{service}',  'Auth\SocialLoginController@redirect');
+    Route::get('login/{service}/callback', 'Auth\SocialLoginController@callback');
+    Route::get('account', 'Account\AccountController@index')->name('account');
+    Route::post('account', 'Account\AccountController@update');
+    Route::get('address', 'Account\AddressController@index')->name('address');
+    Route::get('partial/address', 'Account\AddressController@getAddress');
+    Route::get('change/password', 'ChangePassword\ChangePasswordController@index');
+    Route::put('change/password', 'Api\ChangePassword\ChangePasswordController@update');
+    Route::resource('blog', 'Blog\BlogController', ['name' => 'blog']);
+    Route::get('blog/tag/{tag_id}', 'Blog\BlogController@tag');
 
-    Route::get('reviews',                         'Reviews\ReviewsController@index');
-    Route::post('ambassador/store',               'Ambassador\AmbassadorsController@store');
+    Route::get('reviews', 'Reviews\ReviewsController@index');
+    Route::post('ambassador/store', 'Ambassador\AmbassadorsController@store');
 
-    Route::resource('/address',                   'Account\AddressController', ['names' => 'addresses']);
-    Route::get('returns',                         'Returns\ReturnsController@index')->name('returns');
-    Route::get('checkout',                        'Checkout\CheckoutController@index')->name('checkout');
-    Route::post('checkout/coupon',                'Checkout\CheckoutController@coupon');
-    Route::post('stripe/checkout',                'Checkout\CheckoutController@stripe');
+    Route::resource('/address', 'Account\AddressController', ['names' => 'addresses']);
+    Route::get('returns', 'Returns\ReturnsController@index')->name('returns');
+    Route::get('checkout', 'Checkout\CheckoutController@index')->name('checkout');
+    Route::post('checkout/coupon', 'Checkout\CheckoutController@coupon');
+    Route::post('/payment/success', 'Checkout\CheckoutController@stripe');
 
     //Route::get('checkout/confirm',               'Checkout\CheckoutController@confirm')->name('confirm_order');
     Route::post('checkout/confirm',               'Checkout\CheckoutController@confirm');
@@ -182,20 +182,20 @@ Route::group(['middleware' => 'currencyByIp'], function () {
     Route::get('cart/all/in/cart',                'Cart\CartController@all_in_cart');
     Route::get('reviews/{product}',               'Api\Reviews\ReviewsController@index');
     Route::post('reviews/store',                  'Api\Reviews\ReviewsController@store');
-    Route::post('/load-login-modal',              'Auth\Login\LoginController@loadModal');
+    Route::post('/load-login-modal', 'Auth\Login\LoginController@loadModal');
 
-    Route::get('/search',                        'Products\ProductsController@search');
-    Route::post('log/transaction',               'Transaction\TransactionController@log');
+    Route::get('/search', 'Products\ProductsController@search');
+    Route::post('log/transaction', 'Transaction\TransactionController@log');
 
-    Route::get('cart/delete/{cart_id}',          'Cart\CartController@delete');
-    Route::post('cart-delete',                   'Cart\CartController@delete');
-    Route::get('wishlist',                       'Favorites\FavoritesController@index')->name('wishlist');
-    Route::post('newsletter/signup',              'Api\NewsLetter\NewsLetterController@store');
-    Route::get('products/{category}',             'Products\ProductsController@index');
-    Route::get('product/{category}/{product}',    'Products\ProductsController@show');
-    Route::get('pages/{information}',             'Information\InformationController@show');
-    Route::get('newsletter/unsubscribe',          'NewsLetter\NewsLetterController@index');
-    Route::post('newsletter/unsubscribe',         'NewsLetter\NewsLetterController@unsubscribe');
+    Route::get('cart/delete/{cart_id}', 'Cart\CartController@delete');
+    Route::post('cart-delete', 'Cart\CartController@delete');
+    Route::get('wishlist', 'Favorites\FavoritesController@index')->name('wishlist');
+    Route::post('newsletter/signup', 'Api\NewsLetter\NewsLetterController@store');
+    Route::get('products/{category}', 'Products\ProductsController@index');
+    Route::get('product/{category}/{product}', 'Products\ProductsController@show');
+    Route::get('pages/{information}', 'Information\InformationController@show');
+    Route::get('newsletter/unsubscribe', 'NewsLetter\NewsLetterController@index');
+    Route::post('newsletter/unsubscribe', 'NewsLetter\NewsLetterController@unsubscribe');
 });
 
 
@@ -222,14 +222,11 @@ Route::get('/requery',            'Requery\RequeryController@index');
 Route::post('/transaction/status', 'Transaction\TransactionController@confirm');
 
 Route::post('/create-payment-intent', function (Request $request) {
-    Stripe::setApiKey(config('services.stripe.secret'));
-
+    \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
     $intent = PaymentIntent::create([
-        'amount' => 1000, // ₦10.00 in kobo or $10.00 in cents
-        'currency' => 'cad',
-        'payment_method_types' => ['card', 'afterpay_clearpay'],
-        'payment_method_types' => ['afterpay_clearpay', 'card'],
-
+        'amount' => $request->amount, // 
+        'currency' => 'usd',
+        'payment_method_types' => ['card'],
     ]);
 
     return response()->json(['clientSecret' => $intent->client_secret]);

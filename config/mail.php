@@ -96,7 +96,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'noreply@ohram.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'info@ohramofficial.com'),
         'name' => env('MAIL_FROM_NAME', 'Ohram '),
     ],
 

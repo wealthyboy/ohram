@@ -1030,6 +1030,27 @@ background: white;
   z-index: 0;
 }
 
+.full-bg {
+  position: fixed;
+  top: 83px;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(243, 244, 246, 0.95);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 0.5s ease;
+  opacity: 1;
+}
+
+.full-bg.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* Position text in the middle */
 .signup--middle {
   position: fixed;
@@ -1043,6 +1064,9 @@ background: white;
   width: auto;
   z-index: 1;
 }
+
+
+
 
 .payment-icons.d-flex > div.payment-image {
   max-width: 50px;

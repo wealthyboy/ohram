@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUpdatedAtToCartsTable extends Migration
+class AlterUsersTableAddIsGuest extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddUpdatedAtToCartsTable extends Migration
      */
     public function up()
     {
-        Schema::table('carts', function (Blueprint $table) {
-            // $table->timestamp('updated_at')->nullable()->after('created_at');
-            //$table->string('rate')->nullable();
+        Schema::table('users', function (Blueprint $table) {
+            $table->boolean('is_guest')->nullable();
         });
     }
 
@@ -26,6 +25,6 @@ class AddUpdatedAtToCartsTable extends Migration
      */
     public function down()
     {
-        Schema::table('carts', function (Blueprint $table) {});
+        //
     }
 }

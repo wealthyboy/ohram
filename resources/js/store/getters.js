@@ -52,6 +52,10 @@ export  const addresses = (state) => {
    return state.addresses
 }
 
+export  const billing_address = (state) => {
+   return state.billing_address
+}
+
 export  const locations = (state) => {
    return state.locations
 }
@@ -84,6 +88,22 @@ export  const showForm = (state) => {
    return state.showForm
 }
 
+export  const showBillingAddressForm = (state) => {
+   return state.showBillingAddressForm
+}
+
+
+export  const default_address = (state) => {
+   return state.default_address
+}
+
+export  const state_shipping = (state) => {
+   return state.state_shipping
+}
+
+export  const shipping_price = (state) => {
+   return state.shipping_price
+}
 
 
 

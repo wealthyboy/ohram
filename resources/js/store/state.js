@@ -1,3 +1,4 @@
+
 export default {
     carts:[],
     cart_meta: [],
@@ -6,6 +7,7 @@ export default {
     loggedIn:null,
     is_favorite:Boolean,
     addresses:[],
+    billing_address:null,
     regions:[],
     locations:[],
     voucher:[],
@@ -17,6 +19,12 @@ export default {
     reviewsMeta:null,
     comments:[],
     loadn: false,
+    total: 0,
     images:[],
-    showForm: false
+    showForm: false,
+    showBillingAddressForm: false,
+    default_address: {
+        is_billing: false
+    },
+    state_shipping: {}
 } 

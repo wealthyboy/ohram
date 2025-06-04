@@ -23,25 +23,27 @@ use App\TransactionLog;
 class WebHookController extends Controller
 {
 
-	public  $settings;
+    public  $settings;
 
-	public function __construct()
-	{
-		$this->settings =  SystemSetting::first();
+    public function __construct()
+    {
+        $this->settings =  SystemSetting::first();
     }
 
 
-    public function payment(Request $request,Order $order)
-    {   
+    public function payment(Request $request, Order $order)
+    {
         // if ( !array_key_exists('x-paystack-signature', $_SERVER) ) {
         //     return;
         // } 
 
-       Log::info($request->all());
+        Log::info($request->all());
+
+        return null;
 
 
-       $inter = $request->all();
-       //Log::info($inter[0]['txref']);
+        $inter = $request->all();
+        //Log::info($inter[0]['txref']);
 
 
 
@@ -50,25 +52,24 @@ class WebHookController extends Controller
             $carts = null;
             $input = null;
             $user = null;
-            $foreign =false;
+            $foreign = false;
             $txref = null;
-            if ( isset($inter['txref'])) {
+            if (isset($inter['txref'])) {
                 $foreign = true;
                 $txref = TransactionLog::where('txref', $inter['txref'])->first();
                 $carts    =  Cart::where('transaction_id', $txref->id)->get();
                 $user     =  User::findOrFail($txref->user_id);
-
             } else {
                 $input    =  $request->data['metadata']['custom_fields'][0];
                 $user     =  User::findOrFail($input['customer_id']);
                 $carts    =  Cart::find($input['cart']);
             }
 
-            if (null == $carts ){
-               return  http_response_code(200);
+            if (null == $carts) {
+                return  http_response_code(200);
             }
 
-            if ($foreign){
+            if ($foreign) {
                 $order->user_id = $txref->user_id;
                 $order->address_id     =  optional($user->active_address)->id;
                 $order->coupon         =  $txref->coupon;
@@ -76,12 +77,12 @@ class WebHookController extends Controller
                 $order->shipping_id    =  $txref->shipping_id;
                 $order->shipping_price =  $txref->shipping_price;
                 $order->currency       =  $txref->currency;
-                $order->invoice        =  "INV-".date('Y')."-".rand(10000,39999);
+                $order->invoice        =  "INV-" . date('Y') . "-" . rand(10000, 39999);
                 $order->payment_type   =  'online';
                 $order->total          =  $txref->amount;
                 $order->save();
             } else {
-                $currency =  Currency::where('iso_code3',$request->data['currency'])->first();
+                $currency =  Currency::where('iso_code3', $request->data['currency'])->first();
                 $order->user_id = $user->id;
                 $order->address_id     =  optional($user->active_address)->id;
                 $order->coupon         =  $input['coupon'] !== 0  ? $input['coupon'] : null;
@@ -89,12 +90,11 @@ class WebHookController extends Controller
                 $order->shipping_id    =  $input['shipping_id'];
                 $order->shipping_price =  optional(Shipping::find($input['shipping_id']))->converted_price;
                 $order->currency       =  optional($currency)->symbol ?? '₦';
-                $order->invoice        =  "INV-".date('Y')."-".rand(10000,39999);
+                $order->invoice        =  "INV-" . date('Y') . "-" . rand(10000, 39999);
                 $order->payment_type   =  $request->data['authorization']['channel'];
                 $order->total          =  $input['total'];
                 $order->ip             =  $request->data['ip_address'];
                 $order->save();
-
             }
 
             // foreach ($carts as $cart) {
@@ -103,13 +103,13 @@ class WebHookController extends Controller
             //     }
             // }
 
-            
+
 
             \Log::info($carts);
 
 
-            foreach ( $carts   as $cart){
-                
+            foreach ($carts   as $cart) {
+
                 $OrderedProduct = new OrderedProduct;
                 $price = $cart->sale_price ?? $cart->price;
                 $quantity = $cart->quantity * $price;
@@ -129,36 +129,34 @@ class WebHookController extends Controller
                 //Delete all the cart
                 $cart->delete();
             }
-            $admin_emails = explode(',',$this->settings->alert_email);
-            $symbol = optional($currency)->symbol  ;
-            
+            $admin_emails = explode(',', $this->settings->alert_email);
+            $symbol = optional($currency)->symbol;
+
             try {
-                 $when = now()->addMinutes(5); 
+                $when = now()->addMinutes(5);
                 \Mail::to($user->email)
-                ->bcc($admin_emails[0])
-                ->cc("jacob.atam@gmail.com")
-                ->send(new OrderReceipt($order,$this->settings,$symbol));
-             } catch (\Throwable $th) {
-                Log::info("Mail error :".$th);
+                    ->bcc($admin_emails[0])
+                    ->cc("jacob.atam@gmail.com")
+                    ->send(new OrderReceipt($order, $this->settings, $symbol));
+            } catch (\Throwable $th) {
+                Log::info("Mail error :" . $th);
             }
 
             //delete cart
-            if ( $input['coupon'] ) {
+            if ($input['coupon']) {
                 $code = trim($input['coupon']);
                 $coupon =  Voucher::where('code', $input['coupon'])->first();
-                if(null !== $coupon && $coupon->type == 'specific'){
-                    $coupon->update(['valid'=>false]);
+                if (null !== $coupon && $coupon->type == 'specific') {
+                    $coupon->update(['valid' => false]);
                 }
             }
         } catch (\Throwable $th) {
-            Log::info("Custom error :".$th);
-
+            Log::info("Custom error :" . $th);
         }
 
         return http_response_code(200);
-    
     }
-    
+
 
     // public function payment(Request $request,OrderedProduct $ordered_product,Order $order)
     // {    
@@ -169,14 +167,14 @@ class WebHookController extends Controller
     //     //     return;
     //     // } 
 
- 
+
     //     try {
-            
+
     //         $input    =  $request->all();
     //         $user     =  User::findOrFail($i);
     //         $carts    =  Cart::find($input['cart']);
     //         $currency =  Currency::where('iso_code3',$request->data['currency'])->first();
-        
+
     //         $order->user_id = $user->id;
     //         $order->address_id     =  optional($user->active_address)->id;
     //         $order->coupon         =  $input['coupon'];
@@ -211,7 +209,7 @@ class WebHookController extends Controller
     //         }
     //         $admin_emails = explode(',',$this->settings->alert_email);
     //         $symbol = optional($currency)->symbol;
-            
+
     //         // try {
     //         //     $when = now()->addMinutes(5);
     //         //     \Mail::to($user->email)
@@ -237,9 +235,9 @@ class WebHookController extends Controller
     //     return http_response_code(200); 
     // }
 
-    public function gitHub(){
+    public function gitHub()
+    {
         $output =  shell_exec('sh /home/forge/ohram.org/deploy.sh');
         Log::info($output);
     }
-
 }

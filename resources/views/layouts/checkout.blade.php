@@ -87,6 +87,8 @@
 
     <script src="https://js.stripe.com/v3/"></script>
 
+
+
     <!-- Plugins JS File -->
     <script src="/js/checkout.js?version={{ str_random(6) }}" type="text/javascript"></script>
 

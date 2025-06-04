@@ -1,6 +1,7 @@
 <template>
     <div class="">
-            <div v-if="showForm"  id="stored_address"  class="billing-fields__field-wrapper ">
+
+            <div  v-if="showBillingAddressForm" id="stored_address"  class="billing-fields__field-wrapper ">
                 <form  @submit.prevent="submit" method="POST" class=""> 
                     <div class="row reduce-gutters" id="add-new-address-form" data-action="/address/create">
                         <p class="form-group reduce-gutters col-lg-6">
@@ -84,7 +85,7 @@
                         </p>
                         <p class="form-group reduce-gutters col-sm-6">
                             <label for="state_id" class="">State/Region &nbsp;<abbr class="required " title="required">*</abbr></label>
-                            <select @change="getShipping"  v-model="form.state_id"  name="state_id" id="state_id" class="form-control required">
+                            <select   v-model="form.state_id"  name="state_id" id="state_id" class="form-control required">
                                 <option value="" >Select a state</option>
                                 <option :value="state.id" v-for="(state,index) in states" :key="state.id" :selected="[index ? 'selected': '']">{{ state.name }}</option>
                             </select>
@@ -94,17 +95,17 @@
                         </p>
 
                         <p class="form-group reduce-gutters text-right col-lg-12 ">
-                            <button v-if="!addresses.length" type="submit" class="btn btn-sm btn-primary" name="checkout_place_order" id="place_order" value="Place order" data-value="Place Order">
-                                <span  v-if="submiting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            <button v-if="!billing_address" type="submit" class="btn btn-sm btn-primary" name="checkout_place_order" id="place_order" value="Place order" data-value="Place Order">
+                                <span  v-if="submiting" class="spinner-border spinner-border-lg" role="status" aria-hidden="true"></span>
                                 Save & Continue
                             </button>
-                            <p v-if="addresses.length" class="form-group col-6 col-md-6 text-left">
+                            <p v-if="billing_address" class="form-group col-6 col-md-6 text-left">
                                 <button type="submit" class="btn btn-sm btn-primary"  value="Submit">
                                     <span  v-if="submiting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                     Save 
                                 </button>
                             </p>
-                            <p v-if="addresses.length" class="form-group col-6  col-md-6 text-right">
+                            <p v-if="billing_address" class="form-group col-6  col-md-6 text-right">
                                 <a @click.prevent="cancelForm"  class="cancel-form bold color--primary pull-right" href="#">Cancel</a>
                             </p>
 
@@ -113,35 +114,20 @@
                 </form>
             </div>
 
-            <div v-if="addresses.length && !showForm"  class="address_details mt-2">
-                <a href="#" class="btn btn--primary btn-round btn-lg btn-block mb-3 bold"  @click.prevent="addNewAddress" id="enter-new-address"> + Add Address  </a>
-                <ul class="">
-                    <li class="mb-3" v-for="(location, index) in addresses" :key="location.id">
-                        <div class="shipping-info border border-gray pr-3 pt-3 pl-3">
+            <div v-if="null !== billing_address && !showBillingAddressForm"  class="address_details mt-1">
+                <ul class="mb-1">
+                    <li>
+                        <div class="shipping-info border border-gray pr-3 pt-2 pl-3">
                             <div class="shipping-address-info">
-                                <p  id="">{{ location.first_name }} {{ location.last_name }}  </p>
-                                <p> {{ location.address }} {{ location.address2}} </p>
-                                <p> {{ location.city }} , {{ location.zip }}</p>
-                                <p> {{ location.state}} ,{{ location.country }} </p>
-                                <p class="mt-3 mb-3">
-                                    <a  @click.prevent="editAddress(index)" data-placement="left"  href="#" class="ml-0 mr-4 color--primary bg--gray l-f1  p-3 border "> 
+                                <div  id="">{{ billing_address.first_name }} {{ billing_address.last_name }}  </div>
+                                <div> {{ billing_address.address }} {{ billing_address.address2}} </div>
+                                <div> {{ billing_address.city }}, {{ billing_address.postcode }}</div>
+                                <div> {{ billing_address.state}}, {{ billing_address.country }} </div>
+                                <div v-if="!billing_address.same_as_billing" class="mt-2 mb-2">
+                                    <a  @click.prevent="editAddress(billing_address.id)" data-placement="left"  href="#" class="ml-0 mr-4 color--primary bg--gray l-f1  p-3 border "> 
                                         <i class="fa fa-edit"></i> Edit
                                     </a>
-                                    <a  @click.prevent="makeDefault($event,location.id)"  :id="location.id"  data-placement="left"  href="#" class="mr-4 l-f1  bg--gray   p-3 color--primary ml-4   make-default"> 
-                                        <i  class="fa fa-plus"></i> 
-                                        <span  v-if="location.is_active >= 1"> 
-                                        Default 
-                                        </span>
-                                        <span  v-else>
-                                            <span v-if="id == location.id" class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>
-                                            Use this address
-                                        </span> 
-                                    </a>
-                                    <a  @click.prevent="removeAddress($event,location.id)"  :id="location.id" data-placement="left"  href="#" class="color--primary p-3  bg--gray  l-f1  ml-4"> <i class="fa fa-trash"></i>
-                                        <span v-if="delete_id == location.id" class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>
-                                        Delete
-                                    </a>
-                                </p>
+                                </div>
                             </div>           
                         </div>
                     </li>
@@ -187,17 +173,17 @@ export default{
                 postal_code:'',
                 country_id:"",
                 state_id:'',
+                is_billing: true
             }
         }
     },
     computed:{
         ...mapGetters({
-            locations: "locations",
-            shipping:  "shipping",
-            addresses: "addresses",
-            default_shipping:"default_shipping",
+            billing_address: "billing_address",
             errors: 'errors',
-            showForm: 'showForm'
+            locations: "locations",
+            showBillingAddressForm: 'showBillingAddressForm',
+            default_address:"default_address",
         })
     },
     created(){
@@ -227,13 +213,7 @@ export default{
             });
             this.states = state[0]
         },
-        getShipping: function(e) {
-            let value = e.target.value;
-            let shipping = this.shipping[value]
-            this.$store.commit('setDefaultShipping',shipping)
-            let input = document.querySelectorAll('.required');
-            this.clearErrors({  context:this, input:input })
-        },
+       
         formatError(error){
             return Array.isArray(error) ? error[0] : error
         },
@@ -268,7 +248,7 @@ export default{
                     id: this.address_id,
                     context: this
                 }).then((response) =>{
-                    this.showForm =false
+                    this.showBillingAddressForm =false
                     this.submiting = false  
                 })
                 return
@@ -276,21 +256,19 @@ export default{
                 this.createAddress({ form: this.form, context: this })
             }   
         },
-        addNewAddress: function(){
-            this.edit =false
-            this.$store.commit('setShowForm' , this.showForm = !this.showForm)
-        },
+       
         cancelForm: function(){
-            this.$store.commit('setShowForm' , this.showForm = !this.showForm)
+            this.$store.commit('setShowBillingAddressForm', false)
             this.edit = false
         },
+      
         editAddress: function(index){
-            let address = this.addresses[index]
+            let address = this.billing_address
             this.form.first_name = address.first_name
-            this.form.last_name  =  address.last_name
-            this.form.address  = address.address
+            this.form.last_name = address.last_name
+            this.form.address = address.address
             this.form.city = address.city
-            this.form.postal_code = address.postal_code
+            this.form.postal_code = address.postcode
             this.form.country_id = address.country_id
             let state = []
             let ship_prices = []
@@ -298,27 +276,11 @@ export default{
             this.form.state_id = address.state_id
             this.edit = true
             this.address_id = address.id
-            this.$store.commit('setShowForm' , true)
+            this.$store.commit('setShowBillingAddressForm', true)
         },
-        removeAddress: function(e,id){
-            this.submiting = true  
-            this.delete_id =  id
-            this.deleteAddress({
-               id:id,
-               context: this
-            }).then(() => {
-                this.submiting = false  
-            })
-        },
-        makeDefault: function(evt,id){
-            this.id =  id
-            axios.get('/api/addresses/active/'+ id).then((response) => {
-                this.$store.dispatch('setADl',response)
-                this.submiting = false
-            }).catch(() =>{})
-        }
         
     }
 }
 
 </script>
+

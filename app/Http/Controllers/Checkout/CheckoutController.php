@@ -23,6 +23,8 @@ use App\Jobs\AbandonCart;
 use App\Currency;
 use App\Http\Resources\AddressResource;
 use App\Http\Resources\LocationResource;
+use Illuminate\Support\Str;
+
 
 
 
@@ -46,31 +48,72 @@ class CheckoutController extends Controller
 			\Auth::loginUsingId($request->token_id, $remember = true);
 		}
 
-		$this->middleware('auth');
-		$this->settings =  SystemSetting::first();
+		//$this->middleware('auth');
+
+		$this->settings = SystemSetting::first();
 	}
 
 
 	public function  index(Request $request)
 	{
 
+		if (auth()->check()) {
+			$user = auth()->user(); // 
+		} else {
+			$user = User::create([
+				'name' => 'Guest',
+				'email' => 'guest_' . Str::random(10) . '@guest.com',
+				'password' => bcrypt(Str::random(16)),
+				'is_guest' => true,
+			]);
+
+			auth()->login($user);
+		}
+
+
 		$carts =  Cart::all_items_in_cart($request->token);
+		$user =  \Auth::user();
+
+
+		$addresses = User::find($user->id)->addresses;
+		$defaultAddress = $user->defaultAddress;
+		$billing_address = User::find($user->id)->sameAsbilling ?? User::find($user->id)->billing_address;
+		$same_as_billing = User::find($user->id)->sameAsbilling;
+		$currency_code = Helper::rate()->iso_code3 ?? optional(optional($this->settings)->currency)->iso_code3;
+		$default_address = $user->activeAddress();
+		$stateShipping = optional(optional(optional($default_address)->address_state)->shipping)->first();
+		$sub_total = Cart::sum_items_in_cart();
+		$total = optional($stateShipping)->converted_price + $sub_total;
+		$shippingPrice = optional($stateShipping)->converted_price;
 
 		if (!$carts->count()) {
 			return redirect()->to('/cart');
 		}
+
 		$csrf = json_encode(['csrf' => csrf_token()]);
 		if ($request->token) {
 			\Cookie::queue('cart', $request->token, 60 * 60 * 7);
 		}
 
 		$user = $request->user();
+		$currency_code = Helper::rate()->iso_code3 ?? optional(optional($this->settings)->currency)->iso_code3;
+		$stateShipping = optional(optional(optional($default_address)->address_state)->shipping)->first();
 
 
-		dd(Shipping::where('location_id', 109)->get());
+		$settings = [
+			'allow_billing' => $currency_code !== 'NGR' ? true : false,
+			'allow_dropdown_shipping' => $currency_code !== 'NGR' ? true : false,
+			'isNigeria' => $currency_code == 'NGR' ? true : false,
+			'subTotal' => $sub_total,
+			'ship_price' => $sub_total,
+			'total' => $total,
+			'currency' => Helper::rate()->symbol ?? optional(optional($this->settings)->currency)->symbol,
+			'user' => $user,
+			'ship_price_id' => optional($stateShipping)->id
+		];
 
 		//AbandonCart::dispatch($carts, $user)->delay(now()->addMinutes(10));
-		return view('checkout.index', ['csrf' => $csrf, 'addressData' => $data]);
+		return view('checkout.index', ['csrf' => $csrf, 'settings' => $settings]);
 	}
 
 
@@ -111,117 +154,76 @@ class CheckoutController extends Controller
 
 	public function stripe(Request $request)
 	{
-		\Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
 		$data = $request->all();
-
-		$input = $data['payLoad']['custom_fields'][0];
-		$user = User::findOrFail($input['customer_id']);
-		$stripe = $data['payLoad']['payment'];
-
-
+		$user = $request->user();
 
 		try {
-			$paymentIntent = \Stripe\PaymentIntent::create([
-				'amount' => $input['total'], // kobo or cents
-				'currency' => $input['currency'],
-				'payment_method' => $stripe['id'],
-				'confirm' => true,
-				'receipt_email' => $user->email,
-				'automatic_payment_methods' => [
-					'enabled' => true,
-					'allow_redirects' => 'never'
-				]
-			]);
 
+			$order = new Order;
+			$carts = Cart::all_items_in_cart();
+			$order->user_id = $user->id;
+			$order->address_id = optional($user->active_address)->id;
+			$order->coupon = data_get($data, 'coupon');
+			$order->status = 'Processing';
+			$order->payment_status = data_get($data, 'status');
+			$order->payment_method = data_get($data, 'payment_method');
+			$order->shipping_id = data_get($data, 'shipping_id');
+			$order->payment_intent_id = data_get($data, 'payment_intent_id');
+			$order->shipping_price = data_get($data, 'shipping_price');
+			$order->payment_method =  data_get($data, 'payment_method');
+			$order->currency = data_get($data, 'currency');
+			$order->invoice = "INV-" . date('Y') . "-" . rand(10000, 39999);
+			$order->payment_type = 'card';
+			$order->total = data_get($data, 'amount');
+			$order->ip = $request->ip();
+			$order->save();
 
-			if ($paymentIntent->status === 'succeeded') {
+			foreach ($carts   as $cart) {
 
-				$order = new Order;
-				$carts = Cart::find($input['cart']);
-				$order->user_id = $user->id;
-				$order->address_id = optional($user->active_address)->id;
-				$order->coupon = $input['coupon'] !== 0  ? $input['coupon'] : null;
-				$order->status = 'Processing';
-				$order->shipping_id = $input['shipping_id'];
-				$order->shipping_price = optional(Shipping::find($input['shipping_id']))->converted_price;
-				$order->currency = $input['meta']['currency'];
-				$order->invoice = "INV-" . date('Y') . "-" . rand(10000, 39999);
-				$order->payment_type = 'card';
-				$order->total = $input['total'];
-				$order->ip = $request->ip();
-				$order->save();
+				$OrderedProduct = new OrderedProduct;
+				$price = $cart->sale_price ?? $cart->price;
+				$quantity = $cart->quantity * $price;
+				$OrderedProduct->order_id = $order->id;
+				$OrderedProduct->product_variation_id = $cart->product_variation_id;
+				$OrderedProduct->quantity = $cart->quantity;
+				$OrderedProduct->status = "Processing";
+				$OrderedProduct->price = $cart->ConvertCurrencyRate($price, $cart->rate);
+				$OrderedProduct->total = $cart->ConvertCurrencyRate($quantity, $cart->rate);
+				$OrderedProduct->created_at = \Carbon\Carbon::now();
+				$OrderedProduct->save();
+				$product_variation = ProductVariation::find($cart->product_variation_id);
+				$qty = $product_variation->quantity - $cart->quantity;
+				$product_variation->quantity = $qty < 1 ? 0 : $qty;
+				$product_variation->save();
+				$cart->delete();
+			}
+			$admin_emails = explode(',', $this->settings->alert_email);
+			$symbol = $data['currency'];
 
-				foreach ($carts   as $cart) {
-
-					$OrderedProduct = new OrderedProduct;
-					$price = $cart->sale_price ?? $cart->price;
-					$quantity = $cart->quantity * $price;
-					$OrderedProduct->order_id = $order->id;
-					$OrderedProduct->product_variation_id = $cart->product_variation_id;
-					$OrderedProduct->quantity = $cart->quantity;
-					$OrderedProduct->status = "Processing";
-					$OrderedProduct->price = $cart->ConvertCurrencyRate($price, $cart->rate);
-					$OrderedProduct->total = $cart->ConvertCurrencyRate($quantity, $cart->rate);
-					$OrderedProduct->created_at = \Carbon\Carbon::now();
-					$OrderedProduct->save();
-					$product_variation = ProductVariation::find($cart->product_variation_id);
-					$qty  = $product_variation->quantity - $cart->quantity;
-					$product_variation->quantity =  $qty < 1 ? 0 : $qty;
-					$product_variation->save();
-					//Delete all the cart
-					$cart->delete();
-				}
-				$admin_emails = explode(',', $this->settings->alert_email);
-				$symbol = $input['meta']['currency'];
-
-				try {
-					$when = now()->addMinutes(5);
-					\Mail::to($user->email)
-						->bcc($admin_emails[0])
-						->cc("jacob.atam@gmail.com")
-						->send(new OrderReceipt($order, $this->settings, $symbol));
-				} catch (\Throwable $th) {
-					\Log::info("Mail error :" . $th);
-				}
-
-				if ($input['coupon']) {
-					$code = trim($input['coupon']);
-					$coupon =  Voucher::where('code', $input['coupon'])->first();
-					if (null !== $coupon && $coupon->type == 'specific') {
-						$coupon->update(['valid' => false]);
-					}
-				}
-
-				return response()->json([
-					'success' => true,
-					'message' => 'Payment successful!',
-					'payment_intent' => $paymentIntent,
-				]);
-			} elseif ($paymentIntent->status === 'requires_action') {
-				return response()->json([
-					'requires_action' => true,
-					'client_secret' => $paymentIntent->client_secret,
-					'message' => 'Additional authentication is required.',
-				]);
-			} else {
-				return response()->json([
-					'success' => false,
-					'message' => 'Payment failed or incomplete.',
-					'status' => $paymentIntent->status,
-				]);
+			try {
+				$when = now()->addMinutes(5);
+				\Mail::to($user->email)
+					->bcc($admin_emails[0])
+					->cc("jacob.atam@gmail.com")
+					->send(new OrderReceipt($order, $this->settings, $symbol));
+			} catch (\Throwable $th) {
+				\Log::info("Mail error :" . $th);
 			}
 
+			if ($data['coupon']) {
+				$code = trim($data['coupon']);
+				$coupon =  Voucher::where('code', $data['coupon'])->first();
+				if (null !== $coupon && $coupon->type == 'specific') {
+					$coupon->update(['valid' => false]);
+				}
+			}
 
-			$inter = $request->all();
-
-
-			//\Log::info($carts);
-
-
-
-
-			return response()->json(['success' => true]);
+			return response()->json([
+				'success' => true,
+				'message' => 'Payment successful!',
+				'payment_intent' => null,
+			]);
 		} catch (\Exception $e) {
 			return response()->json(['success' => false, 'error' => $e->getMessage()]);
 		}

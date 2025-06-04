@@ -42,8 +42,24 @@ export const setShowForm= (state , trueOrFalse) =>{
 }
 
 
+export const setShowBillingAddressForm= (state , trueOrFalse) =>{
+   state.showBillingAddressForm =trueOrFalse;
+}
+
+
 export const setNotification= (state , notification) =>{
    state.notification =notification;
+}
+
+
+export const setDefaultAddress= (state , default_address) =>{
+   state.default_address =default_address;
+}
+
+
+
+export const setStateShipping= (state , ship) =>{
+   state.state_shipping =ship;
 }
 
 
@@ -64,6 +80,10 @@ export const addToAddress = (state , address) =>{
    state.addresses =address;
 }
 
+export const setBillingAddress = (state , address) =>{
+   state.billing_address = address;
+}
+
 export const addToLocations = (state , locations) =>{
    state.locations =locations;
 }
@@ -82,6 +102,11 @@ export const setShipping = (state , shipping) =>{
 
 export const setDefaultShipping = (state , default_shipping) =>{
    state.default_shipping = default_shipping
+}
+
+
+export const setShippingPrice = (state , price) =>{
+   state.default_shipping = price
 }
 
 

@@ -9,7 +9,7 @@
                             v-model="form.first_name" 
                             @input="removeError($event)"  
                             @blur="vInput($event)" 
-                            type="text" class="form-control required" 
+                            type="text" class="form-control ship-required" 
                             name="first_name"
                             >
                             <span class="help-block error  text-danger text-sm-left" v-if="errors.first_name">
@@ -24,7 +24,7 @@
                                 type="text"
                                 @input="removeError($event)"  
                                 @blur="vInput($event)"  
-                                class="form-control required"
+                                class="form-control ship-required"
                                 name="last_name" 
                             >
                             <span class="help-block error  text-danger text-sm-left" v-if="errors.last_name">
@@ -38,10 +38,12 @@
                                 @input="removeError($event)"  
                                 @blur="vInput($event)"  
                                 :class="{'has-danger': errors.address}"   
-                                type="text" class="form-control required" 
+                                type="text" class="form-control ship-required" 
                                 name="address" 
                             >
-                            <span   v-if="errors.address">
+                            <span 
+                                v-if="errors.address"
+                            >
                                 <span   class="text-danger bold help-block">{{ formatError(errors.address) }}</span>
                             </span>
                         </p>
@@ -57,7 +59,7 @@
                                 @blur="vInput($event)"  
                                 :class="{'has-danger': errors.city}"  
                                 type="text" 
-                                class="form-control required" 
+                                class="form-control ship-required" 
                                 name="city"
                             >
                             <span  v-if="errors.city">
@@ -74,7 +76,7 @@
                         </p>
                         <p class="form-group reduce-gutters  col-sm-6">
                             <label for="shipping_country">Country &nbsp;<abbr class="required" title="required">*</abbr></label>
-                            <select @change="getState"  v-model="form.country_id"  name="country_id" id="shipping_country"   class="form-control required" autocomplete="country" tabindex="-1" aria-hidden="true">
+                            <select @change="getState"  v-model="form.country_id"  name="country_id" id="shipping_country"   class="form-control ship-required" autocomplete="country" tabindex="-1" aria-hidden="true">
                                 <option value="" selected="selected">Select a country…</option>
                                 <option :value="country.id" v-for="country in locations" :key="country.id">{{ country.name }}</option>
                             </select>
@@ -84,7 +86,7 @@
                         </p>
                         <p class="form-group reduce-gutters col-sm-6">
                             <label for="state_id" class="">State/Region &nbsp;<abbr class="required " title="required">*</abbr></label>
-                            <select @change="getShipping"  v-model="form.state_id"  name="state_id" id="state_id" class="form-control required">
+                            <select @change="getShipping"  v-model="form.state_id"  name="state_id" id="state_id" class="form-control ship-required">
                                 <option value="" >Select a state</option>
                                 <option :value="state.id" v-for="(state,index) in states" :key="state.id" :selected="[index ? 'selected': '']">{{ state.name }}</option>
                             </select>
@@ -93,14 +95,21 @@
                             </span>
                         </p>
 
+                        <div class="form-check my-3 ml-2">
+                            <input class="form-check-input" type="checkbox" id="sameAsBilling" v-model="form.sameAsBilling" >
+                            <label class="form-check-label ml-2 pointer" for="sameAsBilling">
+                            Same as billing address
+                            </label>
+                        </div>
+
                         <p class="form-group reduce-gutters text-right col-lg-12 ">
                             <button v-if="!addresses.length" type="submit" class="btn btn-sm btn-primary" name="checkout_place_order" id="place_order" value="Place order" data-value="Place Order">
-                                <span  v-if="submiting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                <span  v-if="submiting" class="spinner-border spinner-border-lg" role="status" aria-hidden="true"></span>
                                 Save & Continue
                             </button>
                             <p v-if="addresses.length" class="form-group col-6 col-md-6 text-left">
-                                <button type="submit" class="btn btn-sm btn-primary"  value="Submit">
-                                    <span  v-if="submiting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                <button type="submit" class="btn btn-sm btn-primary mr-1"  value="Submit">
+                                    <span  v-if="submiting" class="spinner-border spinner-border-lg" role="status" aria-hidden="true"></span>
                                     Save 
                                 </button>
                             </p>
@@ -113,17 +122,20 @@
                 </form>
             </div>
 
-            <div v-if="addresses.length && !showForm"  class="address_details mt-2">
-                <a href="#" class="btn btn--primary btn-round btn-lg btn-block mb-3 bold"  @click.prevent="addNewAddress" id="enter-new-address"> + Add Address  </a>
-                <ul class="">
-                    <li class="mb-3" v-for="(location, index) in addresses" :key="location.id">
-                        <div class="shipping-info border border-gray pr-3 pt-3 pl-3">
+
+            <div v-if="addresses.length && !showForm"  class="address_details mt-1">
+                <a href="#" class="btn btn--primary btn-round btn-lg btn-block mb-1 bold"  @click.prevent="addNewAddress" id="enter-new-address"> + Add Address  </a>
+                <ul class="mb-1">
+                    <li   
+                        :class="[{ 'mb-1': addresses.length > 1 }]"
+                        v-for="(location, index) in addresses" :key="location.id">
+                        <div class="shipping-info border border-gray pr-3 pt-2 pl-3">
                             <div class="shipping-address-info">
-                                <div  id="">{{ location.first_name }} {{ location.last_name }}  </div>
+                                <div  id="">{{ location.first_name }} {{ location.last_name }} </div>
                                 <div> {{ location.address }} {{ location.address2}} </div>
-                                <div> {{ location.city }} , {{ location.zip }}</div>
-                                <div> {{ location.state}} ,{{ location.country }} </div>
-                                <div class="mt-3 mb-3">
+                                <div> {{ location.city }}, {{ location.postcode }}</div>
+                                <div> {{ location.state}}, {{ location.country }} </div>
+                                <div class="mt-2 mb-2">
                                     <a  @click.prevent="editAddress(index)" data-placement="left"  href="#" class="ml-0 mr-4 color--primary bg--gray l-f1  p-3 border "> 
                                         <i class="fa fa-edit"></i> Edit
                                     </a>
@@ -133,12 +145,12 @@
                                         Default 
                                         </span>
                                         <span  v-else>
-                                            <span v-if="id == location.id" class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>
+                                            <span v-if="id == location.id" class='spinner-border spinner-border-lg' role='status' aria-hidden='true'></span>
                                             Use this address
                                         </span> 
                                     </a>
                                     <a  @click.prevent="removeAddress($event,location.id)"  :id="location.id" data-placement="left"  href="#" class="color--primary p-3  bg--gray  l-f1  ml-4"> <i class="fa fa-trash"></i>
-                                        <span v-if="delete_id == location.id" class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>
+                                        <span v-if="delete_id == location.id" class='spinner-border spinner-border-lg' role='status' aria-hidden='true'></span>
                                         Delete
                                     </a>
                                 </div>
@@ -187,6 +199,8 @@ export default{
                 postal_code:'',
                 country_id:"",
                 state_id:'',
+                sameAsBilling: false,
+                is_billing: false
             }
         }
     },
@@ -197,7 +211,8 @@ export default{
             addresses: "addresses",
             default_shipping:"default_shipping",
             errors: 'errors',
-            showForm: 'showForm'
+            showForm: 'showForm',
+            showBillingAddressForm: 'showBillingAddressForm',
         })
     },
     created(){
@@ -219,7 +234,6 @@ export default{
             let input = document.querySelectorAll('.required');
             this.clearErrors({  context:this, input:input })
             let state = []
-            //loop through all countries and pluck out their states
             this.locations.forEach(element => {
                 if (value == element.id) {
                    state.push(element.states)  
@@ -231,14 +245,14 @@ export default{
             let value = e.target.value;
             let shipping = this.shipping[value]
             this.$store.commit('setDefaultShipping',shipping)
-            let input = document.querySelectorAll('.required');
+            let input = document.querySelectorAll('.ship-required');
             this.clearErrors({  context:this, input:input })
         },
         formatError(error){
             return Array.isArray(error) ? error[0] : error
         },
         removeError(e){
-            let input = document.querySelectorAll('.required');
+            let input = document.querySelectorAll('.ship-required');
             if (e.target.name == 'country_id'){
                 this.form.state = ''
                 this.states = this.country_states[e.target.value]
@@ -248,13 +262,13 @@ export default{
             }
         },
         vInput(e){
-            let input = document.querySelectorAll('.required');
+            let input = document.querySelectorAll('.ship-required');
             if (typeof input !== 'undefined') {
                 this.checkInput({ context: this, email: this.form.email, input:e })
             }
         },  
         submit: function(){
-            let input = document.querySelectorAll('.required');
+            let input = document.querySelectorAll('.ship-required');
             this.validateForm({ context:this, input:input })
             this.errorsBag = this.errors
             if ( Object.keys(this.errorsBag).length !== 0 ){
@@ -267,9 +281,19 @@ export default{
                     form:this.form,
                     id: this.address_id,
                     context: this
-                }).then((response) =>{
-                    this.showForm =false
-                    this.submiting = false  
+                }).then((response) => {
+                    this.$store.commit('setShowForm' , false)                 
+                    if(response.data.meta.billing_address){
+                        this.$store.commit('setShowBillingAddressForm', false)
+                        this.submiting = false  
+                        return;
+                    }
+
+                    if(!response.data.meta.billing_address){
+                        this.$store.commit('setShowBillingAddressForm', true)
+                        this.submiting = false  
+                        return;
+                    }
                 })
                 return
             } else {
@@ -290,8 +314,9 @@ export default{
             this.form.last_name  =  address.last_name
             this.form.address  = address.address
             this.form.city = address.city
-            this.form.postal_code = address.postal_code
+            this.form.postal_code = address.postcode
             this.form.country_id = address.country_id
+            this.form.sameAsBilling = address.is_billing === 1 ? true:false;
             let state = []
             let ship_prices = []
             this.getState(address.country_id)
@@ -322,3 +347,14 @@ export default{
 }
 
 </script>
+
+<style scoped>
+
+.pointer {cursor: pointer;}
+.form-check-input {
+    position: absolute;
+    margin-top: 0.5rem;
+    margin-left: -1.25rem;
+}
+
+</style>

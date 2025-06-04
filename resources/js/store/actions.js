@@ -131,19 +131,11 @@ export const register = ({ commit },{ context }) => {
 }
 
 export const createAddress = ({ dispatch, commit },{ form ,context }) => {
-    return axios.post('/api/addresses',{
-        first_name: form.first_name,
-        last_name: form.last_name,
-        address: form.address,
-        address_2: form.address_2,
-        city: form.city,
-        country_id: form.country_id,
-        state_id: form.state_id,
-        postal_code: form.postal_code,
-
-    }).then((response) => {
+    return axios.post('/api/addresses',form).then((response) => {
         dispatch('setADl',response)
         if(response.data.data.length){commit('setShowForm',false)}
+        if(response.data.meta.billing_address){commit('setShowBillingAddressForm',false)}
+
         context.submiting = false
         return Promise.resolve()
     }).catch((error) => {
@@ -155,33 +147,35 @@ export const createAddress = ({ dispatch, commit },{ form ,context }) => {
 export const deleteAddress = ({ dispatch,commit },{id,context}) => {
     axios.delete('/api/addresses/'+ id +'').then((response) => {
         if(!response.data.data.length){commit('setShowForm',true)}
+        if(!response.data.meta.billing_address){commit('setShowBillingAddressForm',true)}
+
         dispatch('setADl',response)
         context.submiting = false  
     })
 }
 
 export const updateAddresses = ({ dispatch,commit },{form,id}) => {
-    return  axios.put('/api/addresses/'+ id,{
-        first_name: form.first_name,
-        last_name: form.last_name,
-        address: form.address,
-        address_2: form.address_2,
-        city: form.city,
-        country_id: form.country_id,
-        state_id: form.state_id,
-        postal_code: form.postal_code,
-    }).then((response) => {
-        dispatch('setADl',response)
+    return  axios.put('/api/addresses/'+ id,form).then((response) => {
         if(response.data.data.length){commit('setShowForm',false)}
-        return Promise.resolve()
+      //  context.shipping_price =  response.data.meta.stateShipping.converted_price;
+
+        dispatch('setADl',response)
+        return response;
     }).catch(() => {
         if(response.data.data.length){commit('setShowForm',true)}
     })
-}
+} 
 
 export const getAddresses = ({ dispatch, commit },{ context }) => {
     return axios.get('/api/addresses').then((response) => {
         if(!response.data.data.length){commit('setShowForm',true)}
+        if(!response.data.meta.billing_address){commit('setShowBillingAddressForm',true)}
+
+        //if (!context.config.allow_dropdown_shipping) {
+           // context.shipping_price =  response.data.meta.stateShipping.converted_price;
+            //context.amount = context.total + response.data.meta.stateShipping.converted_price;
+      //  }
+
         dispatch('setADl',response)
         return Promise.resolve()
     }).catch((error) => {
@@ -246,8 +240,12 @@ export  const updateLocations =  ({commit}, payload)  => {
 export  const setADl =  ({commit}, response)  => {
     commit('addToAddress',response.data.data)
     commit('addToLocations',response.data.meta.countries)
-    commit('setShipping',response.data.meta.shipping)
+    //commit('setShipping',response.data.meta.shipping)
     commit('setDefaultShipping',response.data.meta.default_shipping)
+    commit('setBillingAddress',response.data.meta.billing_address)
+    commit('setDefaultAddress',response.data.meta.default_address)
+
+
 }
 
 export const validateForm = ({dispatch,commit},{context,input}) => {

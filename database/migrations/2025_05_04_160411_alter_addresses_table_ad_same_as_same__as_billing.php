@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUpdatedAtToCartsTable extends Migration
+class AlterAddressesTableAdSameAsSameAsBilling extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddUpdatedAtToCartsTable extends Migration
      */
     public function up()
     {
-        Schema::table('carts', function (Blueprint $table) {
-            // $table->timestamp('updated_at')->nullable()->after('created_at');
-            //$table->string('rate')->nullable();
+        Schema::table('addresses', function (Blueprint $table) {
+            $table->boolean('same_as_billing')->nullable();
         });
     }
 
@@ -26,6 +25,8 @@ class AddUpdatedAtToCartsTable extends Migration
      */
     public function down()
     {
-        Schema::table('carts', function (Blueprint $table) {});
+        Schema::table('addresses', function (Blueprint $table) {
+            //
+        });
     }
 }
