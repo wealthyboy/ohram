@@ -40,10 +40,11 @@
 
             <!-- Left Column: Text -->
             <div class="col-lg-6">
-                <h4 class="fw-bold text-dark">Convenient & Clean Energy</h4>
-
-                <h1 class="fw-bold display-2 text-dark">Convenient & Clean Energy</h1>
-                <p class="lead text-dark">Get the natural energy boost you need without synthetic fillers. Perfect for active days or focused mornings.</p>
+                <h4 class="fw-bold text-dark">Natural & Nourishing</h4>
+                <h1 class="fw-bold display-2 text-dark">Sip. Slim. Shine.</h1>
+                <p class="lead text-dark">
+                    A coffee that does more — crafted to help you burn fat, control cravings, and glow from within. Start every morning with wellness in your cup.
+                </p>
                 <div class="d-flex justify-content-center justify-content-lg-center gap-3 mt-3 flex-wrap">
                     <a href="#purchase" class="btn btn-dark btn-lg rounded px-4 py-2">Purchase</a>
                 </div>
