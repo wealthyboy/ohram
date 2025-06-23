@@ -14,9 +14,12 @@ class AlterAddressesTableAddIsBilling extends Migration
     public function up()
     {
         Schema::table('addresses', function (Blueprint $table) {
-            //
+
+            $table->boolean('is_billing')->nullable();
         });
     }
+
+    ///usr/bin/php7.4 artisan migrate
 
     /**
      * Reverse the migrations.

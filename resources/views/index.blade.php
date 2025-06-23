@@ -2,66 +2,121 @@
 
 @section('content')
 
-
-<div class="row no-gutters">
-    <div class="col-md-6 bg--primary order-last d-none d-lg-block">
-
-        <div class="d-flex justify-content-center align-content-center">
-
-            <div class="sale-content text-center align-content-center  fadeInRight animated">
-
-                <div class="text-uppercase fa-3x position-absolute text-white">Tummy Make over</div>
-                <div class="">
-                    <h1 class="text-uppercase  sale   sale-text text-white">Sale</h1>
-                </div>
-
-                <div class="">
-                    <h1 class="text-uppercase  bold fa-2x text-white">From 12% off</h1>
-                </div>
+{{-- resources/views/shop.blade.php --}}
 
 
-                <div class="buttons position-relative ">
-                    <a href="https://ohram.org/products/teatox" class="btn btn-raised  btn--lg btn--primary bold h-font mr-2 mb-1">Shop Tea</a>
-                </div>
-                <div class="buttons  position-relative ">
-                    <a href="https://ohram.org/products/weight-loss-gummies" class="btn btn-raised btn--lg btn-raised btn--primary bold h-font mr-2 mb-1">Shop Gummies</a>
-                </div>
-                <div class="buttons">
-                    <a href="https://ohram.org/products/weight-loss-pills" class="btn btn-raised btn--lg btn--primary bold h-font mr-2 mb-1">Shop Loss Pills</a>
-                </div>
-                <div class="buttons">
-                    <a href="https://ohram.org/products/slim-diet-coffee" class="btn  btn-raised btn--lg btn--primary bold h-font mr-2 mb-1">Shop Coffee</a>
+<style>
+    /* --- tiny custom tweaks ----------------------------- */
+    .section-pink {
+        background: #f8d9e8;
+    }
+
+    /* page strip   */
+    .card.rounded-4 {
+        border-radius: 1.5rem !important;
+    }
+
+    .btn-quick-add {
+        background: #c9f586;
+        color: #3a0020;
+        border-radius: 2rem;
+        font-weight: 600;
+    }
+
+    .btn-quick-add:hover {
+        background: #d8ff9b;
+        color: #3a0020;
+    }
+</style>
+
+
+<section class="position-relative text-white" style="background: url('/images/banners/weight_loss_in_nigeria.jpeg') center center / cover no-repeat;">
+    <!-- Overlay -->
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(178, 237, 232, 0.85); z-index: 1; margin-top: -48px;"></div>
+
+
+    <div class="container py-5 position-relative" style="z-index: 2;">
+        <div class="row align-items-center flex-column-reverse flex-lg-row text-center text-lg-start gy-4">
+
+            <!-- Left Column: Text -->
+            <div class="col-lg-6">
+                <h4 class="fw-bold text-dark">Convenient & Clean Energy</h4>
+
+                <h1 class="fw-bold display-2 text-dark">Convenient & Clean Energy</h1>
+                <p class="lead text-dark">Get the natural energy boost you need without synthetic fillers. Perfect for active days or focused mornings.</p>
+                <div class="d-flex justify-content-center justify-content-lg-center gap-3 mt-3 flex-wrap">
+                    <a href="#purchase" class="btn btn-dark btn-lg rounded px-4 py-2">Purchase</a>
                 </div>
             </div>
+
+            <!-- Right Column: Product Image -->
+            <div class="col-lg-6 text-center">
+                <img src="/images/banners/ohram_tea-removebg-preview.png" class="img-fluid" alt="Product">
+            </div>
         </div>
-
     </div>
-    <div class="col-md-6 order-first">
-        <div class="custom-banner">
-            <section class="weight-loss-banner">
-                <div class="mobile-weight-loss-banner  d-block d-sm-none">
-                    <div class="text-uppercase fa-2x  bold text-white">Tummy Make over</div>
-                    <div class=" text-center">
-                        <h1 class="text-uppercase font-italic sale fa-4x text-white">Sale</h1>
-                    </div>
-                    <div class="text-center">
-                        <h1 class="text-uppercase  bold fa-1x text-white">From 12% off</h1>
-                    </div>
+</section>
 
-                    <div class="buttons  text-center position-relative ">
-                        <a href="https://ohram.org/products/weight-loss" class="btn   btn--lg btn--primary bold h-font mr-2 mb-1">Shop Weight Loss</a>
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="section-pink  bg--primary  py-5">
+    <div class="container">
+        <div class="text-center">
+            <h1>Trending Now
+            </h1>
+        </div>
+        <div class="row g-4 justify-content-center">
+
+            @foreach ($products as $product)
+            <div class="col-12 col-sm-6 col-lg-3 mb-2">
+                <div class="card h-100 shadow border-0 rounded-4 position-relative text-center">
+                    {{-- optional top-left badge --}}
+
+                    <span class="position-absolute top-0 start-0 translate-middle badge bg-dark text-white fw-semibold rounded-pill">
+                        {{ 'test'}}
+                    </span>
+
+                    {{-- product image --}}
+                    <img src="{{ $product->image_m }}"
+                        class="card-img-top p-4" style="object-fit:contain;height:200px;"
+                        alt="{{ $product->product_name }}">
+
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold text-dark mb-1">{{ $product->product_name }}</h5>
+                        <p class="card-text small text-muted mb-3">
+                            {{ $product['tag'] }} –
+                            <strong>${{ number_format($product->price, 2) }}</strong>
+                        </p>
+
+                        {{-- quick-add button --}}
+                        <button class="btn btn-quick-add mx-auto px-4 py-2 mb-2">
+                            Quick add
+                        </button>
+
+                        {{-- view-product link --}}
+                        <a href="{{ $product->product_name }}" class="small link-underline link-underline-opacity-0 link-danger">
+                            View product
+                        </a>
+
+                        {{-- spacer to push content to top on equal-height cards --}}
+                        <div class="flex-grow-1"></div>
                     </div>
                 </div>
+            </div>
+            @endforeach
         </div>
-
-        </section>
     </div>
-</div>
-</div>
-
-
-
-</div>
+</section>
 
 @if ($posts->count())
 
