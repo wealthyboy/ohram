@@ -73,7 +73,6 @@ class CurrencyByIp
                     //throw $th;
                 }
             } else {
-                dd(true);
                 try {
                     $position = (new Location())->get(request()->ip());
                     $country = Currency::where('country', $position->countryName)->first();
