@@ -30,6 +30,9 @@ class CurrencyByIp
         $settings = SystemSetting::first();
         $user = auth()->user();
 
+        $request->session()->forget(['switch', 'rate']);
+
+
 
         if ($user && $user->is_guest && $request->path() !== 'checkout') {
             if (!$request->ajax()) {
@@ -73,7 +76,6 @@ class CurrencyByIp
             } else {
                 try {
                     $position = (new Location())->get(request()->ip());
-                    dd($position);
                     $country = Currency::where('country', $position->countryName)->first();
                     if (null == $country) {
                         if (in_array($position->countryName, array_values(Helper::EU()))) {
