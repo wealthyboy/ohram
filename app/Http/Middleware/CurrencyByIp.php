@@ -30,7 +30,6 @@ class CurrencyByIp
         $settings = SystemSetting::first();
         $user = auth()->user();
 
-        $request->session()->forget(['switch', 'rate']);
 
 
 
