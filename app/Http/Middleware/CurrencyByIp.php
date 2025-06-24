@@ -47,7 +47,7 @@ class CurrencyByIp
 
             if ($request->session()->has('userLocation')) {
                 $user_location =  json_decode(session('userLocation'));
-                dd($user_location);
+                dd($user_location->ip !== request()->ip());
 
 
                 try {
