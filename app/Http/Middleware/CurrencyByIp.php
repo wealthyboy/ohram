@@ -47,6 +47,8 @@ class CurrencyByIp
 
             if ($request->session()->has('userLocation')) {
                 $user_location =  json_decode(session('userLocation'));
+                dd($user_location);
+
 
                 try {
                     if ($user_location && $user_location->ip !== request()->ip()) {
@@ -73,6 +75,7 @@ class CurrencyByIp
                     //throw $th;
                 }
             } else {
+                dd(true);
                 try {
                     $position = (new Location())->get(request()->ip());
                     $country = Currency::where('country', $position->countryName)->first();
