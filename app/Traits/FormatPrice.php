@@ -131,7 +131,6 @@ trait FormatPrice
 
     $rate = Helper::rate();
 
-    dd($rate->rate);
     if ($rate) {
       if ($is_varaible) {
         return round(($price * $rate->rate), 0);
