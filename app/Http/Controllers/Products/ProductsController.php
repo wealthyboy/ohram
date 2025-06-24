@@ -93,7 +93,7 @@ class ProductsController extends Controller
 
         $attributes = $attributes->count() && $product->product_type == 'variable' ? $attributes : '{}';
         $product->load(["variants"]);
-
+        dd($product);
 
         return view('products.show', compact('category', 'attributes', 'product', 'page_title'));
     }

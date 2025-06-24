@@ -17,15 +17,20 @@
         </span>
   
         <!-- Product Image -->
-        <img
-          :src="product.image_m"
-          class="card-img-top p-4"
-          style="object-fit:contain; height:200px;"
-          :alt="product.product_name"
-        />
+         <a :href="product.link" class="href">
+            <img
+                :src="product.image_m"
+                class="card-img-top p-4"
+                style="object-fit:contain; height:200px;"
+                :alt="product.product_name"
+            />
+         </a>
+      
   
         <div class="card-body d-flex flex-column">
-          <h5 class="card-title fw-bold text-dark mb-1">{{ product.product_name }}</h5>
+            <a :href="product.link" class="no-underline">
+              <h5 class="card-title fw-bold text-dark mb-1">{{ product.product_name }}</h5>
+            </a>
           <p class="card-text small text-muted mb-3">
             <template v-if="product.default_discounted_price">
               <span class="old-price bold">{{ product.currency }}{{ formatNumber(product.converted_price) }}</span>
@@ -40,7 +45,7 @@
           <button
             @click.prevent="addToCart"
             class="btn btn-quick-add mx-auto px-4 py-2 mb-2"
-            :disabled="loading || added"
+            :disabled="loading"
             >
             <span>{{ cartText }}</span>
             </button>
@@ -99,12 +104,9 @@
                 this.loading = false;
                 this.added = true;
                 this.cartText = "Added!"
-
-
-                // Reset to "Quick add" after 1.5s
                 setTimeout(() => {
                     this.cartText = "QUICK ADD"
-                }, 10000);
+                }, 1500);
 
             })
 
