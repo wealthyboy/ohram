@@ -19,7 +19,6 @@
 
 <div class="container-fluid ">
     <div>
-        <product-show :attributes="{{ $attributes }}" :product="{{ $product }}" />
     </div>
 </div><!-- End .container -->
 @endsection
