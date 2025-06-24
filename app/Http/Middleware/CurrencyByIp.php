@@ -48,7 +48,6 @@ class CurrencyByIp
 
                 try {
                     if ($user_location && $user_location->ip !== request()->ip()) {
-                        dd($user_location);
 
                         $position = (new Location())->get(request()->ip());
                         $country = Currency::where('country', $position->countryName)->first();
@@ -74,6 +73,7 @@ class CurrencyByIp
             } else {
                 try {
                     $position = (new Location())->get(request()->ip());
+                    dd($position);
                     $country = Currency::where('country', $position->countryName)->first();
                     if (null == $country) {
                         if (in_array($position->countryName, array_values(Helper::EU()))) {
