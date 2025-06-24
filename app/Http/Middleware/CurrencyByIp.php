@@ -28,12 +28,11 @@ class CurrencyByIp
         $position = '';
 
         $settings = SystemSetting::first();
-
-
         $user = auth()->user();
 
-        if ($user && $user->is_guest && $request->path() !== 'checkout') {
+        dd($position = (new Location())->get(request()->ip()));
 
+        if ($user && $user->is_guest && $request->path() !== 'checkout') {
             if (!$request->ajax()) {
                 auth()->logout();
             }
