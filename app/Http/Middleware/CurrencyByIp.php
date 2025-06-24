@@ -30,7 +30,6 @@ class CurrencyByIp
         $settings = SystemSetting::first();
         $user = auth()->user();
 
-        dd($position = (new Location())->get(request()->ip()));
 
         if ($user && $user->is_guest && $request->path() !== 'checkout') {
             if (!$request->ajax()) {
@@ -42,6 +41,8 @@ class CurrencyByIp
             if ($request->session()->has('switch')) {
                 return $next($request);
             }
+
+            dd(true);
 
             if ($request->session()->has('userLocation')) {
                 $user_location =  json_decode(session('userLocation'));
