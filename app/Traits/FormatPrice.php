@@ -121,17 +121,21 @@ trait FormatPrice
   public function getConvertedPriceAttribute()
   {
 
-    dd($this->price);
     return  $this->product_type == 'variable'
       ? $this->ConvertCurrencyRate(optional($this->variant)->price)
       : $this->ConvertCurrencyRate($this->price);
   }
 
-  public function ConvertCurrencyRate($price)
+  public function ConvertCurrencyRate($price, $is_varaible = false)
   {
 
     $rate = Helper::rate();
+
+    dd($rate->rate);
     if ($rate) {
+      if ($is_varaible) {
+        return round(($price * $rate->rate), 0);
+      }
       return round(($price * $rate->rate), 0);
     }
     return round($price, 0);
