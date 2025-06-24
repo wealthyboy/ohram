@@ -92,8 +92,7 @@ class ProductsController extends Controller
         $attributes =  collect($data);
 
         $attributes = $attributes->count() && $product->product_type == 'variable' ? $attributes : '{}';
-        $product->load(["variants"]);
-        dd($product);
+        $product->load(["variants", "related_products"]);
 
         return view('products.show', compact('category', 'attributes', 'product', 'page_title'));
     }
