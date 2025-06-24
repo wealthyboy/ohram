@@ -31,6 +31,9 @@ const ShipAddress = require("./components/checkout/ShipAddress.vue").default;
 const ForgotPassword = require("./components/auth/ForgotPassword.vue").default;
 const ResetPassword = require("./components/auth/ResetPassword.vue").default;
 const ChangePassword = require("./components/auth/ChangePassword.vue").default;
+const HomeProductsIndex = require("./components/products/ProductIndex.vue").default;
+
+
 const Comments = require("./components/blog/Comments.vue").default;
 const Images = require("./components/images/Images.vue").default;
 
@@ -57,6 +60,7 @@ const app = new Vue({
     TopCart,
     CartSideBarMenu,
     ProductsIndex,
+    HomeProductsIndex,
     SideBar,
     ProductShow,
     NavIcon,

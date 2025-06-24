@@ -91,7 +91,6 @@ class ProductsController extends Controller
         }
         $attributes =  collect($data);
 
-        dd($attributes);
         $attributes = $attributes->count() && $product->product_type == 'variable' ? $attributes : '{}';
         $product->load(["variants"]);
 

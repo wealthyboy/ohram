@@ -45,6 +45,10 @@
   src: url(../fonts/ProximaNovaAltCondensedThin.otf);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-size: 14px;
   line-height: 1.7;
