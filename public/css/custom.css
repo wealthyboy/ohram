@@ -169,6 +169,8 @@ input {
   content: "";
 }
 
+
+
 .main-nav > ul > li > a {
   font-family: luxurySaleFont5, sans-serif;
   letter-spacing: normal;
@@ -1343,4 +1345,27 @@ footer a:focus {
     padding-bottom: 6rem;
     color: #000 !important;
   }
+}
+
+
+
+/* page strip   */
+.card.rounded-4 {
+  border-radius: 1.5rem !important;
+}
+
+.btn-quick-add {
+  background-color: #00c2ad;
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  /* pill-shaped */
+  transition: all 0.3s ease;
+}
+
+.btn-quick-add:hover {
+  background-color: #009c8b;
+  /* darker shade for hover */
+  box-shadow: 0 4px 12px rgba(0, 194, 173, 0.3);
+  transform: translateY(-2px);
 }
