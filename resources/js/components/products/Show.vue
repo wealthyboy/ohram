@@ -329,7 +329,7 @@
                         <i class="fas fa-envelope-square fa-2x"></i>
                       </div>
                       <div class="info">
-                        <small class="promo-title">info@ogram.org</small>
+                        <small class="promo-title">info@ohramofficial.com</small>
                       </div>
                     </div>
                   </div>
