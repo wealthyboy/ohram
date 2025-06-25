@@ -104,7 +104,25 @@ export default {
       return [this.user ? true : false];
     },
   },
-
+  mounted() {
+    this.productReviews();
+    this.image = this.product.image_to_show;
+    this.image_tn = this.product.image_to_show_tn;
+    this.images = this.product.add_images;
+    this.product_variation_id = this.product.default_variation_id;
+    this.percentage_off = this.product.default_percentage_off;
+    this.quantity = this.product.qty;
+    this.cText = this.product.qty < 1 ? "Out of Stock" : " Add To Cart";
+    this.price = this.product.converted_price;
+    this.discounted_price = this.product.default_discounted_price;
+    this.is_wishlist = this.product.is_wishlist;
+    this.variant_images = this.product.variants;
+    if (this.product.colours.length != 0) {
+        this.active_color = this.product.colours.shift();
+        this.color_code =  this.active_color.color_code
+        this.color_name =  this.active_color.name
+    }
+  },
   methods: {
     getStarRating(e, rating) {
       this.form.rating = rating;
