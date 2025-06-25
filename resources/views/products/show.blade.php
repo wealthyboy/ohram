@@ -19,6 +19,7 @@
 
 <div class="container-fluid ">
     <div>
+        <product-show :attributes="{{ $attributes }}" :product="{{ $product }}" />
     </div>
     @if ( $product->related_products->count() )
 
