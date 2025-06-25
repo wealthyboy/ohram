@@ -2,7 +2,342 @@
   <div class="">
     <div class="product-single-container product-single-default">
       <div class="row">
-     
+        <div class="col-md-1 product-single-gallery d-none d-lg-block">
+          <div
+            class="prod-thumbnail carousel-custom-dots owl-dots"
+            id="carousel-custom-dots"
+          >
+            <div class="owl-dot">
+              <img
+                class="animated"
+                @click.prevent="currentSlide(product.image_to_show)"
+                :src="image_tn"
+              />
+            </div>
+            <div
+              @click.prevent="currentSlide(image.image)"
+              v-for="image in images"
+              :key="image.id"
+              class="owl-dot"
+            >
+              <img :src="image.image_tn" :alt="image.image_tn" />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 product-single-gallery">
+          <div class="product-slider-container">
+            <div class="product-single-carousel owl-carousel owl-theme">
+              <div class="product-item">
+                <img
+                  class="product-single-image"
+                  :data-zoom-image="image"
+                  :src="image"
+                />
+              </div>
+              <div v-for="image in images" :key="image.id" class="product-item">
+                <img
+                  class="product-single-image"
+                  :data-zoom-image="image.image"
+                  :src="image.image"
+                  v-if="image.image !== ''"
+                  :alt="image.image_tn"
+                />
+              </div>
+            </div>
+            <!-- End .product-single-carousel -->
+            <span class="prod-full-screen">
+              <i class="icon-plus"></i>
+            </span>
+          </div>
+          <div class="d-none d-sm-block d-md-none">
+            <div
+              class="prod-thumbnail-under owl-dots tn"
+              id="carousel-custom-dots"
+            >
+              <div class="owl-dot">
+                <img
+                  class="animated"
+                  @click.prevent="currentSlide(product.image_to_show)"
+                  :src="image_tn"
+                />
+              </div>
+              <div v-for="image in images" :key="image.id" class="owl-dot">
+                <img
+                  :src="image.image_tn"
+                  @click.prevent="currentSlide(image.image)"
+                  :alt="image.image_tn"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End .product-single-gallery -->
+
+        <div class="col-md-5 product-single-details mt-3 mt-sm-5 mt-xs-5">
+          <div class="p text-center">
+            <div
+              v-if="product.brand"
+              class="tag mb-1 brand-name bold color--gray"
+            >
+              {{ product.brand_name }}
+            </div>
+
+            <h2 class="pb-2">{{ product.product_name }}</h2>
+            <div class="ratings-container">
+              <div class="product-ratings">
+                <span
+                  class="ratings"
+                  :style="{ width: product.average_rating + '%' }"
+                ></span
+                ><!-- End .ratings -->
+              </div>
+              <!-- End .product-ratings -->
+
+              <a href="#" class="rating-link"
+                >( {{ product.average_rating_count }} Reviews )</a
+              >
+            </div>
+            <!-- End .ratings-container -->
+
+            <!--Product Title-->
+            <div class="product-share clearfix">
+              <div class="float-left">
+                <span class="bold">Item #:</span>
+                <span>{{ product.sku }}</span>
+              </div>
+              <div class="float-right">
+                <a href="https://instagram.com/ohramofficial" target="_blank"
+                  ><i class="fab fa-instagram left" aria-hidden="true"></i
+                ></a>
+                <a
+                  href="https://www.facebook.com/sharer/sharer.php?u=https://ohram.org/"
+                  target="_blank"
+                  ><i class="fab fa-facebook-f left" aria-hidden="true"></i
+                ></a>
+                <a
+                  href="http://twitter.com/share?url=https://ohram.org/"
+                  target="_blank"
+                  ><i class="fab fa-twitter left" aria-hidden="true"></i
+                ></a>
+              </div>
+            </div>
+
+            <div
+              class="product-item-prices d-flex justify-content-center mt-2"
+              v-if="discounted_price"
+            >
+              <div class="product--price--amount">
+                <span class="retail--title text-gold">SALE PRICE</span>
+                <span class="product--price text-danger"
+                  >{{ product.currency
+                  }}{{ discounted_price | priceFormat }}</span
+                >
+                <span class="retail--title">{{ percentage_off }}% off</span>
+              </div>
+              <div class="product--price--amount retail">
+                <span class="retail--title text-gold">PRICE</span>
+                <span class="product--price retail--price text-gold"
+                  >{{ product.currency }}{{ price | priceFormat }}</span
+                >
+                <span class="retail--title"></span>
+              </div>
+            </div>
+
+            <div
+              class="product-item-prices d-flex justify-content-center mt-2"
+              v-else
+            >
+              <div class="product--price--amount">
+                <span class="retail--title text-gold">PRICE</span>
+                <span class="product--price"
+                  >{{ product.currency }}{{ price | priceFormat }}</span
+                >
+                <span class="retail--title"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="clearfix"></div>
+
+          <div class="">
+            <!--Product Variations Form-->
+            <div class="row">
+              <!--Select Size-->
+              <div
+                v-if="Object.keys(attributes).length !== 0"
+                class="col-12 mt-2 text-center"
+              >
+                <div v-for="(map, key) in attributes" :key="key" class="">
+                  <label class="d-block"
+                    >{{ key }}:
+                    <span v-if="key == 'Colors'">{{ color }}</span></label
+                  >
+                  <div
+                    :id="'productV-' + key"
+                    class="d-flex mb-1 justify-content-center"
+                  >
+                    <div
+                      @click="getAttribute($event, key)"
+                      :data-name="key"
+                      @mouseenter="showColor(children)"
+                      @mouseleave="removeColor"
+                      :class="[
+                        index == color_code ||
+                        index == color_name
+                          ? 'active-attribute'
+                          : '',
+                        activeObject,
+                      ]"
+                      v-if="key == 'Colors'"
+                      :data-value="children"
+                      v-for="(children, index) in map"
+                      :key="children"
+                      :style="{ 'background-color': index }"
+                      style="
+                        height: 30px;
+                        width: 30px;
+                        border-radius: 50%;
+                        cursor: pointer;
+                      "
+                      class="mr-1 first-attribute  "
+                    > 
+                    </div>
+                    <template v-if="attributesData.length">
+                      <div
+                        @click="getAttribute($event, key)"
+                        :data-name="key"
+                        v-if="key != 'Colors'"
+                        :class="[
+                          index == 0 ? 'bold active-other-attribute' : 'border',
+                        ]"
+                        :data-value="children"
+                        v-for="(children, index) in attributesData"
+                        :key="children"
+                        style="
+                          height: 35px;
+                          width: auto;
+                          border-radius: 5%;
+                          cursor: pointer;
+                        "
+                        class="mr-1 border pr-3 pl-3 o-a pt-1 other-attribute"
+                      >
+                        {{ children }}
+                      </div>
+                    </template>
+                    <template v-else>
+                      <div
+                        @click="getAttribute($event, key)"
+                        :data-name="key"
+                        :class="[
+                          index == 0 ? 'bold active-other-attribute ' : '',
+                        ]"
+                        v-if="key != 'Colors'"
+                        :data-value="children"
+                        v-for="(children, index) in map"
+                        :key="children"
+                        style="
+                          height: 35px;
+                          width: auto;
+                          border-radius: 5%;
+                          cursor: pointer;
+                        "
+                        class="mr-1 pr-3 pl-3 pt-1 border other-attribute"
+                      >
+                        {{ children }}
+                      </div>
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row ml-1 no-gutters mb-1 mt-2">
+              <div class="col-2">
+                <div v-if="quantity >= 1" id="quantity_1234" class="">
+                  <select
+                    id="add-to-cart-quantity"
+                    name="qty"
+                    class="form-control"
+                  >
+                    <option v-for="x in 10">{{ x }}</option>
+                  </select>
+                </div>
+                <div v-else id="quantity_1234" class="">
+                  <select
+                    id="add-to-cart-quantity"
+                    name="qty"
+                    class="form-control"
+                  >
+                    <option value=""></option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-10">
+                <button
+                  @click.prevent="addToCart"
+                  :class="canAddToCart"
+                  type="button"
+                  name="add-to-cart"
+                  value="add_to_cart"
+                  class="l-f1 pt-4 pb-4 btn btn--primary btn-lg btn-block"
+                >
+                  {{ cartText }}
+                  <span
+                    v-if="loading"
+                    class="spinner-border spinner-border-sm float-right ml-3"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  <i
+                    style="float: right"
+                    v-if="!loading"
+                    class="icon-shopping-cart"
+                  ></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- End .product-filters-container -->
+
+          <div class="text-center">
+            <section class="sec-padding--md page-divider-t bg--gray">
+              <div class="container">
+                <div class="row no-gutters nf-grid">
+                  <div class="col-md-4 col-4 nf-grid-item">
+                    <div class="promo-box">
+                      <div class="icon color--primary">
+                        <i class="fas fa-shipping-fast fa-2x"></i>
+                      </div>
+                      <div class="info">
+                        <small>International Delivery</small>
+                        <p></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-4 nf-grid-item">
+                    <div class="promo-box">
+                      <div class="icon color--primary">
+                        <i class="fa fa-shopping-bag fa-2x"></i>
+                      </div>
+                      <div class="info text-center">
+                        <small class="promo-titl">We do wholesale</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-4 nf-grid-item">
+                    <div class="promo-box">
+                      <div class="icon color--primary">
+                        <i class="fas fa-envelope-square fa-2x"></i>
+                      </div>
+                      <div class="info">
+                        <small class="promo-title">info@ogram.org</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
         <!-- End .product-single-details -->
       </div>
       <!-- End .row -->
