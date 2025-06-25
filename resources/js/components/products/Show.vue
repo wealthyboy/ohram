@@ -33,7 +33,6 @@ export default {
     Pagination,
     RegisterModal,
   },
-
   data() {
     return {
       attributesData: [],
@@ -45,7 +44,7 @@ export default {
       images: [],
       variant_images: [],
       noRating: false,
-      user: Window.auth,
+      user: {},
       file: null,
       quantity: "",
       useUrl: false,
