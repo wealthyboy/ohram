@@ -47,7 +47,7 @@ class Review extends Model
 
     public function img()
     {
-        $removed_prefix_url = str_replace("https://www.ohram.org/", "", $review_img_url);
+        $removed_prefix_url = str_replace("https://www.ohram.org/", "", $this->image);
 
         return $this->image ? $removed_prefix_url : '/image/utilities/profile.png';
     }
