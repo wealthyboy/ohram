@@ -65,18 +65,20 @@
 
             </div>
 
-            <div class="clearfix"></div>
-            <div class="col-12">
-                <div class="justifiy-content-center">
-                    <div class="pagination-wraper d-flex">
-                        {{ $reviews->links() }}
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
     <!--End Content-->
     @endif
+
+
+    <div class="clearfix"></div>
+    <div class="col-12">
+        <div class="justifiy-content-center">
+            <div class="pagination-wraper d-flex">
+                {{ $reviews->links() }}
+            </div>
+        </div>
+    </div>
 
 
 </div>
