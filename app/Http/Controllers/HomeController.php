@@ -48,6 +48,7 @@ class HomeController extends Controller
         if (
             null !== $site_status->make_live
         ) {
+                       return view('underconstruction.index');
 
             return view('index', compact('banners', 'page_title', 'reviews', 'products', 'posts'));
         } else {
